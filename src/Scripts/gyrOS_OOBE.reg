@@ -1,0 +1,12 @@
+Windows Registry Editor Version 5.00
+
+; ### gyrOS OOBE Registry ###
+
+[HKEY_LOCAL_MACHINE\SOFTWARE\Policies\Microsoft\Windows\DataCollection]
+"AllowOobeOptin"=dword:00000000
+
+[HKEY_LOCAL_MACHINE\SOFTWARE\Policies\Microsoft\Windows\System]
+"EnableActivityHistory"=dword:00000000
+
+[HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\Windows\CurrentVersion\WindowsUpdate\Auto Update]
+"AutoLogonAfterOOBE"=dword:00000001
