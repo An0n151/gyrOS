@@ -12,9 +12,9 @@ cd /d "%~dp0" && ( if exist "%temp%\getadmin.vbs" del "%temp%\getadmin.vbs" ) &&
 title Google Chrome Tweaks
 
 :: Configure Google Chrome
-sc config "gupdate" start= demand > nul 2> nul
-sc config "gupdatem" start= demand > nul 2> nul
-sc config "GoogleChromeElevationService" start= demand > nul 2> nul
+sc config "gupdate" start= demand
+sc config "gupdatem" start= demand
+sc config "GoogleChromeElevationService" start= demand
 
 reg add "HKLM\SOFTWARE\Policies\Google\Update" /v "UpdateDefault" /t REG_DWORD /d "0" /f
 reg add "HKLM\SOFTWARE\Policies\Google\Update" /v "DisableAutoUpdateChecksCheckboxValue" /t REG_DWORD /d "1" /f
