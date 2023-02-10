@@ -76,7 +76,7 @@ echo.
 echo  INSTALLING VISUAL CPP REDISTRIBUTABLES... 1/2
 echo _______________________________________________
 echo.
-"%drive%\Windows\gyrOS\VisualCppRedist_AIO.exe" /ai
+"%WinDir%\gyrOS\VisualCppRedist_AIO.exe" /ai
 cls
 
 ping 8.8.8.8 -n 1 -w 1000 > nul 2> nul
@@ -87,7 +87,7 @@ echo  INSTALLING DIRECTX... 2/2
 echo ___________________________
 echo.
 :DirectX
-start /wait "" "%drive%\Windows\gyrOS\DirectX.exe" /q
+start /wait "" "%WinDir%\gyrOS\DirectX.exe" /q
 cls
 ) else (
 echo No internet connection detected. Skipping DirectX installation.
