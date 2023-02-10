@@ -1,6 +1,6 @@
 <h1 align="center">
   <br>
-  <a href="https://discord.com/invite/u3ruZyKsWT"><img src="https://i.imgur.com/SOErP1W.jpg" alt="gyrOS" width="900"></a>
+  <a href="https://discord.com/invite/u3ruZyKsWT"><img src="https://i.imgur.com/vbzNUpL.jpg" alt="gyrOS" width="900"></a>
 </h1>
 <h4 align="center">Redefining Windows</h4>
 <p align="center">
