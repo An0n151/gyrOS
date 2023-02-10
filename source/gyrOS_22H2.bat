@@ -924,7 +924,8 @@ setx DOTNET_CLI_TELEMETRY_OPTOUT 1 > nul 2> nul
 :: Enable Numlock on Startup
 %currentuser% reg add "HKCU\Control Panel\Keyboard" /v "InitialKeyboardIndicators" /d "2" /t REG_DWORD /f > nul 2> nul
 
-:: Disable DMA Remapping ; Credits to DuckOS 
+:: Disable DMA Remapping ; Credits to DuckOS
+reg add "HKLM\SOFTWARE\Microsoft\PolicyManager\default\DmaGuard\DeviceEnumerationPolicy" /v "value" /t REG_DWORD /d "2" /f > nul 2> nul
 for /f %%i in ('reg query "HKLM\SYSTEM\CurrentControlSet\Services" /s /f DmaRemappingCompatible ^| find /i "Services\" ') do (
 	reg add "%%i" /v "DmaRemappingCompatible" /t REG_DWORD /d "0" /f
 ) > nul 2> nul
@@ -1170,6 +1171,7 @@ bcdedit /set description gyrOS > nul 2> nul
 fsutil repair set C: 0 > nul 2> nul
 
 ::bcdedit /set hypervisorlaunchtype Off > nul 2> nul
+:: Disable DEP
 ::bcdedit /set nx AlwaysOff > nul 2> nul
 
 :: Lower Latency
