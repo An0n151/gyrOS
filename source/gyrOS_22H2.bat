@@ -1086,8 +1086,7 @@ reg add "HKLM\SOFTWARE\Policies\Microsoft\Windows\CloudContent" /v "DisableWindo
 reg add "HKLM\System\CurrentControlSet\Services\Dhcp" /v "DependOnService" /t REG_MULTI_SZ /d "NSI\0Afd" /f > nul 2> nul
 reg add "HKLM\System\CurrentControlSet\Services\Dnscache" /v "DependOnService" /t REG_MULTI_SZ /d "nsi" /f > nul 2> nul
 reg add "HKLM\System\CurrentControlSet\Services\rdyboost" /v "DependOnService" /t REG_MULTI_SZ /d "" /f > nul 2> nul
-reg add "HKLM\System\CurrentControlSet\Control\Class\{71a27cdd-812a-11d0-bec7-08002be2092f}" /v "LowerFilters" /t REG_MULTI_SZ  /d "" /f > nul 2> nul
-reg add "HKLM\System\CurrentControlSet\Control\Class\{71a27cdd-812a-11d0-bec7-08002be2092f}" /v "UpperFilters" /t REG_MULTI_SZ  /d "" /f > nul 2> nul
+::reg add "HKLM\System\CurrentControlSet\Control\Class\{71a27cdd-812a-11d0-bec7-08002be2092f}" /v "UpperFilters" /t REG_MULTI_SZ  /d "" /f > nul 2> nul
 
 :: Disable CEIP
 %currentuser% reg add "HKCU\Software\Policies\Microsoft\Messenger\Client" /v "CEIP" /t REG_DWORD /d "2" /f > nul 2> nul
@@ -1709,19 +1708,6 @@ for /f %%a in ('reg query "HKLM\SYSTEM\CurrentControlSet\Control\Class\{4d36e972
     for /f %%i in ('reg query "%%a" /v "WakeUpModeCap" ^| findstr "HKEY"') do ( reg add "%%i" /v "PnPCapabilities" /t REG_SZ /d "24" /f )
 ) > nul 2> nul
 
-:: Storage Optimizations 
-fsutil behavior set memoryusage 2 > nul 2> nul
-fsutil behavior set mftzone 2 > nul 2> nul
-fsutil behavior set Bugcheckoncorrupt 0 > nul 2> nul
-fsutil behavior set disable8dot3 1 > nul 2> nul
-fsutil behavior set disablecompression 1 > nul 2> nul
-fsutil behavior set disabledeletenotify 0 > nul 2> nul
-fsutil behavior set encryptpagingfile 0 > nul 2> nul
-
-reg add "HKLM\SOFTWARE\Microsoft\Windows\CurrentVersion\ReserveManager" /v "ShippedWithReserves" /t REG_DWORD /d "0" /f > nul 2> nul
-reg add "HKLM\SOFTWARE\Microsoft\Windows\CurrentVersion\ReserveManager" /v "PassedPolicy" /t REG_DWORD /d "0" /f > nul 2> nul
-reg add "HKLM\SOFTWARE\Microsoft\Windows\CurrentVersion\ReserveManager" /v "MiscPolicyInfo" /t REG_DWORD /d "2" /f > nul 2> nul
-
 :: File System Optimizations 
 reg add "HKLM\SYSTEM\CurrentControlSet\Control\FileSystem" /v "FilterSupportedFeaturesMode" /t REG_DWORD /d "0" /f > nul 2> nul
 reg add "HKLM\SYSTEM\CurrentControlSet\Control\FileSystem" /v "NtfsAllowExtendedCharacter8dot3Rename" /t REG_DWORD /d "0" /f > nul 2> nul
@@ -1744,8 +1730,30 @@ reg add "HKLM\SYSTEM\CurrentControlSet\Control\FileSystem" /v "Win95TruncatedExt
 reg add "HKLM\SYSTEM\CurrentControlSet\Control\FileSystem" /v "NtfsDisableSpotCorruptionHandling" /t REG_DWORD /d "1" /f > nul 2> nul
 reg add "HKLM\SYSTEM\CurrentControlSet\Control\FileSystem" /v "NtfsMftZoneReservation" /t REG_DWORD /d "2" /f > nul 2> nul
 
-:: Memory Optimizations 
-:MemoryOptimizations
+:: Storage Optimizations ; Credits to ArtanisInc
+for /f "skip=1" %%i in ('wmic os get TotalVisibleMemorySize') do if not defined TOTAL_MEMORY set "TOTAL_MEMORY=%%i"
+if !TOTAL_MEMORY! LSS 8000000 (
+	fsutil behavior set memoryusage 1
+	fsutil behavior set mftzone 1
+) > nul 2>nul else if !TOTAL_MEMORY! LSS 16000000 (
+	fsutil behavior set memoryusage 1
+	fsutil behavior set mftzone 2
+) > nul 2>nul else (
+	fsutil behavior set memoryusage 2
+	fsutil behavior set mftzone 2
+) > nul 2>nul
+
+::fsutil behavior set memoryusage 2 > nul 2> nul
+::fsutil behavior set mftzone 2 > nul 2> nul
+fsutil behavior set Bugcheckoncorrupt 0 > nul 2> nul
+fsutil behavior set disable8dot3 1 > nul 2> nul
+fsutil behavior set disablecompression 1 > nul 2> nul
+fsutil behavior set encryptpagingfile 0 > nul 2> nul
+reg add "HKLM\SOFTWARE\Microsoft\Windows\CurrentVersion\ReserveManager" /v "ShippedWithReserves" /t REG_DWORD /d "0" /f > nul 2> nul
+reg add "HKLM\SOFTWARE\Microsoft\Windows\CurrentVersion\ReserveManager" /v "PassedPolicy" /t REG_DWORD /d "0" /f > nul 2> nul
+reg add "HKLM\SOFTWARE\Microsoft\Windows\CurrentVersion\ReserveManager" /v "MiscPolicyInfo" /t REG_DWORD /d "2" /f > nul 2> nul
+
+:StorageOptimizations
 cls
 echo __________________________________
 echo.
@@ -1756,12 +1764,12 @@ echo.
 set /p M="What type of storage disk is Windows installed on?   1. for SSD/NVMe or 2. for HDD: " 
 if %M%==1 goto SSD
 if %M%==2 goto HDD
-goto MemoryOptimizations
+goto StorageOptimizations
 
 :HDD
 reg add "HKLM\SYSTEM\CurrentControlSet\Control\FileSystem" /v "NTFSDisableLastAccessUpdate" /t REG_DWORD /d "1" /f > nul 2> nul
 fsutil behavior set disablelastaccess 1 > nul 2> nul
-goto SkipSSDOpts
+goto SkipSSDOptimizations
 
 :SSD
 cls
@@ -1771,14 +1779,19 @@ echo  SYSTEM PURIFICATION - PHASE 4...
 echo __________________________________
 echo.
 
+fsutil behavior set disablelastaccess 0 > nul 2> nul
+fsutil behavior set disabledeletenotify 0 > nul 2> nul
 reg add "HKLM\SYSTEM\CurrentControlSet\Control\Session Manager\Memory Management\PrefetchParameters" /v "EnableBoottrace" /t REG_DWORD /d "0" /f > nul 2> nul
 reg add "HKLM\SYSTEM\CurrentControlSet\Control\Session Manager\Memory Management\PrefetchParameters" /v "EnableSuperfetch" /t REG_DWORD /d "0" /f > nul 2> nul
 reg add "HKLM\SYSTEM\CurrentControlSet\Control\Session Manager\Memory Management\PrefetchParameters" /v "EnablePrefetcher" /t REG_DWORD /d "0" /f > nul 2> nul
 reg add "HKLM\SYSTEM\CurrentControlSet\Control\Session Manager\Memory Management" /v "EnablePrefetcher" /t REG_DWORD /d "0" /f > nul 2> nul
 reg add "HKLM\SYSTEM\CurrentControlSet\Control\Session Manager\Memory Management" /v "EnableSuperfetch" /t REG_DWORD /d "0" /f > nul 2> nul
-fsutil behavior set disablelastaccess 0 > nul 2> nul
+reg add "HKLM\SOFTWARE\Microsoft\Dfrg\BootOptimizeFunction" /v "Enable" /t REG_SZ /d "N" /f > nul 2> nul
+reg add "HKLM\SOFTWARE\Microsoft\Windows\CurrentVersion\OptimalLayout" /v "EnableAutoLayout" /t REG_DWORD /d "0" /f > nul 2> nul
+reg add "HKLM\SYSTEM\CurrentControlSet\Services\rdyboost" /v "Start" /t REG_DWORD /d "4" /f >nul 2>&1
+reg add "HKLM\System\CurrentControlSet\Control\Class\{71a27cdd-812a-11d0-bec7-08002be2092f}" /v "LowerFilters" /t REG_MULTI_SZ  /d "" /f > nul 2> nul
 
-:SkipSSDOpts
+:SkipSSDOptimizations
 cls
 echo __________________________________
 echo.
@@ -1793,7 +1806,6 @@ reg add "HKLM\SYSTEM\CurrentControlSet\Control\Session Manager" /v "ProtectionMo
 reg add "HKLM\System\CurrentControlSet\Control\Session Manager" /v "HeapDeCommitFreeBlockThreshold" /t REG_DWORD /d "262144" /f > nul 2> nul
 reg add "HKLM\SYSTEM\CurrentControlSet\Control\FileSystem" /v "NTFSDisable8dot3NameCreation" /t REG_DWORD /d "1" /f > nul 2> nul
 reg add "HKLM\SOFTWARE\Microsoft\Windows\CurrentVersion\Explorer" /v "AlwaysUnloadDLL" /t REG_DWORD /d "1" /f > nul 2> nul
-
 PowerShell "Disable-MMAgent -MemoryCompression" > nul 2> nul
 PowerShell -NoProfile -Command "Disable-MMAgent -PagingCombining -mc" > nul 2> nul
 
@@ -1805,7 +1817,6 @@ PowerShell "Set-SmbClientConfiguration -RequireSecuritySignature $True -Force" >
 PowerShell "Set-SmbClientConfiguration -EnableSecuritySignature $True -Force" > nul 2> nul
 PowerShell "Set-SmbServerConfiguration -EncryptData $True -Force" > nul 2> nul
 PowerShell "Set-SmbServerConfiguration -EnableSMB1Protocol $false -Force" > nul 2> nul
-
 reg add "HKLM\SYSTEM\CurrentControlSet\Control\Lsa" /v "RunAsPPL" /t REG_DWORD /d "1" /f > nul 2> nul
 reg add "HKLM\SYSTEM\CurrentControlSet\Control\Lsa" /v "EveryoneIncludesAnonymous" /t REG_DWORD /d "0" /f > nul 2> nul
 reg add "HKLM\System\CurrentControlSet\Control\Lsa" /v "RestrictAnonymous" /t REG_DWORD /d "1" /f > nul 2> nul
