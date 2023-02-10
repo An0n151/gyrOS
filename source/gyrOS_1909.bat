@@ -285,7 +285,6 @@ for /f "usebackq delims=" %%a in ("%temp%\temporary.txt") do (
     reg add "HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\Windows NT\CurrentVersion\AppCompatFlags\Layers" /v "%%a" /t REG_SZ /d "RUNASADMIN" /f > nul 2> nul
 )
 del "%temp%\temporary.txt"
-
 reg add "HKCU\Software\Microsoft\Windows\CurrentVersion\Policies\Associations" /v "DefaultFileTypeRisk" /t REG_DWORD /d "1808" /f > nul 2> nul
 
 :: Disable Security Warning "Unblock the downloaded file"
@@ -1787,7 +1786,7 @@ reg add "HKLM\SYSTEM\CurrentControlSet\Control\FileSystem" /v "NtfsDisableSpotCo
 reg add "HKLM\SYSTEM\CurrentControlSet\Control\FileSystem" /v "NtfsMftZoneReservation" /t REG_DWORD /d "2" /f > nul 2> nul
 
 :: Memory Optimizations 
-:MemOpts
+:MemoryOptimizations
 cls
 echo __________________________________
 echo.
@@ -1798,7 +1797,7 @@ echo.
 set /p M="What type of storage disk is Windows installed on?   1. for SSD/NVMe or 2. for HDD: " 
 if %M%==1 goto SSD
 if %M%==2 goto HDD
-goto MemOpts
+goto MemoryOptimizations
 
 :HDD
 reg add "HKLM\SYSTEM\CurrentControlSet\Control\FileSystem" /v "NTFSDisableLastAccessUpdate" /t REG_DWORD /d "1" /f > nul 2> nul
@@ -1867,7 +1866,7 @@ reg delete "HKCU\Software\Classes\Local Settings\Software\Microsoft\Windows\Shel
 reg delete "HKCU\Software\Classes\Local Settings\Software\Microsoft\Windows\Shell\Bags" /f > nul 2> nul
 reg add "HKCU\Software\Classes\Local Settings\Software\Microsoft\Windows\Shell\Bags\All Folders\Shell" /v "FolderType" /t "REG_SZ" /d "NotSpecified" /f > nul 2> nul
 reg add "HKCU\Software\Classes\Local Settings\Software\Microsoft\Windows\Shell" /v "BagMRU Size" /t "REG_DWORD" /d "2710" /f > nul 2> nul
-:: Disable "Do not Connect to Windows Update Internet Locations" / Fixes Microsoft Store
+:: Disable "Do not Connect to Windows Update Internet Locations" / Used to Fixed Microsoft Store
 ::reg add "HKEY_LOCAL_MACHINE\SOFTWARE\Policies\Microsoft\Windows\WindowsUpdate" /v "DoNotConnectToWindowsUpdateInternetLocations" /t REG_DWORD /d "0" /f > nul 2> nul
 
 timeout /t 2
