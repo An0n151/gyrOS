@@ -79,13 +79,13 @@ echo.
 "%WinDir%\gyrOS\VisualCppRedist_AIO.exe" /ai
 cls
 
-ping 8.8.8.8 -n 1 -w 1000 > nul 2> nul
-if %errorlevel% == 0 (
 echo ___________________________
 echo.
 echo  INSTALLING DIRECTX... 2/2
 echo ___________________________
 echo.
+ping 8.8.8.8 -n 1 -w 1000 > nul 2> nul
+if %errorlevel% == 0 (
 :DirectX
 start /wait "" "%WinDir%\gyrOS\DirectX.exe" /q
 cls
