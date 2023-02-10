@@ -16,9 +16,10 @@ Windows Registry Editor Version 5.00
 [HKEY_LOCAL_MACHINE\SOFTWARE\Wow6432Node\Microsoft\PowerShell\1\ShellIds\Microsoft.PowerShell]
 "Path"="C:\\Windows\\SysWOW64\\WindowsPowerShell\\v1.0\\powershell.exe"
 "ExecutionPolicy"="RemoteSigned"
+
 ; ================================================================================================================================
 
-; Prefer IPV4 over IPV6***
+; Prefer IPV4 over IPV6
 [HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\Services\Tcpip6\Parameters]
 "Dhcpv6DUID"=hex:00,01,00,01,27,36,62,d4,80,c1,6e,e3,72,d7
 "DisabledComponents"=dword:00000032
