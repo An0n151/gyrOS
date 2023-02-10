@@ -109,7 +109,7 @@ echo.
 echo  INSTALLING VISUAL CPP REDISTRIBUTABLES... 1/3
 echo _______________________________________________
 echo.
-"%drive%\Windows\gyrOS\VisualCppRedist_AIO.exe" /ai
+"%WinDir%\gyrOS\VisualCppRedist_AIO.exe" /ai
 cls
 
 echo ___________________________
