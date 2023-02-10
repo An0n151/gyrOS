@@ -1752,7 +1752,7 @@ echo  SYSTEM PURIFICATION - PHASE 4...
 echo __________________________________
 echo.
 echo.
-set /p M="What is your storage type?   1. for SSD/NVMe or 2. for HDD: " 
+set /p M="What storage disk is Windows installed on?   1. for SSD/NVMe or 2. for HDD: " 
 if %M%==1 goto SSD
 if %M%==2 goto HDD
 goto MemOpts
