@@ -90,11 +90,10 @@ echo.
 start /wait "" "%drive%\Windows\gyrOS\DirectX.exe" /q
 cls
 ) else (
-echo No internet connection.
+echo No internet connection detected. Skipping DirectX installation.
 echo.
-echo Skipping DirectX setup.
-echo.
-echo Install it manually using GToolbox.
+echo Install it manually using GToolbox. Continuing...
+timeout /t 3
 )
 
 :Chocolatey

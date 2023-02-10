@@ -116,18 +116,17 @@ ping 8.8.8.8 -n 1 -w 1000 > nul 2> nul
 if %errorlevel% == 0 (
 echo ___________________________
 echo.
-echo  INSTALLING DIRECTX... 2/3
+echo  INSTALLING DIRECTX... 2/2
 echo ___________________________
 echo.
 :DirectX
 start /wait "" "%drive%\Windows\gyrOS\DirectX.exe" /q
 cls
 ) else (
-echo No internet connection.
+echo No internet connection detected. Skipping DirectX installation.
 echo.
-echo Skipping DirectX setup.
-echo.
-echo Install it manually using GToolbox.
+echo Install it manually using GToolbox. Continuing...
+timeout /t 3
 )
 
 :OpenShell
