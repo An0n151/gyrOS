@@ -1743,8 +1743,6 @@ if !TOTAL_MEMORY! LSS 8000000 (
 	fsutil behavior set mftzone 2
 ) > nul 2>nul
 
-::fsutil behavior set memoryusage 2 > nul 2> nul
-::fsutil behavior set mftzone 2 > nul 2> nul
 fsutil behavior set Bugcheckoncorrupt 0 > nul 2> nul
 fsutil behavior set disable8dot3 1 > nul 2> nul
 fsutil behavior set disablecompression 1 > nul 2> nul
