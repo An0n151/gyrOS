@@ -136,7 +136,7 @@ echo  INSTALLING OPEN-SHELL... 3/3
 echo ______________________________
 echo.
 "%drive%\ProgramData\Installers\OpenShellSetup.exe" /qn
-
+timeout /t 2
 reg add "HKCU\SOFTWARE\OpenShell" /t REG_SZ "" /f > nul 2> nul
 reg add "HKCU\SOFTWARE\OpenShell\OpenShell" /t REG_SZ "" /f > nul 2> nul
 reg add "HKCU\SOFTWARE\OpenShell\OpenShell\Settings" /t REG_SZ "" /f > nul 2> nul
