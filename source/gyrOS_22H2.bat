@@ -408,8 +408,13 @@ reg delete "HKCR\SystemFileAssociations\.tiff\Shell\3D Edit" /f > nul 2> nul
 :: Remove "Share" from Context Menu
 reg delete "HKCR\*\shellex\ContextMenuHandlers\ModernSharing" /f > nul 2> nul
 
-:: Disable USB Autorun / Autoplay
+:: Disable USB Autorun / Autoplay ; Credits to ArtanisInc
+reg add "HKLM\SOFTWARE\Microsoft\Internet Explorer\Main" /v "Autorun" /t REG_DWORD /d "0" /f > nul 2> nul
 reg add "HKLM\Software\Microsoft\Windows\CurrentVersion\Policies\Explorer" /v "NoAutorun" /t REG_DWORD /d "1" /f > nul 2> nul
+reg add "HKLM\SOFTWARE\Microsoft\Windows\CurrentVersion\Policies\Explorer" /v "NoAutoplayfornonVolume" /t REG_DWORD /d "1" /f > nul 2> nul
+reg add "HKLM\SOFTWARE\Microsoft\Windows\CurrentVersion\Policies\Explorer" /v "NoDriveTypeAutoRun" /t REG_DWORD /d "255" /f > nul 2> nul
+reg add "HKLM\SOFTWARE\Microsoft\Windows\CurrentVersion\Policies\Explorer" /v "DontSetAutoplayCheckbox" /t REG_DWORD /d "1" /f > nul 2> nul
+reg add "HKCU\SOFTWARE\Microsoft\Windows\CurrentVersion\Explorer\AutoplayHandlers" /v "DisableAutoplay" /t REG_DWORD /d "1" /f > nul 2> nul
 
 :: Set Sound Scheme to "No Sounds"
 reg add "HKCU\AppEvents\Schemes" /t REG_SZ /v "" /d ".None" /f > nul 2> nul
@@ -1111,7 +1116,7 @@ reg add "HKLM\System\CurrentControlSet\Control\Session Manager\Power" /v "SleepS
 :: Disable Startup Delay for RunOnce and Run Keys
 reg add "HKLM\SOFTWARE\Microsoft\Windows\CurrentVersion\Policies\System" /v "DelayedDesktopSwitchTimeout" /t REG_DWORD /d "0" /f > nul 2> nul
 reg add "HKLM\SOFTWARE\Microsoft\Windows\CurrentVersion\Explorer\Serialize" /v "StartupDelayInMSec" /t REG_DWORD /d "0" /f > nul 2> nul
-reg add "HKEY_CURRENT_USER\Control Panel\Desktop" /v "StartupDelayInMSec" /t REG_DWORD /d 0 /f > nul 2> nul
+reg add "HKEY_CURRENT_USER\Control Panel\Desktop" /v "StartupDelayInMSec" /t REG_DWORD /d "0" /f > nul 2> nul
 
 :: Content Delivery Manager ; Credits to DuckOS 
 for %%a in (310093 353698 314563 338389 338387 338388 338393) do ( %currentuser% reg add "HKCU\Software\Microsoft\Windows\CurrentVersion\ContentDeliveryManager" /v "SubscribedContent-%%aEnabled" /t REG_DWORD /d "0" /f ) > nul 2> nul
@@ -1121,11 +1126,9 @@ for %%a in (RotatingLockScreenOverlayEnabled RotatingLockScreenEnabled SoftLandi
 netsh interface tcp set global autotuningl = experimental >nul
 netsh interface tcp set global autotuning = experimental >nul
 netsh interface tcp set heuristics disabled >nul
-::netsh interface tcp set global netdma=enabled > nul 2> nul
 netsh interface tcp set global rss=enabled > nul 2> nul
 netsh interface isatap set state disabled > nul 2> nul
 netsh interface ip set interface ethernet currenthoplimit=64 > nul 2> nul
-::netsh interface tcp set global chimney=disabled > nul 2> nul
 netsh interface tcp set global dca=enabled > nul 2> nul
 netsh interface tcp set global rsc=disabled > nul 2> nul
 netsh interface tcp set global ecncapability=enabled > nul 2> nul
@@ -1142,6 +1145,9 @@ netsh interface 6to4 set state state=enabled > nul 2> nul
 netsh interface tcp set global hystart=disabled > nul 2> nul
 netsh interface tcp set global pacingprofile=off > nul 2> nul
 netsh interface tcp set global initialRto=3000 > nul 2> nul
+
+::netsh interface tcp set global netdma=enabled > nul 2> nul
+::netsh interface tcp set global chimney=disabled > nul 2> nul
 
 timeout /t 2
 cls
