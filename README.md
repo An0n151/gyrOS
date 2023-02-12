@@ -11,7 +11,7 @@
 • gyrOS is a new project focusing on providing the best experience for everyday users depending on their needs.
 
 # What is gyrOS based on?
-• gyrOS offers Windows based modifications optimized & designed for gamers and creators.
+• gyrOS offers Windows based modifications optimized & designed for gamers and creators, by gamers and creators.
 
 # What is the goal?
 • We strive to improve performance and lower input latency while being compatible with most applications and games.
