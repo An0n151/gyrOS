@@ -376,16 +376,19 @@ reg add "HKCU\SOFTWARE\Policies\Microsoft\Windows\Explorer" /v "NoRemoteDestinat
 ::netsh interface ip set dns name="Ethernet" static 8.8.8.8 > nul 2> nul
 ::netsh interface ip add dns name="Ethernet" 8.8.4.4 index=2 > nul 2> nul
 
-:: Adjust Firewall Rules
+:: Configure Firewall
 netsh advfirewall firewall set rule group="Network Discovery" new enable=Yes > nul 2> nul
-
-:: Hide Disconnected Audio Devices
-reg add "HKCU\SOFTWARE\Microsoft\Multimedia\Audio\DeviceCpl" /v "ShowHiddenDevices" /t REG_DWORD /d "0" /f > nul 2> nul
-reg add "HKCU\SOFTWARE\Microsoft\Multimedia\Audio\DeviceCpl" /v "ShowDisconnectedDevices" /t REG_DWORD /d "0" /f > nul 2> nul
+:: Disable Firewall
+netsh advfirewall set allprofiles state off > nul 2> nul
+::reg add "HKLM\SYSTEM\CurrentControlSet\Services\mpssvc" /v "Start" /t REG_DWORD /d "3" /f > nul 2> nul
+::reg add "HKLM\SYSTEM\CurrentControlSet\Services\BFE" /v "Start" /t REG_DWORD /d "3" /f > nul 2> nul
 
 :: Remove "Include in Library" Context Menu
 reg delete "HKCR\Folder\ShellEx\ContextMenuHandlers\Library Location" /f > nul 2> nul
 reg delete "HKLM\SOFTWARE\Classes\Folder\ShellEx\ContextMenuHandlers\Library Location" /f > nul 2> nul
+
+:: Remove "Share" from Context Menu
+reg delete "HKCR\*\shellex\ContextMenuHandlers\ModernSharing" /f > nul 2> nul
 
 :: Disable IPv6, Client for Microsoft Networks, QoS Packet Scheduler, File and Printer Sharing ; Credits to DuckOS
 PowerShell -Mta -NoProfile -Command "Disable-NetAdapterBinding -Name "*" -ComponentID ms_tcpip6, ms_msclient, ms_pacer, ms_server" > nul 2> nul
@@ -419,9 +422,6 @@ reg delete "HKCR\SystemFileAssociations\.png\Shell\3D Edit" /f > nul 2> nul
 reg delete "HKCR\SystemFileAssociations\.tif\Shell\3D Edit" /f > nul 2> nul
 reg delete "HKCR\SystemFileAssociations\.tiff\Shell\3D Edit" /f > nul 2> nul
 
-:: Remove "Share" from Context Menu
-reg delete "HKCR\*\shellex\ContextMenuHandlers\ModernSharing" /f > nul 2> nul
-
 :: Disable USB Autorun / Autoplay ; Credits to ArtanisInc
 reg add "HKLM\SOFTWARE\Microsoft\Internet Explorer\Main" /v "Autorun" /t REG_DWORD /d "0" /f > nul 2> nul
 reg add "HKLM\Software\Microsoft\Windows\CurrentVersion\Policies\Explorer" /v "NoAutorun" /t REG_DWORD /d "1" /f > nul 2> nul
@@ -429,6 +429,10 @@ reg add "HKLM\SOFTWARE\Microsoft\Windows\CurrentVersion\Policies\Explorer" /v "N
 reg add "HKLM\SOFTWARE\Microsoft\Windows\CurrentVersion\Policies\Explorer" /v "NoDriveTypeAutoRun" /t REG_DWORD /d "255" /f > nul 2> nul
 reg add "HKLM\SOFTWARE\Microsoft\Windows\CurrentVersion\Policies\Explorer" /v "DontSetAutoplayCheckbox" /t REG_DWORD /d "1" /f > nul 2> nul
 reg add "HKCU\SOFTWARE\Microsoft\Windows\CurrentVersion\Explorer\AutoplayHandlers" /v "DisableAutoplay" /t REG_DWORD /d "1" /f > nul 2> nul
+
+:: Hide Disconnected Audio Devices
+reg add "HKCU\SOFTWARE\Microsoft\Multimedia\Audio\DeviceCpl" /v "ShowHiddenDevices" /t REG_DWORD /d "0" /f > nul 2> nul
+reg add "HKCU\SOFTWARE\Microsoft\Multimedia\Audio\DeviceCpl" /v "ShowDisconnectedDevices" /t REG_DWORD /d "0" /f > nul 2> nul
 
 :: Set Sound Scheme to "No Sounds"
 reg add "HKCU\AppEvents\Schemes" /t REG_SZ /v "" /d ".None" /f > nul 2> nul
@@ -867,11 +871,6 @@ reg add "HKLM\Software\Policies\Microsoft\Windows\System" /v "EnableCdp" /t REG_
 
 :: Disable PerfTrack
 reg add "HKLM\Software\Policies\Microsoft\Windows\WDI\{9c5a40da-b965-4fc3-8781-88dd50a6299d}" /v "ScenarioExecutionEnabled" /t REG_DWORD /d "0" /f > nul 2> nul
-
-:: Disable Firewall
-netsh advfirewall set allprofiles state off > nul 2> nul
-::reg add "HKLM\SYSTEM\CurrentControlSet\Services\mpssvc" /v "Start" /t REG_DWORD /d "3" /f > nul 2> nul
-::reg add "HKLM\SYSTEM\CurrentControlSet\Services\BFE" /v "Start" /t REG_DWORD /d "3" /f > nul 2> nul
 
 :: Disable WPAD
 reg add "HKLM\SOFTWARE\Microsoft\Windows\CurrentVersion\Internet Settings\Wpad" /v "WpadOverride" /t REG_DWORD /d "1" /f > nul 2> nul
@@ -1791,7 +1790,6 @@ if !TOTAL_MEMORY! LSS 8000000 (
 	fsutil behavior set memoryusage 2
 	fsutil behavior set mftzone 2
 ) > nul 2>nul
-
 fsutil behavior set Bugcheckoncorrupt 0 > nul 2> nul
 fsutil behavior set disable8dot3 1 > nul 2> nul
 fsutil behavior set disablecompression 1 > nul 2> nul
@@ -1876,7 +1874,7 @@ reg add "HKLM\System\CurrentControlSet\Services\LanmanServer\Parameters" /v "SMB
 reg add "HKLM\System\CurrentControlSet\Services\LanManServer\Parameters" /v "DisableCompression" /t REG_DWORD /d "1" /f > nul 2> nul
 reg add "HKLM\System\CurrentControlSet\Services\NetBT\Parameters" /v "NodeType" /t REG_DWORD /d "2" /f > nul 2> nul
 
-:: Fixes for bugs caused by optimizations until they are further investigated
+:: Fixes for bugs caused by code or stripped components
 :: Fix Folder View Settings
 reg add "HKCU\Software\Microsoft\Windows\CurrentVersion\Policies\Explorer" /v "NoSaveSettings" /t REG_SZ /d "0" /f > nul 2> nul
 reg add "HKLM\software\Microsoft\Windows\CurrentVersion\Policies\Explorer" /v "NoSaveSettings" /t REG_SZ /d "0" /f > nul 2> nul
