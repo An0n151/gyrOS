@@ -11,14 +11,14 @@ title gyrOS AIO Post Installation Script
 :: Configure Variables
 set "currentuser=%WinDir%\gyrOS\NSudo\NSudoLG.exe -U:C -P:E -Wait"
 set "PowerShell=%WinDir%\System32\WindowsPowerShell\v1.0\PowerShell.exe -NoProfile -NonInteractive -ExecutionPolicy Bypass -Command"
-:: Set Computer Type
+:: Set Computer Type ; Credits to ArtanisInc
 for /f "delims=:{}" %%i in ('wmic path Win32_systemenclosure get ChassisTypes^| findstr [0-9]') do set "CHASSIS=%%i"
 for %%i in (8 9 10 11 12 14 18 21 13 31 32 30) do if "!CHASSIS!"=="%%i" set "PC_TYPE=LAPTOP/TABLET"
-:: Set GPU
+:: Set GPU ; Credits to ArtanisInc
 wmic path Win32_VideoController get Name | findstr "NVIDIA" > nul 2> nul && set "GPU=NVIDIA"
 wmic path Win32_VideoController get Name | findstr "AMD ATI" > nul 2> nul && set "GPU=AMD"
 wmic path Win32_VideoController get Name | findstr "Intel" > nul 2> nul && set "GPU=INTEL"
-:: Set Username
+:: Set User ; Credits to ArtanisInc
 for /f %%i in ('wmic path Win32_UserAccount where name^="%username%" get sid ^| findstr "S-"') do set "USER_ID=%%i"
 
 echo _____________________________________________________________________________________________
@@ -38,16 +38,16 @@ echo __________________
 echo.
 
 :: Turn on Automatic Time Update ; Credits to DuckOS
-%windir%\System32\SystemSettingsAdminFlows.exe SetInternetTime 1 > nul 2> nul
+%WinDir%\System32\SystemSettingsAdminFlows.exe SetInternetTime 1 > nul 2> nul
 
 :: Turn on Automatic Time Zone Update ; Credits to DuckOS
-start "" "%windir%\System32\SystemSettingsAdminFlows.exe" SetAutoTimeZoneUpdate 1 > nul 2> nul
+start "" "%WinDir%\System32\SystemSettingsAdminFlows.exe" SetAutoTimeZoneUpdate 1 > nul 2> nul
 
 :: Force Sync the Time with the Internet Time ; Credits to DuckOS
-start "" "%windir%\System32\SystemSettingsAdminFlows.exe" ForceTimeSync 1 > nul 2> nul
+start "" "%WinDir%\System32\SystemSettingsAdminFlows.exe" ForceTimeSync 1 > nul 2> nul
 
 :: Configure Power Plan
-powercfg -import "%drive%\Windows\HoneV2.pow" 77777777-7777-7777-7777-777777777777 > nul 2> nul
+powercfg -import "%WinDir%\HoneV2.pow" 77777777-7777-7777-7777-777777777777 > nul 2> nul
 powercfg -SETACTIVE "77777777-7777-7777-7777-777777777777" > nul 2> nul
 powercfg -delete 8c5e7fda-e8bf-4a96-9a85-a6e23a8c635c > nul 2> nul
 powercfg -delete a1841308-3541-4fab-bc81-f71556f20b4a > nul 2> nul

@@ -11,6 +11,15 @@ title gyrOS AIO Post Installation Script
 :: Configure Variables
 set "currentuser=%WinDir%\gyrOS\NSudo\NSudoLG.exe -U:C -P:E -Wait"
 set "PowerShell=%WinDir%\System32\WindowsPowerShell\v1.0\PowerShell.exe -NoProfile -NonInteractive -ExecutionPolicy Bypass -Command"
+:: Set Computer Type ; Credits to ArtanisInc
+for /f "delims=:{}" %%i in ('wmic path Win32_systemenclosure get ChassisTypes^| findstr [0-9]') do set "CHASSIS=%%i"
+for %%i in (8 9 10 11 12 14 18 21 13 31 32 30) do if "!CHASSIS!"=="%%i" set "PC_TYPE=LAPTOP/TABLET"
+:: Set GPU ; Credits to ArtanisInc
+wmic path Win32_VideoController get Name | findstr "NVIDIA" > nul 2> nul && set "GPU=NVIDIA"
+wmic path Win32_VideoController get Name | findstr "AMD ATI" > nul 2> nul && set "GPU=AMD"
+wmic path Win32_VideoController get Name | findstr "Intel" > nul 2> nul && set "GPU=INTEL"
+:: Set User ; Credits to ArtanisInc
+for /f %%i in ('wmic path Win32_UserAccount where name^="%username%" get sid ^| findstr "S-"') do set "USER_ID=%%i"
 
 :: Uninstall Microsoft Edge
 cd /d "%ProgramFiles(x86)%\Microsoft"
@@ -28,7 +37,6 @@ if defined edge_legacy_package_version (
 		dism /online /Remove-Package /PackageName:%edge_legacy_package_version%
 		powershell.exe -Command "Get-AppxPackage *edge* | Remove-AppxPackage" > nul 2> nul
 )
-
 reg delete "HKLM\Software\WOW6432Node\Microsoft\Windows\CurrentVersion\Uninstall\Microsoft Edge" /f > nul 2> nul
 reg delete "HKLM\Software\WOW6432Node\Microsoft\Windows\CurrentVersion\Uninstall\Microsoft Edge Update" /f > nul 2> nul
 reg delete "HKLM\Software\Classes\MSEdgeHTM" /f > nul 2> nul
@@ -41,7 +49,6 @@ reg delete "HKLM\Software\WOW6432Node\Microsoft\EdgeUpdate" /f > nul 2> nul
 reg delete "HKLM\Software\WOW6432Node\Microsoft\Edge" /f > nul 2> nul
 reg delete "HKLM\Software\Clients\StartMenuInternet\Microsoft Edge" /f > nul 2> nul
 reg delete "HKLM\Software\Microsoft\Windows\CurrentVersion\Device Metadata" /f > nul 2> nul
-
 del "%drive%\Users\%username%\Desktop\Microsoft*Edge.lnk" > nul 2> nul
 del "%drive%\Users\%username%\AppData\Roaming\Microsoft\Windows\Start Menu\Programs\Microsoft Edge.lnk" > nul 2> nul
 cls
@@ -63,16 +70,16 @@ echo __________________
 echo.
 
 :: Turn on Automatic Time Update ; Credits to DuckOS
-%windir%\System32\SystemSettingsAdminFlows.exe SetInternetTime 1 > nul 2> nul
+%WinDir%\System32\SystemSettingsAdminFlows.exe SetInternetTime 1 > nul 2> nul
 
 :: Turn on Automatic Time Zone Update ; Credits to DuckOS
-start "" "%windir%\System32\SystemSettingsAdminFlows.exe" SetAutoTimeZoneUpdate 1 > nul 2> nul
+start "" "%WinDir%\System32\SystemSettingsAdminFlows.exe" SetAutoTimeZoneUpdate 1 > nul 2> nul
 
 :: Force Sync the Time with the Internet Time ; Credits to DuckOS
-start "" "%windir%\System32\SystemSettingsAdminFlows.exe" ForceTimeSync 1 > nul 2> nul
+start "" "%WinDir%\System32\SystemSettingsAdminFlows.exe" ForceTimeSync 1 > nul 2> nul
 
 :: Configure Power Plan
-powercfg -import "%drive%\Windows\HoneV2.pow" 77777777-7777-7777-7777-777777777777 > nul 2> nul
+powercfg -import "%WinDir%\HoneV2.pow" 77777777-7777-7777-7777-777777777777 > nul 2> nul
 powercfg -SETACTIVE "77777777-7777-7777-7777-777777777777" > nul 2> nul
 powercfg -delete 8c5e7fda-e8bf-4a96-9a85-a6e23a8c635c > nul 2> nul
 powercfg -delete a1841308-3541-4fab-bc81-f71556f20b4a > nul 2> nul
@@ -386,6 +393,9 @@ reg add "HKCU\Control Panel\Mouse" /v "MouseSensitivity" /t REG_SZ /d "10" /f > 
 :: Hide PerfLogs Folder
 attrib +h "%drive%\perflogs" > nul 2> nul
 
+:: Static Scrollbars***
+reg add "HKCU\\Control Panel\Accessibility" /v "DynamicScrollbars" /t REG_DWORD /d "0" /f > nul 2> nul
+
 :: Configure BSOD ; Credits to HoneCtrl
 reg add "HKLM\System\CurrentControlSet\Control\CrashControl" /v "DisplayParameters" /t REG_DWORD /d "1" /f > nul 2> nul
 reg add "HKLM\SYSTEM\CurrentControlSet\Control\CrashControl" /v "LogEvent" /t REG_DWORD /d "0" /f > nul 2> nul
@@ -406,7 +416,7 @@ reg add "HKCU\SOFTWARE\Microsoft\Windows\CurrentVersion\Explorer\Advanced" /v "S
 reg add "HKLM\SOFTWARE\Policies\Microsoft\Windows\System" /v "PublishUserActivities" /t REG_DWORD /d "0" /f > nul 2> nul
 reg add "HKLM\SOFTWARE\Policies\Microsoft\Windows\System" /v "UploadUserActivities " /t REG_DWORD /d "0" /f > nul 2> nul
 
-:: File Explorer ; Credits to ArtanisInc, Rikey and Melody
+:: File Explorer ; Credits to ArtanisInc, Rikey and Melody***
 reg add "HKCU\SOFTWARE\Microsoft\Windows\CurrentVersion\Explorer" /v "ShowRecent" /t REG_DWORD /d "0" /f > nul 2> nul
 reg add "HKCU\SOFTWARE\Microsoft\Windows\CurrentVersion\Explorer" /v "ShowFrequent" /t REG_DWORD /d "0" /f > nul 2> nul
 reg add "HKCU\SOFTWARE\Microsoft\Windows\CurrentVersion\Explorer" /v "DesktopProcess" /t REG_DWORD /d "1" /f > nul 2> nul
@@ -415,6 +425,10 @@ reg add "HKCU\SOFTWARE\Microsoft\Windows\CurrentVersion\Explorer\Advanced" /v "H
 reg add "HKCU\SOFTWARE\Microsoft\Windows\CurrentVersion\Explorer\Advanced" /v "Start_TrackDocs" /t REG_DWORD /d "0" /f > nul 2> nul
 reg add "HKCU\SOFTWARE\Microsoft\Windows\CurrentVersion\Explorer\Advanced" /v "Start_TrackProgs" /t REG_DWORD /d "0" /f > nul 2> nul
 reg add "HKLM\SOFTWARE\Microsoft\Windows\CurrentVersion\Explorer\Advanced" /v "DisallowShaking" /t REG_DWORD /d "1" /f > nul 2> nul
+reg add "HKCU\SOFTWARE\Microsoft\Windows\CurrentVersion\Explorer\Advanced" /v "EnableBalloonTips" /t REG_DWORD /d "0" /f > nul 2> nul
+reg add "HKCU\SOFTWARE\Microsoft\Windows\CurrentVersion\Explorer\Advanced" /v "StartButtonBalloonTip" /t REG_DWORD /d "0" /f > nul 2> nul
+reg add "HKCU\SOFTWARE\Microsoft\Windows\CurrentVersion\Explorer\Advanced" /v "FolderContentsInfoTip" /t REG_DWORD /d "0" /f > nul 2> nul
+reg add "HKCU\SOFTWARE\Microsoft\Windows\CurrentVersion\Explorer\Advanced" /v "ShowInfoTip" /t REG_DWORD /d "0" /f > nul 2> nul
 reg add "HKCU\SOFTWARE\Microsoft\Windows\CurrentVersion\Policies\Explorer" /v "NoLowDiskSpaceChecks" /t REG_DWORD /d "1" /f > nul 2> nul
 reg add "HKCU\SOFTWARE\Microsoft\Windows\CurrentVersion\Policies\Explorer" /v "LinkResolveIgnoreLinkInfo" /t REG_DWORD /d "1" /f > nul 2> nul
 reg add "HKCU\SOFTWARE\Microsoft\Windows\CurrentVersion\Policies\Explorer" /v "NoResolveSearch" /t REG_DWORD /d "1" /f > nul 2> nul
@@ -481,8 +495,13 @@ reg delete "HKCR\SystemFileAssociations\.tiff\Shell\3D Edit" /f > nul 2> nul
 :: Remove "Share" from Context Menu
 reg delete "HKCR\*\shellex\ContextMenuHandlers\ModernSharing" /f > nul 2> nul
 
-:: Disable USB Autorun / Autoplay
+:: Disable USB Autorun / Autoplay ; Credits to ArtanisInc
+reg add "HKLM\SOFTWARE\Microsoft\Internet Explorer\Main" /v "Autorun" /t REG_DWORD /d "0" /f > nul 2> nul
 reg add "HKLM\Software\Microsoft\Windows\CurrentVersion\Policies\Explorer" /v "NoAutorun" /t REG_DWORD /d "1" /f > nul 2> nul
+reg add "HKLM\SOFTWARE\Microsoft\Windows\CurrentVersion\Policies\Explorer" /v "NoAutoplayfornonVolume" /t REG_DWORD /d "1" /f > nul 2> nul
+reg add "HKLM\SOFTWARE\Microsoft\Windows\CurrentVersion\Policies\Explorer" /v "NoDriveTypeAutoRun" /t REG_DWORD /d "255" /f > nul 2> nul
+reg add "HKLM\SOFTWARE\Microsoft\Windows\CurrentVersion\Policies\Explorer" /v "DontSetAutoplayCheckbox" /t REG_DWORD /d "1" /f > nul 2> nul
+reg add "HKCU\SOFTWARE\Microsoft\Windows\CurrentVersion\Explorer\AutoplayHandlers" /v "DisableAutoplay" /t REG_DWORD /d "1" /f > nul 2> nul
 
 :: Set Sound Scheme to "No Sounds"
 reg add "HKCU\AppEvents\Schemes" /t REG_SZ /v "" /d ".None" /f > nul 2> nul
@@ -637,7 +656,8 @@ reg add "HKLM\SOFTWARE\Policies\Microsoft\Windows\Explorer" /v "NoUseStoreOpenWi
 
 :: Remove "Compressed (zipped) Folder from "New" Context Menu
 
-:: Unpin Tiles from Start Menu
+:: Unpin Tiles from Start Menu***
+for /f "tokens=*" %%i in ('reg query "HKCU\Software\Microsoft\Windows\CurrentVersion\CloudStore\Store\Cache\DefaultAccount" /s /f "start.tilegrid"^| findstr "start.tilegrid"') do reg delete "%%i" /f > nul 2> nul
 
 :: Disable Ease of Access Settings
 reg add "HKCU\Software\Microsoft\Ease of Access" /v "selfvoice" /t REG_DWORD /d "0" /f > nul 2> nul
@@ -699,8 +719,9 @@ reg add "HKCU\Control Panel\Desktop\WindowMetrics" /v "MinAnimate" /t REG_DWORD 
 reg add "HKCU\Software\Microsoft\Windows\CurrentVersion\Explorer\Advanced" /v "ListviewAlphaSelect" /t REG_DWORD /d "0" /f > nul 2> nul
 :: Disable "Use Drop Shadows for Icon Labels on the Desktop"
 reg add "HKCU\Software\Microsoft\Windows\CurrentVersion\Explorer\Advanced" /v "ListviewShadow" /t REG_DWORD /d "0" /f > nul 2> nul
-:: Disable Transparency
+:: Disable Transparency***
 reg add "HKCU\SOFTWARE\Microsoft\Windows\CurrentVersion\Themes\Personalize" /v "EnableTransparency" /t REG_DWORD /d "0" /f > nul 2> nul
+reg add "HKCU\SOFTWARE\Microsoft\Windows\CurrentVersion\Themes\Personalize" /v "EnableBlurBehind" /t REG_DWORD /d "0" /f > nul 2> nul
 :: Reduce Size of Minimize, Maximize, Close Buttons
 reg add "HKCU\Control Panel\Desktop\WindowMetrics" /v "CaptionWidth" /t REG_SZ /d "-270" /f > nul 2> nul
 reg add "HKCU\Control Panel\Desktop\WindowMetrics" /v "CaptionHeight" /t REG_SZ /d "-270" /f > nul 2> nul
@@ -717,7 +738,7 @@ reg add "HKCU\Control Panel\International" /v "sTimeFormat" /t REG_SZ /d "H:mm:s
 :: Improve Desktop Wallpaper Quality
 reg add "HKCU\Control Panel\Desktop" /v "JPEGImportQuality" /t "REG_DWORD" /d "100" /f > nul 2> nul
 
-:: Rest of Appearance Optimizations
+:: Rest of Appearance Optimizations***
 reg add "HKCU\Software\Microsoft\Windows\CurrentVersion\ThemeManager" /v "ThemeActive" /t REG_SZ /d "0" /f > nul 2> nul
 %currentuser% reg add "HKCU\Software\Microsoft\Windows\CurrentVersion\Themes\Personalize" /v "SystemUsesLightTheme" /t REG_DWORD /d "0" /f > nul 2> nul
 %currentuser% reg add "HKCU\Software\Microsoft\Windows\CurrentVersion\Themes\Personalize" /v "AppsUseLightTheme" /t REG_DWORD /d "0" /f > nul 2> nul
@@ -735,6 +756,9 @@ reg add "HKCU\Software\Microsoft\Windows\DWM" /v "Composition" /t REG_DWORD /d "
 reg add "HKCU\Software\Microsoft\Windows\DWM" /v "EnableAeroPeek" /t REG_DWORD /d "0" /f > nul 2> nul
 reg add "HKCU\Software\Microsoft\Windows\DWM" /v AlwaysHibernateThumbnails /t REG_DWORD /d "0" /f > nul 2> nul
 reg add "HKCU\Software\Microsoft\Windows\DWM" /v CompositionPolicy /t REG_DWORD /d "0" /f > nul 2> nul
+reg add "HKLM\SOFTWARE\Policies\Microsoft\Windows" /v "DisableAcrylicBackgroundOnLogon" /t REG_DWORD /d "1" /f > nul 2> nul
+reg add "HKCU\SOFTWARE\Microsoft\Windows\CurrentVersion\Policies\Explorer" /v "TurnOffSPIAnimations" /t REG_DWORD /d "1" /f > nul 2> nul
+reg add "HKLM\SOFTWARE\Policies\Microsoft\Windows\System" /v "DisableLogonBackgroundImage" /t REG_DWORD /d "1" /f > nul 2> nul
 
 timeout /t 2
 cls
@@ -817,7 +841,6 @@ reg add "HKLM\Software\Policies\Microsoft\Windows\System" /v "AllowClipboardHist
 reg add "HKLM\Software\Policies\Microsoft\Windows\System" /v "AllowCrossDeviceClipboard " /t REG_DWORD /d "0" /f > nul 2> nul
 reg add "HKCU\Software\Microsoft\Windows\CurrentVersion\SmartActionPlatform\SmartClipboard" /v "Disabled" /t REG_DWORD /d "1" /f > nul 2> nul
 reg add "HKLM\SOFTWARE\Policies\Microsoft\Windows\HandwritingErrorReports" /v "PreventHandwritingErrorReports" /t REG_DWORD /d "1" /f > nul 2> nul
-reg add "HKCU\SOFTWARE\Microsoft\Windows\CurrentVersion\Privacy" /v "TailoredExperiencesWithDiagnosticDataEnabled" /t REG_DWORD /d "0" /f > nul 2> nul
 %currentuser% reg add "HKCU\Software\Microsoft\Input\TIPC" /v "Enabled" /t REG_DWORD /d "0" /f > nul 2> nul
 %currentuser% reg add "HKCU\Software\Microsoft\Windows\CurrentVersion\Diagnostics\DiagTrack" /v "ShowedToastAtLevel" /t REG_DWORD /d "1" /f > nul 2> nul
 reg add "HKLM\Software\Policies\Microsoft\Windows\AdvertisingInfo" /v "DisabledByGroupPolicy" /t REG_DWORD /d "1" /f > nul 2> nul
@@ -852,6 +875,18 @@ reg add "HKLM\SOFTWARE\Policies\Microsoft\Windows\System" /v "AllowDomainPINLogo
 reg add "HKCU\Software\Microsoft\Windows Script\Settings" /v "JITDebug" /t REG_DWORD /d "0" /f > nul 2> nul
 reg add "HKU\.Default\Microsoft\Windows Script\Settings" /v "JITDebug" /t REG_DWORD /d "0" /f > nul 2> nul
 
+:: Disable Diagnostics***
+for %%i in (diagsvc DPS WdiServiceHost WdiSystemHost) do (
+	reg query "HKLM\SYSTEM\CurrentControlSet\Services\%%~i" /ve
+	if %errorlevel% == 0 (
+		%currentuser% reg add "HKLM\SYSTEM\CurrentControlSet\Services\%%~i" /v "Start" /t REG_DWORD /d "4" /f
+	)
+) > nul 2> nul
+reg add "HKCU\SOFTWARE\Microsoft\Windows\CurrentVersion\Privacy" /v "TailoredExperiencesWithDiagnosticDataEnabled" /t REG_DWORD /d "0" /f > nul 2> nul
+reg add "HKLM\SOFTWARE\Policies\Microsoft\Windows\ScheduledDiagnostics" /v "EnabledExecution" /t REG_DWORD /d "0" /f > nul 2> nul
+reg add "HKLM\SOFTWARE\Microsoft\Windows\ScheduledDiagnostics" /v "EnabledExecution" /t REG_DWORD /d "0" /f > nul 2> nul
+reg add "HKLM\SOFTWARE\Policies\Microsoft\Windows\ScriptedDiagnosticsProvider\Policy" /v "DisableQueryRemoteServer" /t REG_DWORD /d "1" /f > nul 2> nul
+reg add "HKLM\Software\Policies\Microsoft\Windows\ScriptedDiagnosticsProvider\Policy" /v "EnableQueryRemoteServer" /t REG_DWORD /d "0" /f > nul 2> nul
 :: Disable Diagnostic Tracing
 %currentuser% reg add "HKLM\SYSTEM\CurrentControlSet\Control\Diagnostics\Performance" /v "DisableDiagnosticTracing" /t REG_DWORD /d "1" /f > nul 2> nul
 
@@ -941,7 +976,7 @@ reg add "HKLM\System\CurrentControlSet\Control\Session Manager\kernel" /v "Disab
 :: Disable Access to Language List
 %currentuser% reg add "HKCU\Control Panel\International\User Profile" /v "HttpAcceptLanguageOptOut" /t REG_DWORD /d "1" /f > nul 2> nul
 
-:: Disable Spectre and Meltdown ; Credits to HoneCtrl and EchoX
+:: Disable Spectre and Meltdown ; Credits to HoneCtrl
 reg add "HKLM\SYSTEM\CurrentControlSet\Control\Session Manager\Memory Management" /v "FeatureSettings" /t REG_DWORD /d "0" /f > nul 2> nul
 reg add "HKLM\SYSTEM\CurrentControlSet\Control\Session Manager\Memory Management" /v "FeatureSettingsOverride" /t REG_DWORD /d "3" /f > nul 2> nul
 reg add "HKLM\SYSTEM\CurrentControlSet\Control\Session Manager\Memory Management" /v "FeatureSettingsOverrideMask" /t REG_DWORD /d "3" /f > nul 2> nul
@@ -1007,7 +1042,7 @@ reg add "HKLM\Software\Policies\Microsoft\Windows\DeviceGuard" /v "EnableVirtual
 reg add "HKLM\SYSTEM\CurrentControlSet\Control\DeviceGuard\Scenarios\HypervisorEnforcedCodeIntegrity" /v "Enabled" /t REG_DWORD /d "0" /f > nul 2> nul
 reg add "HKLM\SYSTEM\CurrentControlSet\Control\DeviceGuard\Scenarios\HypervisorEnforcedCodeIntegrity" /v "WasEnabledBy" /t REG_DWORD /d "0" /f > nul 2> nul
 
-:: Disable NetBios / NetBT ; Credits to EchoX and ArtanisInc 
+:: Disable NetBios / NetBT ; Credits to ArtanisInc 
 reg add "HKLM\SYSTEM\CurrentControlSet\Services\NetBT\Parameters" /v "SMBDeviceEnabled" /t REG_DWORD /d "0" /f > nul 2> nul
 reg add "HKLM\System\CurrentControlSet\Services\NetBT\Parameters" /v "EnableLMHOSTS" /t REG_DWORD /d "0" /f > nul 2> nul
 reg add "HKLM\System\CurrentControlSet\Services\NetBT\Parameters\Interfaces" /v "NetbiosOptions" /t REG_DWORD /d "2" /f > nul 2> nul
@@ -1065,50 +1100,53 @@ reg add "HKLM\SOFTWARE\Policies\Microsoft\FVE" /v "DisableExternalDMAUnderLock" 
 %WinDir%\gyrOS\DevManView.exe /disable "System CMOS/real time clock" > nul 2> nul
 %WinDir%\gyrOS\DevManView.exe /disable "PCI Simple Communications Controller" > nul 2> nul
 
-:: Delete Adobe Font Type Manager
-reg delete "HKLM\SOFTWARE\Microsoft\Windows NT\CurrentVersion\Font Drivers" /v "Adobe Type Manager" /f > nul 2> nul
-
 :: Opt-Out of Sending Client Activation Data to Microsoft ; Credits to ArtanisInc
 reg add "HKLM\SOFTWARE\Policies\Microsoft\Windows NT\CurrentVersion\Software Protection Platform" /v "NoGenTicket" /t REG_DWORD /d "1" /f > nul 2> nul
 reg add "HKLM\SOFTWARE\Policies\Microsoft\Windows NT\CurrentVersion\Software Protection Platform" /v "AllowWindowsEntitlementReactivation" /t REG_DWORD /d "1" /f > nul 2> nul
 
 :: Disable Windows Error Reporting ; Credits to DuckOS
-reg add "HKLM\Software\Microsoft\Windows\Windows Error Reporting" /v "DontSendAdditionalData" /t REG_DWORD /d "1" /f > nul 2> nul
-reg add "HKLM\Software\Microsoft\Windows\Windows Error Reporting" /v "LoggingDisabled" /t REG_DWORD /d "1" /f > nul 2> nul
+reg add "HKLM\SOFTWARE\Microsoft\Windows\Windows Error Reporting" /v "DontSendAdditionalData" /t REG_DWORD /d "1" /f > nul 2> nul
+reg add "HKLM\SOFTWARE\Microsoft\Windows\Windows Error Reporting" /v "LoggingDisabled" /t REG_DWORD /d "1" /f > nul 2> nul
 reg add "HKLM\SOFTWARE\Microsoft\Windows\Windows Error Reporting" /v "Disabled" /t REG_DWORD /d "1" /f > nul 2> nul
-reg add "HKLM\Software\Microsoft\Windows\Windows Error Reporting\Consent" /v "DefaultOverrideBehavior" /t REG_DWORD /d "1" /f > nul 2> nul
-reg add "HKLM\Software\Microsoft\Windows\Windows Error Reporting\Consent" /v "DefaultConsent" /t REG_DWORD /d "0" /f > nul 2> nul
+reg add "HKLM\SOFTWARE\Microsoft\Windows\Windows Error Reporting\Consent" /v "DefaultOverrideBehavior" /t REG_DWORD /d "1" /f > nul 2> nul
+reg add "HKLM\SOFTWARE\Microsoft\Windows\Windows Error Reporting\Consent" /v "DefaultConsent" /t REG_DWORD /d "0" /f > nul 2> nul
 
 :: Data Queue Sizes
 reg add "HKLM\System\CurrentControlSet\Services\mouclass\Parameters" /v "MouseDataQueueSize" /t REG_DWORD /d "25" /f > nul 2> nul
 reg add "HKLM\System\CurrentControlSet\Services\kbdclass\Parameters" /v "KeyboardDataQueueSize" /t REG_DWORD /d "25" /f > nul 2> nul
 
 :: Disable Speech Model Updates
-reg add "HKLM\Software\Policies\Microsoft\Speech" /v "AllowSpeechModelUpdate" /t REG_DWORD /d "0" /f > nul 2> nul
-reg add "HKCU\Software\Microsoft\Speech_OneCore\Settings\OnlineSpeechPrivacy" /v "HasAccepted" /t REG_DWORD /d "0" /f > nul 2> nul
+reg add "HKLM\SOFTWARE\Policies\Microsoft\Speech" /v "AllowSpeechModelUpdate" /t REG_DWORD /d "0" /f > nul 2> nul
+reg add "HKCU\SOFTWARE\Microsoft\Speech_OneCore\Settings\OnlineSpeechPrivacy" /v "HasAccepted" /t REG_DWORD /d "0" /f > nul 2> nul
 
-:: Disable Remote Assistance ; Credits to ArtanisInc
-reg add "HKLM\Software\Policies\Microsoft\Windows\WinRM\Service\WinRS" /v "AllowRemoteShellAccess" /t REG_DWORD /d "0" /f > nul 2> nul
+:: Disable Remote Assistance ; Credits to ArtanisInc***
+for %%i in (RasAuto SessionEnv TermService UmRdpService RpcLocator) do (
+	reg query "HKLM\SYSTEM\CurrentControlSet\Services\%%~i" /ve
+	if %errorlevel% == 0 (
+		%currentuser% reg add "HKLM\SYSTEM\CurrentControlSet\Services\%%~i" /v "Start" /t REG_DWORD /d "4" /f
+	)
+) > nul 2> nul
+reg add "HKLM\SOFTWARE\Policies\Microsoft\Windows\WinRM\Service\WinRS" /v "AllowRemoteShellAccess" /t REG_DWORD /d "0" /f > nul 2> nul
 reg add "HKLM\SYSTEM\CurrentControlSet\Control\Remote Assistance" /v "fAllowToGetHelp" /t REG_DWORD /d "0" /f > nul 2> nul
 reg add "HKLM\SYSTEM\CurrentControlSet\Control\Remote Assistance" /v "fAllowFullControl" /t REG_DWORD /d "0" /f > nul 2> nul
 reg add "HKLM\SOFTWARE\Policies\Microsoft\Windows NT\Terminal Services" /v "fAllowToGetHelp" /t REG_DWORD /d "0" /f > nul 2> nul
 reg add "HKLM\SOFTWARE\Policies\Microsoft\Windows NT\Terminal Services" /v "fAllowFullControl" /t REG_DWORD /d "0" /f > nul 2> nul
-reg add "HKLM\Software\Policies\Microsoft\Windows NT\Terminal Services" /v "fAllowUnsolicited" /t REG_DWORD /d "0" /f > nul 2> nul
-reg add "HKLM\Software\Policies\Microsoft\Windows NT\Terminal Services" /v "fAllowUnsolicitedFullControl" /t REG_DWORD /d "0" /f > nul 2> nul
-reg add "HKLM\Software\Policies\Microsoft\Windows NT\Terminal Services" /v "fDenyTSConnections" /t REG_DWORD /d "1" /f > nul 2> nul
-reg add "HKLM\Software\Policies\Microsoft\Windows NT\Terminal Services" /v "TSAppCompat" /t REG_DWORD /d "0" /f > nul 2> nul
-reg add "HKLM\Software\Policies\Microsoft\Windows NT\Terminal Services" /v "TSEnabled" /t REG_DWORD /d "0" /f > nul 2> nul
-reg add "HKLM\Software\Policies\Microsoft\Windows NT\Terminal Services" /v "TSUserEnabled" /t REG_DWORD /d "0" /f > nul 2> nul
+reg add "HKLM\SOFTWARE\Policies\Microsoft\Windows NT\Terminal Services" /v "fAllowUnsolicited" /t REG_DWORD /d "0" /f > nul 2> nul
+reg add "HKLM\SOFTWARE\Policies\Microsoft\Windows NT\Terminal Services" /v "fAllowUnsolicitedFullControl" /t REG_DWORD /d "0" /f > nul 2> nul
+reg add "HKLM\SOFTWARE\Policies\Microsoft\Windows NT\Terminal Services" /v "fDenyTSConnections" /t REG_DWORD /d "1" /f > nul 2> nul
+reg add "HKLM\SOFTWARE\Policies\Microsoft\Windows NT\Terminal Services" /v "TSAppCompat" /t REG_DWORD /d "0" /f > nul 2> nul
+reg add "HKLM\SOFTWARE\Policies\Microsoft\Windows NT\Terminal Services" /v "TSEnabled" /t REG_DWORD /d "0" /f > nul 2> nul
+reg add "HKLM\SOFTWARE\Policies\Microsoft\Windows NT\Terminal Services" /v "TSUserEnabled" /t REG_DWORD /d "0" /f > nul 2> nul
 
 :: Disable Paths over 260 Characters
 reg add "HKLM\SYSTEM\CurrentControlSet\Control\FileSystem" /v "LongPathsEnabled" /t REG_DWORD /d "0" /f > nul 2> nul
 
 :: Disable FTH
-reg add "HKLM\Software\Microsoft\FTH" /v "Enabled" /t REG_DWORD /d "0" /f > nul 2> nul
+reg add "HKLM\SOFTWARE\Microsoft\FTH" /v "Enabled" /t REG_DWORD /d "0" /f > nul 2> nul
 
 :: Enable GameMode
-reg add "HKCU\Software\Microsoft\GameBar" /v "AllowAutoGameMode" /t REG_DWORD /d "1" /f > nul 2> nul
-reg add "HKCU\Software\Microsoft\GameBar" /v "AutoGameModeEnabled" /t REG_DWORD /d "1" /f > nul 2> nul
+reg add "HKCU\SOFTWARE\Microsoft\GameBar" /v "AllowAutoGameMode" /t REG_DWORD /d "1" /f > nul 2> nul
+reg add "HKCU\SOFTWARE\Microsoft\GameBar" /v "AutoGameModeEnabled" /t REG_DWORD /d "1" /f > nul 2> nul
 
 :: Configure Gamebar
 reg add "HKCU\SOFTWARE\Microsoft\GameBar" /v "ShowStartupPanel" /t REG_DWORD /d "0" /f > nul 2> nul
@@ -1118,7 +1156,7 @@ reg add "HKCU\SOFTWARE\Microsoft\Windows\CurrentVersion\GameDVR" /v "AppCaptureE
 reg add "HKLM\SOFTWARE\Policies\Microsoft\Windows\GameDVR" /v "AllowGameDVR" /t REG_DWORD /d "0" /f > nul 2> nul
 reg add "HKLM\SYSTEM\CurrentControlSet\Control\Session Manager\Environment" /v "__COMPAT_LAYER" /t REG_SZ /d "~ DISABLEDXMAXIMIZEDWINDOWEDMODE" /f > nul 2> nul
 
-:: Disable FSE ; Credits to EchoX
+:: Configure FSO ; Credits to ArtanisInc
 reg add "HKCU\System\GameConfigStore" /v "GameDVR_Enabled" /t REG_DWORD /d "0" /f > nul 2> nul
 reg add "HKCU\System\GameConfigStore" /v "GameDVR_FSEBehaviorMode" /t REG_DWORD /d "2" /f > nul 2> nul
 reg add "HKCU\System\GameConfigStore" /v "GameDVR_FSEBehavior" /t REG_DWORD /d "2" /f > nul 2> nul
@@ -1134,8 +1172,6 @@ reg add "HKCU\Control Panel\Desktop" /v "WaitToKillAppTimeout" /t REG_SZ /d "100
 reg add "HKLM\System\CurrentControlSet\Control" /v "WaitToKillServiceTimeout" /t REG_SZ /d "1000" /f > nul 2> nul
 
 :: Blocking Data Collection and Telemetry
-reg add "HKLM\SOFTWARE\Policies\Microsoft\Windows\ScriptedDiagnosticsProvider\Policy" /v "DisableQueryRemoteServer" /t REG_DWORD /d "1" /f > nul 2> nul
-reg add "HKLM\Software\Policies\Microsoft\Windows\ScriptedDiagnosticsProvider\Policy" /v "EnableQueryRemoteServer" /t REG_DWORD /d "0" /f > nul 2> nul
 reg add "HKCU\SOFTWARE\Microsoft\InputPersonalization" /v "RestrictImplicitTextCollection" /t REG_DWORD /d "1" /f > nul 2> nul
 reg add "HKLM\SOFTWARE\Microsoft\InputPersonalization" /v "RestrictImplicitTextCollection" /t REG_DWORD /d "1" /f > nul 2> nul
 reg add "HKCU\SOFTWARE\Microsoft\InputPersonalization" /v "RestrictImplicitInkCollection" /t REG_DWORD /d "1" /f > nul 2> nul
@@ -1171,7 +1207,7 @@ reg add "HKLM\System\CurrentControlSet\Control\Session Manager\Power" /v "SleepS
 :: Disable Startup Delay for RunOnce and Run Keys
 reg add "HKLM\SOFTWARE\Microsoft\Windows\CurrentVersion\Policies\System" /v "DelayedDesktopSwitchTimeout" /t REG_DWORD /d "0" /f > nul 2> nul
 reg add "HKLM\SOFTWARE\Microsoft\Windows\CurrentVersion\Explorer\Serialize" /v "StartupDelayInMSec" /t REG_DWORD /d "0" /f > nul 2> nul
-reg add "HKEY_CURRENT_USER\Control Panel\Desktop" /v "StartupDelayInMSec" /t REG_DWORD /d 0 /f > nul 2> nul
+reg add "HKEY_CURRENT_USER\Control Panel\Desktop" /v "StartupDelayInMSec" /t REG_DWORD /d "0" /f > nul 2> nul
 
 :: Content Delivery Manager ; Credits to DuckOS 
 for %%a in (310093 353698 314563 338389 338387 338388 338393) do ( %currentuser% reg add "HKCU\Software\Microsoft\Windows\CurrentVersion\ContentDeliveryManager" /v "SubscribedContent-%%aEnabled" /t REG_DWORD /d "0" /f ) > nul 2> nul
@@ -1181,11 +1217,9 @@ for %%a in (RotatingLockScreenOverlayEnabled RotatingLockScreenEnabled SoftLandi
 netsh interface tcp set global autotuningl = experimental >nul
 netsh interface tcp set global autotuning = experimental >nul
 netsh interface tcp set heuristics disabled >nul
-::netsh interface tcp set global netdma=enabled > nul 2> nul
 netsh interface tcp set global rss=enabled > nul 2> nul
 netsh interface isatap set state disabled > nul 2> nul
 netsh interface ip set interface ethernet currenthoplimit=64 > nul 2> nul
-::netsh interface tcp set global chimney=disabled > nul 2> nul
 netsh interface tcp set global dca=enabled > nul 2> nul
 netsh interface tcp set global rsc=disabled > nul 2> nul
 netsh interface tcp set global ecncapability=enabled > nul 2> nul
@@ -1202,6 +1236,9 @@ netsh interface 6to4 set state state=enabled > nul 2> nul
 netsh interface tcp set global hystart=disabled > nul 2> nul
 netsh interface tcp set global pacingprofile=off > nul 2> nul
 netsh interface tcp set global initialRto=3000 > nul 2> nul
+
+::netsh interface tcp set global netdma=enabled > nul 2> nul
+::netsh interface tcp set global chimney=disabled > nul 2> nul
 
 timeout /t 2
 cls
@@ -1464,8 +1501,6 @@ reg add "HKLM\SYSTEM\CurrentControlSet\Services\DXGKrnl" /v "MonitorRefreshLaten
 :: Remove Maintenance Tasks
 reg add "HKLM\SOFTWARE\Microsoft\Windows NT\CurrentVersion\Schedule\Maintenance" /v "MaintenanceDisabled" /t REG_DWORD /d "1" /f > nul 2> nul
 reg add "HKLM\SOFTWARE\Microsoft\Windows NT\CurrentVersion\Schedule\Maintenance" /v "WakeUp" /t REG_DWORD /d "0" /f > nul 2> nul
-reg add "HKLM\SOFTWARE\Microsoft\Windows\ScheduledDiagnostics" /v "EnabledExecution" /t REG_DWORD /d "0" /f > nul 2> nul
-reg add "HKLM\SOFTWARE\Policies\Microsoft\Windows\ScheduledDiagnostics" /v "EnabledExecution" /t REG_DWORD /d "0" /f > nul 2> nul
 
 :: Disable NTFS Compression
 reg add "HKLM\SYSTEM\CurrentControlSet\Policies" /v "NtfsDisableCompression" /t REG_DWORD /d "1" /f > nul 2> nul
@@ -1482,6 +1517,11 @@ reg add "HKLM\SYSTEM\CurrentControlSet\Services\LanmanServer\Parameters" /v "Aut
 reg add "HKLM\SYSTEM\CurrentControlSet\Services\LanmanServer\Parameters" /v "AutoShareWks" /t REG_DWORD /d "0" /f > nul 2> nul
 reg add "HKLM\System\CurrentControlSet\Services\LanManServer\Parameters" /v "RestrictNullSessAccess" /t REG_DWORD /d "1" /f > nul 2> nul
 reg add "HKLM\Software\Microsoft\Windows\CurrentVersion\Policies\System" /v "LocalAccountTokenFilterPolicy" /t REG_DWORD /d "0" /f > nul 2> nul
+
+:: Disable BitLocker***
+reg add "HKLM\SYSTEM\CurrentControlSet\Services\fvevol" /v "ErrorControl" /t REG_DWORD /d "0" /f > nul 2> nul
+reg add "HKLM\SYSTEM\CurrentControlSet\Services\fvevol" /v "Start" /t REG_DWORD /d "4" /f > nul 2> nul
+reg add "HKLM\SYSTEM\CurrentControlSet\Services\BDESVC" /v "Start" /t REG_DWORD /d "4" /f > nul 2> nul
 
 :: Disabling Random Drivers Verification
 bcdedit /set nointegritychecks On > nul 2> nul
@@ -1531,8 +1571,10 @@ reg add "HKLM\SYSTEM\CurrentControlSet\Services\MMCSS" /v "Start" /t REG_DWORD /
 for /f %%i in ('wmic path Win32_VideoController get PNPDeviceID') do set "str=%%i" & if "!str:PCI\VEN_=!" neq "!str!" (
 	reg add "HKLM\System\CurrentControlSet\Enum\%%i\Device Parameters\Interrupt Management\Affinity Policy" /v "DevicePriority" /f
 	reg query "HKLM\SYSTEM\CurrentControlSet\Enum\%%i\Device Parameters\Interrupt Management\MessageSignaledInterruptProperties"
-	if "!errorlevel!" equ "0" reg add "HKLM\System\CurrentControlSet\Enum\%%i\Device Parameters\Interrupt Management\MessageSignaledInterruptProperties" /v "MSISupported" /t REG_DWORD /d "1" /f
-	reg delete "HKLM\SYSTEM\CurrentControlSet\Enum\%%i\Device Parameters\Interrupt Management\MessageSignaledInterruptProperties" /v "MessageNumberLimit" /f
+	if %errorlevel% == 0 (
+		reg add "HKLM\System\CurrentControlSet\Enum\%%i\Device Parameters\Interrupt Management\MessageSignaledInterruptProperties" /v "MSISupported" /t REG_DWORD /d "1" /f
+		%currentuser% reg delete "HKLM\SYSTEM\CurrentControlSet\Enum\%%i\Device Parameters\Interrupt Management\MessageSignaledInterruptProperties" /v "MessageNumberLimit" /f
+	)
 ) > nul 2> nul
 
 :: Enable MSI Mode on SATA Controllers ; Credits to EchoX
@@ -1658,7 +1700,9 @@ reg add "HKLM\SYSTEM\CurrentControlSet\Services\DXGKrnl" /v "TdrResetFromTimeout
 reg add "HKLM\SYSTEM\CurrentControlSet\Control\GraphicsDrivers\Scheduler" /v "EnablePreemption" /t REG_DWORD /d "0" /f > nul 2> nul
 :: Enable Hardware Accelerated Scheduling ; Credits to HoneCtrl
 reg query "HKLM\System\CurrentControlSet\Control\GraphicsDrivers" /v "HwSchMode" > nul 2> nul
-if "%errorlevel%" equ "0" reg add "HKLM\System\CurrentControlSet\Control\GraphicsDrivers" /v "HwSchMode" /t REG_DWORD /d "2" /f > nul 2> nul
+if %errorlevel% == 0 (
+	reg add "HKLM\System\CurrentControlSet\Control\GraphicsDrivers" /v "HwSchMode" /t REG_DWORD /d "2" /f
+) > nul 2> nul
 :: Force Contiguous Memory Allocation in the DirectX Kernel
 reg add "HKLM\SYSTEM\CurrentControlSet\Control\GraphicsDrivers" /v "DpiMapIommuContiguous" /t REG_DWORD /d "1" /f > nul 2> nul
 
@@ -1802,7 +1846,7 @@ reg add "HKLM\SYSTEM\CurrentControlSet\Control\FileSystem" /v "Win95TruncatedExt
 reg add "HKLM\SYSTEM\CurrentControlSet\Control\FileSystem" /v "NtfsDisableSpotCorruptionHandling" /t REG_DWORD /d "1" /f > nul 2> nul
 reg add "HKLM\SYSTEM\CurrentControlSet\Control\FileSystem" /v "NtfsMftZoneReservation" /t REG_DWORD /d "2" /f > nul 2> nul
 
-:: Storage Optimizations ; Credits to ArtanisInc
+:: Storage Optimizations ; Credits to ArtanisInc***
 for /f "skip=1" %%i in ('wmic os get TotalVisibleMemorySize') do if not defined TOTAL_MEMORY set "TOTAL_MEMORY=%%i"
 if !TOTAL_MEMORY! LSS 8000000 (
 	fsutil behavior set memoryusage 1
