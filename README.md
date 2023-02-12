@@ -11,7 +11,7 @@
 • gyrOS is a new project focusing on providing the best experience for everyday users depending on their needs.
 
 # What is gyrOS based on?
-• gyrOS offers Windows based modifications optimized & designed for gamers and creators respectively.
+• gyrOS offers Windows based modifications optimized & designed for gamers and creators.
 
 # What is the goal?
 • We strive to improve performance and lower input latency while being compatible with most applications and games.
@@ -24,14 +24,13 @@
 • Hundreds of performance & privacy tweaks integrated. <br>
 • All stock bloatware has been removed. <br>
 • Removed unneeded, very old devices & drivers. <br>
+• Removed lots of useless tasks. <br>
 • Disabled & removed unneeded services. <br>
-• Quality of Life optimizations. <br>
+• Disabled power saving. <br>
 • Disabled telemetry. <br>
+• Disabled security mitigations. <br>
 • Process priority optimizations. <br>
 • System-wide MSI mode. <br>
-• Security mitigations disabled. <br>
-• Power saving disabled. <br>
-• Lots of scheduled tasks removed. <br>
 • Custom boot configuration. <br>
 
 # About GToolbox
