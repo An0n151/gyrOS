@@ -3,7 +3,7 @@
 :: ### If you see your code in here and want to be credited, message me on Discord ###
 
 :: ### Credits: EchoX, HoneCtrl, ArtanisInc, Rikey, DuckOS
-:: test for github;
+
 @echo off
 setlocal EnableDelayedExpansion
 title gyrOS AIO Post Installation Script
