@@ -308,8 +308,13 @@ reg add "HKCU\Software\Microsoft\Windows\CurrentVersion\Explorer\OperationStatus
 reg add "HKCU\Control Panel\Desktop" /v "ConfirmFileDelete" /t REG_DWORD /d "1" /f > nul 2> nul
 reg add "HKCU\Control Panel\Desktop" /v "ConfirmFileOp" /t REG_DWORD /d "0" /f > nul 2> nul
 
-:: Disable Retrieving Device Metadata from the Internet
+:: Disable Retrieving Device Metadata from the Internet***
 reg add "HKLM\SOFTWARE\Microsoft\Windows\CurrentVersion\Device Metadata" /v "PreventDeviceMetadataFromNetwork" /t REG_DWORD /d "1" /f > nul 2> nul
+reg add "HKLM\SOFTWARE\Microsoft\Windows\CurrentVersion\Device Metadata" /v "DeviceMetadataServiceURL" /t REG_SZ /d "0" /f > nul 2> nul
+reg add "HKLM\SOFTWARE\Policies\Microsoft\Windows\Device Metadata" /v "PreventDeviceMetadataFromNetwork" /t REG_DWORD /d "1" /f > nul 2> nul
+
+:: Disable WDigest Credential Revealing***
+reg add "HKLM\SYSTEM\CurrentControlSet\Control\SecurityProviders\Wdigest" /v "UseLogonCredential" /t REG_DWORD /d "0" /f > nul 2> nul
 
 :: Disable Enhance Pointer Precision ; Credits to HoneCtrl
 reg add "HKCU\Control Panel\Mouse" /v "SmoothMouseXCurve" /t REG_BINARY /d "0000000000000000156e000000000000004001000000000029dc0300000000000000280000000000" /f > nul 2> nul
@@ -898,11 +903,10 @@ reg add "HKLM\Software\Microsoft\Windows NT\CurrentVersion\AppCompatFlags\Teleme
 reg add "HKLM\SOFTWARE\Microsoft\UEV\Agent" /v "Enabled" /t REG_DWORD /d "0" /f > nul 2> nul
 reg add "HKLM\SOFTWARE\Microsoft\UEV\Agent\Configuration" /v "CustomerExperienceImprovementProgram" /t REG_DWORD /d "0" /f > nul 2> nul
 reg add "HKLM\SOFTWARE\Microsoft\UEV\Agent\Configuration" /v "SyncEnabled" /t REG_DWORD /d "0" /f > nul 2> nul
+reg add "HKLM\Software\Microsoft\Windows NT\CurrentVersion\AppCompatFlags\ClientTelemetry" /v "TaskEnableRun" /t REG_DWORD /d "0" /f > nul 2> nul
 
 :: Process Mitigations 
-reg add "HKLM\System\CurrentControlSet\Control\Session Manager\kernel" /v "MitigationOptions" /t REG_BINARY /d "222222222222222222222222222222222222222222222222" /f > nul 2> nul
-reg add "HKLM\System\ControlSet001\Control\Session Manager\kernel" /v "MitigationOptions" /t REG_BINARY /d "222222222222222222222222222222222222222222222222" /f > nul 2> nul
-reg add "HKLM\System\ControlSet002\Control\Session Manager\kernel" /v "MitigationOptions" /t REG_BINARY /d "222222222222222222222222222222222222222222222222" /f > nul 2> nul
+reg add "HKLM\System\CurrentControlSet\Control\Session Manager\kernel" /v "MitigationOptions" /t REG_BINARY /d "00010100000000000000000000000000" /f > nul 2> nul
 
 :: Disable Chain Validation
 reg add "HKLM\System\CurrentControlSet\Control\Session Manager\Kernel" /v "DisableExceptionChainValidation" /t REG_DWORD /d "1" /f > nul 2> nul
@@ -960,7 +964,7 @@ reg add "HKLM\SYSTEM\CurrentControlSet\Control\Session Manager\Power" /v "Hiberb
 ::reg add "HKLM\SYSTEM\CurrentControlSet\Control\Session Manager\Memory Management" /v "EnableCfg" /t REG_DWORD /d "0" /f > nul 2> nul
 
 :: Disable ASLR
-::reg add "HKLM\SYSTEM\CurrentControlSet\Control\Session Manager\Memory Management" /v "MoveImages" /t REG_DWORD /d "0" /f > nul 2> nul
+::reg add "HKLM\SYSTEM\CurrentControlSet\Control\Session Manager\Memory Management" /v "MoveImages" /t REG_DWORD /d "4294967295" /f > nul 2> nul
 
 :: Disable PowerShell Telemetry
 setx POWERSHELL_TELEMETRY_OPTOUT 1 > nul 2> nul
@@ -1670,6 +1674,7 @@ reg add "HKLM\SYSTEM\CurrentControlSet\Control\Session Manager\I/O System" /v "I
 :: Disable Cached Windows Logons
 reg add "HKLM\Software\Microsoft\Windows NT\CurrentVersion\Winlogon" /v "CachedLogonsCount" /t REG_DWORD /d "0" /f > nul 2> nul
 :: DNS
+reg add "HKLM\SYSTEM\CurrentControlSet\Services\Tcpip\Parameters" /v "UseDomainNameDevolution" /t REG_DWORD /d "1" /f > nul 2> nul
 reg add "HKLM\SOFTWARE\Policies\Microsoft\Windows NT\DNSClient" /v "DisableSmartNameResolution" /t REG_DWORD /d "1" /f > nul 2> nul
 reg add "HKLM\SOFTWARE\Policies\Microsoft\Windows NT\DNSClient" /v "EnableIdnMapping" /t REG_DWORD /d "0" /f > nul 2> nul
 reg add "HKLM\SOFTWARE\Policies\Microsoft\Windows NT\DNSClient" /v "RegistrationEnabled" /t REG_DWORD /d "0" /f > nul 2> nul
@@ -1727,12 +1732,18 @@ for /f %%i in ('wmic path Win32_NetworkAdapter get PNPDeviceID^| findstr /L "PCI
 )
 reg add "HKLM\SYSTEM\CurrentControlSet\services\NDIS\Parameters" /v "RssBaseCpu" /t REG_DWORD /d "1" /f > nul 2> nul
 reg add "HKLM\SYSTEM\CurrentControlSet\services\NDIS\Parameters" /v "MaxNumRssCpus" /t REG_DWORD /d "4" /f > nul 2> nul
+:: Disable Teredo / IPV6 Tunneling***
+netsh int teredo set state disabled > nul 2> nul
+reg add "HKLM\SOFTWARE\Policies\Microsoft\Windows\TCPIP\v6Transition" /v "Teredo_State" /t REG_SZ /d "Disabled" /f > nul 2> nul
+:: Patch IGMP***
+reg add "HKLM\SYSTEM\CurrentControlSet\Services\Tcpip\Parameters" /v "IGMPLevel" /t REG_DWORD /d "0" /f > nul 2> nul
 
-:: Network Optimizations ; Credits to Melody and DuckOS 
+:: Network Optimizations ; Credits to Melody and DuckOS***
 PowerShell "Disable-NetAdapterChecksumOffload -Name *" > nul 2> nul
 PowerShell "Enable-NetAdapterRss -Name *" > nul 2> nul
 PowerShell "Disable-NetAdapterLso -Name *" > nul 2> nul
 PowerShell "Set-NetOffloadGlobalSetting -PacketCoalescingFilter disabled" > nul 2> nul
+
 for /f %%a in ('reg query "HKLM\SYSTEM\CurrentControlSet\Control\Class\{4d36e972-e325-11ce-bfc1-08002be10318}" /v "*SpeedDuplex" /s ^| findstr  "HKEY"') do (
     for /f %%i in ('reg query "%%a" /v "*ReceiveBuffers" ^| findstr "HKEY"') do ( reg add "%%i" /v "*ReceiveBuffers" /t REG_SZ /d "1024" /f )
     for /f %%i in ('reg query "%%a" /v "*TransmitBuffers" ^| findstr "HKEY"') do ( reg add "%%i" /v "*TransmitBuffers" /t REG_SZ /d "1024" /f )
@@ -1910,8 +1921,9 @@ echo.
 for %%i in ("UpdateOrchestrator\Reboot" "UpdateOrchestrator\Refresh Settings" "UpdateOrchestrator\USO_UxBroker_Display"
 "UpdateOrchestrator\USO_UxBroker_ReadyToReboot" "WindowsUpdate\sih" "WindowsUpdate\sihboot") do schtasks /Change /TN "Microsoft\Windows\%%~i" /disable > nul 2> nul
 
-schtasks /Change /Disable /TN "\Microsoft\Windows\WindowsUpdate\Scheduled Start" /f > nul 2> nul
-schtasks /Change /Disable /TN "\Microsoft\Windows\UpdateOrchestrator\Schedule Scan" /f > nul 2> nul
+schtasks /Change /Disable /TN "\Microsoft\Windows\WindowsUpdate\Scheduled Start" > nul 2> nul
+schtasks /Change /Disable /TN "\Microsoft\Windows\WindowsUpdate\sihpostreboot" > nul 2> nul
+schtasks /Change /Disable /TN "\Microsoft\Windows\UpdateOrchestrator\Schedule Scan" > nul 2> nul
 schtasks /Change /Disable /TN "\Microsoft\Windows\UpdateOrchestrator\Schedule Scan Static Task" > nul 2> nul
 schtasks /Change /Disable /TN "\Microsoft\Windows\DiskDiagnostic\Microsoft-Windows-DiskDiagnosticDataCollector" > nul 2> nul
 schtasks /Change /Disable /TN "\Microsoft\Windows\MemoryDiagnostic\ProcessMemoryDiagnosticEvents" > nul 2> nul
