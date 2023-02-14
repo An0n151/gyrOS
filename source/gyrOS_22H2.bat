@@ -268,7 +268,7 @@ reg add "HKLM\SOFTWARE\Policies\Microsoft\Windows\PreviewBuilds" /v "EnableConfi
 reg add "HKLM\SOFTWARE\Policies\Microsoft\Windows\PreviewBuilds" /v "EnableExperimentation" /t REG_DWORD /d "0" /f > nul 2> nul
 reg add "HKLM\SOFTWARE\Policies\Microsoft\Windows\PreviewBuilds" /v "AllowBuildPreview" /t REG_DWORD /d "0" /f > nul 2> nul
 
-:: Disable Security Warning "The publisher could not be verified" 
+:: Disable Security Warning "The publisher could not be verified"
 echo %windir%\System32\notepad.exe > "%temp%\temporary.txt"
 for /f "usebackq delims=" %%a in ("%temp%\temporary.txt") do (
     reg add "HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\Windows NT\CurrentVersion\AppCompatFlags\Layers" /v "%%a" /t REG_SZ /d "RUNASADMIN" /f > nul 2> nul
@@ -279,7 +279,7 @@ reg add "HKCU\Software\Microsoft\Windows\CurrentVersion\Policies\Associations" /
 :: Disable Security Warning "Unblock the downloaded file"
 reg add "HKCU\Software\Microsoft\Windows\CurrentVersion\Policies\Attachments" /v "SaveZoneInformation" /t REG_DWORD /d "1" /f > nul 2> nul
 
-:: Disable "Open File - Security Warning" 
+:: Disable "Open File - Security Warning"
 reg add "HKCU\Software\Microsoft\Windows\CurrentVersion\Internet Settings\Zones\3" /V "1806" /t "REG_DWORD" /d "00000000" /f > nul 2> nul
 reg add "HKLM\Software\Microsoft\Windows\CurrentVersion\Internet Settings\Zones\3" /V "1806" /t "REG_DWORD" /d "00000000" /f > nul 2> nul
 reg add "HKLM\SOFTWARE\Microsoft\Windows\CurrentVersion\Policies\Associations" /v "LowRiskFileTypes" /t REG_SZ /d ".zip;.rar;.nfo;.exe;.bat;.cmd;.reg;.msi;.htm;.html;.gif;.bmp;.jpg;.jpeg;.png;.tif;.tiff;.mp3;.wma;.wav;.ogg;.mid;.midi;.avi;.mpg;.mpeg;.mov;.wmv;.asf;.swf;.vob;.mp4;.flv;.f4v;.mkv;.m4v;.rm;.rmvb;.doc;.docx;.xls;.xlsx;.ppt;.pptx;.pdf;.vsd;.vsdx;.odt;.odp;.ods;.odg;.odc;.odb;.odf;.rtf" /f > nul 2> nul
@@ -303,7 +303,7 @@ reg add "HKCR\Directory\shell\runas\command" /v "IsolatedCommand" /t REG_SZ /d "
 reg delete "HKLM\SOFTWARE\Microsoft\Windows\CurrentVersion\Explorer\MyComputer\NameSpace\{0DB7E03F-FC29-4DC6-9020-FF41B59E513A}" /f > nul 2> nul
 reg delete "HKLM\SOFTWARE\WOW6432Node\Microsoft\Windows\CurrentVersion\Explorer\MyComputer\NameSpace\{0DB7E03F-FC29-4DC6-9020-FF41B59E513A}" /f > nul 2> nul
 
-:: Set "Do this for all current items" to be checked by Default 
+:: Set "Do this for all current items" to be checked by Default
 reg add "HKCU\Software\Microsoft\Windows\CurrentVersion\Explorer\OperationStatusManager" /v "ConfirmationCheckBoxDoForAll" /t REG_DWORD /d "1" /f > nul 2> nul
 reg add "HKCU\Control Panel\Desktop" /v "ConfirmFileDelete" /t REG_DWORD /d "1" /f > nul 2> nul
 reg add "HKCU\Control Panel\Desktop" /v "ConfirmFileOp" /t REG_DWORD /d "0" /f > nul 2> nul
@@ -384,13 +384,6 @@ netsh advfirewall firewall set rule group="Network Discovery" new enable=Yes > n
 netsh advfirewall set allprofiles state off > nul 2> nul
 ::reg add "HKLM\SYSTEM\CurrentControlSet\Services\mpssvc" /v "Start" /t REG_DWORD /d "3" /f > nul 2> nul
 ::reg add "HKLM\SYSTEM\CurrentControlSet\Services\BFE" /v "Start" /t REG_DWORD /d "3" /f > nul 2> nul
-
-:: Remove "Include in Library" Context Menu
-reg delete "HKCR\Folder\ShellEx\ContextMenuHandlers\Library Location" /f > nul 2> nul
-reg delete "HKLM\SOFTWARE\Classes\Folder\ShellEx\ContextMenuHandlers\Library Location" /f > nul 2> nul
-
-:: Remove "Share" from Context Menu
-reg delete "HKCR\*\shellex\ContextMenuHandlers\ModernSharing" /f > nul 2> nul
 
 :: Disable IPv6, Client for Microsoft Networks, QoS Packet Scheduler, File and Printer Sharing ; Credits to DuckOS
 PowerShell -Mta -NoProfile -Command "Disable-NetAdapterBinding -Name "*" -ComponentID ms_tcpip6, ms_msclient, ms_pacer, ms_server" > nul 2> nul
@@ -536,6 +529,13 @@ reg add "HKCU\SOFTWARE\Microsoft\Shell\USB" /v "NotifyOnUsbErrors" /t REG_DWORD 
 :: Disable "Let Windows Manage my Default Printer"
 reg add "HKCU\SOFTWARE\Microsoft\Windows NT\CurrentVersion\Windows" /v "LegacyDefaultPrinterMode" /t REG_DWORD /d "1" /f > nul 2> nul
 
+:: Remove "Include in Library" Context Menu
+reg delete "HKCR\Folder\ShellEx\ContextMenuHandlers\Library Location" /f > nul 2> nul
+reg delete "HKLM\SOFTWARE\Classes\Folder\ShellEx\ContextMenuHandlers\Library Location" /f > nul 2> nul
+
+:: Remove "Share" from Context Menu
+reg delete "HKCR\*\shellex\ContextMenuHandlers\ModernSharing" /f > nul 2> nul
+
 :: Remove "Troubleshoot Compatibility" from Context Menu 
 reg add "HKLM\SOFTWARE\Microsoft\Windows\CurrentVersion\Shell Extensions\Blocked" /v "{1d27f844-3a1f-4410-85ac-14651078412d}" /t REG_SZ /d "" /f > nul 2> nul
 
@@ -593,7 +593,9 @@ reg add "HKLM\SOFTWARE\Policies\Microsoft\Windows\Explorer" /v "NoUseStoreOpenWi
 :: Remove "Compressed (zipped) Folder from "New" Context Menu
 
 :: Unpin Tiles from Start Menu***
-for /f "tokens=*" %%i in ('reg query "HKCU\Software\Microsoft\Windows\CurrentVersion\CloudStore\Store\Cache\DefaultAccount" /s /f "start.tilegrid"^| findstr "start.tilegrid"') do reg delete "%%i" /f > nul 2> nul
+for /f "tokens=*" %%i in ('reg query "HKCU\Software\Microsoft\Windows\CurrentVersion\CloudStore\Store\Cache\DefaultAccount" /s /f "start.tilegrid"^| findstr "start.tilegrid"') do (
+%currentuser% reg delete "%%i" /f
+) > nul 2> nul
 
 :: Disable Ease of Access Settings
 reg add "HKCU\Software\Microsoft\Ease of Access" /v "selfvoice" /t REG_DWORD /d "0" /f > nul 2> nul
@@ -638,7 +640,7 @@ reg add "HKCU\SOFTWARE\Microsoft\Narrator\NoRoam" /v "OnlineServicesEnabled" /t 
 reg add "HKCU\SOFTWARE\Microsoft\Narrator\NarratorHome" /v "MinimizeType" /t REG_DWORD /d "0" /f > nul 2> nul
 reg add "HKCU\SOFTWARE\Microsoft\Narrator\NarratorHome" /v "AutoStart" /t REG_DWORD /d "0" /f > nul 2> nul
 
-:: Appearance Optimizations ; Credits to Melody and DuckOS 
+:: Appearance Optimizations ; Credits to Melody and DuckOS
 %currentuser% reg add "HKCU\SOFTWARE\Microsoft\Windows\CurrentVersion\Explorer\VisualEffects" /v "VisualFXSetting" /t REG_DWORD /d "3" /f > nul 2> nul
 reg add "HKCU\Control Panel\Desktop" /v "UserPreferencesMask" /t REG_BINARY /d "9012038010000000" /f > nul 2> nul
 :: Disable Animations in the Taskbar
@@ -741,10 +743,6 @@ reg add "HKCU\Software\Microsoft\Notepad" /v "fSavePageSettings" /t REG_DWORD /d
 reg add "HKCU\Software\Microsoft\Notepad" /v "fSaveWindowPositions" /t REG_DWORD /d "1" /f > nul 2> nul
 reg add "HKCU\Software\Microsoft\Notepad" /v "fWindowsOnlyEOL" /t REG_DWORD /d "0" /f > nul 2> nul
 reg add "HKCU\Software\Microsoft\Notepad" /v "fPasteOriginalEOL" /t REG_DWORD /d "0" /f > nul 2> nul
-reg add "HKCU\Software\Microsoft\Notepad" /v "iWindowPosDX" /t REG_DWORD /d "1934" /f > nul 2> nul
-reg add "HKCU\Software\Microsoft\Notepad" /v "iWindowPosDY" /t REG_DWORD /d "651" /f > nul 2> nul
-reg add "HKCU\Software\Microsoft\Notepad" /v "iWindowPosX" /t REG_DWORD /d "4294967289" /f > nul 2> nul
-reg add "HKCU\Software\Microsoft\Notepad" /v "iWindowPosY" /t REG_DWORD /d "436" /f > nul 2> nul
 
 :: Configure Microsoft Store
 reg add "HKLM\SOFTWARE\Policies\Microsoft\WindowsStore" /v "AutoDownload" /t REG_DWORD /d 2 /f > nul 2> nul
@@ -878,7 +876,9 @@ reg add "HKLM\Software\Policies\Microsoft\Windows\WDI\{9c5a40da-b965-4fc3-8781-8
 reg add "HKLM\SOFTWARE\Microsoft\Windows\CurrentVersion\Internet Settings\Wpad" /v "WpadOverride" /t REG_DWORD /d "1" /f > nul 2> nul
 
 :: Disable AutoLogger
-for /f %%i in ('reg query "HKLM\SYSTEM\CurrentControlSet\Control\WMI\AutoLogger" /s /f "start"^| findstr "HKEY"') do reg add "%%i" /v "Start" /t REG_DWORD /d "0" /f > nul 2> nul
+for /f %%i in ('reg query "HKLM\SYSTEM\CurrentControlSet\Control\WMI\AutoLogger" /s /f "start"^| findstr "HKEY"') do (
+reg add "%%i" /v "Start" /t REG_DWORD /d "0" /f
+) > nul 2> nul
 
 :: Disable Application Compatibility Telemetry  ; Credits to DuckOS and ArtanisInc
 reg add "HKLM\Software\Policies\Microsoft\Windows\AppCompat" /v "AllowTelemetry" /t REG_DWORD /d "0" /f > nul 2> nul
@@ -944,11 +944,10 @@ reg add "HKLM\Software\Microsoft\Windows\CurrentVersion\Reliability" /v "TimeSta
 reg add "HKLM\Software\Microsoft\Windows\CurrentVersion\Reliability" /v "IoPriority" /t REG_DWORD /d "3" /f > nul 2> nul
 
 :: Disable Hibernation and Fast Startup
+powercfg /h off > nul 2> nul
 reg add "HKLM\SYSTEM\CurrentControlSet\Control\Power" /v "HibernateEnabledDefault" /t REG_DWORD /d "0" /f > nul 2> nul
 reg add "HKLM\SYSTEM\CurrentControlSet\Control\Power" /v "HibernateEnabled" /t REG_DWORD /d "0" /f > nul 2> nul
 reg add "HKLM\SYSTEM\CurrentControlSet\Control\Session Manager\Power" /v "HiberbootEnabled" /t REG_DWORD /d "0" /f > nul 2> nul
-
-powercfg /h off > nul 2> nul
 
 :: Disable CFG Lock / Breaks Valorant
 ::reg add "HKLM\SYSTEM\CurrentControlSet\Control\Session Manager\Memory Management" /v "EnableCfg" /t REG_DWORD /d "0" /f > nul 2> nul
@@ -971,22 +970,21 @@ for /f %%i in ('reg query "HKLM\SYSTEM\CurrentControlSet\Services" /s /f DmaRema
 	reg add "%%i" /v "DmaRemappingCompatible" /t REG_DWORD /d "0" /f
 ) > nul 2> nul
 
-:: Disable Virtualization-Based Protection of Code Integrity 
+:: Disable Virtualization-Based Protection of Code Integrity
 reg add "HKLM\Software\Policies\Microsoft\Windows\DeviceGuard" /v "EnableVirtualizationBasedSecurity" /t REG_DWORD /d "0" /f > nul 2> nul
 reg add "HKLM\SYSTEM\CurrentControlSet\Control\DeviceGuard\Scenarios\HypervisorEnforcedCodeIntegrity" /v "Enabled" /t REG_DWORD /d "0" /f > nul 2> nul
 reg add "HKLM\SYSTEM\CurrentControlSet\Control\DeviceGuard\Scenarios\HypervisorEnforcedCodeIntegrity" /v "WasEnabledBy" /t REG_DWORD /d "0" /f > nul 2> nul
 
-:: Disable NetBios / NetBT ; Credits to ArtanisInc 
+:: Disable NetBios / NetBT ; Credits to ArtanisInc
+for /f %%i in ('reg query "HKLM\SYSTEM\CurrentControlSet\services\NetBT\Parameters\Interfaces" /s /f "NetbiosOptions"^| findstr "HKEY"') do (
+	reg add "%%i" /v "NetbiosOptions" /t REG_DWORD /d "2" /f
+) > nul 2> nul
 reg add "HKLM\SYSTEM\CurrentControlSet\Services\NetBT\Parameters" /v "SMBDeviceEnabled" /t REG_DWORD /d "0" /f > nul 2> nul
 reg add "HKLM\System\CurrentControlSet\Services\NetBT\Parameters" /v "EnableLMHOSTS" /t REG_DWORD /d "0" /f > nul 2> nul
 reg add "HKLM\System\CurrentControlSet\Services\NetBT\Parameters\Interfaces" /v "NetbiosOptions" /t REG_DWORD /d "2" /f > nul 2> nul
 reg add "HKLM\SYSTEM\CurrentControlSet\Services\NetBT" /v "Start" /t REG_DWORD /d "4" /f > nul 2> nul
 reg add "HKLM\SYSTEM\CurrentControlSet\Services\NetBIOS" /v "Start" /t REG_DWORD /d "4" /f > nul 2> nul
 reg add "HKLM\SYSTEM\CurrentControlSet\Services\lmhosts" /v "Start" /t REG_DWORD /d "4" /f > nul 2> nul
-
-for /f %%i in ('reg query "HKLM\SYSTEM\CurrentControlSet\services\NetBT\Parameters\Interfaces" /s /f "NetbiosOptions"^| findstr "HKEY"') do (
-	reg add "%%i" /v "NetbiosOptions" /t REG_DWORD /d "2" /f
-) > nul 2> nul
 
 :: Disable Windows Defender
 bcdedit /set disableelamdrivers Yes > nul 2> nul
@@ -1190,7 +1188,7 @@ echo.
 
 :: Set Service Split Threshold ; Credits to HoneCtrl
 for /f "tokens=2 delims==" %%i in ('wmic os get TotalVisibleMemorySize /value') do set /a mem=%%i + 1024000
-	reg add "HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\Control" /v "SvcHostSplitThresholdInKB" /t REG_DWORD /d %mem% /f > nul 2> nul
+reg add "HKLM\SYSTEM\CurrentControlSet\Control" /v "SvcHostSplitThresholdInKB" /t REG_DWORD /d %mem% /f > nul 2> nul
 
 :: BCDedit Tweaks 
 bcdedit /set x2apicpolicy Enable > nul 2> nul
@@ -1609,10 +1607,6 @@ for /f %%i in ('wmic path Win32_NetworkAdapter get PNPDeviceID^| findstr /l "PCI
 	) > nul 2> nul
 )
 
-:: Monitor Latency Tolerance
-reg add "HKLM\SYSTEM\CurrentControlSet\Services\DXGKrnl" /v "MonitorLatencyTolerance" /t REG_DWORD /d "0" /f > nul 2> nul
-reg add "HKLM\SYSTEM\CurrentControlSet\Services\DXGKrnl" /v "MonitorRefreshLatencyTolerance" /t REG_DWORD /d "0" /f > nul 2> nul
-
 :: GPU Optimizations
 :: DXKrnl
 reg add "HKLM\SYSTEM\CurrentControlSet\Control\GraphicsDrivers" /v DpiMapIommuContiguous /t REG_DWORD /d "1" /f > nul 2> nul
@@ -1638,6 +1632,9 @@ if %errorlevel% == 0 (
 ) > nul 2> nul
 :: Force Contiguous Memory Allocation in the DirectX Kernel
 reg add "HKLM\SYSTEM\CurrentControlSet\Control\GraphicsDrivers" /v "DpiMapIommuContiguous" /t REG_DWORD /d "1" /f > nul 2> nul
+:: Monitor Latency Tolerance
+reg add "HKLM\SYSTEM\CurrentControlSet\Services\DXGKrnl" /v "MonitorLatencyTolerance" /t REG_DWORD /d "0" /f > nul 2> nul
+reg add "HKLM\SYSTEM\CurrentControlSet\Services\DXGKrnl" /v "MonitorRefreshLatencyTolerance" /t REG_DWORD /d "0" /f > nul 2> nul
 
 :: CPU Optimizations 
 reg add "HKLM\SYSTEM\ControlSet001\Control\Class\{4D36E968-E325-11CE-BFC1-08002BE10318}\0000" /v "AllowDeepCStates" /t REG_DWORD /d "0" /f > nul 2> nul
@@ -1729,7 +1726,6 @@ PowerShell "Disable-NetAdapterChecksumOffload -Name *" > nul 2> nul
 PowerShell "Enable-NetAdapterRss -Name *" > nul 2> nul
 PowerShell "Disable-NetAdapterLso -Name *" > nul 2> nul
 PowerShell "Set-NetOffloadGlobalSetting -PacketCoalescingFilter disabled" > nul 2> nul
-
 for /f %%a in ('reg query "HKLM\SYSTEM\CurrentControlSet\Control\Class\{4d36e972-e325-11ce-bfc1-08002be10318}" /v "*SpeedDuplex" /s ^| findstr  "HKEY"') do (
     for /f %%i in ('reg query "%%a" /v "*ReceiveBuffers" ^| findstr "HKEY"') do ( reg add "%%i" /v "*ReceiveBuffers" /t REG_SZ /d "1024" /f )
     for /f %%i in ('reg query "%%a" /v "*TransmitBuffers" ^| findstr "HKEY"') do ( reg add "%%i" /v "*TransmitBuffers" /t REG_SZ /d "1024" /f )
@@ -1779,9 +1775,6 @@ reg add "HKLM\SYSTEM\CurrentControlSet\Control\FileSystem" /v "Win95TruncatedExt
 reg add "HKLM\SYSTEM\CurrentControlSet\Control\FileSystem" /v "NtfsDisableSpotCorruptionHandling" /t REG_DWORD /d "1" /f > nul 2> nul
 reg add "HKLM\SYSTEM\CurrentControlSet\Control\FileSystem" /v "NtfsMftZoneReservation" /t REG_DWORD /d "2" /f > nul 2> nul
 
-:: Disable NTFS Compression
-reg add "HKLM\SYSTEM\CurrentControlSet\Policies" /v "NtfsDisableCompression" /t REG_DWORD /d "1" /f > nul 2> nul
-
 :: Storage Optimizations ; Credits to ArtanisInc***
 for /f "skip=1" %%i in ('wmic os get TotalVisibleMemorySize') do if not defined TOTAL_MEMORY set "TOTAL_MEMORY=%%i"
 if !TOTAL_MEMORY! LSS 8000000 (
@@ -1801,6 +1794,9 @@ fsutil behavior set encryptpagingfile 0 > nul 2> nul
 reg add "HKLM\SOFTWARE\Microsoft\Windows\CurrentVersion\ReserveManager" /v "ShippedWithReserves" /t REG_DWORD /d "0" /f > nul 2> nul
 reg add "HKLM\SOFTWARE\Microsoft\Windows\CurrentVersion\ReserveManager" /v "PassedPolicy" /t REG_DWORD /d "0" /f > nul 2> nul
 reg add "HKLM\SOFTWARE\Microsoft\Windows\CurrentVersion\ReserveManager" /v "MiscPolicyInfo" /t REG_DWORD /d "2" /f > nul 2> nul
+
+:: Disable NTFS Compression
+reg add "HKLM\SYSTEM\CurrentControlSet\Policies" /v "NtfsDisableCompression" /t REG_DWORD /d "1" /f > nul 2> nul
 
 :StorageOptimizations
 cls
