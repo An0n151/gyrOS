@@ -4,8 +4,6 @@ Windows Registry Editor Version 5.00
 ; ### I do not claim to have coded this myself ###
 ; ### If you see your code in here and want to be credited, message me on Discord ###
 
-; Credits: Melody
-
 ; ================================================================================================================================
 
 ; Allow Scripts in CMD Set-ExecutionPolicy RemoteSigned
@@ -18,6 +16,28 @@ Windows Registry Editor Version 5.00
 "ExecutionPolicy"="RemoteSigned"
 
 ; ================================================================================================================================
+
+; Experimental Optimizations ; Credits to ElProfetamohammed***
+[HKEY_LOCAL_MACHINE\System\CurrentControlSet\Services\VxD\BIOS]
+"CPUPriority"=dword:1
+"FastDRAM"=dword:1
+"PCIconcur"=dword:1
+
+[HKEY_LOCAL_MACHINE\System\CurrentControlSet\Services\VxD\VCOMM]
+"EnablePowerManagement"=hex:00
+
+[HKEY_LOCAL_MACHINE\System\CurrentControlSet\control\FileSystem]
+"DriveWriteBehind"=hex:ff,ff,ff,ff
+"ReadAheadThreshold"=hex:ff,ff,ff,ff
+
+[HKEY_LOCAL_MACHINE\System\CurrentControlSet\control\Update]
+"UpdateMode"=hex:00
+
+[HKEY_LOCAL_MACHINE\System\CurrentControlSet\Services\VxD\MSTCP]
+"PMTUDiscovery"="1"
+
+[HKEY_CURRENT_USER\Control Panel\desktop\WindowMetrics]
+"Shell Icon Bpp"="16"
 
 ; Prefer IPV4 over IPV6
 [HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\Services\Tcpip6\Parameters]
@@ -98,8 +118,23 @@ E0,F6,C5,D5,0E,CA,50,00,00
 [-HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\Services\SharedAccess\Defaults\FirewallPolicy\StandardProfile\Logging]
 [-HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\Services\SharedAccess\Defaults\FirewallPolicy\DomainProfile\Logging]
 
-; Disable Windows Logging
+; Disable Windows Logging***
 [-HKEY_CURRENT_USER\Software\Microsoft\Windows\CurrentVersion\Census]
+[-HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\Services\EventLog\Key Management Service]
+[-HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\Services\EventLog\Windows PowerShell]
+[-HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\Services\EventLog\Security]
+[-HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\Services\EventLog\HardwareEvents]
+[-HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\Windows\CurrentVersion\WINEVT\Publishers]
+[-HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\Windows\CurrentVersion\WINEVT\Channels]
+[-HKEY_CLASSES_ROOT\Interface\{101704EA-A7F9-46D2-AB94-016865AFDB25}]
+[-HKEY_CLASSES_ROOT\Interface\{1D5EE066-188D-5BA9-4387-ACAEB0E7E305}]
+[-HKEY_CLASSES_ROOT\Interface\{76E915B1-FF36-407C-9F57-160D3E540747}]
+[-HKEY_CLASSES_ROOT\Interface\{76E915B1-FF36-407C-9F57-160D3E540747}]
+[-HKEY_CLASSES_ROOT\Interface\{926130B8-9955-4C74-BDC1-7CD0DECF9B03}]
+[-HKEY_CLASSES_ROOT\WOW6432Node\Interface\{101704EA-A7F9-46D2-AB94-016865AFDB25}]
+[-HKEY_CLASSES_ROOT\WOW6432Node\Interface\{1D5EE066-188D-5BA9-4387-ACAEB0E7E305}]
+[-HKEY_CLASSES_ROOT\WOW6432Node\Interface\{76E915B1-FF36-407C-9F57-160D3E540747}]
+[-HKEY_CLASSES_ROOT\WOW6432Node\Interface\{926130B8-9955-4C74-BDC1-7CD0DECF9B03}]
 
 ; Remove Unneeded Xbox Registry
 [-HKEY_USERS\.DEFAULT\System\GameConfigStore\Children]
