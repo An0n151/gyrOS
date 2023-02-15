@@ -39,11 +39,6 @@ Windows Registry Editor Version 5.00
 [HKEY_CURRENT_USER\Control Panel\desktop\WindowMetrics]
 "Shell Icon Bpp"="16"
 
-; Prefer IPV4 over IPV6
-[HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\Services\Tcpip6\Parameters]
-"Dhcpv6DUID"=hex:00,01,00,01,27,36,62,d4,80,c1,6e,e3,72,d7
-"DisabledComponents"=dword:00000032
-
 ; ================================================================================================================================
 
 ; Double Click to Import Power Plan
