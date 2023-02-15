@@ -1,4 +1,4 @@
-### GToolbox v3.20 Documentation ###
+### GToolbox v3.30 Documentation ###
 ----------------------------------------------------
 
 Make sure to run .cmd & .bat files as Administrator so they function properly.
