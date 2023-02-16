@@ -2,7 +2,7 @@
 :: ### I do not claim to have coded this myself ###
 :: ### If you see your code in here and want to be credited, message me on Discord ###
 
-:: ### Credits: EchoX, HoneCtrl, ArtanisInc, Rikey, DuckOS
+:: ### Credits: EchoX, HoneCtrl, ArtanisInc, Rikey, DuckOS, Melody
 
 @echo off
 setlocal EnableDelayedExpansion
@@ -23,6 +23,9 @@ wmic path Win32_VideoController get Name | findstr "AMD ATI" > nul 2> nul && set
 wmic path Win32_VideoController get Name | findstr "Intel" > nul 2> nul && set "GPU=INTEL"
 :: Set User ; Credits to ArtanisInc
 for /f %%i in ('wmic path Win32_UserAccount where name^="%username%" get sid ^| findstr "S-"') do set "USER_SID=%%i"
+:: Set Storage Type ; Credits to ArtanisInc
+call "%WinDir%\gyrOS\smartctl.exe" %systemdrive% -i | findstr /c:"Rotation Rate:" | findstr /c:"Solid State Device" > nul 2> nul && set "STORAGE_TYPE=SSD/NVMe"
+call "%WinDir%\gyrOS\smartctl.exe" %systemdrive% -i | findstr /c:"NVMe Version:" > nul 2> nul && set "STORAGE_TYPE=SSD/NVMe"
 
 echo _____________________________________________________________________________________________
 echo.
@@ -1724,18 +1727,11 @@ reg add "HKLM\SOFTWARE\Microsoft\Windows\CurrentVersion\ReserveManager" /v "Pass
 reg add "HKLM\SOFTWARE\Microsoft\Windows\CurrentVersion\ReserveManager" /v "MiscPolicyInfo" /t REG_DWORD /d "2" /f > nul 2> nul
 reg add "HKLM\SYSTEM\CurrentControlSet\Policies" /v "NtfsDisableCompression" /t REG_DWORD /d "1" /f > nul 2> nul
 
-:StorageOptimizations
-cls
-echo __________________________________
-echo.
-echo  SYSTEM PURIFICATION - PHASE 4...
-echo __________________________________
-echo.
-echo.
-set /p M="What type of storage disk is Windows installed on?   1. for SSD/NVMe or 2. for HDD: " 
-if %M%==1 goto SSD
-if %M%==2 goto HDD
-goto StorageOptimizations
+if "!STORAGE_TYPE!"=="SSD/NVMe" (
+	goto SSD
+) else (
+	goto HDD
+)
 
 :HDD
 reg add "HKLM\SYSTEM\CurrentControlSet\Control\FileSystem" /v "NTFSDisableLastAccessUpdate" /t REG_DWORD /d "1" /f > nul 2> nul
@@ -1745,13 +1741,6 @@ schtasks /Change /Disable /TN "\Microsoft\Windows\Defrag\ScheduledDefrag" > nul 
 goto SkipSSDOptimizations
 
 :SSD
-cls
-echo __________________________________
-echo.
-echo  SYSTEM PURIFICATION - PHASE 4...
-echo __________________________________
-echo.
-
 fsutil behavior set disablelastaccess 0 > nul 2> nul
 fsutil behavior set disabledeletenotify 0 > nul 2> nul
 reg add "HKLM\SYSTEM\CurrentControlSet\Control\Session Manager\Memory Management\PrefetchParameters" /v "EnableBoottrace" /t REG_DWORD /d "0" /f > nul 2> nul
@@ -1766,13 +1755,6 @@ reg add "HKLM\System\CurrentControlSet\Control\Class\{71a27cdd-812a-11d0-bec7-08
 reg add "HKLM\System\CurrentControlSet\Control\Class\{71a27cdd-812a-11d0-bec7-08002be2092f}" /v "UpperFilters" /t REG_MULTI_SZ  /d "" /f > nul 2> nul
 
 :SkipSSDOptimizations
-cls
-echo __________________________________
-echo.
-echo  SYSTEM PURIFICATION - PHASE 4...
-echo __________________________________
-echo.
-
 PowerShell "Disable-MMAgent -MemoryCompression" > nul 2> nul
 PowerShell -NoProfile -Command "Disable-MMAgent -PagingCombining -mc" > nul 2> nul
 reg add "HKLM\SYSTEM\CurrentControlSet\Control\Session Manager\Memory Management" /v "DisablePagingExecutive" /t REG_DWORD /d "1" /f > nul 2> nul
