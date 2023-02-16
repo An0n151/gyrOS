@@ -42,18 +42,18 @@ if defined edge_legacy_package_version (
 		dism /online /Remove-Package /PackageName:%edge_legacy_package_version%
 		powershell.exe -Command "Get-AppxPackage *edge* | Remove-AppxPackage" > nul 2> nul
 )
-reg delete "HKLM\Software\WOW6432Node\Microsoft\Windows\CurrentVersion\Uninstall\Microsoft Edge" /f > nul 2> nul
-reg delete "HKLM\Software\WOW6432Node\Microsoft\Windows\CurrentVersion\Uninstall\Microsoft Edge Update" /f > nul 2> nul
-reg delete "HKLM\Software\Classes\MSEdgeHTM" /f > nul 2> nul
-reg delete "HKLM\System\CurrentControlSet\Services\EventLog\Application\edgeupdate" /f > nul 2> nul
-reg delete "HKLM\System\CurrentControlSet\Services\EventLog\Application\edgeupdatem" /f  > nul 2> nul
-reg delete "HKLM\Software\WOW6432Node\Clients\StartMenuInternet\Microsoft Edge" /f > nul 2> nul
-reg delete "HKLM\Software\WOW6432Node\Microsoft\Windows\CurrentVersion\App Paths\msedge.exe" /f > nul 2> nul
-reg delete "HKLM\Software\Microsoft\Windows\CurrentVersion\App Paths\msedge.exe" /f > nul 2> nul
-reg delete "HKLM\Software\WOW6432Node\Microsoft\EdgeUpdate" /f > nul 2> nul
-reg delete "HKLM\Software\WOW6432Node\Microsoft\Edge" /f > nul 2> nul
-reg delete "HKLM\Software\Clients\StartMenuInternet\Microsoft Edge" /f > nul 2> nul
-reg delete "HKLM\Software\Microsoft\Windows\CurrentVersion\Device Metadata" /f > nul 2> nul
+reg delete "HKLM\SOFTWARE\WOW6432Node\Microsoft\Windows\CurrentVersion\Uninstall\Microsoft Edge" /f > nul 2> nul
+reg delete "HKLM\SOFTWARE\WOW6432Node\Microsoft\Windows\CurrentVersion\Uninstall\Microsoft Edge Update" /f > nul 2> nul
+reg delete "HKLM\SOFTWARE\Classes\MSEdgeHTM" /f > nul 2> nul
+reg delete "HKLM\SYSTEM\CurrentControlSet\Services\EventLog\Application\edgeupdate" /f > nul 2> nul
+reg delete "HKLM\SYSTEM\CurrentControlSet\Services\EventLog\Application\edgeupdatem" /f  > nul 2> nul
+reg delete "HKLM\SOFTWARE\WOW6432Node\Clients\StartMenuInternet\Microsoft Edge" /f > nul 2> nul
+reg delete "HKLM\SOFTWARE\WOW6432Node\Microsoft\Windows\CurrentVersion\App Paths\msedge.exe" /f > nul 2> nul
+reg delete "HKLM\SOFTWARE\Microsoft\Windows\CurrentVersion\App Paths\msedge.exe" /f > nul 2> nul
+reg delete "HKLM\SOFTWARE\WOW6432Node\Microsoft\EdgeUpdate" /f > nul 2> nul
+reg delete "HKLM\SOFTWARE\WOW6432Node\Microsoft\Edge" /f > nul 2> nul
+reg delete "HKLM\SOFTWARE\Clients\StartMenuInternet\Microsoft Edge" /f > nul 2> nul
+reg delete "HKLM\SOFTWARE\Microsoft\Windows\CurrentVersion\Device Metadata" /f > nul 2> nul
 del "%drive%\Users\%username%\Desktop\Microsoft*Edge.lnk" > nul 2> nul
 del "%drive%\Users\%username%\AppData\Roaming\Microsoft\Windows\Start Menu\Programs\Microsoft Edge.lnk" > nul 2> nul
 cls
