@@ -2,11 +2,13 @@
 :: ### I do not claim to have coded this myself ###
 :: ### If you see your code in here and want to be credited, message me on Discord ###
 
-:: ### Credits: EchoX, HoneCtrl, ArtanisInc, Rikey, DuckOS
+:: ### Credits: EchoX, HoneCtrl, ArtanisInc, Rikey, DuckOS, Melody
 
 @echo off
 setlocal EnableDelayedExpansion
 title gyrOS Post Installation Script
+set "VERSION=X3"
+set "VERSION_DATE=16/02/2023"
 
 :: Configure Variables
 set "currentuser=%WinDir%\gyrOS\NSudo\NSudoLG.exe -U:C -P:E -Wait"
@@ -20,6 +22,9 @@ wmic path Win32_VideoController get Name | findstr "AMD ATI" > nul 2> nul && set
 wmic path Win32_VideoController get Name | findstr "Intel" > nul 2> nul && set "GPU=INTEL"
 :: Set User ; Credits to ArtanisInc
 for /f %%i in ('wmic path Win32_UserAccount where name^="%username%" get sid ^| findstr "S-"') do set "USER_ID=%%i"
+:: Set Storage Type ; Credits to ArtanisInc
+call "%WinDir%\gyrOS\smartctl.exe" %systemdrive% -i | findstr /c:"Rotation Rate:" | findstr /c:"Solid State Device" > nul 2> nul && set "STORAGE_TYPE=SSD/NVMe"
+call "%WinDir%\gyrOS\smartctl.exe" %systemdrive% -i | findstr /c:"NVMe Version:" > nul 2> nul && set "STORAGE_TYPE=SSD/NVMe"
 
 :: Uninstall Microsoft Edge
 cd /d "%ProgramFiles(x86)%\Microsoft"
@@ -132,7 +137,7 @@ cls
 ) else (
 echo No internet connection detected. Skipping DirectX installation.
 echo.
-echo Install it manually using GToolbox. Continuing...
+echo Install DirectX manually using GToolbox. Continuing...
 timeout /t 3
 )
 
@@ -318,7 +323,7 @@ reg add "HKCU\Software\Microsoft\Windows\CurrentVersion\CapabilityAccessManager\
 
 :: System Information
 reg add "HKLM\Software\Microsoft\Windows\CurrentVersion\OEMInformation" /v "Manufacturer" /t REG_SZ /d "gyrOS" /f > nul 2> nul
-reg add "HKLM\Software\Microsoft\Windows\CurrentVersion\OEMInformation" /v "Model" /t REG_SZ /d "gyrOS" /f > nul 2> nul
+reg add "HKLM\Software\Microsoft\Windows\CurrentVersion\OEMInformation" /v "Model" /t REG_SZ /d "!VERSION!" /f > nul 2> nul
 reg add "HKLM\Software\Microsoft\Windows\CurrentVersion\OEMInformation" /v "SupportHours" /t REG_SZ /d "Discord" /f > nul 2> nul
 reg add "HKLM\Software\Microsoft\Windows\CurrentVersion\OEMInformation" /v "SupportPhone" /t REG_SZ /d "69420" /f > nul 2> nul
 reg add "HKLM\Software\Microsoft\Windows\CurrentVersion\OEMInformation" /v "SupportURL" /t REG_SZ /d "https://discord.gg/u3ruZyKsWT" /f > nul 2> nul
