@@ -416,7 +416,7 @@ reg add "HKCR\exefile\Shell\Priority\shell\005flyout\command" /ve /t REG_SZ /d "
 reg add "HKCR\exefile\Shell\Priority\shell\006flyout" /ve /t REG_SZ /d "Low" /f > nul 2> nul
 reg add "HKCR\exefile\Shell\Priority\shell\006flyout\command" /ve /t REG_SZ /d "cmd.exe /c start \"\" /Low \"%%1\"" /f > nul 2> nul
 
-:: Remove "Edit with Paint 3D" from Context Menu 
+:: Remove "Edit with Paint 3D" from Context Menu
 reg delete "HKCR\SystemFileAssociations\.3mf\Shell\3D Edit" /f > nul 2> nul
 reg delete "HKCR\SystemFileAssociations\.bmp\Shell\3D Edit" /f > nul 2> nul
 reg delete "HKCR\SystemFileAssociations\.fbx\Shell\3D Edit" /f > nul 2> nul
@@ -504,7 +504,7 @@ reg add "HKCU\SOFTWARE\Microsoft\Multimedia\Audio" /v "UserDuckingPreference" /t
 :: Disable Startup Sound
 reg add "HKLM\SOFTWARE\Microsoft\Windows\CurrentVersion\Authentication\LogonUI\BootAnimation" /v "DisableStartupSound" /t REG_DWORD /d "1" /f > nul 2> nul
 
-:: Disable "Notify me if my PC is charging slowly over USB" 
+:: Disable "Notify me if my PC is charging slowly over USB"
 reg add "HKCU\SOFTWARE\Microsoft\Shell\USB" /v "NotifyOnWeakCharger" /t REG_DWORD /d "0" /f > nul 2> nul
 
 :: Disable "Autocorrect Misspelled Words"
@@ -522,11 +522,11 @@ reg add "HKCU\SOFTWARE\Microsoft\TabletTip\1.7" /v "EnableDoubleTapSpace" /t REG
 :: Disable Text Suggestions on Touch Keyboard
 reg add "HKCU\SOFTWARE\Microsoft\TabletTip\1.7" /v "EnableTextPrediction" /t REG_DWORD /d "0" /f > nul 2> nul
 
-:: Remove "Quick Access" from "This PC" 
+:: Remove "Quick Access" from "This PC"
 reg add "HKLM\SOFTWARE\Microsoft\Windows\CurrentVersion\Explorer" /v "HubMode" /t REG_DWORD /d "1" /f > nul 2> nul
 reg delete "HKLM\SOFTWARE\Microsoft\Windows\CurrentVersion\Explorer\Desktop\NameSpace_36354489\{f874310e-b6b7-47dc-bc84-b9e6b38f5903}" /f > nul 2> nul
 
-:: Hide Recently Added Applications from Start Menu 
+:: Hide Recently Added Applications from Start Menu
 reg add "HKLM\SOFTWARE\Policies\Microsoft\Windows\Explorer" /v "HideRecentlyAddedApps" /t REG_DWORD /d "1" /f > nul 2> nul
 
 :: Hide Most Used Applications from Start Menu 
@@ -548,45 +548,45 @@ reg delete "HKLM\SOFTWARE\Classes\Folder\ShellEx\ContextMenuHandlers\Library Loc
 :: Remove "Share" from Context Menu
 reg delete "HKCR\*\shellex\ContextMenuHandlers\ModernSharing" /f > nul 2> nul
 
-:: Remove "Troubleshoot Compatibility" from Context Menu 
+:: Remove "Troubleshoot Compatibility" from Context Menu
 reg add "HKLM\SOFTWARE\Microsoft\Windows\CurrentVersion\Shell Extensions\Blocked" /v "{1d27f844-3a1f-4410-85ac-14651078412d}" /t REG_SZ /d "" /f > nul 2> nul
 
-:: Remove "-Shortcut" Text Addition 
+:: Remove "-Shortcut" Text Addition
 reg add "HKCU\SOFTWARE\Microsoft\Windows\CurrentVersion\Explorer\NamingTemplates" /v "ShortcutNameTemplate" /t REG_SZ /d "\"%.lnk\"" /f > nul 2> nul
 
-:: Remove "Send To" from Context Menu 
+:: Remove "Send To" from Context Menu
 reg delete "HKCR\AllFilesystemObjects\shellex\ContextMenuHandlers\SendTo" /f > nul 2> nul
 reg delete "HKCR\UserLibraryFolder\shellex\ContextMenuHandlers\SendTo" /f > nul 2> nul
 
-:: Add "New CMD File" to Context Menu 
+:: Add "New CMD File" to Context Menu
 reg add "HKCR\.cmd\ShellNew" /v "NullFile" /t REG_SZ /d "" /f > nul 2> nul
 
-:: Add "New Batch File" to Context Menu 
+:: Add "New Batch File" to Context Menu
 reg add "HKCR\.bat\ShellNew" /v "NullFile" /t REG_SZ /d "" /f > nul 2> nul
 
-:: Add "Registry Entries" to Context Menu ; Credits to DuckOS 
+:: Add "Registry Entries" to Context Menu ; Credits to DuckOS
 reg add "HKLM\SOFTWARE\Classes\.reg\ShellNew" /v "ItemName" /t REG_EXPAND_SZ /d "@%WinDir%\regedit.exe,-309" /f > nul 2> nul
 reg add "HKLM\SOFTWARE\Classes\.reg\ShellNew" /v "NullFile" /t REG_SZ /d "" /f > nul 2> nul
 
-:: Add Option "Merge as TrustedInstaller" ; Credits to DuckOS 
+:: Add Option "Merge as TrustedInstaller" ; Credits to DuckOS
 reg add "HKCR\regfile\Shell\RunAs" /ve /t REG_SZ /d "Merge as TrustedInstaller" /f > nul 2> nul
 reg add "HKCR\regfile\Shell\RunAs" /v "HasLUAShield" /t REG_SZ /d "1" /f > nul 2> nul
 reg add "HKCR\regfile\Shell\RunAs\Command" /ve /t REG_SZ /d "%WinDir%\gyrOS\NSudo\NSudoLG.exe -U:T -P:E reg import "%%1"" /f > nul 2> nul
 
-:: Add "Install CAB File" to Context Menu 
+:: Add "Install CAB File" to Context Menu
 reg delete "HKCR\CABFolder\Shell\RunAs" /f > nul 2> nul
 reg add "HKCR\CABFolder\Shell\RunAs" /v "" /t REG_SZ /d "Install" /f > nul 2> nul
 reg add "HKCR\CABFolder\Shell\RunAs" /v "HasLUAShield" /t REG_SZ /d "" /f > nul 2> nul
 reg add "HKCR\CABFolder\Shell\RunAs\Command" /v "" /t REG_SZ /d "cmd /k dism /online /add-package /packagepath:\"%1\"" /f > nul 2> nul
 
-:: Add "Copy as Path" to Context Menu 
+:: Add "Copy as Path" to Context Menu
 reg add "HKCR\Allfilesystemobjects\shell\windows.copyaspath" /v "" /t REG_SZ /d "Copy &as path" /f > nul 2> nul
 reg add "HKCR\Allfilesystemobjects\shell\windows.copyaspath" /v "Icon" /t REG_SZ /d "imageres.dll,-5302" /f > nul 2> nul
 reg add "HKCR\Allfilesystemobjects\shell\windows.copyaspath" /v "InvokeCommandOnSelection" /t REG_DWORD /d 0x00000001 /f > nul 2> nul
 reg add "HKCR\Allfilesystemobjects\shell\windows.copyaspath" /v "VerbHandler" /t REG_SZ /d "{f3d06e7c-1e45-4a26-847e-f9fcdee59be0}" /f > nul 2> nul
 reg add "HKCR\Allfilesystemobjects\shell\windows.copyaspath" /v "VerbName" /t REG_SZ /d "copyaspath" /f > nul 2> nul
 
-:: Remove "Restore Previous Versions" from Context Menu ; Credits to Melody 
+:: Remove "Restore Previous Versions" from Context Menu ; Credits to Melody
 reg delete "HKCR\AllFilesystemObjects\shellex\PropertySheetHandlers\{596AB062-B4D2-4215-9F74-E9109B0A8153}" /f > nul 2> nul
 reg delete "HKCR\CLSID\{450D8FBA-AD25-11D0-98A8-0800361B1103}\shellex\PropertySheetHandlers\{596AB062-B4D2-4215-9F74-E9109B0A8153}" /f > nul 2> nul
 reg delete "HKCR\Directory\shellex\PropertySheetHandlers\{596AB062-B4D2-4215-9F74-E9109B0A8153}" /f > nul 2> nul
@@ -598,7 +598,7 @@ reg delete "HKCR\Drive\shellex\ContextMenuHandlers\{596AB062-B4D2-4215-9F74-E910
 reg add "HKCU\SOFTWARE\Microsoft\Windows\CurrentVersion\Explorer" /v "NoPreviousVersionsPage" /t REG_DWORD /d "1" /f > nul 2> nul
 reg add "HKCU\SOFTWARE\Policies\Microsoft\PreviousVersions" /v "DisableLocalPage" /t REG_DWORD /d "1" /f > nul 2> nul
 
-:: Remove "Look for an Application in the Microsoft Store" 
+:: Remove "Look for an Application in the Microsoft Store"
 reg add "HKCU\SOFTWARE\Policies\Microsoft\Windows\Explorer" /v "NoUseStoreOpenWith" /t REG_DWORD /d "0xffffffff" /f > nul 2> nul
 reg add "HKLM\SOFTWARE\Policies\Microsoft\Windows\Explorer" /v "NoUseStoreOpenWith" /t REG_DWORD /d "1" /f > nul 2> nul
 
