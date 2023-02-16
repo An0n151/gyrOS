@@ -8,6 +8,9 @@
 setlocal EnableDelayedExpansion
 title gyrOS Post Installation Script
 
+set "VERSION=0.1"
+set "VERSION_DATE=16/02/2023"
+
 :: Configure Variables
 set "currentuser=%WinDir%\gyrOS\NSudo\NSudoLG.exe -U:C -P:E -Wait"
 set "PowerShell=%WinDir%\System32\WindowsPowerShell\v1.0\PowerShell.exe -NoProfile -NonInteractive -ExecutionPolicy Bypass -Command"
@@ -19,7 +22,7 @@ wmic path Win32_VideoController get Name | findstr "NVIDIA" > nul 2> nul && set 
 wmic path Win32_VideoController get Name | findstr "AMD ATI" > nul 2> nul && set "GPU=AMD"
 wmic path Win32_VideoController get Name | findstr "Intel" > nul 2> nul && set "GPU=INTEL"
 :: Set User ; Credits to ArtanisInc
-for /f %%i in ('wmic path Win32_UserAccount where name^="%username%" get sid ^| findstr "S-"') do set "USER_ID=%%i"
+for /f %%i in ('wmic path Win32_UserAccount where name^="%username%" get sid ^| findstr "S-"') do set "USER_SID=%%i"
 
 echo _____________________________________________________________________________________________
 echo.
