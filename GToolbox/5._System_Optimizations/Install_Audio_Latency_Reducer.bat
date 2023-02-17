@@ -1,4 +1,4 @@
-:: gyrOS ::
+:: CREDITS TO HONECTRL ::
 
 @echo off
 
