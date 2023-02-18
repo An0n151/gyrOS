@@ -394,7 +394,7 @@ reg add "HKCU\Control Panel\Mouse" /v "MouseSensitivity" /t REG_SZ /d "10" /f > 
 attrib +h "%drive%\perflogs" > nul 2> nul
 
 :: Static Scrollbars
-reg add "HKCU\\Control Panel\Accessibility" /v "DynamicScrollbars" /t REG_DWORD /d "0" /f > nul 2> nul
+reg add "HKCU\Control Panel\Accessibility" /v "DynamicScrollbars" /t REG_DWORD /d "0" /f > nul 2> nul
 
 :: Configure BSOD ; Credits to HoneCtrl
 reg add "HKLM\SYSTEM\CurrentControlSet\Control\CrashControl" /v "DisplayParameters" /t REG_DWORD /d "1" /f > nul 2> nul
@@ -1524,7 +1524,6 @@ for /f %%i in ('wmic path Win32_NetworkAdapter get PNPDeviceID^| findstr /L "PCI
 )
 
 :: Network Optimizations
-PowerShell "Disable-NetAdapterChecksumOffload -Name *" > nul 2> nul
 PowerShell "Enable-NetAdapterRss -Name *" > nul 2> nul
 PowerShell "Disable-NetAdapterLso -Name *" > nul 2> nul
 PowerShell "Set-NetOffloadGlobalSetting -PacketCoalescingFilter Disabled" > nul 2> nul
@@ -1606,7 +1605,6 @@ for /f %%i in ('wmic path win32_VideoController get PNPDeviceID ^| findstr /L "V
 for /f %%i in ('wmic path win32_VideoController get PNPDeviceID ^| findstr /L "VEN_"') do reg delete "HKLM\SYSTEM\CurrentControlSet\Enum\%%i\Device Parameters\Interrupt Management\Affinity Policy" /v "DevicePriority" /f > nul 2> nul
 for /f %%i in ('wmic path Win32_NetworkAdapter get PNPDeviceID ^| findstr /L "VEN_"') do reg add "HKLM\SYSTEM\CurrentControlSet\Enum\%%i\Device Parameters\Interrupt Management\MessageSignaledInterruptProperties" /v "MSISupported" /t REG_DWORD /d "1" /f > nul 2> nul
 for /f %%i in ('wmic path Win32_NetworkAdapter get PNPDeviceID ^| findstr /L "VEN_"') do reg delete "HKLM\SYSTEM\CurrentControlSet\Enum\%%i\Device Parameters\Interrupt Management\Affinity Policy" /v "DevicePriority" /f > nul 2> nul
-
 
 :::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::
 
@@ -1840,8 +1838,6 @@ echo  SYSTEM PURIFICATION - PHASE 4...
 echo __________________________________
 echo.
 
-PowerShell "Disable-MMAgent -MemoryCompression" > nul 2> nul
-PowerShell "Disable-MMAgent -PageCombining -mc" > nul 2> nul
 reg add "HKLM\SYSTEM\CurrentControlSet\Control\Session Manager\Memory Management" /v "DisablePagingExecutive" /t REG_DWORD /d "1" /f > nul 2> nul
 reg add "HKLM\SYSTEM\CurrentControlSet\Control\Session Manager\Memory Management" /v "DisablePageCombining" /t REG_DWORD /d "1" /f > nul 2> nul
 reg add "HKLM\SYSTEM\CurrentControlSet\Control\Session Manager" /v "ProtectionMode" /t REG_DWORD /d "0" /f > nul 2> nul
