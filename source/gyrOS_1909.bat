@@ -8,8 +8,8 @@
 setlocal EnableDelayedExpansion
 title gyrOS Post Installation Script
 
-set "VERSION=X4"
-set "VERSION_DATE=16/02/2023"
+set "VERSION=X3.1"
+set "VERSION_DATE=19/02/2023"
 
 :: Configure Variables
 set "currentuser=%WinDir%\gyrOS\NSudo\NSudoLG.exe -U:C -P:E -Wait"
