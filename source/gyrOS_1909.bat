@@ -246,6 +246,9 @@ sc config "lmhosts" start= disabled > nul 2> nul
 sc config "SSDPSRV" start= disabled > nul 2> nul
 sc config "StorSvc" start= demand > nul 2> nul
 sc config "Dhcp" start= demand > nul 2> nul
+sc config "IKEEXT" start= disabled > nul 2> nul
+sc config "WerSvc" start= disabled > nul 2> nul
+sc config "wercplsupport" start= disabled > nul 2> nul
 ::sc config "EventLog" start= disabled > nul 2> nul / Breaks Network Connection
 ::sc config "AppMgmt" start= disabled > nul 2> nul
 ::sc config "AppIDSvc" start= disabled > nul 2> nul
@@ -272,6 +275,7 @@ rd "%drive%\Users\%username%\AppData\Local\OO Software" /s /q > nul 2> nul
 for %%a in ({990A2BD7-E738-46C7-B26F-1CF8FB9F1391} {4116F60B-25B3-4662-B732-99A6111EDC0B} {D94EE5D8-D189-4994-83D2-F68D7D41B0E6} {E0CBF06C-CD8B-4647-BB8A-263B43F0F974} {C06FF265-AE09-48F0-812C-16753D7CBA83} {D48179BE-EC20-11D1-B6B8-00C04FA372A7} {997B5D8D-C442-4F2E-BAF3-9C8E671E9E21} {6BDD1FC1-810F-11D0-BEC7-08002BE2092F} {4D36E97B-E325-11CE-BFC1-08002BE10318} {A0A588A4-C46F-4B37-B7EA-C82FE89870C6} {7EBEFBC0-3200-11D2-B4C2-00A0C9697D07} {4D36E965-E325-11CE-BFC1-08002BE10318} {53D29EF7-377C-4D14-864B-EB3A85769359} {4658EE7E-F050-11D1-B6BD-00C04FA372A7} {6BDD1FC5-810F-11D0-BEC7-08002BE2092F} {DB4F6DDD-9C0E-45E4-9597-78DBBAD0F412} {4D36E978-E325-11CE-BFC1-08002BE10318} {4D36E977-E325-11CE-BFC1-08002BE10318} {6D807884-7D21-11CF-801C-08002BE10318} {CE5939AE-EBDE-11D0-B181-0000F8753EC4} {4D36E969-E325-11CE-BFC1-08002BE10318} {4D36E970-E325-11CE-BFC1-08002BE10318} {4D36E979-E325-11CE-BFC1-08002BE10318} {4D36E96D-E325-11CE-BFC1-08002BE10318}) do (
     %currentuser% reg delete "HKLM\System\CurrentControlSet\Control\Class\%%a" /f
 ) > nul 2> nul
+
 :: Clean Windows Defender Registry Entries
 for %%i in ("HKLM\SOFTWARE\Microsoft\Windows Defender" "HKLM\SOFTWARE\Policies\Microsoft\Windows Defender" "HKLM\SOFTWARE\Policies\Microsoft\Windows Defender Security Center" "HKCU\SOFTWARE\Microsoft\Windows Defender Security Center" "HKLM\SOFTWARE\WOW6432Node\Policies\Microsoft\Windows Defender" "HKLM\SOFTWARE\Microsoft\PolicyManager\default\WindowsDefenderSecurityCenter" "HKLM\SOFTWARE\Microsoft\PolicyManager\default\Defender" "HKLM\SOFTWARE\Policies\Microsoft\Microsoft Antimalware" "HKCR\Folder\shell\WindowsDefender" "HKCR\DesktopBackground\Shell\WindowsSecurity" "HKLM\SOFTWARE\Microsoft\Security Center" "HKLM\SYSTEM\CurrentControlSet\Services\wscsvc" "HKLM\SYSTEM\CurrentControlSet\Services\SecurityHealthService") do (
 	%currentuser% reg delete %%i /f
@@ -297,6 +301,7 @@ reg add "HKCU\SOFTWARE\Microsoft\Windows\CurrentVersion\Search" /v "IsAssignedAc
 reg add "HKCU\SOFTWARE\Microsoft\Windows\CurrentVersion\Search" /v "IsMicrophoneAvailable" /t REG_DWORD /d "0" /f > nul 2> nul
 reg add "HKCU\SOFTWARE\Microsoft\Windows\CurrentVersion\Search" /v "IsWindowsHelloActive" /t REG_DWORD /d "0" /f > nul 2> nul
 reg add "HKCU\SOFTWARE\Microsoft\Windows\CurrentVersion\Search" /v "DeviceHistoryEnabled" /t REG_DWORD /d "0" /f > nul 2> nul
+
 :: Disable Search Indexing
 reg add "HKLM\SOFTWARE\Policies\Microsoft\Windows\Windows Search" /v "PreventIndexOnBattery" /t REG_DWORD /d "1" /f > nul 2> nul
 reg add "HKLM\SOFTWARE\Policies\Microsoft\Windows\Windows Search" /v "PreventIndex" /t REG_DWORD /d "1" /f > nul 2> nul
@@ -323,6 +328,7 @@ reg add "HKLM\SOFTWARE\Policies\Microsoft\Windows\WindowsUpdate\AU" /v "AUOption
 reg add "HKLM\SOFTWARE\Policies\Microsoft\Windows\WindowsUpdate\AU" /v "NoAutoRebootWithLoggedOnUsers" /t REG_DWORD /d "1" /f > nul 2> nul
 reg add "HKLM\SOFTWARE\Policies\Microsoft\Windows\WindowsUpdate\AU" /v "AlwaysAutoRebootAtScheduledTime" /t REG_DWORD /d "0" /f > nul 2> nul
 reg add "HKLM\SOFTWARE\Policies\Microsoft\MRT" /v "DontOfferThroughWUAU" /t REG_DWORD /d "1" /f > nul 2> nul
+
 :: Disable Windows Upgrade and Insider Previews
 reg add "HKLM\SOFTWARE\Policies\Microsoft\Windows\WindowsUpdate" /v "DisableOSUpgrade" /t REG_DWORD /d "1" /f > nul 2> nul
 reg add "HKLM\SOFTWARE\Microsoft\Windows\CurrentVersion\WindowsUpdate\OSUpgrade" /v "AllowOSUpgrade" /t REG_DWORD /d "0" /f > nul 2> nul
@@ -453,6 +459,7 @@ reg add "HKCU\SOFTWARE\Policies\Microsoft\Windows\Explorer" /v "NoRemoteDestinat
 reg delete "HKLM\SYSTEM\CurrentControlSet\Services\SharedAccess\Parameters\FirewallPolicy\FirewallRules" /f > nul 2> nul
 reg add "HKLM\SYSTEM\CurrentControlSet\Services\SharedAccess\Parameters\FirewallPolicy\FirewallRules" /f > nul 2> nul
 netsh advfirewall firewall set rule group="Network Discovery" new enable=Yes > nul 2> nul
+
 :: Disable Firewall
 netsh advfirewall set allprofiles state off > nul 2> nul
 reg add "HKLM\SYSTEM\CurrentControlSet\Services\mpssvc" /v "Start" /t REG_DWORD /d "3" /f > nul 2> nul
@@ -593,7 +600,7 @@ reg add "HKLM\SOFTWARE\Policies\Microsoft\Windows\Explorer" /v "HideRecentlyAdde
 :: Hide Most Used Applications from Start Menu
 reg add "HKLM\SOFTWARE\Policies\Microsoft\Windows\Explorer" /v "NoStartMenuMFUprogramsList" /t REG_DWORD /d "1" /f > nul 2> nul
 
-:: Disable Enable Open Xbox Game Bar using Game Controller
+:: Disable "Enable Open Xbox Game Bar using Game Controller"
 reg add "HKCU\SOFTWARE\Microsoft\GameBar" /v "UseNexusForGameBarEnabled" /t REG_DWORD /d "0" /f > nul 2> nul
 
 :: Disable "USB Connection Error" Notification
@@ -667,8 +674,7 @@ for /f "tokens=*" %%i in ('reg query "HKCU\SOFTWARE\Microsoft\Windows\CurrentVer
 	%currentuser% reg delete "%%i" /f
 ) > nul 2> nul
 
-:: Attempt to Remove "Print" from Context Menu***
-reg delete "HKCR\*\shellex\ContextMenuHandlers\Print" /f > nul 2> nul
+:: Remove "Print" from Context Menu
 
 :: Disable Ease of Access Settings
 reg add "HKCU\SOFTWARE\Microsoft\Ease of Access" /v "selfvoice" /t REG_DWORD /d "0" /f > nul 2> nul
@@ -902,6 +908,7 @@ reg add "HKLM\SOFTWARE\Policies\Microsoft\Windows\ScheduledDiagnostics" /v "Enab
 reg add "HKLM\SOFTWARE\Microsoft\Windows\ScheduledDiagnostics" /v "EnabledExecution" /t REG_DWORD /d "0" /f > nul 2> nul
 reg add "HKLM\SOFTWARE\Policies\Microsoft\Windows\ScriptedDiagnosticsProvider\Policy" /v "DisableQueryRemoteServer" /t REG_DWORD /d "1" /f > nul 2> nul
 reg add "HKLM\SOFTWARE\Policies\Microsoft\Windows\ScriptedDiagnosticsProvider\Policy" /v "EnableQueryRemoteServer" /t REG_DWORD /d "0" /f > nul 2> nul
+
 :: Disable Diagnostic Tracing
 %currentuser% reg add "HKLM\SYSTEM\CurrentControlSet\Control\Diagnostics\Performance" /v "DisableDiagnosticTracing" /t REG_DWORD /d "1" /f > nul 2> nul
 
@@ -931,7 +938,7 @@ reg add "HKCU\Control Panel\International" /v "iFiltering" /t REG_DWORD /d 0 /f 
 reg add "HKCU\Control Panel\International" /v "iFilteringLevel" /t REG_DWORD /d 0 /f > nul 2> nul
 %currentuser% reg add "HKLM\SOFTWARE\Microsoft\Windows\CurrentVersion\AppHost\Download" /v "CheckExeSignatures" /t REG_SZ /d "no" /f > nul 2> nul
 
-:: Potentional Fix for Services Being Unable to Start
+:: Increase Timeout for Services Being Unable to Start
 reg add "HKLM\SYSTEM\CurrentControlSet\Control" /v "ServicesPipeTimeout" /t REG_DWORD /d "180000" /f > nul 2> nul
 
 :: Disable Input Prediction
@@ -1083,6 +1090,8 @@ reg add "HKLM\SOFTWARE\Policies\Microsoft\FVE" /v "DisableExternalDMAUnderLock" 
 %WinDir%\gyrOS\DevManView.exe /disable "WAN Miniport (IKEv2)" > nul 2> nul
 %WinDir%\gyrOS\DevManView.exe /disable "WAN Miniport (L2TP)" > nul 2> nul
 %WinDir%\gyrOS\DevManView.exe /disable "WAN Miniport (IP)" > nul 2> nul
+%WinDir%\gyrOS\DevManView.exe /disable "Microsoft RRAS Root Enumerator" > nul 2> nul
+%WinDir%\gyrOS\DevManView.exe /disable "NDIS Virtual Network Adapter Enumerator" > nul 2> nul
 %WinDir%\gyrOS\DevManView.exe /disable "System Speaker" MemoryDiagnostic > nul 2> nul
 %WinDir%\gyrOS\DevManView.exe /disable "System Speaker" > nul 2> nul
 %WinDir%\gyrOS\DevManView.exe /disable "System Timer" > nul 2> nul
@@ -1091,6 +1100,8 @@ reg add "HKLM\SOFTWARE\Policies\Microsoft\FVE" /v "DisableExternalDMAUnderLock" 
 %WinDir%\gyrOS\DevManView.exe /disable "Microsoft Hyper-V PCI Server" > nul 2> nul
 %WinDir%\gyrOS\DevManView.exe /disable "UMBus Root Bus Enumerator" > nul 2> nul
 %WinDir%\gyrOS\DevManView.exe /disable "Microsoft System Management BIOS Driver" > nul 2> nul
+%WinDir%\gyrOS\DevManView.exe /disable "ACPI Processor Aggregator" > nul 2> nul
+%WinDir%\gyrOS\DevManView.exe /disable "Microsoft Windows Management Interface for ACPI" > nul 2> nul
 %WinDir%\gyrOS\DevManView.exe /disable "High Precision Event Timer" > nul 2> nul
 %WinDir%\gyrOS\DevManView.exe /disable "PCI Encryption/Decryption Controller" > nul 2> nul
 %WinDir%\gyrOS\DevManView.exe /disable "AMD PSP" > nul 2> nul
@@ -1105,9 +1116,7 @@ reg add "HKLM\SOFTWARE\Policies\Microsoft\FVE" /v "DisableExternalDMAUnderLock" 
 %WinDir%\gyrOS\DevManView.exe /disable "Composite Bus Enumerator" > nul 2> nul
 %WinDir%\gyrOS\DevManView.exe /disable "Microsoft Kernel Debug Network Adapter" > nul 2> nul
 %WinDir%\gyrOS\DevManView.exe /disable "SM Bus Controller" > nul 2> nul
-%WinDir%\gyrOS\DevManView.exe /disable "NDIS Virtual Network Adapter Enumerator" > nul 2> nul
 %WinDir%\gyrOS\DevManView.exe /disable "Numeric Data Processor" > nul 2> nul
-%WinDir%\gyrOS\DevManView.exe /disable "Microsoft RRAS Root Enumerator" > nul 2> nul
 %WinDir%\gyrOS\DevManView.exe /disable "Microsoft Hyper-V Virtual Disk Server" > nul 2> nul
 %WinDir%\gyrOS\DevManView.exe /disable "System CMOS/real time clock" > nul 2> nul
 %WinDir%\gyrOS\DevManView.exe /disable "PCI Simple Communications Controller" > nul 2> nul
@@ -1246,20 +1255,19 @@ reg add "HKLM\SYSTEM\CurrentControlSet\Control" /v "SvcHostSplitThresholdInKB" /
 bcdedit /set x2apicpolicy Enable > nul 2> nul
 bcdedit /set uselegacyapicmode No > nul 2> nul
 bcdedit /set configaccesspolicy Default > nul 2> nul
-bcdedit /set MSI Default > nul 2> nul
-bcdedit /set nx OptIn > nul 2> nul
+::bcdedit /set nx OptIn > nul 2> nul
 bcdedit /set quietboot Yes > nul 2> nul
 bcdedit /set bootmenupolicy Standard > nul 2> nul
 bcdedit /set recoveryenabled No > nul 2> nul
-bcdedit /set allowedinmemorysettings 0x17000077 > nul 2> nul
+bcdedit /set allowedinmemorysettings 0x0 > nul 2> nul
 bcdedit /set isolatedcontext Yes > nul 2> nul
 bcdedit /set usephysicaldestination No > nul 2> nul
 bcdedit /set usefirmwarepcisettings No > nul 2> nul
-bcdedit /deletevalue useplatformclock > nul 2> nul
 bcdedit /set useplatformtick Yes > nul 2> nul
 bcdedit /set disabledynamictick Yes > nul 2> nul
 bcdedit /set tpmbootentropy ForceDisable > nul 2> nul
 bcdedit /set description gyrOS > nul 2> nul
+bcdedit /deletevalue useplatformclock > nul 2> nul
 
 :: Lower Latency
 ::bcdedit /set tscsyncpolicy legacy > nul 2> nul
@@ -1716,7 +1724,6 @@ reg add "HKLM\SYSTEM\CurrentControlSet\Services\DXGKrnl" /v "MonitorRefreshLaten
 
 :: CPU Optimizations***
 reg add "HKLM\SYSTEM\CurrentControlSet\Control\Session Manager\kernel" /v "DistributeTimers" /t REG_DWORD /d "1" /f > nul 2> nul
-reg add "HKLM\SYSTEM\ControlSet001\Control\Class\{4D36E968-E325-11CE-BFC1-08002BE10318}\0000" /v "AllowDeepCStates" /t REG_DWORD /d "0" /f > nul 2> nul
 reg add "HKLM\SOFTWARE\Microsoft\Input\Settings\ControllerProcessor\CursorMagnetism" /v "DistanceThresholdInDIPS" /t REG_DWORD /d "28" /f > nul 2> nul
 reg add "HKLM\SOFTWARE\Microsoft\Input\Settings\ControllerProcessor\CursorMagnetism" /v "MagnetismDelayInMilliseconds" /t REG_DWORD /d "32" /f > nul 2> nul
 reg add "HKLM\SOFTWARE\Microsoft\Input\Settings\ControllerProcessor\CursorMagnetism" /v "MagnetismUpdateIntervalInMilliseconds" /t REG_DWORD /d "10" /f > nul 2> nul
@@ -1725,6 +1732,8 @@ reg add "HKLM\SOFTWARE\Microsoft\Input\Settings\ControllerProcessor\CursorSpeed"
 reg add "HKLM\SOFTWARE\Microsoft\Input\Settings\ControllerProcessor\CursorSpeed" /v "CursorSensitivity" /t REG_DWORD /d "2710" /f > nul 2> nul
 reg add "HKLM\SOFTWARE\Microsoft\Input\Settings\ControllerProcessor\CursorMagnetism" /v "VelocityInDIPSPerSecond" /t REG_DWORD /d "168" /f > nul 2> nul
 reg add "HKLM\SOFTWARE\Microsoft\Input\Settings\ControllerProcessor\CursorSpeed" /v "CursorUpdateInterval" /t REG_DWORD /d "1" /f > nul 2> nul
+:: Intel CPU
+reg add "HKLM\SYSTEM\CurrentControlSet\Control\Power\PowerThrottling" /v "PowerThrottlingOff" /t REG_DWORD /d "1" /f
 
 :: File System Optimizations 
 reg add "HKLM\SYSTEM\CurrentControlSet\Control\FileSystem" /v "FilterSupportedFeaturesMode" /t REG_DWORD /d "0" /f > nul 2> nul
@@ -1847,7 +1856,6 @@ reg add "HKLM\SOFTWARE\Microsoft\Windows\CurrentVersion\Explorer" /v "AlwaysUnlo
 
 :::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::
 
-:: Fixes for bugs caused by code or stripped components
 :: Fix Folder View Settings
 reg add "HKCU\SOFTWARE\Microsoft\Windows\CurrentVersion\Policies\Explorer" /v "NoSaveSettings" /t REG_SZ /d "0" /f > nul 2> nul
 reg add "HKLM\SOFTWARE\Microsoft\Windows\CurrentVersion\Policies\Explorer" /v "NoSaveSettings" /t REG_SZ /d "0" /f > nul 2> nul
@@ -1855,6 +1863,7 @@ reg delete "HKCU\SOFTWARE\Classes\Local Settings\Software\Microsoft\Windows\Shel
 reg delete "HKCU\SOFTWARE\Classes\Local Settings\Software\Microsoft\Windows\Shell\Bags" /f > nul 2> nul
 reg add "HKCU\SOFTWARE\Classes\Local Settings\Software\Microsoft\Windows\Shell\Bags\All Folders\Shell" /v "FolderType" /t "REG_SZ" /d "NotSpecified" /f > nul 2> nul
 reg add "HKCU\SOFTWARE\Classes\Local Settings\Software\Microsoft\Windows\Shell" /v "BagMRU Size" /t "REG_DWORD" /d "2710" /f > nul 2> nul
+
 :: Disable "Do not Connect to Windows Update Internet Locations" / Used to Fixed Microsoft Store
 ::reg add "HKEY_LOCAL_MACHINE\SOFTWARE\Policies\Microsoft\Windows\WindowsUpdate" /v "DoNotConnectToWindowsUpdateInternetLocations" /t REG_DWORD /d "0" /f > nul 2> nul
 

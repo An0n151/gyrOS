@@ -175,6 +175,9 @@ sc config "lmhosts" start= disabled > nul 2> nul
 sc config "SSDPSRV" start= disabled > nul 2> nul
 sc config "StorSvc" start= demand > nul 2> nul
 sc config "Dhcp" start= demand > nul 2> nul
+sc config "IKEEXT" start= disabled > nul 2> nul
+sc config "WerSvc" start= disabled > nul 2> nul
+sc config "wercplsupport" start= disabled > nul 2> nul
 ::sc config "EventLog" start= disabled > nul 2> nul / Breaks Network Connection
 ::sc config "AppMgmt" start= disabled > nul 2> nul
 ::sc config "AppIDSvc" start= disabled > nul 2> nul
@@ -603,8 +606,7 @@ for /f "tokens=*" %%i in ('reg query "HKCU\SOFTWARE\Microsoft\Windows\CurrentVer
 	%currentuser% reg delete "%%i" /f
 ) > nul 2> nul
 
-:: Attempt to Remove "Print" from Context Menu***
-reg delete "HKCR\*\shellex\ContextMenuHandlers\Print" /f > nul 2> nul
+:: Remove "Print" from Context Menu
 
 :: Disable Ease of Access Settings
 reg add "HKCU\SOFTWARE\Microsoft\Ease of Access" /v "selfvoice" /t REG_DWORD /d "0" /f > nul 2> nul
@@ -1789,7 +1791,6 @@ reg add "HKLM\SOFTWARE\Microsoft\Windows\CurrentVersion\Explorer" /v "AlwaysUnlo
 
 :::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::
 
-:: Fixes for bugs caused by code or stripped components
 :: Fix Folder View Settings
 reg add "HKCU\SOFTWARE\Microsoft\Windows\CurrentVersion\Policies\Explorer" /v "NoSaveSettings" /t REG_SZ /d "0" /f > nul 2> nul
 reg add "HKLM\SOFTWARE\Microsoft\Windows\CurrentVersion\Policies\Explorer" /v "NoSaveSettings" /t REG_SZ /d "0" /f > nul 2> nul
@@ -1797,6 +1798,7 @@ reg delete "HKCU\SOFTWARE\Classes\Local Settings\Software\Microsoft\Windows\Shel
 reg delete "HKCU\SOFTWARE\Classes\Local Settings\Software\Microsoft\Windows\Shell\Bags" /f > nul 2> nul
 reg add "HKCU\SOFTWARE\Classes\Local Settings\Software\Microsoft\Windows\Shell\Bags\All Folders\Shell" /v "FolderType" /t "REG_SZ" /d "NotSpecified" /f > nul 2> nul
 reg add "HKCU\SOFTWARE\Classes\Local Settings\Software\Microsoft\Windows\Shell" /v "BagMRU Size" /t "REG_DWORD" /d "2710" /f > nul 2> nul
+
 :: Disable "Do not Connect to Windows Update Internet Locations" / Used to Fixed Microsoft Store
 ::reg add "HKEY_LOCAL_MACHINE\SOFTWARE\Policies\Microsoft\Windows\WindowsUpdate" /v "DoNotConnectToWindowsUpdateInternetLocations" /t REG_DWORD /d "0" /f > nul 2> nul
 

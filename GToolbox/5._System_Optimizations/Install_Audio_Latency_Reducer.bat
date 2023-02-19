@@ -1,4 +1,4 @@
-:: CREDITS TO HONECTRL ::
+:: Credits to HoneCtrl ::
 
 @echo off
 
@@ -9,7 +9,5 @@
 %WinDir%\gyrOS\nssm.exe set LLAudio AppAffinity 1
 %WinDir%\gyrOS\nssm.exe set LLAudio start SERVICE_AUTO_START
 %WinDir%\gyrOS\nssm.exe start LLAudio
-del /f /q %WinDir%\gyrOS\REAL.exe
-del /f /q %WinDir%\gyrOS\nssm.exe
 
 pause
