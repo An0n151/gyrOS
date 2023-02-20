@@ -1,6 +1,6 @@
 :: ### gyrOS ###
 
-:: Enable WiFi
+:: Disable XBox Services
 
 @echo off
 setlocal EnableDelayedExpansion
