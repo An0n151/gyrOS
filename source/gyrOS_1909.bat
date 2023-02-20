@@ -137,6 +137,36 @@ echo  INSTALLING OPEN-SHELL... 3/3
 echo ______________________________
 echo.
 "%drive%\ProgramData\Installers\OpenShellSetup.exe" /qn
+timeout /t 2
+reg add "HKCU\SOFTWARE\OpenShell" /t REG_SZ "" /f > nul 2> nul
+reg add "HKCU\SOFTWARE\OpenShell\OpenShell" /t REG_SZ "" /f > nul 2> nul
+reg add "HKCU\SOFTWARE\OpenShell\OpenShell\Settings" /t REG_SZ "" /f > nul 2> nul
+reg add "HKCU\SOFTWARE\OpenShell\ClassicExplorer" /t REG_SZ "" /f > nul 2> nul
+reg add "HKCU\SOFTWARE\OpenShell\ClassicExplorer" /v "ShowedToolbar" /t REG_DWORD /d "1" /f > nul 2> nul
+reg add "HKCU\SOFTWARE\OpenShell\ClassicExplorer" /v "NewLine" /t REG_DWORD /d "0" /f > nul 2> nul
+reg add "HKCU\SOFTWARE\OpenShell\ClassicExplorer\Settings" /t REG_SZ "" /f > nul 2> nul
+reg add "HKCU\SOFTWARE\OpenShell\ClassicExplorer\Settings" /v "ShowStatusBar" /t REG_DWORD /d "0" /f > nul 2> nul
+reg add "HKCU\SOFTWARE\OpenShell\StartMenu" /t REG_SZ "" /f > nul 2> nul
+reg add "HKCU\SOFTWARE\OpenShell\StartMenu" /v "ShowedStyle2" /t REG_DWORD /d "1" /f > nul 2> nul
+reg add "HKCU\SOFTWARE\OpenShell\StartMenu" /v "CSettingsDlg" /t REG_BINARY /d "c80100001a0100000000000000000000360d00000100000000000000" /f > nul 2> nul
+reg add "HKCU\SOFTWARE\OpenShell\StartMenu" /v "OldItems" /t REG_BINARY "" /f > nul 2> nul
+reg add "HKCU\SOFTWARE\OpenShell\StartMenu" /v "ItemRanks" /t REG_BINARY /d "0" /f > nul 2> nul
+reg add "HKCU\SOFTWARE\OpenShell\StartMenu\Settings" /t REG_SZ "" /f > nul 2> nul
+reg add "HKCU\SOFTWARE\OpenShell\StartMenu\Settings" /v "Version" /t REG_DWORD /d "04040098" /f > nul 2> nul
+reg add "HKCU\SOFTWARE\OpenShell\StartMenu\Settings" /v "AllProgramsMetro" /t REG_DWORD /d "1" /f > nul 2> nul
+reg add "HKCU\SOFTWARE\OpenShell\StartMenu\Settings" /v "RecentMetroApps" /t REG_DWORD /d "1" /f > nul 2> nul
+reg add "HKCU\SOFTWARE\OpenShell\StartMenu\Settings" /v "StartScreenShortcut" /t REG_DWORD /d "0" /f > nul 2> nul
+reg add "HKCU\SOFTWARE\OpenShell\StartMenu\Settings" /v "SearchInternet" /t REG_DWORD /d "0" /f > nul 2> nul
+reg add "HKCU\SOFTWARE\OpenShell\StartMenu\Settings" /v "GlassOverride" /t REG_DWORD /d "1" /f > nul 2> nul
+reg add "HKCU\SOFTWARE\OpenShell\StartMenu\Settings" /v "GlassColor" /t REG_DWORD /d "0" /f > nul 2> nul
+reg add "HKCU\SOFTWARE\OpenShell\StartMenu\Settings" /v "SkinW7" /t REG_SZ /d "Midnight" /f > nul 2> nul
+reg add "HKCU\SOFTWARE\OpenShell\StartMenu\Settings" /v "SkinVariationW7" /t REG_SZ "" /f > nul 2> nul
+reg add "HKCU\SOFTWARE\OpenShell\StartMenu\Settings" /v "SkinOptionsW7" /t REG_MULTI_SZ /d "USER_IMAGE=1"\0"SMALL_ICONS=0"\0"LARGE_FONT=0"\0"DISABLE_MASK=0"\0"OPAQUE=0"\0"TRANSPARENT_LESS=0"\0"TRANSPARENT_MORE=1"\0"WHITE_SUBMENUS2=0" /f > nul 2> nul
+reg add "HKCU\SOFTWARE\OpenShell\StartMenu\Settings" /v "SkipMetro" /t REG_DWORD /d "1" /f > nul 2> nul
+reg add "HKCU\SOFTWARE\OpenShell\StartMenu\Settings" /v "MenuItems7" /t REG_MULTI_SZ /d "Item1.Command=user_files"\0"Item1.Settings=NOEXPAND"\0"Item2.Command=user_documents"\0"Item2.Settings=NOEXPAND"\0"Item3.Command=user_pictures"\0"Item3.Settings=NOEXPAND"\0"Item4.Command=user_music"\0"Item4.Settings=NOEXPAND"\0"Item5.Command=user_videos"\0"Item5.Settings=NOEXPAND"\0"Item6.Command=downloads"\0"Item6.Settings=NOEXPAND"\0"Item7.Command=homegroup"\0"Item7.Settings=ITEM_DISABLED"\0"Item8.Command=separator"\0"Item9.Command=games"\0"Item9.Settings=TRACK_RECENT|NOEXPAND|ITEM_DISABLED"\0"Item10.Command=favorites"\0"Item10.Settings=ITEM_DISABLED"\0"Item11.Command=recent_documents"\0"Item12.Command=computer"\0"Item12.Settings=NOEXPAND"\0"Item13.Command=network"\0"Item13.Settings=ITEM_DISABLED"\0"Item14.Command=network_connections"\0"Item14.Settings=ITEM_DISABLED"\0"Item15.Command=separator"\0"Item16.Command=control_panel"\0"Item16.Settings=TRACK_RECENT"\0"Item17.Command=pc_settings"\0"Item17.Settings=TRACK_RECENT"\0"Item18.Command=admin"\0"Item18.Settings=TRACK_RECENT|ITEM_DISABLED"\0"Item19.Command=devices"\0"Item19.Settings=ITEM_DISABLED"\0"Item20.Command=defaults"\0"Item20.Settings=ITEM_DISABLED"\0"Item21.Command=help"\0"Item21.Settings=ITEM_DISABLED"\0"Item22.Command=run"\0"Item23.Command=apps"\0"Item23.Settings=ITEM_DISABLED"\0"Item24.Command=windows_security"\0"Item24.Settings=ITEM_DISABLED" /f > nul 2> nul
+taskkill /f /im "explorer.exe" > nul 2> nul
+timeout /t 2 /nobreak > nul 2> nul
+start "" "explorer.exe" > nul 2> nul
 cls
 
 :Chocolatey
