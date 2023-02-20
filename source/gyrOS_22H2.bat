@@ -6,7 +6,7 @@
 
 @echo off
 setlocal EnableDelayedExpansion
-title gyrOS Post Installation Script
+title gyrOS Post Installation Script %VERSION%
 
 set "VERSION=X4.1"
 set "VERSION_DATE=19/02/2023"
@@ -15,12 +15,12 @@ set "VERSION_DATE=19/02/2023"
 set "currentuser=%WinDir%\gyrOS\NSudo\NSudoLG.exe -U:C -P:E -Wait"
 set "PowerShell=%WinDir%\System32\WindowsPowerShell\v1.0\PowerShell.exe -NoProfile -NonInteractive -ExecutionPolicy Bypass -Command"
 
-echo _____________________________________________________________________________________________
+echo _____________________________________________________________________________________________________
 echo.
-echo  THANK YOU FOR INSTALLING GYROS 22H2 X. PRESS ANY KEY TO START APPLYING GYROS OPTIMIZATIONS.
+echo  THANK YOU FOR INSTALLING GYROS 22H2 %VERSION%. PRESS ANY KEY TO START APPLYING GYROS OPTIMIZATIONS.
 echo.
-echo  DO NOT CLOSE THIS WINDOW.
-echo _____________________________________________________________________________________________
+echo  DO NOT CLOSE THIS WINDOW.            DO NOT CLOSE THIS WINDOW.            DO NOT CLOSE THIS WINDOW.
+echo _____________________________________________________________________________________________________
 echo.
 pause
 cls
@@ -719,7 +719,7 @@ cls
 
 echo __________________________________
 echo.
-echo  SYSTEM PURIFICATION - PHASE 2...
+echo  CONFIGURING APPLICATION SETTINGS
 echo __________________________________
 echo.
 
@@ -775,10 +775,10 @@ cls
 ::    UNDER THE HOOD SETTINGS     ::
 :: ============================== ::
 
-echo __________________________________
+echo _______________________________
 echo.
-echo  SYSTEM PURIFICATION - PHASE 3...
-echo __________________________________
+echo  TWEAKING SYSTEM FUNCTIONALITY
+echo _______________________________
 echo.
 
 :: Miscellaneous
@@ -1176,10 +1176,10 @@ cls
 ::   PERFORMANCE OPTIMIZATIONS    ::
 :: ============================== ::
 
-echo __________________________________
+echo _______________________________
 echo.
-echo  SYSTEM PURIFICATION - PHASE 4...
-echo __________________________________
+echo  OPTIMIZING SYSTEM PERFORMANCE
+echo _______________________________
 echo.
 
 :: Set Service Split Threshold ; Credits to HoneCtrl
@@ -1304,10 +1304,10 @@ reg add "HKLM\SYSTEM\CurrentControlSet\Services\NDIS\Parameters" /v "DefaultPnPC
 :: Choose Network Connection Type
 :NetworkType
 cls
-echo __________________________________
+echo _______________________________
 echo.
-echo  SYSTEM PURIFICATION - PHASE 4...
-echo __________________________________
+echo  OPTIMIZING SYSTEM PERFORMANCE
+echo _______________________________
 echo.
 echo.
 
@@ -1319,10 +1319,10 @@ goto NetworkType
 :: Ethernet Optimizations
 :Ethernet
 cls
-echo __________________________________
+echo _______________________________
 echo.
-echo  SYSTEM PURIFICATION - PHASE 4...
-echo __________________________________
+echo  OPTIMIZING SYSTEM PERFORMANCE
+echo _______________________________
 echo.
 
 netsh interface tcp set supplemental Internet congestionprovider=ctcp > nul 2> nul
@@ -1362,10 +1362,10 @@ goto SkipWiFiOptimizations
 :: Wi-Fi Optimizations 
 :WiFi
 cls
-echo __________________________________
+echo _______________________________
 echo.
-echo  SYSTEM PURIFICATION - PHASE 4...
-echo __________________________________
+echo  OPTIMIZING SYSTEM PERFORMANCE
+echo _______________________________
 echo.
 
 netsh interface tcp set supplemental Internet congestionprovider=newreno > nul 2> nul
@@ -1384,10 +1384,10 @@ reg add "HKLM\SOFTWARE\Microsoft\WcmSvc\wifinetworkmanager" /v "WiFiSenseOpen" /
 
 :SkipWiFiOptimizations
 cls
-echo __________________________________
+echo _______________________________
 echo.
-echo  SYSTEM PURIFICATION - PHASE 4...
-echo __________________________________
+echo  OPTIMIZING SYSTEM PERFORMANCE
+echo _______________________________
 echo.
 
 :: Netsh Tweaks ; Credits to HoneCtrl, Melody and ArtanisInc
@@ -1755,10 +1755,10 @@ goto SkipSSDOptimizations
 
 :SSD
 cls
-echo __________________________________
+echo _______________________________
 echo.
-echo  SYSTEM PURIFICATION - PHASE 4...
-echo __________________________________
+echo  OPTIMIZING SYSTEM PERFORMANCE
+echo _______________________________
 echo.
 
 fsutil behavior set disablelastaccess 0 > nul 2> nul
@@ -1776,10 +1776,10 @@ reg add "HKLM\SYSTEM\CurrentControlSet\Control\Class\{71a27cdd-812a-11d0-bec7-08
 
 :SkipSSDOptimizations
 cls
-echo __________________________________
+echo _______________________________
 echo.
-echo  SYSTEM PURIFICATION - PHASE 4...
-echo __________________________________
+echo  OPTIMIZING SYSTEM PERFORMANCE
+echo _______________________________
 echo.
 
 reg add "HKLM\SYSTEM\CurrentControlSet\Control\Session Manager\Memory Management" /v "DisablePagingExecutive" /t REG_DWORD /d "1" /f > nul 2> nul
@@ -1809,10 +1809,10 @@ cls
 ::             TASKS              ::
 :: ============================== ::
 
-echo ______________________
+echo __________________________
 echo.
-echo  CONFIGURING TASKS...
-echo ______________________
+echo  CONFIGURING SYSTEM TASKS
+echo __________________________
 echo.
 
 :: Disable Tasks
@@ -1877,26 +1877,26 @@ schtasks /Change /Disable /TN "\Microsoft\WindowsManagement\Provisioning\Cellula
 timeout /t 2
 cls
 
-echo __________________________________
+echo _______________________________
 echo.
-echo  RESTART REQUIRED, PLEASE WAIT...
-echo __________________________________
+echo  RESTART REQUIRED, PLEASE WAIT
+echo _______________________________
 
 timeout /t 3
 cls
 
-echo __________________________________________________________________________________________
+echo _______________________________________________________________________________________
 echo.
 echo                                   ===== IMPORTANT =====
 echo.
-echo  MAKE SURE TO CLICK "CLOSE" WHEN THE RESTART WINDOW POPS UP. PRESS ANY KEY TO CONTINUE...
-echo __________________________________________________________________________________________
+echo  MAKE SURE TO CLICK "CLOSE" WHEN THE RESTART WINDOW POPS UP. PRESS ANY KEY TO CONTINUE
+echo _______________________________________________________________________________________
 echo.
 pause
 
 echo __________________________________________________________________________________________
 echo.
-echo                                 ===== RESTARTING IN... =====
+echo                                 ===== RESTARTING IN =====
 echo __________________________________________________________________________________________
 
 timeout /t 4
