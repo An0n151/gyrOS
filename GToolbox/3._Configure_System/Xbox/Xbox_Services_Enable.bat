@@ -15,14 +15,14 @@ reg add "HKLM\SYSTEM\CurrentControlSet\Services\WlidSvc" /v "Start" /t REG_DWORD
 reg add "HKLM\SYSTEM\CurrentControlSet\Services\WpnService" /v "Start" /t REG_DWORD /d "2" /f
 reg add "HKLM\SYSTEM\CurrentControlSet\Services\WpnUserService" /v "Start" /t REG_DWORD /d "2" /f
 
-sc config XblAuthManager start= auto
-sc config XboxGipSvc start= demand
-sc config XblGameSave start= demand
-sc config XboxNetApiSvc start= auto
-sc config xbgm start= demand
-sc config WpnService start= auto
-sc config WpnUserService start= auto
-sc config WlidSvc start= demand
+sc config "XblAuthManager" start= auto
+sc config "XboxGipSvc" start= demand
+sc config "XblGameSave" start= demand
+sc config "XboxNetApiSvc" start= auto
+sc config "xbgm" start= demand
+sc config "WpnService" start= auto
+sc config "WpnUserService" start= auto
+sc config "WlidSvc" start= demand
 
 schtasks /Change /Enable /TN "Microsoft\XblGameSave\XblGameSaveTask"
 schtasks /Change /Enable /TN "Microsoft\XblGameSave\XblGameSaveTaskLogon"
