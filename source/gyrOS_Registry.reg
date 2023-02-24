@@ -17,30 +17,6 @@ Windows Registry Editor Version 5.00
 
 ; ================================================================================================================================
 
-; Experimental Optimizations ; Credits to ElProfetamohammed
-[HKEY_LOCAL_MACHINE\System\CurrentControlSet\Services\VxD\BIOS]
-"CPUPriority"=dword:1
-"FastDRAM"=dword:1
-"PCIconcur"=dword:1
-
-[HKEY_LOCAL_MACHINE\System\CurrentControlSet\Services\VxD\VCOMM]
-"EnablePowerManagement"=hex:00
-
-[HKEY_LOCAL_MACHINE\System\CurrentControlSet\control\FileSystem]
-"DriveWriteBehind"=hex:ff,ff,ff,ff
-"ReadAheadThreshold"=hex:ff,ff,ff,ff
-
-[HKEY_LOCAL_MACHINE\System\CurrentControlSet\control\Update]
-"UpdateMode"=hex:00
-
-[HKEY_LOCAL_MACHINE\System\CurrentControlSet\Services\VxD\MSTCP]
-"PMTUDiscovery"="1"
-
-[HKEY_CURRENT_USER\Control Panel\desktop\WindowMetrics]
-"Shell Icon Bpp"="16"
-
-; ================================================================================================================================
-
 ; Double Click to Import Power Plan
 [HKEY_CLASSES_ROOT\.pow]
 @="Power Plan"
