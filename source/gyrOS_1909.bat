@@ -8,7 +8,7 @@
 setlocal EnableDelayedExpansion
 title gyrOS Post Installation Script %VERSION%
 
-set "VERSION=X3.1"
+set "VERSION=X3.2"
 set "VERSION_DATE=19/02/2023"
 
 :: Configure Variables
