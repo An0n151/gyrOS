@@ -178,6 +178,7 @@ sc config "Dhcp" start= demand > nul 2> nul
 sc config "IKEEXT" start= disabled > nul 2> nul
 sc config "WerSvc" start= disabled > nul 2> nul
 sc config "wercplsupport" start= disabled > nul 2> nul
+sc config "cbdhsvc" start= disabled > nul 2> nul
 ::sc config "EventLog" start= disabled > nul 2> nul / Breaks Network Connection
 ::sc config "AppMgmt" start= disabled > nul 2> nul
 ::sc config "AppIDSvc" start= disabled > nul 2> nul
@@ -909,14 +910,6 @@ reg add "HKLM\SOFTWARE\Policies\Microsoft\Windows NT\MitigationOptions" /v "Miti
 
 :: Disable Access to Language List
 %currentuser% reg add "HKCU\Control Panel\International\User Profile" /v "HttpAcceptLanguageOptOut" /t REG_DWORD /d "1" /f > nul 2> nul
-
-:: Correct Mitigation Values
-for /f "tokens=3 skip=2" %%a in ('reg query "HKLM\SYSTEM\CurrentControlSet\Control\Session Manager\kernel" /v "MitigationAuditOptions"') do set mitigation_mask=%%a
-for /L %%a in (0,1,9) do (
-    set mitigation_mask=!mitigation_mask:%%a=2!
-)
-reg add "HKLM\SYSTEM\CurrentControlSet\Control\Session Manager\kernel" /v "MitigationAuditOptions" /t REG_BINARY /d "%mitigation_mask%" /f > nul 2> nul
-reg add "HKLM\SYSTEM\CurrentControlSet\Control\Session Manager\kernel" /v "MitigationOptions" /t REG_BINARY /d "%mitigation_mask%" /f > nul 2> nul
 
 :: Disable Spectre and Meltdown ; Credits to HoneCtrl
 reg add "HKLM\SYSTEM\CurrentControlSet\Control\Session Manager\Memory Management" /v "FeatureSettings" /t REG_DWORD /d "0" /f > nul 2> nul
@@ -1723,6 +1716,14 @@ reg delete "HKCU\SOFTWARE\Classes\Local Settings\Software\Microsoft\Windows\Shel
 reg delete "HKCU\SOFTWARE\Classes\Local Settings\Software\Microsoft\Windows\Shell\Bags" /f > nul 2> nul
 reg add "HKCU\SOFTWARE\Classes\Local Settings\Software\Microsoft\Windows\Shell\Bags\All Folders\Shell" /v "FolderType" /t "REG_SZ" /d "NotSpecified" /f > nul 2> nul
 reg add "HKCU\SOFTWARE\Classes\Local Settings\Software\Microsoft\Windows\Shell" /v "BagMRU Size" /t "REG_DWORD" /d "2710" /f > nul 2> nul
+
+:: Correct Mitigation Values***
+for /f "tokens=3 skip=2" %%a in ('reg query "HKLM\SYSTEM\CurrentControlSet\Control\Session Manager\kernel" /v "MitigationAuditOptions"') do set mitigation_mask=%%a
+for /L %%a in (0,1,9) do (
+    set mitigation_mask=!mitigation_mask:%%a=2!
+)
+reg add "HKLM\SYSTEM\CurrentControlSet\Control\Session Manager\kernel" /v "MitigationAuditOptions" /t REG_BINARY /d "%mitigation_mask%" /f > nul 2> nul
+reg add "HKLM\SYSTEM\CurrentControlSet\Control\Session Manager\kernel" /v "MitigationOptions" /t REG_BINARY /d "%mitigation_mask%" /f > nul 2> nul
 
 :: Disable "Do not Connect to Windows Update Internet Locations" / Used to Fixed Microsoft Store
 ::reg add "HKLM\SOFTWARE\Policies\Microsoft\Windows\WindowsUpdate" /v "DoNotConnectToWindowsUpdateInternetLocations" /t REG_DWORD /d "0" /f > nul 2> nul
