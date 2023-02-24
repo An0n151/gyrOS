@@ -13,7 +13,7 @@ devcon enable "=PrintQueue"
 
 sc config Spooler start= auto
 sc config PrintNotify start= demand
-reg add "HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\Services\PrintWorkflowUserSvc" /v "Start" /t REG_DWORD /d "3" /f
+reg add "HKLM\SYSTEM\CurrentControlSet\Services\PrintWorkflowUserSvc" /v "Start" /t REG_DWORD /d "3" /f
 
 echo Printing has been enabled.
 echo Install your printer driver, then restart your computer.

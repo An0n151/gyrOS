@@ -22,7 +22,7 @@ sc config HidBth start= demand
 sc config Microsoft_Bluetooth_AvrcpTransport start= demand
 sc config RFCOMM start= demand
 
-reg add "HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\Services\BluetoothUserService" /v "Start" /t REG_DWORD /d "3" /f
+reg add "HKLM\SYSTEM\CurrentControlSet\Services\BluetoothUserService" /v "Start" /t REG_DWORD /d "3" /f
 sc config "BluetoothUserService" start=demand
 sc config "BTAGService" start= demand
 sc config "BthAvctpSvc" start= demand
