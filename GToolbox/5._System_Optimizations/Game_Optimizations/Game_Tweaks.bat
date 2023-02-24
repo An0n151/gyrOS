@@ -1,6 +1,4 @@
 :: ### gyrOS Game Tweaks ###
-:: ### I do not claim to have coded this myself ###
-:: ### If you see your code in here and want to be credited, message me on Discord ###
 
 :: ### Credits: HoneCtrl
 
@@ -11,7 +9,7 @@ cd /d "%~dp0" && ( if exist "%temp%\getadmin.vbs" del "%temp%\getadmin.vbs" ) &&
 
 title Game Tweaks
 
-:: CG:GO, Valorant, Fortnite, Modern Warfare, Apex Legends
+:: These tweaks apply to: CS:GO, Valorant, Fortnite, Modern Warfare, Apex Legends
 
 for %%i in (csgo VALORANT-Win64-Shipping javaw FortniteClient-Win64-Shipping ModernWarfare r5apex) do (
 	reg query "HKLM\Software\Policies\Microsoft\Windows\QoS\%%i" || (

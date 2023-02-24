@@ -1,4 +1,6 @@
-:: Credits to HoneCtrl ::
+:: ### gyrOS Audio Latency Reducer Service Installer ###
+
+:: Credits to HoneCtrl
 
 @echo off
 
@@ -10,4 +12,6 @@
 %WinDir%\gyrOS\nssm.exe set LLAudio start SERVICE_AUTO_START
 %WinDir%\gyrOS\nssm.exe start LLAudio
 
-pause
+echo Success. Press any key to exit.
+
+pause >nul

@@ -1,6 +1,4 @@
 :: ### gyrOS NVIDIA GPU Tweaks ###
-:: ### I do not claim to have coded this myself ###
-:: ### If you see your code in here and want to be credited, message me on Discord ###
 
 :: ### Credits: EchoX
 

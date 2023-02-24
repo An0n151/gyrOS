@@ -1,4 +1,4 @@
-:: ### gyrOS SetTimerResolutionService Silent Installation Script ###
+:: ### gyrOS SetTimerResolutionService Installation Script ###
 
 @echo off
 

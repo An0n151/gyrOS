@@ -19,4 +19,4 @@ reg add "HKLM\SYSTEM\CurrentControlSet\Services\Eaphost" /v "Start" /t REG_DWORD
 
 echo VPN services disabled. Restart your computer.
 
-pause
+pause >nul

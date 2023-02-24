@@ -19,4 +19,4 @@ sc config "FileCrypt" start= disabled
 
 echo Microsoft Store has been disabled.
 
-pause
+pause >nul

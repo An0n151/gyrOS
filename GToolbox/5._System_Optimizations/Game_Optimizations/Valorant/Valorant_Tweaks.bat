@@ -1,6 +1,4 @@
 :: ### gyrOS Valorant Tweaks ###
-:: ### I do not claim to have coded this myself ###
-:: ### If you see your code in here and want to be credited, message me on Discord ###
 
 :: ### Credits: DuckOS
 
@@ -15,14 +13,12 @@ title Valorant Tweaks
 for %%i in (valorant valorant-win64-shipping vgtray vgc) do (
     PowerShell -NoProfile -Command "Set-ProcessMitigation -Name %%i.exe -Enable CFG"
 )
-
 bcdedit /set testsigning Off
 bcdedit /set nointegritychecks Off
 
 ::reg add "HKLM\SYSTEM\CurrentControlSet\Control\Session Manager\kernel" /v "MitigationAuditOptions" /t REG_BINARY /d "222222222222222222222222222222222222222222222222" /f
 ::reg add "HKLM\SYSTEM\CurrentControlSet\Control\Session Manager\kernel" /v "MitigationOptions" /t REG_BINARY /d "232222222223222222222222222222222222222222222222" /f
 
-:: Valorant DSCP Policies
 reg add "HKLM\SOFTWARE\Policies\Microsoft\Windows\QoS\VALORANT" /v "Version" /t REG_SZ /d "1.0" /f 
 reg add "HKLM\SOFTWARE\Policies\Microsoft\Windows\QoS\VALORANT" /v "Application Name" /t REG_SZ /d "valorant.exe" /f 
 reg add "HKLM\SOFTWARE\Policies\Microsoft\Windows\QoS\VALORANT" /v "Protocol" /t REG_SZ /d "*" /f 
