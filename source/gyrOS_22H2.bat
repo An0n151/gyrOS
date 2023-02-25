@@ -1285,6 +1285,11 @@ netsh interface tcp set global dca=enabled > nul 2> nul
 netsh interface tcp set global rsc=disabled > nul 2> nul
 netsh interface tcp set global timestamps=disabled > nul 2> nul
 
+:: Network Optimizations
+PowerShell "Enable-NetAdapterRss -Name *" > nul 2> nul
+PowerShell "Disable-NetAdapterLso -Name *" > nul 2> nul
+PowerShell "Set-NetOffloadGlobalSetting -PacketCoalescingFilter Disabled" > nul 2> nul
+
 :: Configure NIC ; Credits to HoneCtrl and Melody
 for /f %%a in ('reg query "HKLM\SYSTEM\CurrentControlSet\Control\Class" /v "*WakeOnMagicPacket" /s ^| findstr  "HKEY"') do (
 for /f %%i in ('reg query "%%a" /v "*EEE" ^| findstr "HKEY"') do (reg add "%%i" /v "*EEE" /t REG_SZ /d "0" /f)
@@ -1344,11 +1349,6 @@ for /f %%i in ('wmic path Win32_NetworkAdapter get PNPDeviceID^| findstr /L "PCI
 		) > nul 2> nul
     )
 )
-
-:: Network Optimizations
-PowerShell "Enable-NetAdapterRss -Name *" > nul 2> nul
-PowerShell "Disable-NetAdapterLso -Name *" > nul 2> nul
-PowerShell "Set-NetOffloadGlobalSetting -PacketCoalescingFilter Disabled" > nul 2> nul
 
 :: Network Priorities ; Credits to DuckOS
 reg add "HKLM\SYSTEM\CurrentControlSet\Services\Tcpip\ServiceProvider" /v "LocalPriority" /t REG_DWORD /d "4" /f > nul 2> nul
