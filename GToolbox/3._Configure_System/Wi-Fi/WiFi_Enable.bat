@@ -10,14 +10,14 @@ cd /d "%~dp0" && ( if exist "%temp%\getadmin.vbs" del "%temp%\getadmin.vbs" ) &&
 
 sc config vwififlt start= system
 sc start vwififlt
-
 sc config WlanSvc start= auto
 sc start WlanSvc
-
 sc config "DevicesFlowUserSvc" start= demand
 sc config "DeviceAssociationBrokerSvc" start= demand
+%currentuser% reg add "HKLM\SYSTEM\CurrentControlSet\Services\DeviceAssociationBrokerSvc" /v "Start" /t REG_DWORD /d "3" /f
 sc config "wcnfs" start= demand
 
+echo.
 echo WiFi services have been enabled.
 
 pause >nul
