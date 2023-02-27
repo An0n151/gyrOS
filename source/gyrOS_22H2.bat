@@ -1167,7 +1167,6 @@ reg add "HKLM\SYSTEM\CurrentControlSet\Control" /v "SvcHostSplitThresholdInKB" /
 bcdedit /set x2apicpolicy Enable > nul 2> nul
 bcdedit /set uselegacyapicmode No > nul 2> nul
 bcdedit /set configaccesspolicy Default > nul 2> nul
-::bcdedit /set nx OptIn > nul 2> nul
 bcdedit /set quietboot Yes > nul 2> nul
 bcdedit /set bootmenupolicy Standard > nul 2> nul
 bcdedit /set recoveryenabled No > nul 2> nul
@@ -1186,9 +1185,9 @@ bcdedit /set tscsyncpolicy legacy > nul 2> nul
 :: Better FPS
 ::bcdedit /set tscsyncpolicy enhanced > nul 2> nul
 
-::bcdedit /set hypervisorlaunchtype Off > nul 2> nul
-:: Disable DEP
+:: Configure DEP
 ::bcdedit /set nx AlwaysOff > nul 2> nul
+::bcdedit /set nx OptIn > nul 2> nul
 
 :: Set Win32PrioritySeparation
 reg add "HKLM\SYSTEM\CurrentControlSet\Control\PriorityControl" /v "Win32PrioritySeparation" /t REG_DWORD /d "38" /f > nul 2> nul
