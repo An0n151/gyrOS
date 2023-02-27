@@ -9,7 +9,7 @@ setlocal EnableDelayedExpansion
 title gyrOS Post Installation Script %VERSION%
 
 set "VERSION=X3.2"
-set "VERSION_DATE=25/02/2023"
+set "SCRIPT_VERSION_DATE=25/02/2023"
 
 :: Configure Variables
 set "currentuser=%WinDir%\gyrOS\NSudo\NSudoLG.exe -U:C -P:E -Wait"
@@ -51,7 +51,7 @@ echo ___________________________________________________________________________
 echo.
 echo  THANK YOU FOR INSTALLING GYROS 1909 %VERSION%. PRESS ANY KEY TO START APPLYING GYROS OPTIMIZATIONS.
 echo.
-echo  DO NOT CLOSE THIS WINDOW.          DO NOT CLOSE THIS WINDOW.          DO NOT CLOSE THIS WINDOW.
+echo  DO NOT CLOSE THIS WINDOW.
 echo _____________________________________________________________________________________________________
 echo.
 pause
