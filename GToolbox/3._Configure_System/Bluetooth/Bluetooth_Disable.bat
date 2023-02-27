@@ -21,5 +21,6 @@ sc config "DeviceAssociationBrokerSvc" start= disabled
 
 echo.
 echo Bluetooth services have been disabled. Please restart your computer.
+echo.
 
 pause >nul

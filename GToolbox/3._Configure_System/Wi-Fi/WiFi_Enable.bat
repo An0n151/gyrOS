@@ -19,5 +19,6 @@ sc config "wcnfs" start= demand
 
 echo.
 echo WiFi services have been enabled.
+echo.
 
 pause >nul

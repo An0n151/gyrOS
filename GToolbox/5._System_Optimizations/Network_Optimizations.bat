@@ -11,7 +11,7 @@ set "PowerShell=%WinDir%\System32\WindowsPowerShell\v1.0\PowerShell.exe -NoProfi
 :NetworkType
 cls
 
-set /p M="Are you planning to use an Ethernet or Wi-Fi connection?   1. for Ethernet or 2. for Wi-Fi: " 
+set /p M="Which Network type would you like to apply optimizations for?   1. for Ethernet or 2. for Wi-Fi: " 
 if %M%==1 goto Ethernet
 if %M%==2 goto WiFi
 goto NetworkType
@@ -75,6 +75,8 @@ reg add "HKLM\SOFTWARE\Microsoft\WcmSvc\wifinetworkmanager" /v "WiFiSenseCredSha
 reg add "HKLM\SOFTWARE\Microsoft\WcmSvc\wifinetworkmanager" /v "WiFiSenseOpen" /t REG_DWORD /d "0" /f > nul 2> nul
 
 :SkipWiFiOptimizations
+echo.
 echo Applied Network Optimizations. Restart your computer.
+echo.
 
 pause >nul

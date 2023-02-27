@@ -27,5 +27,6 @@ sc config "FileCrypt" start= system
 
 echo.
 echo Microsoft Store has been enabled.
+echo.
 
 pause >nul

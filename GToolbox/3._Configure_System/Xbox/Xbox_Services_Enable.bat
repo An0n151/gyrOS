@@ -1,6 +1,6 @@
 :: ### gyrOS ###
 
-:: Enable XBox Services
+:: Enable Xbox Services
 
 @echo off
 setlocal EnableDelayedExpansion
@@ -27,6 +27,8 @@ sc config "WlidSvc" start= demand
 schtasks /Change /Enable /TN "Microsoft\XblGameSave\XblGameSaveTask"
 schtasks /Change /Enable /TN "Microsoft\XblGameSave\XblGameSaveTaskLogon"
 
+echo.
 echo Xbox services have been enabled.
+echo.
 
 pause >nul

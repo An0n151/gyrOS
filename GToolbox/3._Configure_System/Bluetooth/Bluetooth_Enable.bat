@@ -35,5 +35,6 @@ echo.
 echo Bluetooth services have been enabled.
 echo.
 echo Install your bluetooth driver, then restart your computer.
+echo.
 
 pause >nul

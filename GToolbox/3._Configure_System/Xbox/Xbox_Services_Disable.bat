@@ -1,6 +1,6 @@
 :: ### gyrOS ###
 
-:: Disable XBox Services
+:: Disable Xbox Services
 
 @echo off
 setlocal EnableDelayedExpansion
@@ -29,6 +29,8 @@ reg add "HKLM\SYSTEM\CurrentControlSet\Services\WlidSvc" /v "Start" /t REG_DWORD
 reg add "HKLM\SYSTEM\CurrentControlSet\Services\WpnService" /v "Start" /t REG_DWORD /d "4" /f
 reg add "HKLM\SYSTEM\CurrentControlSet\Services\WpnUserService" /v "Start" /t REG_DWORD /d "4" /f
 
+echo.
 echo Xbox services have been disabled.
+echo.
 
 pause >nul

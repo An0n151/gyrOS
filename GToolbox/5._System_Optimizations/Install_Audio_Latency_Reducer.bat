@@ -12,6 +12,8 @@
 %WinDir%\gyrOS\nssm.exe set LLAudio start SERVICE_AUTO_START
 %WinDir%\gyrOS\nssm.exe start LLAudio
 
+echo.
 echo Success. Press any key to exit.
+echo.
 
 pause >nul

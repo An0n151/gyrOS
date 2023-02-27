@@ -18,5 +18,6 @@ sc config "DeviceAssociationBrokerSvc" start= disabled
 
 echo.
 echo WiFi services have been disabled. Please restart your computer.
+echo.
 
 pause >nul
