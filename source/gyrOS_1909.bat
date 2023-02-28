@@ -57,10 +57,10 @@ echo.
 pause
 cls
 
-echo __________________
+echo _______________
 echo.
-echo  GETTING READY...
-echo __________________
+echo  GETTING READY
+echo _______________
 echo.
 
 :: Turn on Automatic Time Update ; Credits to DuckOS
@@ -96,27 +96,27 @@ cls
 ::       INSTALL SOFTWARE         ::
 :: ============================== ::
 
-echo ________________________
+echo _____________________
 echo.
-echo  INSTALLING SOFTWARE...
-echo ________________________
+echo  INSTALLING SOFTWARE
+echo _____________________
 echo.
 echo.
 echo.
 echo.
 :VisualCPP
-echo _______________________________________________
+echo ____________________________________________
 echo.
-echo  INSTALLING VISUAL CPP REDISTRIBUTABLES... 1/3
-echo _______________________________________________
+echo  INSTALLING VISUAL CPP REDISTRIBUTABLES 1/3
+echo ____________________________________________
 echo.
 "%WinDir%\gyrOS\VisualCppRedist_AIO.exe" /ai
 cls
 
-echo ___________________________
+echo ________________________
 echo.
-echo  INSTALLING DIRECTX... 2/2
-echo ___________________________
+echo  INSTALLING DIRECTX 2/2
+echo ________________________
 echo.
 ping 8.8.8.8 -n 1 -w 1000 > nul 2> nul
 if %errorlevel% == 0 (
@@ -126,15 +126,15 @@ cls
 ) else (
 echo No internet connection detected. Skipping DirectX installation.
 echo.
-echo Install DirectX manually using GToolbox. Continuing...
+echo Install DirectX manually using GToolbox.
 timeout /t 3
 )
 
 :OpenShell
-echo ______________________________
+echo ___________________________
 echo.
-echo  INSTALLING OPEN-SHELL... 3/3
-echo ______________________________
+echo  INSTALLING OPEN-SHELL 3/3
+echo ___________________________
 echo.
 "%drive%\ProgramData\Installers\OpenShellSetup.exe" /qn
 timeout /t 2
@@ -654,14 +654,10 @@ reg add "HKCU\SOFTWARE\Policies\Microsoft\PreviousVersions" /v "DisableLocalPage
 reg add "HKCU\SOFTWARE\Policies\Microsoft\Windows\Explorer" /v "NoUseStoreOpenWith" /t REG_DWORD /d "0xffffffff" /f > nul 2> nul
 reg add "HKLM\SOFTWARE\Policies\Microsoft\Windows\Explorer" /v "NoUseStoreOpenWith" /t REG_DWORD /d "1" /f > nul 2> nul
 
-:: Remove "Compressed (zipped) Folder from "New" Context Menu
-
 :: Attempt to Unpin Tiles from Start Menu
 for /f "tokens=*" %%i in ('reg query "HKCU\SOFTWARE\Microsoft\Windows\CurrentVersion\CloudStore\Store\Cache\DefaultAccount" /s /f "start.tilegrid"^| findstr "start.tilegrid"') do (
 	%currentuser% reg delete "%%i" /f
 ) > nul 2> nul
-
-:: Remove "Print" from Context Menu
 
 :: Disable Ease of Access Settings
 reg add "HKCU\SOFTWARE\Microsoft\Ease of Access" /v "selfvoice" /t REG_DWORD /d "0" /f > nul 2> nul
@@ -745,22 +741,23 @@ reg add "HKCU\Control Panel\Desktop" /v "JPEGImportQuality" /t "REG_DWORD" /d "1
 reg add "HKCU\SOFTWARE\Microsoft\Windows\CurrentVersion\ThemeManager" /v "ThemeActive" /t REG_SZ /d "0" /f > nul 2> nul
 %currentuser% reg add "HKCU\SOFTWARE\Microsoft\Windows\CurrentVersion\Themes\Personalize" /v "SystemUsesLightTheme" /t REG_DWORD /d "0" /f > nul 2> nul
 %currentuser% reg add "HKCU\SOFTWARE\Microsoft\Windows\CurrentVersion\Themes\Personalize" /v "AppsUseLightTheme" /t REG_DWORD /d "0" /f > nul 2> nul
+%currentuser% reg add "HKCU\SOFTWARE\Microsoft\Windows\CurrentVersion\Themes" /v "ThemeChangesMousePointers" /t REG_DWORD /d "0" /f > nul 2> nul
+%currentuser% reg add "HKCU\SOFTWARE\Microsoft\Windows\CurrentVersion\Themes" /v "ThemeChangesDesktopIcons" /t REG_DWORD /d "0" /f > nul 2> nul
 reg add "HKLM\SOFTWARE\Microsoft\Windows NT\CurrentVersion\Windows" /v "DesktopHeapLogging" /t REG_DWORD /d "0" /f > nul 2> nul
 reg add "HKLM\SOFTWARE\Microsoft\Windows NT\CurrentVersion\Windows" /v "DwmInputUsesIoCompletionPort" /t REG_DWORD /d "0" /f > nul 2> nul
 reg add "HKLM\SOFTWARE\Microsoft\Windows NT\CurrentVersion\Windows" /v "EnableDwmInputProcessing" /t REG_DWORD /d "0" /f > nul 2> nul
-reg add "HKLM\SOFTWARE\Microsoft\Windows\Dwm" /v "AnimationAttributionEnabled" /t REG_DWORD /d "0" /f > nul 2> nul
-reg add "HKLM\SOFTWARE\Microsoft\Windows\Dwm" /v "AnimationAttributionHashingEnabled" /t REG_DWORD /d "0" /f > nul 2> nul
-reg add "HKCU\SOFTWARE\Microsoft\Windows\CurrentVersion\Themes" /v "ThemeChangesMousePointers" /t REG_DWORD /d "0" /f > nul 2> nul
-reg add "HKCU\SOFTWARE\Microsoft\Windows\CurrentVersion\Themes" /v "ThemeChangesDesktopIcons" /t REG_DWORD /d "0" /f > nul 2> nul
-reg add "HKLM\SOFTWARE\Microsoft\Windows\Dwm" /v "OneCoreNoBootDWM" /t REG_DWORD /d "1" /f > nul 2> nul
+reg add "HKLM\SOFTWARE\Microsoft\Windows\CurrentVersion\Explorer" /v "Max Cached Icons" /t REG_SZ /d "4096" /f > nul 2> nul
 reg add "HKLM\SOFTWARE\Policies\Microsoft\Windows\DWM" /v "DWMWA_TRANSITIONS_FORCEDISABLED" /t REG_DWORD /d "1" /f > nul 2> nul
 reg add "HKLM\SOFTWARE\Policies\Microsoft\Windows\DWM" /v "DisallowFlip3d" /t REG_DWORD /d "1" /f > nul 2> nul
 reg add "HKLM\SOFTWARE\Policies\Microsoft\Windows\DWM" /v "DisallowColorizationColorChanges" /t REG_DWORD /d "1" /f > nul 2> nul
-::reg add "HKLM\SOFTWARE\Policies\Microsoft\Windows\DWM" /v "DisallowAnimations" /t REG_DWORD /d "1" /f > nul 2> nul / Breaks "Animate Windows when Minimizing and Maximizing" setting
 reg add "HKCU\SOFTWARE\Microsoft\Windows\DWM" /v "Composition" /t REG_DWORD /d "0" /f > nul 2> nul
 reg add "HKCU\SOFTWARE\Microsoft\Windows\DWM" /v "EnableAeroPeek" /t REG_DWORD /d "0" /f > nul 2> nul
 reg add "HKCU\SOFTWARE\Microsoft\Windows\DWM" /v AlwaysHibernateThumbnails /t REG_DWORD /d "0" /f > nul 2> nul
 reg add "HKCU\SOFTWARE\Microsoft\Windows\DWM" /v CompositionPolicy /t REG_DWORD /d "0" /f > nul 2> nul
+reg add "HKLM\SOFTWARE\Microsoft\Windows\DWM" /v "OneCoreNoBootDWM" /t REG_DWORD /d "1" /f > nul 2> nul
+reg add "HKLM\SOFTWARE\Microsoft\Windows\DWM" /v "AnimationAttributionHashingEnabled" /t REG_DWORD /d "0" /f > nul 2> nul
+reg add "HKLM\SOFTWARE\Microsoft\Windows\DWM" /v "AnimationAttributionEnabled" /t REG_DWORD /d "0" /f > nul 2> nul
+::reg add "HKLM\SOFTWARE\Policies\Microsoft\Windows\DWM" /v "DisallowAnimations" /t REG_DWORD /d "1" /f > nul 2> nul / Breaks "Animate Windows when Minimizing and Maximizing" setting
 reg add "HKLM\SOFTWARE\Policies\Microsoft\Windows" /v "DisableAcrylicBackgroundOnLogon" /t REG_DWORD /d "1" /f > nul 2> nul
 reg add "HKCU\SOFTWARE\Microsoft\Windows\CurrentVersion\Policies\Explorer" /v "TurnOffSPIAnimations" /t REG_DWORD /d "1" /f > nul 2> nul
 reg add "HKLM\SOFTWARE\Policies\Microsoft\Windows\System" /v "DisableLogonBackgroundImage" /t REG_DWORD /d "1" /f > nul 2> nul
@@ -1133,6 +1130,7 @@ for %%i in (RasAuto SessionEnv TermService UmRdpService RpcLocator) do (
 reg add "HKLM\SOFTWARE\Policies\Microsoft\Windows\WinRM\Service\WinRS" /v "AllowRemoteShellAccess" /t REG_DWORD /d "0" /f > nul 2> nul
 reg add "HKLM\SYSTEM\CurrentControlSet\Control\Remote Assistance" /v "fAllowToGetHelp" /t REG_DWORD /d "0" /f > nul 2> nul
 reg add "HKLM\SYSTEM\CurrentControlSet\Control\Remote Assistance" /v "fAllowFullControl" /t REG_DWORD /d "0" /f > nul 2> nul
+reg add "HKLM\SYSTEM\CurrentControlSet\Control\Remote Assistance" /v "fEnableChatControl" /t REG_DWORD /d "0" /f > nul 2> nul
 reg add "HKLM\SOFTWARE\Policies\Microsoft\Windows NT\Terminal Services" /v "fAllowToGetHelp" /t REG_DWORD /d "0" /f > nul 2> nul
 reg add "HKLM\SOFTWARE\Policies\Microsoft\Windows NT\Terminal Services" /v "fAllowFullControl" /t REG_DWORD /d "0" /f > nul 2> nul
 reg add "HKLM\SOFTWARE\Policies\Microsoft\Windows NT\Terminal Services" /v "fAllowUnsolicited" /t REG_DWORD /d "0" /f > nul 2> nul
@@ -1232,7 +1230,6 @@ reg add "HKLM\SYSTEM\CurrentControlSet\Control" /v "SvcHostSplitThresholdInKB" /
 bcdedit /set x2apicpolicy Enable > nul 2> nul
 bcdedit /set uselegacyapicmode No > nul 2> nul
 bcdedit /set configaccesspolicy Default > nul 2> nul
-::bcdedit /set nx OptIn > nul 2> nul
 bcdedit /set quietboot Yes > nul 2> nul
 bcdedit /set bootmenupolicy Standard > nul 2> nul
 bcdedit /set recoveryenabled No > nul 2> nul
@@ -1251,9 +1248,9 @@ bcdedit /deletevalue useplatformclock > nul 2> nul
 :: Better FPS
 bcdedit /set tscsyncpolicy enhanced > nul 2> nul
 
-::bcdedit /set hypervisorlaunchtype Off > nul 2> nul
-:: Disable DEP
+:: Configure DEP
 ::bcdedit /set nx AlwaysOff > nul 2> nul
+::bcdedit /set nx OptIn > nul 2> nul
 
 :: Set Win32PrioritySeparation
 reg add "HKLM\SYSTEM\CurrentControlSet\Control\PriorityControl" /v "Win32PrioritySeparation" /t REG_DWORD /d "38" /f > nul 2> nul
