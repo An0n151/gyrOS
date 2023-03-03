@@ -1157,10 +1157,10 @@ cls
 ::   PERFORMANCE OPTIMIZATIONS    ::
 :: ============================== ::
 
-echo _______________________________
+echo ____________________________________________
 echo.
-echo  OPTIMIZING SYSTEM PERFORMANCE
-echo _______________________________
+echo  OPTIMIZING SYSTEM PERFORMANCE AND SECURITY
+echo ____________________________________________
 echo.
 
 :: Set Service Split Threshold ; Credits to HoneCtrl
