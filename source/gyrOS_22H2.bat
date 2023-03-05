@@ -15,13 +15,13 @@ set "SCRIPT_VERSION_DATE=02/03/2023"
 set "currentuser=%WinDir%\gyrOS\NSudo\NSudoLG.exe -U:C -P:E -Wait"
 set "PowerShell=%WinDir%\System32\WindowsPowerShell\v1.0\PowerShell.exe -NoProfile -NonInteractive -ExecutionPolicy Bypass -Command"
 
-::sc config / = boot, or = system, or = auto, or = demand, or = disabled, or = delayed-auto
+::sc config = boot, or = system, or = auto, or = demand, or = disabled, or = delayed-auto
 
 echo _____________________________________________________________________________________________________
 echo.
 echo  THANK YOU FOR INSTALLING GYROS 22H2 %VERSION%. PRESS ANY KEY TO START APPLYING GYROS OPTIMIZATIONS.
 echo.
-echo  DO NOT CLOSE THIS WINDOW.
+echo  DO NOT CLOSE THIS WINDOW UNTIL YOU ARE PROMPTED TO RESTART.
 echo _____________________________________________________________________________________________________
 echo.
 pause
@@ -1296,45 +1296,45 @@ PowerShell "Set-NetOffloadGlobalSetting -PacketCoalescingFilter Disabled" > nul 
 
 :: Configure NIC ; Credits to HoneCtrl and Melody
 for /f %%a in ('reg query "HKLM\SYSTEM\CurrentControlSet\Control\Class" /v "*WakeOnMagicPacket" /s ^| findstr  "HKEY"') do (
-for /f %%i in ('reg query "%%a" /v "*EEE" ^| findstr "HKEY"') do (reg add "%%i" /v "*EEE" /t REG_SZ /d "0" /f)
-for /f %%i in ('reg query "%%a" /v "*FlowControl" ^| findstr "HKEY"') do (reg add "%%i" /v "*FlowControl" /t REG_SZ /d "0" /f)
-for /f %%i in ('reg query "%%a" /v "EnableSavePowerNow" ^| findstr "HKEY"') do (reg add "%%i" /v "EnableSavePowerNow" /t REG_SZ /d "0" /f)
-for /f %%i in ('reg query "%%a" /v "EnablePowerManagement" ^| findstr "HKEY"') do (reg add "%%i" /v "EnablePowerManagement" /t REG_SZ /d "0" /f)
-for /f %%i in ('reg query "%%a" /v "EnableDynamicPowerGating" ^| findstr "HKEY"') do (reg add "%%i" /v "EnableDynamicPowerGating" /t REG_SZ /d "0" /f)
-for /f %%i in ('reg query "%%a" /v "EnableConnectedPowerGating" ^| findstr "HKEY"') do (reg add "%%i" /v "EnableConnectedPowerGating" /t REG_SZ /d "0" /f)
-for /f %%i in ('reg query "%%a" /v "AutoPowerSaveModeEnabled" ^| findstr "HKEY"') do (reg add "%%i" /v "AutoPowerSaveModeEnabled" /t REG_SZ /d "0" /f)
-for /f %%i in ('reg query "%%a" /v "AdvancedEEE" ^| findstr "HKEY"') do (reg add "%%i" /v "AdvancedEEE" /t REG_SZ /d "0" /f)
-for /f %%i in ('reg query "%%a" /v "ULPMode" ^| findstr "HKEY"') do (reg add "%%i" /v "ULPMode" /t REG_SZ /d "0" /f)
-for /f %%i in ('reg query "%%a" /v "ReduceSpeedOnPowerDown" ^| findstr "HKEY"') do (reg add "%%i" /v "ReduceSpeedOnPowerDown" /t REG_SZ /d "0" /f)
-for /f %%i in ('reg query "%%a" /v "EnablePME" ^| findstr "HKEY"') do (reg add "%%i" /v "EnablePME" /t REG_SZ /d "0" /f)
-for /f %%i in ('reg query "%%a" /v "*WakeOnMagicPacket" ^| findstr "HKEY"') do (reg add "%%i" /v "*WakeOnMagicPacket" /t REG_SZ /d "0" /f)
-for /f %%i in ('reg query "%%a" /v "*WakeOnPattern" ^| findstr "HKEY"') do (reg add "%%i" /v "*WakeOnPattern" /t REG_SZ /d "0" /f)
-for /f %%i in ('reg query "%%a" /v "WolShutdownLinkSpeed" ^| findstr "HKEY"') do (reg add "%%i" /v "WolShutdownLinkSpeed" /t REG_SZ /d "2" /f)
-for /f %%i in ('reg query "%%a" /v "*SpeedDuplex" ^| findstr "HKEY"') do (reg add "%%i" /v "*SpeedDuplex" /t REG_SZ /d "6" /f)
-for /f %%i in ('reg query "%%a" /v "*LsoV2IPv4" ^| findstr "HKEY"') do (reg add "%%i" /v "*LsoV2IPv4" /t REG_SZ /d "0" /f)
-for /f %%i in ('reg query "%%a" /v "*LsoV2IPv6" ^| findstr "HKEY"') do (reg add "%%i" /v "*LsoV2IPv6" /t REG_SZ /d "0" /f)
-for /f %%i in ('reg query "%%a" /v "*TransmitBuffers" ^| findstr "HKEY"') do (reg add "%%i" /v "*TransmitBuffers" /t REG_SZ /d "128" /f)
-for /f %%i in ('reg query "%%a" /v "*ReceiveBuffers" ^| findstr "HKEY"') do (reg add "%%i" /v "*ReceiveBuffers" /t REG_SZ /d "512" /f)
-for /f %%i in ('reg query "%%a" /v "*PMARPOffload" ^| findstr "HKEY"') do (reg add "%%i" /v "*PMARPOffload" /t REG_SZ /d "1" /f)
-for /f %%i in ('reg query "%%a" /v "*PMNSOffload" ^| findstr "HKEY"') do (reg add "%%i" /v "*PMNSOffload" /t REG_SZ /d "0" /f)
-for /f %%i in ('reg query "%%a" /v "*InterruptModeration" ^| findstr "HKEY"') do (reg add "%%i" /v "*InterruptModeration" /t REG_SZ /d "0" /f)
-for /f %%i in ('reg query "%%a" /v "*ModernStandbyWoLMagicPacket" ^| findstr "HKEY"') do (reg add "%%i" /v "*ModernStandbyWoLMagicPacket" /t REG_SZ /d "0" /f)
-for /f %%i in ('reg query "%%a" /v "WakeOnLinkChange" ^| findstr "HKEY"') do (reg add "%%i" /v "WakeOnLinkChange" /t REG_SZ /d "0" /f)
-for /f %%i in ('reg query "%%a" /v "*IPChecksumOffloadIPv4" ^| findstr "HKEY"') do (reg add "%%i" /v "*IPChecksumOffloadIPv4" /t REG_SZ /d "3" /f)
-for /f %%i in ('reg query "%%a" /v "*RSS" ^| findstr "HKEY"') do (reg add "%%i" /v "*RSS" /t REG_SZ /d "1" /f)
-for /f %%i in ('reg query "%%a" /v "*NumRssQueues" ^| findstr "HKEY"') do (reg add "%%i" /v "*NumRssQueues" /t REG_SZ /d "4" /f)
-for /f %%i in ('reg query "%%a" /v "EnableGreenEthernet" ^| findstr "HKEY"') do (reg add "%%i" /v "EnableGreenEthernet" /t REG_SZ /d "0" /f)
-for /f %%i in ('reg query "%%a" /v "GigaLite" ^| findstr "HKEY"') do (reg add "%%i" /v "GigaLite" /t REG_SZ /d "0" /f)
-for /f %%i in ('reg query "%%a" /v "PowerSavingMode" ^| findstr "HKEY"') do (reg add "%%i" /v "PowerSavingMode" /t REG_SZ /d "0" /f)
-for /f %%i in ('reg query "%%a" /v "S5WakeOnLan" ^| findstr "HKEY"') do (reg add "%%i" /v "S5WakeOnLan" /t REG_SZ /d "0" /f)
-for /f %%i in ('reg query "%%a" /v "AutoDisableGigabit" ^| findstr "HKEY"') do (reg add "%%i" /v "AutoDisableGigabit" /t REG_SZ /d "0" /f)
-for /f %%i in ('reg query "%%a" /v "SelectiveSuspend" ^| findstr "HKEY"') do (reg add "%%i" /v "SelectiveSuspend" /t REG_SZ /d "0" /f)
-for /f %%i in ('reg query "%%a" /v "EnableModernStandby" ^| findstr "HKEY"') do (reg add "%%i" /v "EnableModernStandby" /t REG_SZ /d "0" /f)
-for /f %%i in ('reg query "%%a" /v "WakeOnLink" ^| findstr "HKEY"') do (reg add "%%i" /v "WakeOnLink" /t REG_SZ /d "0" /f)
-for /f %%i in ('reg query "%%a" /v "WakeOnSlot" ^| findstr "HKEY"') do (reg add "%%i" /v "WakeOnSlot" /t REG_SZ /d "0" /f)
-for /f %%i in ('reg query "%%a" /v "WakeUpModeCap" ^| findstr "HKEY"') do (reg add "%%i" /v "WakeUpModeCap" /t REG_SZ /d "0" /f)
-for /f %%i in ('reg query "%%a" /v "*NicAutoPowerSaver" ^| findstr "HKEY"') do (reg add "%%i" /v "*NicAutoPowerSaver" /t REG_SZ /d "0" /f)
-for /f %%i in ('reg query "%%a" /v "*AlternateSemaphoreDelay" ^| findstr "HKEY"') do (reg add "%%i" /v "*AlternateSemaphoreDelay" /t REG_SZ /d "0" /f)
+	for /f %%i in ('reg query "%%a" /v "*EEE" ^| findstr "HKEY"') do (reg add "%%i" /v "*EEE" /t REG_SZ /d "0" /f)
+	for /f %%i in ('reg query "%%a" /v "*FlowControl" ^| findstr "HKEY"') do (reg add "%%i" /v "*FlowControl" /t REG_SZ /d "0" /f)
+	for /f %%i in ('reg query "%%a" /v "EnableSavePowerNow" ^| findstr "HKEY"') do (reg add "%%i" /v "EnableSavePowerNow" /t REG_SZ /d "0" /f)
+	for /f %%i in ('reg query "%%a" /v "EnablePowerManagement" ^| findstr "HKEY"') do (reg add "%%i" /v "EnablePowerManagement" /t REG_SZ /d "0" /f)
+	for /f %%i in ('reg query "%%a" /v "EnableDynamicPowerGating" ^| findstr "HKEY"') do (reg add "%%i" /v "EnableDynamicPowerGating" /t REG_SZ /d "0" /f)
+	for /f %%i in ('reg query "%%a" /v "EnableConnectedPowerGating" ^| findstr "HKEY"') do (reg add "%%i" /v "EnableConnectedPowerGating" /t REG_SZ /d "0" /f)
+	for /f %%i in ('reg query "%%a" /v "AutoPowerSaveModeEnabled" ^| findstr "HKEY"') do (reg add "%%i" /v "AutoPowerSaveModeEnabled" /t REG_SZ /d "0" /f)
+	for /f %%i in ('reg query "%%a" /v "AdvancedEEE" ^| findstr "HKEY"') do (reg add "%%i" /v "AdvancedEEE" /t REG_SZ /d "0" /f)
+	for /f %%i in ('reg query "%%a" /v "ULPMode" ^| findstr "HKEY"') do (reg add "%%i" /v "ULPMode" /t REG_SZ /d "0" /f)
+	for /f %%i in ('reg query "%%a" /v "ReduceSpeedOnPowerDown" ^| findstr "HKEY"') do (reg add "%%i" /v "ReduceSpeedOnPowerDown" /t REG_SZ /d "0" /f)
+	for /f %%i in ('reg query "%%a" /v "EnablePME" ^| findstr "HKEY"') do (reg add "%%i" /v "EnablePME" /t REG_SZ /d "0" /f)
+	for /f %%i in ('reg query "%%a" /v "*WakeOnMagicPacket" ^| findstr "HKEY"') do (reg add "%%i" /v "*WakeOnMagicPacket" /t REG_SZ /d "0" /f)
+	for /f %%i in ('reg query "%%a" /v "*WakeOnPattern" ^| findstr "HKEY"') do (reg add "%%i" /v "*WakeOnPattern" /t REG_SZ /d "0" /f)
+::for /f %%i in ('reg query "%%a" /v "WolShutdownLinkSpeed" ^| findstr "HKEY"') do (reg add "%%i" /v "WolShutdownLinkSpeed" /t REG_SZ /d "2" /f)
+::for /f %%i in ('reg query "%%a" /v "*SpeedDuplex" ^| findstr "HKEY"') do (reg add "%%i" /v "*SpeedDuplex" /t REG_SZ /d "6" /f)
+	for /f %%i in ('reg query "%%a" /v "*LsoV2IPv4" ^| findstr "HKEY"') do (reg add "%%i" /v "*LsoV2IPv4" /t REG_SZ /d "0" /f)
+	for /f %%i in ('reg query "%%a" /v "*LsoV2IPv6" ^| findstr "HKEY"') do (reg add "%%i" /v "*LsoV2IPv6" /t REG_SZ /d "0" /f)
+::for /f %%i in ('reg query "%%a" /v "*TransmitBuffers" ^| findstr "HKEY"') do (reg add "%%i" /v "*TransmitBuffers" /t REG_SZ /d "128" /f)
+::for /f %%i in ('reg query "%%a" /v "*ReceiveBuffers" ^| findstr "HKEY"') do (reg add "%%i" /v "*ReceiveBuffers" /t REG_SZ /d "512" /f)
+::for /f %%i in ('reg query "%%a" /v "*PMARPOffload" ^| findstr "HKEY"') do (reg add "%%i" /v "*PMARPOffload" /t REG_SZ /d "1" /f)
+::for /f %%i in ('reg query "%%a" /v "*PMNSOffload" ^| findstr "HKEY"') do (reg add "%%i" /v "*PMNSOffload" /t REG_SZ /d "0" /f)
+::for /f %%i in ('reg query "%%a" /v "*InterruptModeration" ^| findstr "HKEY"') do (reg add "%%i" /v "*InterruptModeration" /t REG_SZ /d "0" /f)
+::for /f %%i in ('reg query "%%a" /v "*ModernStandbyWoLMagicPacket" ^| findstr "HKEY"') do (reg add "%%i" /v "*ModernStandbyWoLMagicPacket" /t REG_SZ /d "0" /f)
+::for /f %%i in ('reg query "%%a" /v "WakeOnLinkChange" ^| findstr "HKEY"') do (reg add "%%i" /v "WakeOnLinkChange" /t REG_SZ /d "0" /f)
+::for /f %%i in ('reg query "%%a" /v "*IPChecksumOffloadIPv4" ^| findstr "HKEY"') do (reg add "%%i" /v "*IPChecksumOffloadIPv4" /t REG_SZ /d "3" /f)
+::for /f %%i in ('reg query "%%a" /v "*RSS" ^| findstr "HKEY"') do (reg add "%%i" /v "*RSS" /t REG_SZ /d "1" /f)
+::for /f %%i in ('reg query "%%a" /v "*NumRssQueues" ^| findstr "HKEY"') do (reg add "%%i" /v "*NumRssQueues" /t REG_SZ /d "4" /f)
+	for /f %%i in ('reg query "%%a" /v "EnableGreenEthernet" ^| findstr "HKEY"') do (reg add "%%i" /v "EnableGreenEthernet" /t REG_SZ /d "0" /f)
+	for /f %%i in ('reg query "%%a" /v "GigaLite" ^| findstr "HKEY"') do (reg add "%%i" /v "GigaLite" /t REG_SZ /d "0" /f)
+	for /f %%i in ('reg query "%%a" /v "PowerSavingMode" ^| findstr "HKEY"') do (reg add "%%i" /v "PowerSavingMode" /t REG_SZ /d "0" /f)
+::for /f %%i in ('reg query "%%a" /v "S5WakeOnLan" ^| findstr "HKEY"') do (reg add "%%i" /v "S5WakeOnLan" /t REG_SZ /d "0" /f)
+	for /f %%i in ('reg query "%%a" /v "AutoDisableGigabit" ^| findstr "HKEY"') do (reg add "%%i" /v "AutoDisableGigabit" /t REG_SZ /d "0" /f)
+	for /f %%i in ('reg query "%%a" /v "SelectiveSuspend" ^| findstr "HKEY"') do (reg add "%%i" /v "SelectiveSuspend" /t REG_SZ /d "0" /f)
+	for /f %%i in ('reg query "%%a" /v "EnableModernStandby" ^| findstr "HKEY"') do (reg add "%%i" /v "EnableModernStandby" /t REG_SZ /d "0" /f)
+	for /f %%i in ('reg query "%%a" /v "WakeOnLink" ^| findstr "HKEY"') do (reg add "%%i" /v "WakeOnLink" /t REG_SZ /d "0" /f)
+	for /f %%i in ('reg query "%%a" /v "WakeOnSlot" ^| findstr "HKEY"') do (reg add "%%i" /v "WakeOnSlot" /t REG_SZ /d "0" /f)
+	for /f %%i in ('reg query "%%a" /v "WakeUpModeCap" ^| findstr "HKEY"') do (reg add "%%i" /v "WakeUpModeCap" /t REG_SZ /d "0" /f)
+	for /f %%i in ('reg query "%%a" /v "*NicAutoPowerSaver" ^| findstr "HKEY"') do (reg add "%%i" /v "*NicAutoPowerSaver" /t REG_SZ /d "0" /f)
+::for /f %%i in ('reg query "%%a" /v "*AlternateSemaphoreDelay" ^| findstr "HKEY"') do (reg add "%%i" /v "*AlternateSemaphoreDelay" /t REG_SZ /d "0" /f)
 ) > nul 2> nul
 
 :: Disable Nagle's Algorithm ; Credits to ArtanisInc
