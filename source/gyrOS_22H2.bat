@@ -1560,6 +1560,34 @@ reg add "HKLM\SOFTWARE\Policies\Microsoft\Windows NT\MitigationOptions" /v "Miti
 :: Mitigate against HiveNightmare / SeriousSAM ; Credits to DuckOS
 icacls %SystemRoot%\system32\config\* /inheritance:e > nul 2> nul
 
+:ChooseCPU
+cls
+set /p M="Select your CPU manufacturer:   1. for Intel or 2. for AMD or 3. for Other: " 
+if %M%==1 goto TSXEnable
+if %M%==2 goto TSXDisable
+if %M%==3 goto SkipTSX
+goto ChooseCPU
+
+:TSXEnable
+cls
+reg add "HKLM\SYSTEM\CurrentControlSet\Control\Session Manager\kernel" /v "DisableTsx" /t REG_DWORD /d "0" /f > nul 2> nul
+reg add "HKLM\SYSTEM\CurrentControlSet\Control\Session Manager\kernel" /v "EnableTsx" /t REG_DWORD /d "1" /f > nul 2> nul
+goto SkipTSX
+
+:TSXDisable
+cls
+reg add "HKLM\SYSTEM\CurrentControlSet\Control\Session Manager\kernel" /v "DisableTsx" /t REG_DWORD /d "1" /f > nul 2> nul
+reg add "HKLM\SYSTEM\CurrentControlSet\Control\Session Manager\kernel" /v "EnableTsx" /t REG_DWORD /d "0" /f > nul 2> nul
+goto SkipTSX
+
+:SkipTSX
+cls
+echo ____________________________________________
+echo.
+echo  OPTIMIZING SYSTEM PERFORMANCE AND SECURITY
+echo ____________________________________________
+echo.
+
 :: Storage Optimizations ; Credits to ArtanisInc
 for /f "skip=1" %%i in ('wmic os get TotalVisibleMemorySize') do if not defined TOTAL_MEMORY set "TOTAL_MEMORY=%%i"
 if !TOTAL_MEMORY! LSS 8000000 (
