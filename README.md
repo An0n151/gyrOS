@@ -11,17 +11,17 @@
 • gyrOS is a new project focusing on providing the best experience for everyday users depending on their needs.
 
 # What is gyrOS based on?
-• gyrOS offers Windows based modifications optimized & designed for gamers and creators, by gamers and creators.
+• gyrOS offers Windows based modifications optimized & designed for gamers, creators and developers.
 
 # What is the goal?
 • We strive to improve performance and lower input latency while being compatible with most applications and games.
 
 # What versions are available?
-• There are two versions available, one focusing on compatibility and the other focusing on performance.
+• There are two versions available, one focusing on compatibility and the other focusing on performance. We also provide a build which includes security updates and supports FACEIT and ESEA.
 
 # About gyrOS
 
-• Hundreds of performance & privacy tweaks integrated. <br>
+• Hundreds of performance & privacy tweaks. <br>
 • All stock bloatware has been removed. <br>
 • Removed unneeded, very old devices & drivers. <br>
 • Removed lots of useless tasks. <br>
