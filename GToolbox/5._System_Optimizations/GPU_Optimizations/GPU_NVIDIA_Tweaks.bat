@@ -48,12 +48,7 @@ reg add "HKLM\SYSTEM\CurrentControlSet\Services\nvlddmkm" /v "EnableCEPreemption
 reg add "HKLM\SYSTEM\CurrentControlSet\Services\nvlddmkm" /v "DisablePreemptionOnS3S4" /t REG_DWORD /d "1" /f
 reg add "HKLM\SYSTEM\CurrentControlSet\Services\nvlddmkm" /v "ComputePreemption" /t REG_DWORD /d "0" /f
 
-:: Unrestricted Clocks
-cd "%drive%\Program Files\NVIDIA Corporation\NVSMI\"
-nvidia-smi -acp UNRESTRICTED
-nvidia-smi -acp DEFAULT
-
-:: NVIDIA Registry Key
+:: Locate NVIDIA Registry Key
 for /f %%a in ('reg query "HKLM\SYSTEM\CurrentControlSet\Control\Class\{4d36e968-e325-11ce-bfc1-08002be10318}" /t REG_SZ /s /e /f "NVIDIA" ^| findstr "HKEY"') do (
 :: PStates 0
 if "%pstates%" equ "0x1" reg add "%%a" /v "DisableDynamicPstate" /t REG_DWORD /d "1" /f
