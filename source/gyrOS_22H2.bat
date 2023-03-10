@@ -1373,7 +1373,7 @@ reg add "HKLM\SYSTEM\CurrentControlSet\Services\Tcpip\Parameters" /v "DisableTas
 reg delete "HKLM\SYSTEM\CurrentControlSet\Services\SharedAccess\Parameters\FirewallPolicy\FirewallRules" /f > nul 2> nul
 reg add "HKLM\SYSTEM\CurrentControlSet\Services\SharedAccess\Parameters\FirewallPolicy\FirewallRules" /f > nul 2> nul
 netsh advfirewall set allprofiles state off > nul 2> nul
-netsh advfirewall firewall set rule group="Network Discovery" new enable=Yes > nul 2> nul
+netsh advfirewall firewall set rule group="Network Discovery" new enable=No > nul 2> nul
 reg add "HKLM\SYSTEM\CurrentControlSet\Services\mpssvc" /v "Start" /t REG_DWORD /d "3" /f > nul 2> nul
 reg add "HKLM\SYSTEM\CurrentControlSet\Services\BFE" /v "Start" /t REG_DWORD /d "3" /f > nul 2> nul
 
