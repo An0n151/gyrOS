@@ -1360,7 +1360,8 @@ reg add "HKLM\SYSTEM\CurrentControlSet\Services\Dnscache\Parameters" /v "Disable
 :: Branch Cache
 reg add "HKLM\SYSTEM\CurrentControlSet\Services\LanmanWorkstation\Parameters" /v "DisableBandwidthThrottling" /t REG_DWORD /d "1" /f > nul 2> nul
 
-:: QoS
+:: QoS***
+reg add "HKLM\SYSTEM\CurrentControlSet\Services\Psched" /v "Start" /t REG_DWORD /d "4" /f > nul 2> nul
 reg add "HKLM\SOFTWARE\Policies\Microsoft\Windows\Psched" /v "NonBestEffortLimit" /t REG_DWORD /d "10" /f > nul 2> nul
 reg add "HKLM\SOFTWARE\WOW6432Node\Policies\Microsoft\Windows\Psched" /v "NonBestEffortLimit" /t REG_DWORD /d "10" /f > nul 2> nul
 reg add "HKLM\SYSTEM\CurrentControlSet\Services\Tcpip\QoS" /v "Do not use NLA" /t REG_DWORD /d "1" /f > nul 2> nul
@@ -1590,7 +1591,7 @@ reg add "HKLM\SYSTEM\CurrentControlSet\Control\Session Manager\Memory Management
 ::reg add "HKLM\SOFTWARE\Microsoft\Dfrg\BootOptimizeFunction" /v "Enable" /t REG_SZ /d "N" /f > nul 2> nul
 ::reg add "HKLM\SOFTWARE\Microsoft\Windows\CurrentVersion\OptimalLayout" /v "EnableAutoLayout" /t REG_DWORD /d "0" /f > nul 2> nul
 reg add "HKLM\SYSTEM\CurrentControlSet\Control\Class\{71a27cdd-812a-11d0-bec7-08002be2092f}" /v "LowerFilters" /t REG_MULTI_SZ  /d "" /f > nul 2> nul
-reg add "HKLM\SYSTEM\CurrentControlSet\Control\Class\{71a27cdd-812a-11d0-bec7-08002be2092f}" /v "UpperFilters" /t REG_MULTI_SZ  /d "" /f > nul 2> nul
+::reg add "HKLM\SYSTEM\CurrentControlSet\Control\Class\{71a27cdd-812a-11d0-bec7-08002be2092f}" /v "UpperFilters" /t REG_MULTI_SZ  /d "" /f > nul 2> nul
 reg add "HKLM\SYSTEM\CurrentControlSet\Control\FileSystem" /v "NTFSDisableLastAccessUpdate" /t REG_DWORD /d "1" /f > nul 2> nul
 reg add "HKLM\SYSTEM\CurrentControlSet\Control\FileSystem" /v "NTFSDisable8dot3NameCreation" /t REG_DWORD /d "1" /f > nul 2> nul
 reg add "HKLM\SOFTWARE\Microsoft\Windows\CurrentVersion\Explorer" /v "AlwaysUnloadDLL" /t REG_DWORD /d "1" /f > nul 2> nul
@@ -1607,6 +1608,9 @@ reg add "HKCU\SOFTWARE\Classes\Local Settings\Software\Microsoft\Windows\Shell" 
 
 :: Disable "Do not Connect to Windows Update Internet Locations" / Used to Fixed Microsoft Store
 ::reg add "HKLM\SOFTWARE\Policies\Microsoft\Windows\WindowsUpdate" /v "DoNotConnectToWindowsUpdateInternetLocations" /t REG_DWORD /d "0" /f > nul 2> nul
+
+:: Clean Non-Present Devices
+PowerShell "$Devices = Get-PnpDevice | ? Status -eq Unknown;foreach ($Device in $Devices) { &\"pnputil\" /remove-device $Device.InstanceId }"
 
 timeout /t 2
 cls
@@ -1684,26 +1688,26 @@ schtasks /Change /Disable /TN "\Microsoft\WindowsManagement\Provisioning\Cellula
 :ChooseCPU
 cls
 set /p M=" Select your CPU manufacturer:   1. for Intel or 2. for AMD or 3. for Other: " 
-if %M%==1 goto TSXEnable
-if %M%==2 goto TSXDisable
-if %M%==3 goto SkipTSX
+if %M%==1 goto Intel
+if %M%==2 goto AMD
+if %M%==3 goto SkipCPU
 goto ChooseCPU
 
-:TSXEnable
+:Intel
 cls
 :: Enable TSX
 reg add "HKLM\SYSTEM\CurrentControlSet\Control\Session Manager\kernel" /v "DisableTsx" /t REG_DWORD /d "0" /f > nul 2> nul
 :: Disable Power Throttling
 reg add "HKLM\SYSTEM\CurrentControlSet\Control\Power\PowerThrottling" /v "PowerThrottlingOff" /t REG_DWORD /d "1" /f > nul 2> nul
-goto SkipTSX
+goto SkipCPU
 
-:TSXDisable
+:AMD
 cls
 :: Disable TSX
 reg add "HKLM\SYSTEM\CurrentControlSet\Control\Session Manager\kernel" /v "DisableTsx" /t REG_DWORD /d "1" /f > nul 2> nul
-goto SkipTSX
+goto SkipCPU
 
-:SkipTSX
+:SkipCPU
 cls
 timeout /t 2
 cls
