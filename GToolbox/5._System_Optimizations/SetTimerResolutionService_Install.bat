@@ -1,4 +1,6 @@
-:: ### gyrOS SetTimerResolutionService Installation Script ###
+:: gyrOS ::
+
+:: SetTimerResolutionService Installation Script 
 
 @echo off
 

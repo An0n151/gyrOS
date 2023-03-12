@@ -1,6 +1,4 @@
 :: ### gyrOS Optimization Script ###
-:: ### I do not claim to have coded this myself ###
-:: ### If you see your code in here and want to be credited, message me on Discord ###
 
 :: ### Credits: EchoX, HoneCtrl, ArtanisInc, Rikey, DuckOS, Melody
 

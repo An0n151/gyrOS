@@ -1,6 +1,8 @@
-:: ### gyrOS NVIDIA GPU Tweaks ###
+:: gyrOS ::
 
-:: ### Credits: EchoX, HoneCtrl
+:: NVIDIA GPU Tweaks
+
+:: Credits: EchoX, HoneCtrl
 
 @echo off
 

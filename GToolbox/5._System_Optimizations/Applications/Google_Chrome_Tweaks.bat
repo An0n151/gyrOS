@@ -1,6 +1,8 @@
-:: ### gyrOS Google Chrome Tweaks ###
+:: gyrOS ::
 
-:: ### Credits: DuckOS
+:: Google Chrome Tweaks 
+
+:: Credits: DuckOS
 
 @echo off
 

@@ -1,4 +1,4 @@
-:: ### gyrOS ###
+:: gyrOS ::
 
 :: Enable Xbox Services
 

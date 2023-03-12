@@ -1,4 +1,6 @@
-:: gyrOS VPN Enablement Script ::
+:: gyrOS ::
+
+:: Enable VPN
 
 @echo off
 

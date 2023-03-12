@@ -1,6 +1,8 @@
-:: ### gyrOS AMD GPU Tweaks ###
+:: gyrOS ::
 
-:: ### Credits: Melody, Unixcorn, HoneCtrl
+:: AMD GPU Tweaks
+
+:: Credits: Melody, Unixcorn, HoneCtrl
 
 @echo off
 

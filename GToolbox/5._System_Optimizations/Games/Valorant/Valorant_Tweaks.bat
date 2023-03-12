@@ -1,6 +1,8 @@
-:: ### gyrOS Valorant Tweaks ###
+:: gyrOS ::
 
-:: ### Credits: DuckOS
+:: Valorant Tweaks
+
+:: Credits: DuckOS
 
 @echo off
 

@@ -1,4 +1,6 @@
-:: gyrOS VPN Disablement Script ::
+:: gyrOS ::
+
+:: Disable VPN
 
 @echo off
 

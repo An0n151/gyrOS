@@ -1,6 +1,8 @@
-:: ### gyrOS Game Tweaks ###
+:: gyrOS ::
 
-:: ### Credits: HoneCtrl
+:: Game Tweaks
+
+:: Credits: HoneCtrl
 
 @echo off
 

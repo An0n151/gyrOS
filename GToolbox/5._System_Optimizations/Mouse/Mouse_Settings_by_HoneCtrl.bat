@@ -1,6 +1,8 @@
-:: ### gyrOS Mouse Tweaks ###
+:: gyrOS ::
 
-:: ### Credits: HoneCtrl
+:: Mouse Tweaks
+
+:: Credits: HoneCtrl
 
 @echo off
 

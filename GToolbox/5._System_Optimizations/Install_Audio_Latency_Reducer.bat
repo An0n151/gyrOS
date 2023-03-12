@@ -1,6 +1,8 @@
-:: ### gyrOS Audio Latency Reducer Service Installer ###
+:: gyrOS ::
 
-:: Credits to HoneCtrl
+:: Audio Latency Reducer Service Installer
+
+:: Credits: HoneCtrl
 
 @echo off
 

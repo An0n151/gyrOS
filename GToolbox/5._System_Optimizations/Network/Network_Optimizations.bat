@@ -1,4 +1,6 @@
-:: gyrOS Network Optimization Script ::
+:: gyrOS ::
+
+:: Network Optimization Script
 
 @echo off
 setlocal EnableDelayedExpansion
