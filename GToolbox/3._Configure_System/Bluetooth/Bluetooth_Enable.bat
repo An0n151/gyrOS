@@ -20,19 +20,20 @@ sc config "HidBth" start= demand
 sc config "Microsoft_Bluetooth_AvrcpTransport" start= demand
 sc config "RFCOMM" start= demand
 
-reg add "HKLM\SYSTEM\CurrentControlSet\Services\DeviceAssociationBrokerSvc" /v "Start" /t REG_DWORD /d "3" /f
-reg add "HKLM\SYSTEM\CurrentControlSet\Services\BluetoothUserService" /v "Start" /t REG_DWORD /d "3" /f
-
 sc config "BluetoothUserService" start=demand
 sc config "BTAGService" start= demand
 sc config "BthAvctpSvc" start= demand
 sc config "bthserv" start= demand
-sc config "DevicesFlowUserSvc" start= demand 
+sc config "DevicesFlowUserSvc" start= demand
+sc config "DevicePickerUserSvc" start= demand
+
+reg add "HKLM\SYSTEM\CurrentControlSet\Services\DeviceAssociationBrokerSvc" /v "Start" /t REG_DWORD /d "3" /f
+reg add "HKLM\SYSTEM\CurrentControlSet\Services\BluetoothUserService" /v "Start" /t REG_DWORD /d "3" /f
 
 echo.
 echo Bluetooth services have been enabled.
 echo.
-echo Install your bluetooth driver, then restart your computer.
+echo Install your bluetooth driver and restart your system.
 echo.
 
 pause >nul
