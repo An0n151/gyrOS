@@ -16,7 +16,7 @@ reg add "HKCU\SOFTWARE\Microsoft\GameBar" /v "AllowAutoGameMode" /t REG_DWORD /d
 reg add "HKCU\SOFTWARE\Microsoft\GameBar" /v "AutoGameModeEnabled" /t REG_DWORD /d "0" /f
 
 for /f %%i in ('reg query "HKLM\SYSTEM\CurrentControlSet\Control\Class\{4d36e968-e325-11ce-bfc1-08002be10318}" /s /v "DriverDesc"^| findstr "HKEY AMD ATI"') do if /i "%%i" neq "DriverDesc" (set "REGPATH_AMD=%%i")
-reg add "%REGPATH_AMD%" /v "3D_Refresh_Rate_Override_DEF" /t REG_DWORD /d "0" /f
+::reg add "%REGPATH_AMD%" /v "3D_Refresh_Rate_Override_DEF" /t REG_DWORD /d "0" /f
 reg add "%REGPATH_AMD%" /v "3to2Pulldown_NA" /t REG_DWORD /d "0" /f
 reg add "%REGPATH_AMD%" /v "AAF_NA" /t REG_DWORD /d "0" /f
 reg add "%REGPATH_AMD%" /v "Adaptive De-interlacing" /t REG_DWORD /d "1" /f
@@ -50,7 +50,7 @@ reg add "%REGPATH_AMD%\UMD" /v "FlipQueueSize" /t REG_BINARY /d "3100" /f
 reg add "%REGPATH_AMD%\UMD" /v "ShaderCache" /t REG_BINARY /d "3200" /f
 reg add "%REGPATH_AMD%\UMD" /v "Tessellation_OPTION" /t REG_BINARY /d "3200" /f
 reg add "%REGPATH_AMD%\UMD" /v "Tessellation" /t REG_BINARY /d "3100" /f
-reg add "%REGPATH_AMD%\UMD" /v "VSyncControl" /t REG_BINARY /d "3000" /f
+::reg add "%REGPATH_AMD%\UMD" /v "VSyncControl" /t REG_BINARY /d "3000" /f
 reg add "%REGPATH_AMD%\UMD" /v "TFQ" /t REG_BINARY /d "3200" /f
 reg add "%REGPATH_AMD%\DAL2_DATA__2_0\DisplayPath_4\EDID_D109_78E9\Option" /v "ProtectionControl" /t REG_BINARY /d "0100000001000000" /f
 

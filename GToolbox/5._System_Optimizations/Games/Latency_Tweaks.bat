@@ -1,6 +1,6 @@
 :: gyrOS ::
 
-:: Game Tweaks
+:: Latency Tweaks
 
 :: Credits: HoneCtrl
 
