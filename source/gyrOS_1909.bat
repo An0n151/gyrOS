@@ -1042,6 +1042,7 @@ for /f %%i in ('reg query "HKLM\SYSTEM\CurrentControlSet\Services" /s /f DmaRema
 
 :: Disable Virtualization-Based Protection of Code Integrity
 reg add "HKLM\SOFTWARE\Policies\Microsoft\Windows\DeviceGuard" /v "EnableVirtualizationBasedSecurity" /t REG_DWORD /d "0" /f > nul 2> nul
+reg add "HKLM\SOFTWARE\Policies\Microsoft\Windows\DeviceGuard" /t REG_DWORD /v "HypervisorEnforcedCodeIntegrity" /d "0" /f > nul 2> nul
 reg add "HKLM\SYSTEM\CurrentControlSet\Control\DeviceGuard\Scenarios\HypervisorEnforcedCodeIntegrity" /v "Enabled" /t REG_DWORD /d "0" /f > nul 2> nul
 reg add "HKLM\SYSTEM\CurrentControlSet\Control\DeviceGuard\Scenarios\HypervisorEnforcedCodeIntegrity" /v "WasEnabledBy" /t REG_DWORD /d "0" /f > nul 2> nul
 
@@ -1069,6 +1070,7 @@ reg add "HKLM\SOFTWARE\Policies\Microsoft\Windows\DeviceGuard" /v "HVCIMATRequir
 reg add "HKLM\SOFTWARE\Policies\Microsoft\Windows\DeviceGuard" /v "RequirePlatformSecurityFeatures" /t REG_DWORD /d "1" /f > nul 2> nul
 reg add "HKLM\SOFTWARE\Policies\Microsoft\Windows\DeviceGuard" /v "LsaCfgFlags" /t REG_DWORD /d "0" /f > nul 2> nul
 reg add "HKLM\SOFTWARE\Policies\Microsoft\FVE" /v "DisableExternalDMAUnderLock" /t REG_DWORD /d "0" /f > nul 2> nul
+reg add "HKLM\SYSTEM\CurrentControlSet\Control\DeviceGuard" /v "RequireMicrosoftSignedBootChain" /t REG_DWORD /d "0" /f > nul 2> nul
 
 :: Disable System Devices
 %WinDir%\gyrOS\DevManView.exe /disable "WAN Miniport (IPv6)" > nul 2> nul
@@ -1083,6 +1085,9 @@ reg add "HKLM\SOFTWARE\Policies\Microsoft\FVE" /v "DisableExternalDMAUnderLock" 
 %WinDir%\gyrOS\DevManView.exe /disable "Motherboard resources" > nul 2> nul
 %WinDir%\gyrOS\DevManView.exe /disable "Microsoft Hyper-V NT Kernel Integration VSP" > nul 2> nul
 %WinDir%\gyrOS\DevManView.exe /disable "Microsoft Hyper-V PCI Server" > nul 2> nul
+%WinDir%\gyrOS\DevManView.exe /disable "Microsoft Hyper-V Virtual Machine Bus Provider" > nul 2> nul
+%WinDir%\gyrOS\DevManView.exe /disable "Microsoft Hyper-V Virtualization Infrastructure Driver" > nul 2> nul
+%WinDir%\gyrOS\DevManView.exe /disable "Microsoft Hyper-V Virtual Disk Server" > nul 2> nul
 %WinDir%\gyrOS\DevManView.exe /disable "UMBus Root Bus Enumerator" > nul 2> nul
 %WinDir%\gyrOS\DevManView.exe /disable "Microsoft System Management BIOS Driver" > nul 2> nul
 %WinDir%\gyrOS\DevManView.exe /disable "ACPI Processor Aggregator" > nul 2> nul
@@ -1094,15 +1099,12 @@ reg add "HKLM\SOFTWARE\Policies\Microsoft\FVE" /v "DisableExternalDMAUnderLock" 
 %WinDir%\gyrOS\DevManView.exe /disable "PCI Data Acquisition and Signal Processing Controller" > nul 2> nul
 %WinDir%\gyrOS\DevManView.exe /disable "Intel SMBus" > nul 2> nul
 %WinDir%\gyrOS\DevManView.exe /disable "Intel Management Engine" > nul 2> nul
-%WinDir%\gyrOS\DevManView.exe /disable "Microsoft Hyper-V Virtual Machine Bus Provider" > nul 2> nul
-%WinDir%\gyrOS\DevManView.exe /disable "Microsoft Hyper-V Virtualization Infrastructure Driver" > nul 2> nul
 %WinDir%\gyrOS\DevManView.exe /disable "PCI Memory Controller" > nul 2> nul
 %WinDir%\gyrOS\DevManView.exe /disable "PCI standard RAM Controller" > nul 2> nul
 %WinDir%\gyrOS\DevManView.exe /disable "Composite Bus Enumerator" > nul 2> nul
 %WinDir%\gyrOS\DevManView.exe /disable "Microsoft Kernel Debug Network Adapter" > nul 2> nul
 %WinDir%\gyrOS\DevManView.exe /disable "SM Bus Controller" > nul 2> nul
 %WinDir%\gyrOS\DevManView.exe /disable "Numeric Data Processor" > nul 2> nul
-%WinDir%\gyrOS\DevManView.exe /disable "Microsoft Hyper-V Virtual Disk Server" > nul 2> nul
 %WinDir%\gyrOS\DevManView.exe /disable "System CMOS/real time clock" > nul 2> nul
 %WinDir%\gyrOS\DevManView.exe /disable "PCI Simple Communications Controller" > nul 2> nul
 
