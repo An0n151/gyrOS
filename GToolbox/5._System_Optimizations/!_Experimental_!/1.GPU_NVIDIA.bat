@@ -53,13 +53,13 @@ reg add "HKLM\SYSTEM\CurrentControlSet\Services\nvlddmkm" /v "ComputePreemption"
 :: Locate NVIDIA Registry Key
 for /f %%a in ('reg query "HKLM\SYSTEM\CurrentControlSet\Control\Class\{4d36e968-e325-11ce-bfc1-08002be10318}" /t REG_SZ /s /e /f "NVIDIA" ^| findstr "HKEY"') do (
 :: PStates 0
-if "%pstates%" equ "0x1" reg add "%%a" /v "DisableDynamicPstate" /t REG_DWORD /d "1" /f
+	if "%pstates%" equ "0x1" reg add "%%a" /v "DisableDynamicPstate" /t REG_DWORD /d "1" /f
 :: Disable Tiled Display
-reg add "%%a" /v "EnableTiledDisplay" /t REG_DWORD /d "0" /f
+	reg add "%%a" /v "EnableTiledDisplay" /t REG_DWORD /d "0" /f
 :: Disable TCC
-reg add "%%a" /v "TCCSupported" /t REG_DWORD /d "0" /f
+	reg add "%%a" /v "TCCSupported" /t REG_DWORD /d "0" /f
 :: Force contiguous memory allocation
-reg add "%%a" /v "PreferSystemMemoryContiguous" /t REG_DWORD /d "1" /f
+	reg add "%%a" /v "PreferSystemMemoryContiguous" /t REG_DWORD /d "1" /f
 )
 
 :: Disable HDCP

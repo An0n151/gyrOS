@@ -14,7 +14,6 @@ netsh interface tcp set supplemental Internet congestionprovider=ctcp
 netsh interface tcp set supplemental InternetCustom congestionprovider=ctcp
 netsh int tcp set security mpp=disabled
 netsh int tcp set security profiles=disabled
-netsh int tcp set security mpp=disabled profiles=disabled
 
 PowerShell Enable-NetAdapterQos -Name "*";^
 PowerShell Disable-NetAdapterPowerManagement -Name "*";^
