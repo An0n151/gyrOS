@@ -1,6 +1,6 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <Preset isAutoSaved="true" xmlns="urn:schemas-nliteos-com:pn.v1">
-	<Date>03/06/2023 23:42:58</Date>
+	<Date>03/14/2023 22:31:42</Date>
 	<AppInfo>
 		<Version>2023.3.9160</Version>
 		<Licensed>Yes</Licensed>
@@ -16,27 +16,37 @@
 		<c>accessibility_magnifier 'Screen Magnifier'</c>
 		<c>accessibility_narrator 'Narrator'</c>
 		<c>actioncenter 'Action Center'</c>
+		<c>activedirectory 'Active Directory'</c>
+		<c>adamclient 'Active Directory Lightweight Directory Services (AD LDS)'</c>
 		<c>alg 'Application Layer Gateway Service'</c>
 		<c>alljoyn 'AllJoyn Router Service'</c>
 		<c>appv 'Application Virtualization (App-V)'</c>
 		<c>assembly.net '.NET assembly cache'</c>
 		<c>assignedaccess 'Assigned Access'</c>
 		<c>autoplay</c>
+		<c>axinstall 'ActiveX Installer Service'</c>
 		<c>azman32 'Authorization Manager - 32 bit'</c>
 		<c>azuread 'Azure Active Directory'</c>
 		<c>backup 'Backup and Restore'</c>
 		<c>biometric 'Biometric - Support'</c>
 		<c>branchcacheclient 'BranchCache Client'</c>
+		<c>ceip 'CEIP (SQM)'</c>
 		<c>cellulartime 'Cellular Time'</c>
 		<c>certmgr32 'Certificate Manager - 32 bit'</c>
 		<c>cloudid 'Microsoft Cloud Identity Service'</c>
 		<c>cloudnotifications 'Cloud Notifications'</c>
 		<c>commmc32 'COM+ (Component Services) (management console) - 32 bit'</c>
 		<c>compmgmt32 'Computer Management - 32 bit'</c>
+		<c>datacenterbridging 'Data Center Bridging (DCB)'</c>
+		<c>desktopactivitymoderator 'Desktop Activity Moderator (DAM)'</c>
 		<c>desktopimgdownldr 'Desktop image downloader'</c>
+		<c>devicesync 'Microsoft Sync Framework'</c>
 		<c>deviceupdatecenter 'Device Update Center'</c>
 		<c>devmgmt32 'Device Manager - 32 bit'</c>
+		<c>directaccess 'Direct Access Connection'</c>
 		<c>diskdiagnosis 'Disk failure diagnostics'</c>
+		<c>diskmgmt32 'Disk Management - 32 bit'</c>
+		<c>diskquota32 'Disk Quota - 32 bit'</c>
 		<c>driver_c_barcodescanner.inf</c>
 		<c>driver_c_cashdrawer.inf</c>
 		<c>driver_c_computeaccelerator.inf</c>
@@ -282,7 +292,6 @@
 		<c>enterprisedataprotection 'Enterprise Data Protection (EDP/WIP)'</c>
 		<c>errorreporting 'Windows Error Reporting'</c>
 		<c>eudcedit 'Private Character Editor'</c>
-		<c>eventtracing 'Event Tracing for Windows (ETW)'</c>
 		<c>eventviewer32 'Event Viewer - 32 bit'</c>
 		<c>F46D4000-FD22-4DB4-AC8E-4E1DDDE828FE 'Add Folder Suggestions dialog'</c>
 		<c>facerecognition 'Face Recognition'</c>
@@ -290,7 +299,6 @@
 		<c>fclip 'Microsoft Client License Flexible Platform'</c>
 		<c>filehistory 'File History'</c>
 		<c>filerevocationmanager 'File Revocation Manager - 32 bit'</c>
-		<c>filetrace 'File Trace MiniFilter'</c>
 		<c>firstlogonanim 'First-logon animation'</c>
 		<c>folderredirection 'Folder Redirection'</c>
 		<c>font_malgungothicbold 'Malgun Gothic Bold'</c>
@@ -315,7 +323,6 @@
 		<c>hwsupport_fax 'Fax'</c>
 		<c>hwsupport_floppy 'Floppy disk'</c>
 		<c>hwsupport_infrared 'Infrared devices'</c>
-		<c>hwsupport_internetprintingclient 'Internet Printing Client'</c>
 		<c>hwsupport_modemsettings 'Shared modem settings (mdmgl*.inf)'</c>
 		<c>hwsupport_scanner 'Scanner'</c>
 		<c>hwsupport_smartcard 'Smartcard'</c>
@@ -323,10 +330,12 @@
 		<c>hwsupport_tv 'TV Tuner codecs and support'</c>
 		<c>hwsupport_wia 'Windows Image Acquisition (WIA)'</c>
 		<c>hypervguest 'Hyper-V Integration Services'</c>
+		<c>ias 'Internet Authentication Service (IAS)'</c>
 		<c>iis 'Internet Information Server (IIS)'</c>
 		<c>indeo 'Intel Indeo Codecs'</c>
 		<c>inputswitchtoasthandler 'Input Switch Toast Handler'</c>
 		<c>insiderhub 'Windows Insider Program'</c>
+		<c>ipt 'Identity Protection Technology (Intel IPT)'</c>
 		<c>iscsi 'iSCSI Initiator'</c>
 		<c>isoburn 'Windows Disc Image Burning Tool'</c>
 		<c>kerberos32 'Kerberos Client - 32 bit'</c>
@@ -446,8 +455,10 @@
 		<c>mobilepc_networkprojection 'Network Projection'</c>
 		<c>mobilepc_sensors 'Sensors'</c>
 		<c>mpeg2splitter 'MPEG-2 Splitter'</c>
+		<c>msmq 'Microsoft Message Queue (MSMQ)'</c>
 		<c>multipointconnector 'MultiPoint Connector'</c>
 		<c>naturalauthentication 'Natural Authentication'</c>
+		<c>nettopology 'Link-Layer Topology Discovery protocol (LLTD)'</c>
 		<c>nfc 'Near Field Communication (NFC)'</c>
 		<c>nfsclient 'NFS Administrative Tools'</c>
 		<c>nowplaying 'Now Playing Session Manager'</c>
@@ -457,12 +468,10 @@
 		<c>openssh</c>
 		<c>osk_acc 'On-Screen Keyboard (Accessibility tools)'</c>
 		<c>otherthemes 'Windows Personalization themes'</c>
+		<c>paint</c>
 		<c>paint32 'Paint - 32 bit'</c>
 		<c>payments</c>
 		<c>pdfreader 'Windows Reader (PDF)'</c>
-		<c>perfmon 'Performance Monitor'</c>
-		<c>performancerecorder 'Windows Performance Recorder'</c>
-		<c>perftools 'Performance CMD Tools for Tracing'</c>
 		<c>phonesvc 'Phone Service'</c>
 		<c>photocodec32 'Photo codec - 32 bit'</c>
 		<c>photoviewer 'Photo Viewer'</c>
@@ -470,19 +479,18 @@
 		<c>pickerhost32 'File Picker UI Host - 32 bit'</c>
 		<c>picturepassword 'Picture password'</c>
 		<c>pinsignin 'PIN sign-in support'</c>
-		<c>pla 'Performance Logs and Alerts'</c>
 		<c>pos 'Point of Service (POS)'</c>
-		<c>printtopdf 'Print to PDF'</c>
-		<c>printworkflow 'Print Workflow Service'</c>
 		<c>pushnotificationssvc 'Windows Push Notifications Service (System)'</c>
 		<c>pushtoinstall 'Windows PushToInstall Service'</c>
 		<c>quiethours 'Quiet Hours (Focus Assist)'</c>
 		<c>rasauto 'Remote Access Auto Connection Manager'</c>
+		<c>rascmd 'Remote Access Service Client Tools'</c>
 		<c>rdpclient 'Remote Desktop Client'</c>
 		<c>rdpclient32 'Remote Desktop Client - 32 bit'</c>
 		<c>rdpserver 'Remote Desktop Server'</c>
 		<c>rdpserverlic 'Remote Desktop Licensing'</c>
 		<c>reliabilityanalysis 'Reliability Analysis Services'</c>
+		<c>remoteaccessservice 'Routing and Remote Access Service'</c>
 		<c>remoteactivex 'Remote Desktop Services ActiveX Client'</c>
 		<c>remoteactivex32 'Remote Desktop Services ActiveX Client - 32 bit'</c>
 		<c>remoteassistance 'Remote Assistance'</c>
@@ -495,7 +503,6 @@
 		<c>rpclocator 'Remote Procedure Call (RPC) Locator'</c>
 		<c>screensavers</c>
 		<c>secedit 'Local Security Policy Editor'</c>
-		<c>securestartup 'BitLocker Drive Encryption'</c>
 		<c>securitycenter 'Security Center'</c>
 		<c>sendmail 'Send To Mail and Desktop'</c>
 		<c>servicesmmc32 'Services (management console) - 32 bit'</c>
@@ -507,6 +514,8 @@
 		<c>sihclient 'Server-Initiated Healing Client'</c>
 		<c>simpletcp 'Simple TCP/IP services'</c>
 		<c>skypeortc 'Skype ORTC'</c>
+		<c>smbv1 'SMB v1'</c>
+		<c>smsrouter 'SMS Router Service'</c>
 		<c>snippingtool 'Snipping Tool'</c>
 		<c>soundthemes 'Sound Themes'</c>
 		<c>sourcessxsdir 'Manual feature repository'</c>
@@ -518,6 +527,7 @@
 		<c>storagespaces 'Storage Spaces'</c>
 		<c>supportdir 'Support directory'</c>
 		<c>synccenter 'Sync Center'</c>
+		<c>systemguard 'System Guard'</c>
 		<c>systemreset 'System Reset for Windows'</c>
 		<c>systemrestore 'System Restore'</c>
 		<c>tabletextservice 'Table Text Service'</c>
@@ -535,10 +545,12 @@
 		<c>tpmmmc 'Trusted Platform Module (TPM) (management console)'</c>
 		<c>tpmmmc32 'Trusted Platform Module (TPM) (management console) - 32 bit'</c>
 		<c>tpmvsc 'Virtual Smart Card'</c>
+		<c>trkwks 'Distributed Link Tracking Client'</c>
 		<c>troubleshootingsvc 'Recommended Troubleshooting service'</c>
 		<c>tzautoupdate 'Auto Time Zone Updater'</c>
 		<c>uev 'User Experience Virtualization (UE-V)'</c>
 		<c>unp 'Universal Notification Platform (UNP)'</c>
+		<c>userdeviceregistration 'User Device Registration'</c>
 		<c>vwifi 'Virtual WiFi'</c>
 		<c>wallet 'Wallet Service'</c>
 		<c>wallpapers 'Wallpapers (Themes)'</c>
@@ -549,7 +561,6 @@
 		<c>wifinetworkmanager 'Wi-Fi Network Manager (Wi-Fi Sense)'</c>
 		<c>winai 'Windows AI Machine Learning'</c>
 		<c>Windows.CBSPreview 'Windows Barcode Preview'</c>
-		<c>windows.devicesflow32 'Devices Flow - 32 bit'</c>
 		<c>windowstogo 'Windows To Go'</c>
 		<c>winocr 'Windows TIFF IFilter (OCR)'</c>
 		<c>winre 'Windows Recovery (WinRE)'</c>
@@ -612,6 +623,7 @@
 	</Compatibility>
 	<Features>
 		<Feature name="Printing-Foundation-InternetPrinting-Client">false</Feature>
+		<Feature name="Printing-PrintToPDFServices-Features">false</Feature>
 		<Feature name="Printing-XPSServices-Features">false</Feature>
 		<Feature name="Printing-Foundation-Features">false</Feature>
 		<Feature name="MSRDC-Infrastructure">false</Feature>
@@ -1252,7 +1264,6 @@
 				<Tweak name="VaultSvc\VaultSvc">4</Tweak>
 				<Tweak name="DisplayEnhancementService\DisplayEnhancementService">4</Tweak>
 				<Tweak name="DispBrokerDesktopSvc\DispBrokerDesktopSvc">4</Tweak>
-				<Tweak name="TrkWks\TrkWks">4</Tweak>
 				<Tweak name="EntAppSvc\EntAppSvc">4</Tweak>
 				<Tweak name="fdPHost\fdPHost">4</Tweak>
 				<Tweak name="FDResPub\FDResPub">4</Tweak>
@@ -1269,7 +1280,6 @@
 				<Tweak name="ShellHWDetection\ShellHWDetection">4</Tweak>
 				<Tweak name="sppsvc\sppsvc">3</Tweak>
 				<Tweak name="SysMain\SysMain">4</Tweak>
-				<Tweak name="SgrmBroker\SgrmBroker">4</Tweak>
 				<Tweak name="Themes\Themes">4</Tweak>
 				<Tweak name="TabletInputService\TabletInputService">4</Tweak>
 				<Tweak name="WFDSConMgrSvc\WFDSConMgrSvc">4</Tweak>
@@ -1310,7 +1320,6 @@
 				<Tweak name="iaStorV\iaStorV">3</Tweak>
 				<Tweak name="Telemetry\Telemetry">4</Tweak>
 				<Tweak name="intelide\intelide">3</Tweak>
-				<Tweak name="IPT\IPT">3</Tweak>
 				<Tweak name="ItSas35i\ItSas35i">3</Tweak>
 				<Tweak name="KSecPkg\KSecPkg">4</Tweak>
 				<Tweak name="LSI_SAS\LSI_SAS">3</Tweak>
