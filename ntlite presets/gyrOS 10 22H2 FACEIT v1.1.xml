@@ -1,6 +1,6 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <Preset isAutoSaved="true" xmlns="urn:schemas-nliteos-com:pn.v1">
-	<Date>03/14/2023 22:31:42</Date>
+	<Date>03/14/2023 22:45:16</Date>
 	<AppInfo>
 		<Version>2023.3.9160</Version>
 		<Licensed>Yes</Licensed>
@@ -1242,7 +1242,7 @@
 				<Tweak name="StoragePolicy\04">0</Tweak>
 				<Tweak name="StoragePolicy\2048">0</Tweak>
 				<Tweak name="System\DisableAutomaticRestartSignOn">1</Tweak>
-				<Tweak name="UserGpuPreferences\DirectXUserGlobalSettings">VRROptimizeEnable=0</Tweak>
+				<Tweak name="DeviceGuard\EnableVirtualizationBasedSecurity">0</Tweak>
 			</TweakGroup>
 			<TweakGroup name="WindowsUpdate">
 				<Tweak name="Preferences\ModelDownloadAllowed">0</Tweak>
