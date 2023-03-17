@@ -267,6 +267,22 @@ reg add "HKLM\SYSTEM\CurrentControlSet\Services\ClipSVC" /v "Start" /t REG_DWORD
 reg add "HKLM\SYSTEM\CurrentControlSet\Services\PerfHost" /v "Start" /t REG_DWORD /d "4" /f > nul 2> nul
 reg add "HKLM\SYSTEM\CurrentControlSet\Services\TokenBroker" /v "Start" /t REG_DWORD /d "4" /f > nul 2> nul
 
+:: Remove Print from Context Menu
+reg add "HKCR\SystemFileAssociations\image\shell\print" /v "ProgrammaticAccessOnly" /t REG_SZ /d "" /f > nul 2> nul
+reg add "HKCR\batfile\shell\print" /v "ProgrammaticAccessOnly" /t REG_SZ /d "" /f > nul 2> nul
+reg add "HKCR\cmdfile\shell\print" /v "ProgrammaticAccessOnly" /t REG_SZ /d "" /f > nul 2> nul
+reg add "HKCR\docxfile\shell\print" /v "ProgrammaticAccessOnly" /t REG_SZ /d "" /f > nul 2> nul
+reg add "HKCR\htmlfile\shell\print" /v "ProgrammaticAccessOnly" /t REG_SZ /d "" /f > nul 2> nul
+reg add "HKCR\inffile\shell\print" /v "ProgrammaticAccessOnly" /t REG_SZ /d "" /f > nul 2> nul
+reg add "HKCR\inifile\shell\print" /v "ProgrammaticAccessOnly" /t REG_SZ /d "" /f > nul 2> nul
+reg add "HKCR\otffile\shell\print" /v "ProgrammaticAccessOnly" /t REG_SZ /d "" /f > nul 2> nul
+reg add "HKCR\regfile\shell\print" /v "ProgrammaticAccessOnly" /t REG_SZ /d "" /f > nul 2> nul
+reg add "HKCR\rtffile\shell\print" /v "ProgrammaticAccessOnly" /t REG_SZ /d "" /f > nul 2> nul
+reg add "HKCR\txtfile\shell\print" /v "ProgrammaticAccessOnly" /t REG_SZ /d "" /f > nul 2> nul
+reg add "HKCR\ttffile\shell\print" /v "ProgrammaticAccessOnly" /t REG_SZ /d "" /f > nul 2> nul
+reg add "HKCR\VBEFile\shell\print" /v "ProgrammaticAccessOnly" /t REG_SZ /d "" /f > nul 2> nul
+reg add "HKCR\VBSFile\shell\print" /v "ProgrammaticAccessOnly" /t REG_SZ /d "" /f > nul 2> nul
+
 :: Remove Folders and Files 
 del "%SystemDrive%\AMFTrace.log" /s /f /q > nul 2> nul
 rd "%ProgramData%\Microsoft\DiagnosticLogCSP" /s /q > nul 2> nul
