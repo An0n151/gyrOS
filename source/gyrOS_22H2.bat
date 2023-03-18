@@ -47,12 +47,12 @@ powercfg -delete 8c5e7fda-e8bf-4a96-9a85-a6e23a8c635c > nul 2> nul
 powercfg -delete a1841308-3541-4fab-bc81-f71556f20b4a > nul 2> nul
 
 :: Telemetry
-curl -l -s https://winhelp2002.mvps.org/hosts.txt -o %SystemRoot%\System32\drivers\etc\hosts.temp
-if exist %SystemRoot%\System32\drivers\etc\hosts.temp (
-    cd %SystemRoot%\System32\drivers\etc
-    del /f /q hosts
-    ren hosts.temp hosts
-)
+::curl -l -s https://winhelp2002.mvps.org/hosts.txt -o %SystemRoot%\System32\drivers\etc\hosts.temp
+::if exist %SystemRoot%\System32\drivers\etc\hosts.temp (
+    ::cd %SystemRoot%\System32\drivers\etc
+    ::del /f /q hosts
+    ::ren hosts.temp hosts
+::)
 
 :: OOSU10
 %WinDir%\gyrOS\OOSU10.exe %WinDir%\gyrOS\OOSU10.cfg /quiet /nosrp
