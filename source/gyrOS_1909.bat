@@ -403,7 +403,7 @@ reg add "HKCR\Directory\shell\runas\command" /v "IsolatedCommand" /t REG_SZ /d "
 reg delete "HKLM\SOFTWARE\Microsoft\Windows\CurrentVersion\Explorer\MyComputer\NameSpace\{0DB7E03F-FC29-4DC6-9020-FF41B59E513A}" /f > nul 2> nul
 reg delete "HKLM\SOFTWARE\WOW6432Node\Microsoft\Windows\CurrentVersion\Explorer\MyComputer\NameSpace\{0DB7E03F-FC29-4DC6-9020-FF41B59E513A}" /f > nul 2> nul
 
-:: Set "Do this for all current items" checked automatically
+:: Automatically Check "Do this for all current items"
 %currentuser% reg delete "HKCU\SOFTWARE\Microsoft\Windows\CurrentVersion\Policies\Explorer" /v "NoFileFolderOptions" /f > nul 2> nul
 %currentuser% reg add "HKCU\SOFTWARE\Microsoft\Windows\CurrentVersion\Policies\Explorer" /v "NoFileFolderOptions" /t REG_DWORD /d "1" /f > nul 2> nul
 
