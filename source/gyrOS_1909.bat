@@ -403,10 +403,9 @@ reg add "HKCR\Directory\shell\runas\command" /v "IsolatedCommand" /t REG_SZ /d "
 reg delete "HKLM\SOFTWARE\Microsoft\Windows\CurrentVersion\Explorer\MyComputer\NameSpace\{0DB7E03F-FC29-4DC6-9020-FF41B59E513A}" /f > nul 2> nul
 reg delete "HKLM\SOFTWARE\WOW6432Node\Microsoft\Windows\CurrentVersion\Explorer\MyComputer\NameSpace\{0DB7E03F-FC29-4DC6-9020-FF41B59E513A}" /f > nul 2> nul
 
-:: Set "Do this for all current items" to be checked by Default
-reg add "HKCU\SOFTWARE\Microsoft\Windows\CurrentVersion\Explorer\OperationStatusManager" /v "ConfirmationCheckBoxDoForAll" /t REG_DWORD /d "1" /f > nul 2> nul
-reg add "HKCU\Control Panel\Desktop" /v "ConfirmFileDelete" /t REG_DWORD /d "1" /f > nul 2> nul
-reg add "HKCU\Control Panel\Desktop" /v "ConfirmFileOp" /t REG_DWORD /d "0" /f > nul 2> nul
+:: Set "Do this for all current items" checked automatically
+%currentuser% reg delete "HKCU\SOFTWARE\Microsoft\Windows\CurrentVersion\Policies\Explorer" /v "NoFileFolderOptions" /f > nul 2> nul
+%currentuser% reg add "HKCU\SOFTWARE\Microsoft\Windows\CurrentVersion\Policies\Explorer" /v "NoFileFolderOptions" /t REG_DWORD /d "1" /f > nul 2> nul
 
 :: Disable Retrieving Device Metadata from the Internet
 reg add "HKLM\SOFTWARE\Microsoft\Windows\CurrentVersion\Device Metadata" /v "PreventDeviceMetadataFromNetwork" /t REG_DWORD /d "1" /f > nul 2> nul
