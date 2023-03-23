@@ -1,21 +1,25 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <Preset isAutoSaved="true" xmlns="urn:schemas-nliteos-com:pn.v1">
-	<Date>03/12/2023 14:41:34</Date>
+	<Date>03/23/2023 21:15:38</Date>
 	<AppInfo>
-		<Version>2023.3.9160</Version>
+		<Version>2023.3.9171</Version>
 		<Licensed>Yes</Licensed>
 		<Protections>Yes</Protections>
-		<Host>Windows 10 Pro (19H2) x64 - 10.0.18363.2274 (en-US)</Host>
+		<Host>Windows 10 Pro (22H2) x64 - 10.0.19045.2546 (en-US)</Host>
 	</AppInfo>
 	<ImageInfo>
-		<Version mode="offline">Windows 11 Professional (22H2) x64 - 10.0.22621.1344 (en-US)</Version>
+		<Version mode="offline">Windows 11 Professional (22H2) x64 - 10.0.22621.1413 (en-US)</Version>
 	</ImageInfo>
 	<RemoveComponents AppRemovalMode="DISM">
 		<c>aarsvc 'Agent Activation Runtime'</c>
 		<c>accessibility_magnifier 'Screen Magnifier'</c>
 		<c>accessibility_narrator 'Narrator'</c>
 		<c>actioncenter 'Action Center'</c>
+		<c>activedirectory 'Active Directory'</c>
+		<c>adamclient 'Active Directory Lightweight Directory Services (AD LDS)'</c>
+		<c>afunix 'Unix socket (AF_UNIX)'</c>
 		<c>alg 'Application Layer Gateway Service'</c>
+		<c>alljoyn 'AllJoyn Router Service'</c>
 		<c>appv 'Application Virtualization (App-V)'</c>
 		<c>asimov 'Telemetry Client'</c>
 		<c>assembly.net '.NET assembly cache'</c>
@@ -28,6 +32,7 @@
 		<c>backup 'Backup and Restore'</c>
 		<c>biometric 'Biometric - Support'</c>
 		<c>branchcacheclient 'BranchCache Client'</c>
+		<c>ceip 'CEIP (SQM)'</c>
 		<c>cellulartime 'Cellular Time'</c>
 		<c>certmgr32 'Certificate Manager - 32 bit'</c>
 		<c>Clipchamp.Clipchamp 'Clipchamp'</c>
@@ -36,6 +41,7 @@
 		<c>cloudnotifications 'Cloud Notifications'</c>
 		<c>commmc32 'COM+ (Component Services) (management console) - 32 bit'</c>
 		<c>compmgmt32 'Computer Management - 32 bit'</c>
+		<c>datacenterbridging 'Data Center Bridging (DCB)'</c>
 		<c>desktopimgdownldr 'Desktop image downloader'</c>
 		<c>deviceexperience 'Device Experience'</c>
 		<c>deviceguard 'Device Guard'</c>
@@ -46,7 +52,6 @@
 		<c>diskdiagnosis 'Disk failure diagnostics'</c>
 		<c>diskmgmt32 'Disk Management - 32 bit'</c>
 		<c>diskquota32 'Disk Quota - 32 bit'</c>
-		<c>diskusage 'Disk Usage utility'</c>
 		<c>driver_c_barcodescanner.inf</c>
 		<c>driver_c_cashdrawer.inf</c>
 		<c>driver_c_computeaccelerator.inf</c>
@@ -282,12 +287,12 @@
 		<c>easeofaccessthemes 'Ease Of Access Themes'</c>
 		<c>embeddedexperience 'Device Lockdown (Embedded Experience)'</c>
 		<c>embeddedmode 'Embedded Mode'</c>
+		<c>enhancedstorage 'Enhanced Storage'</c>
 		<c>enterpriseclientsync 'Work Folders Client'</c>
 		<c>enterprisedataprotection 'Enterprise Data Protection (EDP/WIP)'</c>
 		<c>errorreporting 'Windows Error Reporting'</c>
 		<c>errorreportingapi 'Windows Error Reporting API'</c>
 		<c>eudcedit 'Private Character Editor'</c>
-		<c>eventtracing 'Event Tracing for Windows (ETW)'</c>
 		<c>eventviewer32 'Event Viewer - 32 bit'</c>
 		<c>F46D4000-FD22-4DB4-AC8E-4E1DDDE828FE 'Add Folder Suggestions dialog'</c>
 		<c>facerecognition 'Face Recognition'</c>
@@ -295,7 +300,6 @@
 		<c>fclip 'Microsoft Client License Flexible Platform'</c>
 		<c>filehistory 'File History'</c>
 		<c>filerevocationmanager 'File Revocation Manager - 32 bit'</c>
-		<c>filetrace 'File Trace MiniFilter'</c>
 		<c>firstlogonanim 'First-logon animation'</c>
 		<c>folderredirection 'Folder Redirection'</c>
 		<c>font_malgungothic 'Malgun Gothic'</c>
@@ -315,12 +319,12 @@
 		<c>fsmgmt 'Shared Folders UI'</c>
 		<c>fsmgmt32 'Shared Folders UI - 32 bit'</c>
 		<c>gameexplorer 'Game Explorer'</c>
+		<c>guardedhost 'Guarded Host'</c>
 		<c>hbaapi 'Host Bus Adapter (HBA) API'</c>
 		<c>help 'Windows Help content'</c>
 		<c>hwreqchk 'Hardware Requirements Check library'</c>
 		<c>hwsupport_floppy 'Floppy disk'</c>
 		<c>hwsupport_infrared 'Infrared devices'</c>
-		<c>hwsupport_internetprintingclient 'Internet Printing Client'</c>
 		<c>hwsupport_modemsettings 'Shared modem settings (mdmgl*.inf)'</c>
 		<c>hwsupport_scanner 'Scanner'</c>
 		<c>hwsupport_smartcard 'Smartcard'</c>
@@ -335,6 +339,7 @@
 		<c>insiderhub 'Windows Insider Program'</c>
 		<c>internetexplorer 'Internet Explorer'</c>
 		<c>internetexplorer32 'Internet Explorer - 32 bit'</c>
+		<c>ipt 'Identity Protection Technology (Intel IPT)'</c>
 		<c>iscsi 'iSCSI Initiator'</c>
 		<c>isoburn 'Windows Disc Image Burning Tool'</c>
 		<c>kerberos32 'Kerberos Client - 32 bit'</c>
@@ -445,6 +450,7 @@
 		<c>Microsoft.YourPhone 'Your Phone'</c>
 		<c>Microsoft.ZuneMusic 'Windows Media Player'</c>
 		<c>Microsoft.ZuneVideo 'Movies &amp; TV'</c>
+		<c>MicrosoftCorporationII.MicrosoftFamily 'Microsoft Family'</c>
 		<c>MicrosoftCorporationII.QuickAssist 'Quick Assist'</c>
 		<c>MicrosoftWindows.Client.WebExperience 'Windows Web Experience Pack'</c>
 		<c>migwiz 'Easy Transfer'</c>
@@ -458,6 +464,7 @@
 		<c>mpeg2splitter 'MPEG-2 Splitter'</c>
 		<c>multipointconnector 'MultiPoint Connector'</c>
 		<c>naturalauthentication 'Natural Authentication'</c>
+		<c>nettopology 'Link-Layer Topology Discovery protocol (LLTD)'</c>
 		<c>nfc 'Near Field Communication (NFC)'</c>
 		<c>nfsclient 'NFS Administrative Tools'</c>
 		<c>nowplaying 'Now Playing Session Manager'</c>
@@ -470,6 +477,7 @@
 		<c>otherthemes 'Windows Personalization themes'</c>
 		<c>payments</c>
 		<c>pdfreader 'Windows Reader (PDF)'</c>
+		<c>peertopeer 'Peer Networking'</c>
 		<c>penservice 'Pen Service'</c>
 		<c>perfmon 'Performance Monitor'</c>
 		<c>performancerecorder 'Windows Performance Recorder'</c>
@@ -483,12 +491,12 @@
 		<c>pinsignin 'PIN sign-in support'</c>
 		<c>pla 'Performance Logs and Alerts'</c>
 		<c>pos 'Point of Service (POS)'</c>
-		<c>printtopdf 'Print to PDF'</c>
-		<c>printworkflow 'Print Workflow Service'</c>
+		<c>projfs 'Projected File System (ProjFS)'</c>
 		<c>pushnotificationssvc 'Windows Push Notifications Service (System)'</c>
 		<c>pushtoinstall 'Windows PushToInstall Service'</c>
 		<c>rasauto 'Remote Access Auto Connection Manager'</c>
 		<c>rascmd 'Remote Access Service Client Tools'</c>
+		<c>rdc 'Remote Differential Compression (RDC)'</c>
 		<c>rdmaping 'Remote Direct Memory Access (RDMA) ping tool'</c>
 		<c>rdpclient 'Remote Desktop Client'</c>
 		<c>rdpclient32 'Remote Desktop Client - 32 bit'</c>
@@ -531,6 +539,7 @@
 		<c>stepsrecorder 'Steps Recorder'</c>
 		<c>storagespaces 'Storage Spaces'</c>
 		<c>supportdir 'Support directory'</c>
+		<c>symboliclinks 'Legacy symbolic links'</c>
 		<c>synccenter 'Sync Center'</c>
 		<c>sysprep 'System Preparation tool (Sysprep)'</c>
 		<c>systemguard 'System Guard'</c>
@@ -551,10 +560,12 @@
 		<c>tpmmmc 'Trusted Platform Module (TPM) (management console)'</c>
 		<c>tpmmmc32 'Trusted Platform Module (TPM) (management console) - 32 bit'</c>
 		<c>tpmvsc 'Virtual Smart Card'</c>
+		<c>trkwks 'Distributed Link Tracking Client'</c>
 		<c>troubleshootingsvc 'Recommended Troubleshooting service'</c>
 		<c>tzautoupdate 'Auto Time Zone Updater'</c>
 		<c>uev 'User Experience Virtualization (UE-V)'</c>
 		<c>unp 'Universal Notification Platform (UNP)'</c>
+		<c>userdeviceregistration 'User Device Registration'</c>
 		<c>voiceaccess 'Voice Access'</c>
 		<c>vwifi 'Virtual WiFi'</c>
 		<c>waasassessment 'Windows Update Medic Service'</c>
@@ -633,6 +644,7 @@
 	</Compatibility>
 	<Features>
 		<Feature name="Printing-Foundation-InternetPrinting-Client">false</Feature>
+		<Feature name="Printing-PrintToPDFServices-Features">false</Feature>
 		<Feature name="Printing-Foundation-Features">false</Feature>
 	</Features>
 	<Packages></Packages>
@@ -706,6 +718,7 @@
 					<AcceptEula>true</AcceptEula>
 					<ProductKey>
 						<Key></Key>
+						<WillShowUI>OnError</WillShowUI>
 					</ProductKey>
 				</UserData>
 			</component>
@@ -1257,7 +1270,6 @@
 		</Settings>
 		<Services>
 			<TweakGroup name="services">
-				<Tweak name="AJRouter\AJRouter">4</Tweak>
 				<Tweak name="BTAGService\BTAGService">4</Tweak>
 				<Tweak name="bthserv\bthserv">4</Tweak>
 				<Tweak name="BluetoothUserService\BluetoothUserService">4</Tweak>
@@ -1265,7 +1277,6 @@
 				<Tweak name="PimIndexMaintenanceSvc\PimIndexMaintenanceSvc">4</Tweak>
 				<Tweak name="DisplayEnhancementService\DisplayEnhancementService">4</Tweak>
 				<Tweak name="DispBrokerDesktopSvc\DispBrokerDesktopSvc">4</Tweak>
-				<Tweak name="TrkWks\TrkWks">4</Tweak>
 				<Tweak name="EntAppSvc\EntAppSvc">4</Tweak>
 				<Tweak name="fdPHost\fdPHost">4</Tweak>
 				<Tweak name="FDResPub\FDResPub">4</Tweak>
@@ -1323,7 +1334,6 @@
 				<Tweak name="iaStorAVC\iaStorAVC">3</Tweak>
 				<Tweak name="iaStorV\iaStorV">3</Tweak>
 				<Tweak name="intelide\intelide">3</Tweak>
-				<Tweak name="IPT\IPT">3</Tweak>
 				<Tweak name="ItSas35i\ItSas35i">3</Tweak>
 				<Tweak name="KSecPkg\KSecPkg">3</Tweak>
 				<Tweak name="LSI_SAS\LSI_SAS">3</Tweak>
@@ -1352,7 +1362,37 @@
 				<Tweak name="bindflt\bindflt">4</Tweak>
 			</TweakGroup>
 		</ExtraServices>
-		<ScheduledTasks></ScheduledTasks>
+		<ScheduledTasks>
+			<TweakGroup name="Tree\Microsoft\Windows\Chkdsk">
+				<Tweak name="ProactiveScan\ProactiveScan">remove</Tweak>
+			</TweakGroup>
+			<TweakGroup name="Tree\Microsoft\Windows\Data Integrity Scan">
+				<Tweak name="Data Integrity Check And Scan\Data Integrity Check And Scan">remove</Tweak>
+				<Tweak name="Data Integrity Scan\Data Integrity Scan">remove</Tweak>
+				<Tweak name="Data Integrity Scan for Crash Recovery\Data Integrity Scan for Crash Recovery">remove</Tweak>
+			</TweakGroup>
+			<TweakGroup name="Tree\Microsoft\Windows\Device Setup">
+				<Tweak name="Metadata Refresh\Metadata Refresh">remove</Tweak>
+			</TweakGroup>
+			<TweakGroup name="Tree\Microsoft\Windows\DiskCleanup">
+				<Tweak name="SilentCleanup\SilentCleanup">remove</Tweak>
+			</TweakGroup>
+			<TweakGroup name="Tree\Microsoft\Windows\Shell">
+				<Tweak name="IndexerAutomaticMaintenance\IndexerAutomaticMaintenance">remove</Tweak>
+			</TweakGroup>
+			<TweakGroup name="Tree\Microsoft\Windows\Sysmain">
+				<Tweak name="WsSwapAssessmentTask\WsSwapAssessmentTask">remove</Tweak>
+			</TweakGroup>
+			<TweakGroup name="Tree\Microsoft\Windows\TaskScheduler">
+				<Tweak name="Idle Maintenance\Idle Maintenance">remove</Tweak>
+				<Tweak name="Maintenance Configurator\Maintenance Configurator">remove</Tweak>
+				<Tweak name="Manual Maintenance\Manual Maintenance">remove</Tweak>
+				<Tweak name="Regular Maintenance\Regular Maintenance">remove</Tweak>
+			</TweakGroup>
+			<TweakGroup name="Tree\Microsoft\Windows\WS">
+				<Tweak name="WSRefreshBannedAppsListTask\WSRefreshBannedAppsListTask">remove</Tweak>
+			</TweakGroup>
+		</ScheduledTasks>
 	</Tweaks>
 	<ApplyOptions>
 		<ImageTasks>

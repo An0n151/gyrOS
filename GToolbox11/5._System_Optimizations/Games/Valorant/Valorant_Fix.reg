@@ -1,0 +1,17 @@
+Windows Registry Editor Version 5.00
+
+[HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\Windows NT\CurrentVersion\Image File Execution Options\valorant.exe]
+"MitigationOptions"=hex:00,00,00,00,00,01,00,00,00,00,00,00,00,00,00,00,00,00,\
+  00,00,00,00,00,00
+
+[HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\Windows NT\CurrentVersion\Image File Execution Options\valorant-win64-shipping.exe]
+"MitigationOptions"=hex:00,00,00,00,00,01,00,00,00,00,00,00,00,00,00,00,00,00,\
+  00,00,00,00,00,00
+
+[HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\Windows NT\CurrentVersion\Image File Execution Options\vgc.exe]
+"MitigationOptions"=hex:00,00,00,00,00,01,00,00,00,00,00,00,00,00,00,00,00,00,\
+  00,00,00,00,00,00
+
+[HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\Windows NT\CurrentVersion\Image File Execution Options\vgtray.exe]
+"MitigationOptions"=hex:00,00,00,00,00,01,00,00,00,00,00,00,00,00,00,00,00,00,\
+  00,00,00,00,00,00
