@@ -1,14 +1,14 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <Preset isAutoSaved="true" xmlns="urn:schemas-nliteos-com:pn.v1">
-	<Date>03/14/2023 22:45:16</Date>
+	<Date>03/24/2023 16:13:45</Date>
 	<AppInfo>
-		<Version>2023.3.9160</Version>
+		<Version>2023.3.9171</Version>
 		<Licensed>Yes</Licensed>
 		<Protections>Yes</Protections>
-		<Host>Windows 10 Pro (19H2) x64 - 10.0.18363.2274 (en-US)</Host>
+		<Host>Windows 10 Pro (22H2) x64 - 10.0.19045.2546 (en-US)</Host>
 	</AppInfo>
 	<ImageInfo>
-		<Version mode="offline">Windows 10 Professional (22H2) x64 - 10.0.19045.2673 (en-US)</Version>
+		<Version mode="offline">Windows 10 Professional (22H2) x64 - 10.0.19045.2788 (en-US)</Version>
 	</ImageInfo>
 	<RemoveComponents AppRemovalMode="DISM">
 		<c>aarsvc 'Agent Activation Runtime'</c>
@@ -17,6 +17,7 @@
 		<c>actioncenter 'Action Center'</c>
 		<c>activedirectory 'Active Directory'</c>
 		<c>adamclient 'Active Directory Lightweight Directory Services (AD LDS)'</c>
+		<c>afunix 'Unix socket (AF_UNIX)'</c>
 		<c>alg 'Application Layer Gateway Service'</c>
 		<c>alljoyn 'AllJoyn Router Service'</c>
 		<c>appv 'Application Virtualization (App-V)'</c>
@@ -256,7 +257,6 @@
 		<c>driver_usbcciddriver.inf</c>
 		<c>driver_usbcir.inf</c>
 		<c>driver_vca.inf</c>
-		<c>driver_virtualdisplayadapter.inf</c>
 		<c>driver_vrd.inf</c>
 		<c>driver_wdmvsc.inf</c>
 		<c>driver_wfcvsc.inf</c>
@@ -322,6 +322,7 @@
 		<c>hwsupport_fax 'Fax'</c>
 		<c>hwsupport_floppy 'Floppy disk'</c>
 		<c>hwsupport_infrared 'Infrared devices'</c>
+		<c>hwsupport_modem 'Modem'</c>
 		<c>hwsupport_modemsettings 'Shared modem settings (mdmgl*.inf)'</c>
 		<c>hwsupport_scanner 'Scanner'</c>
 		<c>hwsupport_smartcard 'Smartcard'</c>
@@ -471,6 +472,7 @@
 		<c>paint32 'Paint - 32 bit'</c>
 		<c>payments</c>
 		<c>pdfreader 'Windows Reader (PDF)'</c>
+		<c>peertopeer 'Peer Networking'</c>
 		<c>phonesvc 'Phone Service'</c>
 		<c>photocodec32 'Photo codec - 32 bit'</c>
 		<c>photoviewer 'Photo Viewer'</c>
@@ -479,6 +481,7 @@
 		<c>picturepassword 'Picture password'</c>
 		<c>pinsignin 'PIN sign-in support'</c>
 		<c>pos 'Point of Service (POS)'</c>
+		<c>projfs 'Projected File System (ProjFS)'</c>
 		<c>pushnotificationssvc 'Windows Push Notifications Service (System)'</c>
 		<c>pushtoinstall 'Windows PushToInstall Service'</c>
 		<c>quiethours 'Quiet Hours (Focus Assist)'</c>
@@ -544,7 +547,6 @@
 		<c>tpmmmc 'Trusted Platform Module (TPM) (management console)'</c>
 		<c>tpmmmc32 'Trusted Platform Module (TPM) (management console) - 32 bit'</c>
 		<c>tpmvsc 'Virtual Smart Card'</c>
-		<c>trkwks 'Distributed Link Tracking Client'</c>
 		<c>troubleshootingsvc 'Recommended Troubleshooting service'</c>
 		<c>tzautoupdate 'Auto Time Zone Updater'</c>
 		<c>uev 'User Experience Virtualization (UE-V)'</c>
@@ -569,6 +571,7 @@
 		<c>wordpad32 'Wordpad - 32 bit'</c>
 		<c>wpdbusenum 'Portable Device Enumerator Service'</c>
 		<c>wwanautoconfig 'WWAN AutoConfig'</c>
+		<c>zipfolder 'Zip &amp; Cab folder'</c>
 	</RemoveComponents>
 	<Compatibility protectHidden="true">
 		<ComponentFeatures>
@@ -702,6 +705,7 @@
 					<FullName>GYROS</FullName>
 					<ProductKey>
 						<Key></Key>
+						<WillShowUI>OnError</WillShowUI>
 					</ProductKey>
 				</UserData>
 			</component>

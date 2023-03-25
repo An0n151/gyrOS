@@ -1,6 +1,6 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <Preset isAutoSaved="true" xmlns="urn:schemas-nliteos-com:pn.v1">
-	<Date>03/23/2023 21:15:38</Date>
+	<Date>03/24/2023 21:11:56</Date>
 	<AppInfo>
 		<Version>2023.3.9171</Version>
 		<Licensed>Yes</Licensed>
@@ -21,7 +21,6 @@
 		<c>alg 'Application Layer Gateway Service'</c>
 		<c>alljoyn 'AllJoyn Router Service'</c>
 		<c>appv 'Application Virtualization (App-V)'</c>
-		<c>asimov 'Telemetry Client'</c>
 		<c>assembly.net '.NET assembly cache'</c>
 		<c>assignedaccess 'Assigned Access'</c>
 		<c>audit 'Windows Audit'</c>
@@ -238,6 +237,7 @@
 		<c>driver_mdmzyxlg.inf</c>
 		<c>driver_mf.inf</c>
 		<c>driver_mgtdyn.inf</c>
+		<c>driver_modemcsa.inf</c>
 		<c>driver_msclmd.inf</c>
 		<c>driver_rdcameradriver.inf</c>
 		<c>driver_rdlsbuscbs.inf</c>
@@ -291,7 +291,6 @@
 		<c>enterpriseclientsync 'Work Folders Client'</c>
 		<c>enterprisedataprotection 'Enterprise Data Protection (EDP/WIP)'</c>
 		<c>errorreporting 'Windows Error Reporting'</c>
-		<c>errorreportingapi 'Windows Error Reporting API'</c>
 		<c>eudcedit 'Private Character Editor'</c>
 		<c>eventviewer32 'Event Viewer - 32 bit'</c>
 		<c>F46D4000-FD22-4DB4-AC8E-4E1DDDE828FE 'Add Folder Suggestions dialog'</c>
@@ -325,6 +324,7 @@
 		<c>hwreqchk 'Hardware Requirements Check library'</c>
 		<c>hwsupport_floppy 'Floppy disk'</c>
 		<c>hwsupport_infrared 'Infrared devices'</c>
+		<c>hwsupport_modem 'Modem'</c>
 		<c>hwsupport_modemsettings 'Shared modem settings (mdmgl*.inf)'</c>
 		<c>hwsupport_scanner 'Scanner'</c>
 		<c>hwsupport_smartcard 'Smartcard'</c>
@@ -416,6 +416,7 @@
 		<c>Microsoft.GetHelp 'Get Help'</c>
 		<c>Microsoft.Getstarted 'Tips (Get Started)'</c>
 		<c>Microsoft.LockApp 'Windows Default Lock Screen'</c>
+		<c>microsoft.microsoftedge.stable 'Microsoft Edge (Chromium)'</c>
 		<c>Microsoft.MicrosoftEdge 'Microsoft Edge (Legacy)'</c>
 		<c>Microsoft.MicrosoftEdgeDevToolsClient 'Microsoft Edge DevTools Client'</c>
 		<c>Microsoft.MicrosoftOfficeHub 'Office'</c>
@@ -560,7 +561,6 @@
 		<c>tpmmmc 'Trusted Platform Module (TPM) (management console)'</c>
 		<c>tpmmmc32 'Trusted Platform Module (TPM) (management console) - 32 bit'</c>
 		<c>tpmvsc 'Virtual Smart Card'</c>
-		<c>trkwks 'Distributed Link Tracking Client'</c>
 		<c>troubleshootingsvc 'Recommended Troubleshooting service'</c>
 		<c>tzautoupdate 'Auto Time Zone Updater'</c>
 		<c>uev 'User Experience Virtualization (UE-V)'</c>
@@ -578,14 +578,12 @@
 		<c>wifinetworkmanager 'Wi-Fi Network Manager (Wi-Fi Sense)'</c>
 		<c>winai 'Windows AI Machine Learning'</c>
 		<c>Windows.CBSPreview 'Windows Barcode Preview'</c>
-		<c>windows.devicesflow32 'Devices Flow - 32 bit'</c>
 		<c>windowstogo 'Windows To Go'</c>
 		<c>windowsupdate 'Windows Update'</c>
 		<c>winocr 'Windows TIFF IFilter (OCR)'</c>
 		<c>winre 'Windows Recovery (WinRE)'</c>
 		<c>winrm 'Windows Remote Management (WS-Management)'</c>
 		<c>winsat 'Windows System Assessment Tool (WinSAT)'</c>
-		<c>wiredautoconfig 'Wired AutoConfig'</c>
 		<c>wordpad</c>
 		<c>wordpad32 'Wordpad - 32 bit'</c>
 		<c>wpdbusenum 'Portable Device Enumerator Service'</c>
@@ -643,7 +641,11 @@
 		</MachineDrivers>
 	</Compatibility>
 	<Features>
+		<Feature name="OneCoreUAP.OneSync~~~~0.0.1.0">false</Feature>
+		<Feature name="Microsoft.Wallpapers.Extended~~~~0.0.1.0">false</Feature>
+		<Feature name="Hello.Face.20134~~~~0.0.1.0">false</Feature>
 		<Feature name="Printing-Foundation-InternetPrinting-Client">false</Feature>
+		<Feature name="MathRecognizer~~~~0.0.1.0">false</Feature>
 		<Feature name="Printing-PrintToPDFServices-Features">false</Feature>
 		<Feature name="Printing-Foundation-Features">false</Feature>
 	</Features>
@@ -1214,6 +1216,7 @@
 				<Tweak name="Search\BingSearchEnabled">0</Tweak>
 				<Tweak name="TIPC\Enabled">0</Tweak>
 				<Tweak name="System\EnableCdp">0</Tweak>
+				<Tweak name="Shell\BagMRU Size">1</Tweak>
 				<Tweak name="Explorer\ShowFrequent">0</Tweak>
 				<Tweak name="ContentDeliveryManager\SubscribedContent-338393Enabled">0</Tweak>
 				<Tweak name="ContentDeliveryManager\SubscribedContent-310093Enabled">0</Tweak>
@@ -1255,17 +1258,19 @@
 				<Tweak name="System\EnableLinkedConnections">0</Tweak>
 				<Tweak name="OOBE\BypassNRO">1</Tweak>
 				<Tweak name="OneDrive\DisableFileSyncNGSC">1</Tweak>
+				<Tweak name="RDP-Tcp\UserAuthentication">0</Tweak>
 				<Tweak name="Device\DevicePasswordLessBuildVersion">0</Tweak>
 				<Tweak name="ReserveManager\ShippedWithReserves">0</Tweak>
 				<Tweak name="LabConfig\BypassRAMCheck">1</Tweak>
 				<Tweak name="LabConfig\BypassTPMCheck">1</Tweak>
+				<Tweak name="MoSetup\AllowUpgradesWithUnsupportedTPMOrCPU">1</Tweak>
 				<Tweak name="StoragePolicy\01">0</Tweak>
 				<Tweak name="StoragePolicy\512">0</Tweak>
 				<Tweak name="StoragePolicy\256">0</Tweak>
 				<Tweak name="StoragePolicy\04">0</Tweak>
 				<Tweak name="StoragePolicy\2048">0</Tweak>
 				<Tweak name="System\DisableAutomaticRestartSignOn">1</Tweak>
-				<Tweak name="UserGpuPreferences\DirectXUserGlobalSettings">VRROptimizeEnable=0</Tweak>
+				<Tweak name="DeviceGuard\EnableVirtualizationBasedSecurity">0</Tweak>
 			</TweakGroup>
 		</Settings>
 		<Services>

@@ -2,7 +2,7 @@
 
 :: Latency Tweaks
 
-:: Credits: HoneCtrl
+:: Credits: HoneCtrl, EchoX
 
 @echo off
 
@@ -12,6 +12,9 @@ cd /d "%~dp0" && ( if exist "%temp%\getadmin.vbs" del "%temp%\getadmin.vbs" ) &&
 title Game Tweaks
 
 :: These tweaks apply to: CS:GO, Valorant, Fortnite, Modern Warfare, Apex Legends
+
+reg add "HKLM\SYSTEM\CurrentControlSet\Services\Psched" /v "Start" /t REG_DWORD /d "1" /f
+start "" /wait "%WinDir%\gyrOS\NSudo\NSudoLG.exe" -U:T -P:E -ShowWindowMode:Hide cmd /c sc start Psched
 
 for %%i in (csgo VALORANT-Win64-Shipping javaw FortniteClient-Win64-Shipping ModernWarfare r5apex) do (
 	reg query "HKLM\SOFTWARE\Policies\Microsoft\Windows\QoS\%%i" || (
