@@ -19,7 +19,6 @@ sc config "BTHUSB" start= disabled
 sc config "HidBth" start= disabled
 sc config "Microsoft_Bluetooth_AvrcpTransport" start= disabled
 sc config "RFCOMM" start= disabled
-
 sc config "BluetoothUserService" start= disabled
 sc config "BTAGService" start= disabled
 sc config "BthAvctpSvc" start= disabled
@@ -29,6 +28,9 @@ sc config "DevicePickerUserSvc" start= disabled
 
 reg add "HKLM\SYSTEM\CurrentControlSet\Services\BluetoothUserService" /v "Start" /t REG_DWORD /d "4" /f
 reg add "HKLM\SYSTEM\CurrentControlSet\Services\DeviceAssociationBrokerSvc" /v "Start" /t REG_DWORD /d "4" /f
+
+devcon disable BTH*
+devcon disable =Bluetooth
 
 echo.
 echo Bluetooth services have been disabled.
