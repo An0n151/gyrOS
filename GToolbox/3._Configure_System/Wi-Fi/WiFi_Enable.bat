@@ -13,8 +13,9 @@ sc config "WlanSvc" start= auto
 sc config "DevicesFlowUserSvc" start= demand
 sc config "DevicePickerUserSvc" start= demand
 sc config "wcnfs" start= demand
-sc config "WFDSConMgrSvc" start= demand
+sc config "WFDSConMgrSvc" start= auto
 
+reg add "HKLM\SYSTEM\CurrentControlSet\Services\WFDSConMgrSvc" /v "Start" /t REG_DWORD /d "2" /f
 reg add "HKLM\SYSTEM\CurrentControlSet\Services\DeviceAssociationBrokerSvc" /v "Start" /t REG_DWORD /d "3" /f
 
 sc start vwififlt
