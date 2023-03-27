@@ -1,6 +1,6 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <Preset isAutoSaved="true" xmlns="urn:schemas-nliteos-com:pn.v1">
-	<Date>03/24/2023 16:13:45</Date>
+	<Date>03/27/2023 18:16:46</Date>
 	<AppInfo>
 		<Version>2023.3.9171</Version>
 		<Licensed>Yes</Licensed>
@@ -17,7 +17,6 @@
 		<c>actioncenter 'Action Center'</c>
 		<c>activedirectory 'Active Directory'</c>
 		<c>adamclient 'Active Directory Lightweight Directory Services (AD LDS)'</c>
-		<c>afunix 'Unix socket (AF_UNIX)'</c>
 		<c>alg 'Application Layer Gateway Service'</c>
 		<c>alljoyn 'AllJoyn Router Service'</c>
 		<c>appv 'Application Virtualization (App-V)'</c>
@@ -316,7 +315,6 @@
 		<c>fsmgmt 'Shared Folders UI'</c>
 		<c>fsmgmt32 'Shared Folders UI - 32 bit'</c>
 		<c>gameexplorer 'Game Explorer'</c>
-		<c>hbaapi 'Host Bus Adapter (HBA) API'</c>
 		<c>help 'Windows Help content'</c>
 		<c>homegroup</c>
 		<c>hwsupport_fax 'Fax'</c>
@@ -624,14 +622,20 @@
 		</MachineDrivers>
 	</Compatibility>
 	<Features>
+		<Feature name="OneCoreUAP.OneSync~~~~0.0.1.0">false</Feature>
 		<Feature name="Printing-Foundation-InternetPrinting-Client">false</Feature>
+		<Feature name="MathRecognizer~~~~0.0.1.0">false</Feature>
 		<Feature name="Printing-PrintToPDFServices-Features">false</Feature>
+		<Feature name="App.Support.QuickAssist~~~~0.0.1.0">false</Feature>
 		<Feature name="Printing-XPSServices-Features">false</Feature>
 		<Feature name="Printing-Foundation-Features">false</Feature>
 		<Feature name="MSRDC-Infrastructure">false</Feature>
 		<Feature name="WCF-TCP-PortSharing45">false</Feature>
 		<Feature name="WCF-Services45">false</Feature>
+		<Feature name="Print.Fax.Scan~~~~0.0.1.0">false</Feature>
 		<Feature name="Windows.Client.ShellComponents~~~~0.0.1.0">false</Feature>
+		<Feature name="Hello.Face.Migration.18967~~~~0.0.1.0">false</Feature>
+		<Feature name="Hello.Face.18967~~~~0.0.1.0">false</Feature>
 	</Features>
 	<Packages></Packages>
 	<Commands>
