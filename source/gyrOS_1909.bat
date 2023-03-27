@@ -7,7 +7,7 @@ setlocal EnableDelayedExpansion
 title gyrOS Post Installation Script %VERSION%
 
 set "VERSION=23.4.1"
-set "SCRIPT_VERSION_DATE=24/03/2023"
+set "SCRIPT_VERSION_DATE=27/03/2023"
 
 :: Configure Variables
 set "currentuser=%WinDir%\gyrOS\NSudo\NSudoLG.exe -U:C -P:E -Wait"
@@ -77,17 +77,6 @@ powercfg -import "%WinDir%\HoneV2.pow" 77777777-7777-7777-7777-777777777777 > nu
 powercfg -SETACTIVE "77777777-7777-7777-7777-777777777777" > nul 2> nul
 powercfg -delete 8c5e7fda-e8bf-4a96-9a85-a6e23a8c635c > nul 2> nul
 powercfg -delete a1841308-3541-4fab-bc81-f71556f20b4a > nul 2> nul
-
-:: Hosts
-::curl -l -s https://winhelp2002.mvps.org/hosts.txt -o %SystemRoot%\System32\drivers\etc\hosts.temp
-::if exist %SystemRoot%\System32\drivers\etc\hosts.temp (
-    ::cd %SystemRoot%\System32\drivers\etc
-    ::del /f /q hosts
-    ::ren hosts.temp hosts
-::)
-
-:: OOSU10
-%WinDir%\gyrOS\OOSU10.exe %WinDir%\gyrOS\OOSU10.cfg /quiet /nosrp
 
 timeout /t 1
 cls
@@ -184,14 +173,14 @@ cls
 
 :: Delete Post Setup Files
 del /f /q %WinDir%\HoneV2.pow > nul 2> nul
-del /f /q %WinDir%\gyrOS\OOSU10.exe > nul 2> nul
-del /f /q %WinDir%\gyrOS\OOSU10.cfg > nul 2> nul
+::del /f /q %WinDir%\gyrOS\OOSU10.exe > nul 2> nul
+::del /f /q %WinDir%\gyrOS\OOSU10.cfg > nul 2> nul
 del /f /q %drive%\ProgramData\Installers\OpenShellSetup.exe > nul 2> nul
 del /f /q %WinDir%\gyrOS\VisualCppRedist_AIO.exe > nul 2> nul
 del /f /q %WinDir%\gyrOS\DirectX.exe > nul 2> nul
 
 :: Delete Shortcuts
-::del /f /q "%drive%\Users\Public\Desktop\Honeyview.lnk" > nul 2> nul
+::del /f /q "%drive%\Users\Public\Desktop\gyrOS.lnk" > nul 2> nul
 
 :: ============================== ::
 ::       WINDOWS SETTINGS         ::
@@ -681,7 +670,7 @@ reg add "HKLM\SOFTWARE\Policies\Microsoft\Windows\Explorer" /v "NoUseStoreOpenWi
 
 :: Attempt to Unpin Tiles from Start Menu
 for /f "tokens=*" %%i in ('reg query "HKCU\SOFTWARE\Microsoft\Windows\CurrentVersion\CloudStore\Store\Cache\DefaultAccount" /s /f "start.tilegrid"^| findstr "start.tilegrid"') do (
-	%currentuser% reg delete "%%i" /f
+	reg delete "%%i" /f
 ) > nul 2> nul
 
 :: Disable Ease of Access Settings
