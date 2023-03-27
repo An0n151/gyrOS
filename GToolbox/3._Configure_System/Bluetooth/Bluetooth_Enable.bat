@@ -19,7 +19,6 @@ sc config "BTHUSB" start= demand
 sc config "HidBth" start= demand
 sc config "Microsoft_Bluetooth_AvrcpTransport" start= demand
 sc config "RFCOMM" start= demand
-
 sc config "BluetoothUserService" start=demand
 sc config "BTAGService" start= demand
 sc config "BthAvctpSvc" start= demand
@@ -29,6 +28,9 @@ sc config "DevicePickerUserSvc" start= demand
 
 reg add "HKLM\SYSTEM\CurrentControlSet\Services\DeviceAssociationBrokerSvc" /v "Start" /t REG_DWORD /d "3" /f
 reg add "HKLM\SYSTEM\CurrentControlSet\Services\BluetoothUserService" /v "Start" /t REG_DWORD /d "3" /f
+
+devcon enable =Bluetooth
+devcon enable BTH*
 
 echo.
 echo Bluetooth services have been enabled.
