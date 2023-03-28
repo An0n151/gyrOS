@@ -1,11 +1,11 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <Preset isAutoSaved="true" xmlns="urn:schemas-nliteos-com:pn.v1">
-	<Date>03/13/2023 10:14:44</Date>
+	<Date>03/28/2023 09:57:27</Date>
 	<AppInfo>
-		<Version>2023.3.9160</Version>
+		<Version>2023.3.9171</Version>
 		<Licensed>Yes</Licensed>
 		<Protections>Yes</Protections>
-		<Host>Windows 10 Pro (19H2) x64 - 10.0.18363.2274 (en-US)</Host>
+		<Host>Windows 10 Pro (22H2) x64 - 10.0.19045.2546 (en-US)</Host>
 	</AppInfo>
 	<ImageInfo>
 		<Version mode="offline">Windows 10 Professional (19H2) x64 - 10.0.18363.2274 (en-US)</Version>
@@ -347,7 +347,6 @@
 		<c>gameexplorer 'Game Explorer'</c>
 		<c>graphicsperfsvc 'Graphics performance monitor service'</c>
 		<c>guardedhost 'Guarded Host'</c>
-		<c>hbaapi 'Host Bus Adapter (HBA) API'</c>
 		<c>help 'Windows Help content'</c>
 		<c>homegroup</c>
 		<c>hwsupport_fax 'Fax'</c>
@@ -770,6 +769,7 @@
 					<FullName>GYROS</FullName>
 					<ProductKey>
 						<Key></Key>
+						<WillShowUI>OnError</WillShowUI>
 					</ProductKey>
 				</UserData>
 			</component>

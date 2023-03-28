@@ -46,7 +46,7 @@ powercfg -SETACTIVE "77777777-7777-7777-7777-777777777777" > nul 2> nul
 powercfg -delete 8c5e7fda-e8bf-4a96-9a85-a6e23a8c635c > nul 2> nul
 powercfg -delete a1841308-3541-4fab-bc81-f71556f20b4a > nul 2> nul
 
-timeout /t 1
+timeout /t 1 >nul
 cls
 
 :: ============================== ::
@@ -85,7 +85,7 @@ cls
 echo No internet connection detected. Skipping DirectX installation.
 echo.
 echo Install DirectX manually using GToolbox.
-timeout /t 3
+timeout /t 3 >nul
 )
 
 :Chocolatey
@@ -98,7 +98,7 @@ echo  FINISHED INSTALLING SOFTWARE
 echo ______________________________
 echo.
 
-timeout /t 1
+timeout /t 1 >nul
 cls
 
 :: Delete Post Setup Files
@@ -115,10 +115,10 @@ del /f /q %WinDir%\gyrOS\DirectX.exe > nul 2> nul
 ::       WINDOWS SETTINGS         ::
 :: ============================== ::
 
-echo ______________________________________________
+echo ______________________
 echo.
-echo  ADJUSTING SETTINGS, PERMISSIONS AND SERVICES
-echo ______________________________________________
+echo  ANALYZING BIOMETRICS
+echo ______________________
 echo.
 
 :: Services Configuration
@@ -704,17 +704,17 @@ reg add "HKLM\SOFTWARE\Policies\Microsoft\Windows" /v "DisableAcrylicBackgroundO
 reg add "HKCU\SOFTWARE\Microsoft\Windows\CurrentVersion\Policies\Explorer" /v "TurnOffSPIAnimations" /t REG_DWORD /d "1" /f > nul 2> nul
 reg add "HKLM\SOFTWARE\Policies\Microsoft\Windows\System" /v "DisableLogonBackgroundImage" /t REG_DWORD /d "1" /f > nul 2> nul
 
-timeout /t 2
+timeout /t 2 >nul
 cls
 
 :: ============================== ::
 ::      APPLICATION SETTINGS      ::
 :: ============================== ::
 
-echo __________________________________
+echo ____________________
 echo.
-echo  CONFIGURING APPLICATION SETTINGS
-echo __________________________________
+echo  BLENDING MATERIALS
+echo ____________________
 echo.
 
 :: Configure Internet Explorer
@@ -760,17 +760,17 @@ reg add "HKCU\SOFTWARE\Microsoft\MediaPlayer\Preferences" /v "AcceptedPrivacySta
 reg add "HKLM\SOFTWARE\Microsoft\MediaPlayer\Preferences" /v "FirstTime" /t REG_DWORD /d "1" /f > nul 2> nul
 reg add "HKCU\SOFTWARE\Microsoft\MediaPlayer\Preferences" /v "UsageTracking" /t REG_DWORD /d "0" /f > nul 2> nul
 
-timeout /t 2
+timeout /t 2 >nul
 cls
 
 :: ============================== ::
 ::    UNDER THE HOOD SETTINGS     ::
 :: ============================== ::
 
-echo _______________________________
+echo _____________________________
 echo.
-echo  TWEAKING SYSTEM FUNCTIONALITY
-echo _______________________________
+echo  CUSTOMIZING YOUR EXPERIENCE
+echo _____________________________
 echo.
 
 :: Miscellaneous
@@ -1164,17 +1164,17 @@ for %%a in (RotatingLockScreenOverlayEnabled OemPreInstalledAppsEnabled PreInsta
 ) > nul 2> nul
 reg add "HKCU\SOFTWARE\Policies\Microsoft\Windows\CurrentVersion\PushNotifications" /v "NoTileApplicationNotification" /t REG_DWORD /d "1" /f > nul 2> nul
 
-timeout /t 2
+timeout /t 2 >nul
 cls
 
 :: ============================== ::
 ::   PERFORMANCE OPTIMIZATIONS    ::
 :: ============================== ::
 
-echo ____________________________________________
+echo __________________
 echo.
-echo  OPTIMIZING SYSTEM PERFORMANCE AND SECURITY
-echo ____________________________________________
+echo  WELCOME TO GYROS
+echo __________________
 echo.
 
 :: Set Service Split Threshold ; Credits to HoneCtrl
@@ -1595,17 +1595,17 @@ reg add "HKCU\SOFTWARE\Classes\Local Settings\Software\Microsoft\Windows\Shell" 
 :: Disable "Do not Connect to Windows Update Internet Locations" / Used to Fixed Microsoft Store
 ::reg add "HKLM\SOFTWARE\Policies\Microsoft\Windows\WindowsUpdate" /v "DoNotConnectToWindowsUpdateInternetLocations" /t REG_DWORD /d "0" /f > nul 2> nul
 
-timeout /t 2
+timeout /t 2 >nul
 cls
 
 :: ============================== ::
 ::             TASKS              ::
 :: ============================== ::
 
-echo __________________________
+echo __________________
 echo.
-echo  CONFIGURING SYSTEM TASKS
-echo __________________________
+echo  WELCOME TO GYROS
+echo __________________
 echo.
 
 :: Disable Tasks
@@ -1668,7 +1668,7 @@ schtasks /Change /Disable /TN "\Microsoft\XblGameSave\XblGameSaveTask" > nul 2> 
 schtasks /Change /Disable /TN "\Microsoft\XblGameSave\XblGameSaveTaskLogon" > nul 2> nul
 schtasks /Change /Disable /TN "\Microsoft\WindowsManagement\Provisioning\Cellular" > nul 2> nul
 
-timeout /t 2
+timeout /t 2 >nul
 cls
 
 echo _______________________________
@@ -1676,7 +1676,7 @@ echo.
 echo  RESTART REQUIRED, PLEASE WAIT
 echo _______________________________
 
-timeout /t 3
+timeout /t 3 >nul
 cls
 
 echo _______________________________________________________________________________________

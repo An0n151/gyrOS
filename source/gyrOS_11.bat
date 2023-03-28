@@ -39,7 +39,7 @@ start "" "%WinDir%\System32\SystemSettingsAdminFlows.exe" SetAutoTimeZoneUpdate 
 :: Force Sync the Time with the Internet Time ; Credits to DuckOS
 start "" "%WinDir%\System32\SystemSettingsAdminFlows.exe" ForceTimeSync 1
 
-timeout /t 1
+timeout /t 1 >nul
 
 :: ============================== ::
 ::       INSTALL SOFTWARE         ::
@@ -77,7 +77,7 @@ start /wait "" "%WinDir%\gyrOS\DirectX.exe" /q
 echo No internet connection detected. Skipping DirectX installation.
 echo.
 echo Install DirectX manually using GToolbox.
-timeout /t 3
+timeout /t 3 >nul
 )
 
 echo ______________________________
@@ -86,7 +86,7 @@ echo  FINISHED INSTALLING SOFTWARE
 echo ______________________________
 echo.
 
-timeout /t 1
+timeout /t 1 >nul
 
 
 :: Delete Post Setup Files
@@ -98,10 +98,10 @@ del /f /q %WinDir%\gyrOS\DirectX.exe
 ::       WINDOWS SETTINGS         ::
 :: ============================== ::
 
-echo ______________________________________________
+echo ______________________
 echo.
-echo  ADJUSTING SETTINGS, PERMISSIONS AND SERVICES
-echo ______________________________________________
+echo  ANALYZING BIOMETRICS
+echo ______________________
 echo.
 
 :: Services Configuration
@@ -184,10 +184,10 @@ del /s /f /q "%SystemDrive%\Windows\Prefetch\*"
 ::             TASKS              ::
 :: ============================== ::
 
-echo __________________________
+echo __________________
 echo.
-echo  CONFIGURING SYSTEM TASKS
-echo __________________________
+echo  WELCOME TO GYROS
+echo __________________
 echo.
 
 :: Disable Tasks
@@ -250,7 +250,7 @@ schtasks /Change /Disable /TN "\Microsoft\XblGameSave\XblGameSaveTask"
 schtasks /Change /Disable /TN "\Microsoft\XblGameSave\XblGameSaveTaskLogon"
 schtasks /Change /Disable /TN "\Microsoft\WindowsManagement\Provisioning\Cellular"
 
-timeout /t 2
+timeout /t 2 >nul
 
 
 echo _______________________________
@@ -258,7 +258,7 @@ echo.
 echo  RESTART REQUIRED, PLEASE WAIT
 echo _______________________________
 
-timeout /t 3
+timeout /t 3 >nul
 
 
 echo _______________________________________________________________________________________
@@ -275,5 +275,5 @@ echo.
 echo                                 ===== RESTARTING IN =====
 echo __________________________________________________________________________________________
 
-timeout /t 4
+timeout /t 4 >nul
 shutdown /r /t 10 /f
