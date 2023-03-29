@@ -1,6 +1,6 @@
 :: gyrOS ::
 
-:: Disable Delivery_Optimization
+:: Disable Delivery Optimization
 
 @echo off
 

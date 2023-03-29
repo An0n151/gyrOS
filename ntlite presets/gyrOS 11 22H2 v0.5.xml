@@ -1,6 +1,6 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <Preset isAutoSaved="true" xmlns="urn:schemas-nliteos-com:pn.v1">
-	<Date>03/24/2023 21:11:56</Date>
+	<Date>03/29/2023 12:24:15</Date>
 	<AppInfo>
 		<Version>2023.3.9171</Version>
 		<Licensed>Yes</Licensed>
@@ -17,7 +17,6 @@
 		<c>actioncenter 'Action Center'</c>
 		<c>activedirectory 'Active Directory'</c>
 		<c>adamclient 'Active Directory Lightweight Directory Services (AD LDS)'</c>
-		<c>afunix 'Unix socket (AF_UNIX)'</c>
 		<c>alg 'Application Layer Gateway Service'</c>
 		<c>alljoyn 'AllJoyn Router Service'</c>
 		<c>appv 'Application Virtualization (App-V)'</c>
@@ -319,7 +318,6 @@
 		<c>fsmgmt32 'Shared Folders UI - 32 bit'</c>
 		<c>gameexplorer 'Game Explorer'</c>
 		<c>guardedhost 'Guarded Host'</c>
-		<c>hbaapi 'Host Bus Adapter (HBA) API'</c>
 		<c>help 'Windows Help content'</c>
 		<c>hwreqchk 'Hardware Requirements Check library'</c>
 		<c>hwsupport_floppy 'Floppy disk'</c>
@@ -337,8 +335,6 @@
 		<c>indeo 'Intel Indeo Codecs'</c>
 		<c>inputswitchtoasthandler 'Input Switch Toast Handler'</c>
 		<c>insiderhub 'Windows Insider Program'</c>
-		<c>internetexplorer 'Internet Explorer'</c>
-		<c>internetexplorer32 'Internet Explorer - 32 bit'</c>
 		<c>ipt 'Identity Protection Technology (Intel IPT)'</c>
 		<c>iscsi 'iSCSI Initiator'</c>
 		<c>isoburn 'Windows Disc Image Burning Tool'</c>
@@ -641,11 +637,7 @@
 		</MachineDrivers>
 	</Compatibility>
 	<Features>
-		<Feature name="OneCoreUAP.OneSync~~~~0.0.1.0">false</Feature>
-		<Feature name="Microsoft.Wallpapers.Extended~~~~0.0.1.0">false</Feature>
-		<Feature name="Hello.Face.20134~~~~0.0.1.0">false</Feature>
 		<Feature name="Printing-Foundation-InternetPrinting-Client">false</Feature>
-		<Feature name="MathRecognizer~~~~0.0.1.0">false</Feature>
 		<Feature name="Printing-PrintToPDFServices-Features">false</Feature>
 		<Feature name="Printing-Foundation-Features">false</Feature>
 	</Features>
@@ -1249,7 +1241,9 @@
 			<TweakGroup name="System">
 				<Tweak name="Windows\DisableATMFD">1</Tweak>
 				<Tweak name="Activation\Manual">1</Tweak>
+				<Tweak name="Appx\AllowAutomaticAppArchiving">0</Tweak>
 				<Tweak name="Winlogon\RestartApps">0</Tweak>
+				<Tweak name="DiskQuota\Enable">0</Tweak>
 				<Tweak name="Configuration\DisableResetbase">0</Tweak>
 				<Tweak name="Personalization\NoLockScreen">1</Tweak>
 				<Tweak name="System\HideFastUserSwitching">1</Tweak>
@@ -1263,7 +1257,6 @@
 				<Tweak name="ReserveManager\ShippedWithReserves">0</Tweak>
 				<Tweak name="LabConfig\BypassRAMCheck">1</Tweak>
 				<Tweak name="LabConfig\BypassTPMCheck">1</Tweak>
-				<Tweak name="MoSetup\AllowUpgradesWithUnsupportedTPMOrCPU">1</Tweak>
 				<Tweak name="StoragePolicy\01">0</Tweak>
 				<Tweak name="StoragePolicy\512">0</Tweak>
 				<Tweak name="StoragePolicy\256">0</Tweak>
@@ -1402,8 +1395,8 @@
 	<ApplyOptions>
 		<ImageTasks>
 			<Task>imageSaveRebuild</Task>
+			<Task>deledition_boot.wim_01_9_64</Task>
 			<Task>imageFormatWim</Task>
-			<Task>imageOptionsCreateIso</Task>
 		</ImageTasks>
 		<AutoIsoFile>C:\Users\an0n\Desktop\gyrOS 11.iso</AutoIsoFile>
 		<AutoIsoLabel>gyrOS 11</AutoIsoLabel>
@@ -1415,7 +1408,18 @@
 	<Execution>
 		<Remove></Remove>
 		<Change></Change>
-		<Add></Add>
+		<Add>
+			<Item type="FileU">
+				<Path>C:\Users\an0n\Desktop\gyrOS\gyrOS\source\gyrOS_Registry.reg</Path>
+				<Params></Params>
+				<Index>1000</Index>
+			</Item>
+			<Item type="FileU">
+				<Path>C:\Users\an0n\Desktop\gyrOS\gyrOS\source\gyrOS_11.bat</Path>
+				<Params></Params>
+				<Index>1001</Index>
+			</Item>
+		</Add>
 	</Execution>
 	<Registry>
 		<File>C:\Users\an0n\Desktop\gyrOS\gyrOS\source\gyrOS_OOBE.reg</File>
