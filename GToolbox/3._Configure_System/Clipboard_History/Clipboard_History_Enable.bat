@@ -15,7 +15,7 @@ for /f %%i in ('reg query "HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\Services"
 )
 
 echo.
-echo Success.
+echo Success. Restart your system.
 echo.
 
 pause >nul
