@@ -1,6 +1,6 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <Preset isAutoSaved="true" xmlns="urn:schemas-nliteos-com:pn.v1">
-	<Date>03/27/2023 18:16:46</Date>
+	<Date>03/29/2023 22:29:34</Date>
 	<AppInfo>
 		<Version>2023.3.9171</Version>
 		<Licensed>Yes</Licensed>
@@ -541,10 +541,6 @@
 		<c>tftpclient 'TFTP client'</c>
 		<c>tieringengine 'Storage Tiers Management'</c>
 		<c>timetraveldebugger 'Time Travel Debugger (TTD)'</c>
-		<c>tpm 'Trusted Platform Module (TPM)'</c>
-		<c>tpmmmc 'Trusted Platform Module (TPM) (management console)'</c>
-		<c>tpmmmc32 'Trusted Platform Module (TPM) (management console) - 32 bit'</c>
-		<c>tpmvsc 'Virtual Smart Card'</c>
 		<c>troubleshootingsvc 'Recommended Troubleshooting service'</c>
 		<c>tzautoupdate 'Auto Time Zone Updater'</c>
 		<c>uev 'User Experience Virtualization (UE-V)'</c>
@@ -624,18 +620,12 @@
 	<Features>
 		<Feature name="OneCoreUAP.OneSync~~~~0.0.1.0">false</Feature>
 		<Feature name="Printing-Foundation-InternetPrinting-Client">false</Feature>
-		<Feature name="MathRecognizer~~~~0.0.1.0">false</Feature>
 		<Feature name="Printing-PrintToPDFServices-Features">false</Feature>
-		<Feature name="App.Support.QuickAssist~~~~0.0.1.0">false</Feature>
 		<Feature name="Printing-XPSServices-Features">false</Feature>
 		<Feature name="Printing-Foundation-Features">false</Feature>
 		<Feature name="MSRDC-Infrastructure">false</Feature>
 		<Feature name="WCF-TCP-PortSharing45">false</Feature>
 		<Feature name="WCF-Services45">false</Feature>
-		<Feature name="Print.Fax.Scan~~~~0.0.1.0">false</Feature>
-		<Feature name="Windows.Client.ShellComponents~~~~0.0.1.0">false</Feature>
-		<Feature name="Hello.Face.Migration.18967~~~~0.0.1.0">false</Feature>
-		<Feature name="Hello.Face.18967~~~~0.0.1.0">false</Feature>
 	</Features>
 	<Packages></Packages>
 	<Commands>
@@ -1249,7 +1239,6 @@
 				<Tweak name="StoragePolicy\04">0</Tweak>
 				<Tweak name="StoragePolicy\2048">0</Tweak>
 				<Tweak name="System\DisableAutomaticRestartSignOn">1</Tweak>
-				<Tweak name="DeviceGuard\EnableVirtualizationBasedSecurity">0</Tweak>
 			</TweakGroup>
 			<TweakGroup name="WindowsUpdate">
 				<Tweak name="Preferences\ModelDownloadAllowed">0</Tweak>
