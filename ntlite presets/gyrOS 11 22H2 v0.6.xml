@@ -1,6 +1,6 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <Preset isAutoSaved="true" xmlns="urn:schemas-nliteos-com:pn.v1">
-	<Date>03/29/2023 12:24:15</Date>
+	<Date>03/29/2023 20:46:33</Date>
 	<AppInfo>
 		<Version>2023.3.9171</Version>
 		<Licensed>Yes</Licensed>
@@ -8,7 +8,7 @@
 		<Host>Windows 10 Pro (22H2) x64 - 10.0.19045.2546 (en-US)</Host>
 	</AppInfo>
 	<ImageInfo>
-		<Version mode="offline">Windows 11 Professional (22H2) x64 - 10.0.22621.1413 (en-US)</Version>
+		<Version mode="offline">Windows 11 Professional (22H2) x64 - 10.0.22621.1485 (en-US)</Version>
 	</ImageInfo>
 	<RemoveComponents AppRemovalMode="DISM">
 		<c>aarsvc 'Agent Activation Runtime'</c>
@@ -476,9 +476,6 @@
 		<c>pdfreader 'Windows Reader (PDF)'</c>
 		<c>peertopeer 'Peer Networking'</c>
 		<c>penservice 'Pen Service'</c>
-		<c>perfmon 'Performance Monitor'</c>
-		<c>performancerecorder 'Windows Performance Recorder'</c>
-		<c>perftools 'Performance CMD Tools for Tracing'</c>
 		<c>phonesvc 'Phone Service'</c>
 		<c>photocodec32 'Photo codec - 32 bit'</c>
 		<c>photoviewer 'Photo Viewer'</c>
@@ -486,7 +483,6 @@
 		<c>pickerhost32 'File Picker UI Host - 32 bit'</c>
 		<c>picturepassword 'Picture password'</c>
 		<c>pinsignin 'PIN sign-in support'</c>
-		<c>pla 'Performance Logs and Alerts'</c>
 		<c>pos 'Point of Service (POS)'</c>
 		<c>projfs 'Projected File System (ProjFS)'</c>
 		<c>pushnotificationssvc 'Windows Push Notifications Service (System)'</c>
@@ -677,6 +673,9 @@
 			<component name="Microsoft-Windows-Security-SPP-UX">
 				<SkipAutoActivation>true</SkipAutoActivation>
 			</component>
+			<component name="Microsoft-Windows-Shell-Setup">
+				<ComputerName>*</ComputerName>
+			</component>
 		</settings>
 		<settings pass="windowsPE">
 			<component name="Microsoft-Windows-International-Core-WinPE">
@@ -710,6 +709,7 @@
 				</ImageInstall>
 				<UserData>
 					<AcceptEula>true</AcceptEula>
+					<FullName>GYROS</FullName>
 					<ProductKey>
 						<Key></Key>
 						<WillShowUI>OnError</WillShowUI>
@@ -1126,7 +1126,6 @@
 				<Tweak name="Explorer\NoThumbnailCache">0</Tweak>
 				<Tweak name="Explorer\NoCDBurning">1</Tweak>
 				<Tweak name="Explorer\ClearRecentDocsOnExit">1</Tweak>
-				<Tweak name="Advanced\UseCompactMode">1</Tweak>
 				<Tweak name="Advanced\FolderContentsInfoTip">1</Tweak>
 				<Tweak name="Advanced\HideMergeConflicts">1</Tweak>
 				<Tweak name="Explorer\NoRecentDocsHistory">1</Tweak>
@@ -1279,7 +1278,6 @@
 				<Tweak name="fdPHost\fdPHost">4</Tweak>
 				<Tweak name="FDResPub\FDResPub">4</Tweak>
 				<Tweak name="BcastDVRUserService\BcastDVRUserService">4</Tweak>
-				<Tweak name="GraphicsPerfSvc\GraphicsPerfSvc">4</Tweak>
 				<Tweak name="IpxlatCfgSvc\IpxlatCfgSvc">4</Tweak>
 				<Tweak name="KtmRm\KtmRm">4</Tweak>
 				<Tweak name="edgeupdate\edgeupdate">4</Tweak>
