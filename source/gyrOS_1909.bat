@@ -1049,7 +1049,6 @@ for /f %%i in ('reg query "HKLM\SYSTEM\CurrentControlSet\Services" /s /f DmaRema
 for /f %%i in ('reg query "HKLM\SYSTEM\CurrentControlSet\services\NetBT\Parameters\Interfaces" /s /f "NetbiosOptions"^| findstr "HKEY"') do (
 	reg add "%%i" /v "NetbiosOptions" /t REG_DWORD /d "2" /f
 ) > nul 2> nul
-
 reg add "HKLM\SYSTEM\CurrentControlSet\Services\NetBT\Parameters" /v "NodeType" /t REG_DWORD /d "2" /f > nul 2> nul
 reg add "HKLM\SYSTEM\CurrentControlSet\Services\NetBT\Parameters" /v "SMBDeviceEnabled" /t REG_DWORD /d "0" /f > nul 2> nul
 reg add "HKLM\SYSTEM\CurrentControlSet\Services\NetBT\Parameters" /v "EnableLMHOSTS" /t REG_DWORD /d "0" /f > nul 2> nul
@@ -1061,20 +1060,18 @@ reg add "HKLM\SYSTEM\CurrentControlSet\Services\lmhosts" /v "Start" /t REG_DWORD
 :: Disable Windows Defender
 bcdedit /set disableelamdrivers Yes > nul 2> nul
 
-:: Disable DMA Memory Protection,Cores Isolation and VBS
+:: Disable DMA Memory Protection, Cores Isolation and VBS
 bcdedit /set hypervisorlaunchtype Off > nul 2> nul
 bcdedit /set vsmlaunchtype Off > nul 2> nul
 bcdedit /set vm No > nul 2> nul
 bcdedit /set loadoptions DISABLE-LSA-ISO,DISABLE-VBS > nul 2> nul
-
 reg add "HKLM\SOFTWARE\Policies\Microsoft\Windows\DeviceGuard" /v "ConfigureSystemGuardLaunch" /t REG_DWORD /d "0" /f > nul 2> nul
 reg add "HKLM\SOFTWARE\Policies\Microsoft\Windows\DeviceGuard" /v "HVCIMATRequired" /t REG_DWORD /d "0" /f > nul 2> nul
 reg add "HKLM\SOFTWARE\Policies\Microsoft\Windows\DeviceGuard" /v "RequirePlatformSecurityFeatures" /t REG_DWORD /d "1" /f > nul 2> nul
 reg add "HKLM\SOFTWARE\Policies\Microsoft\Windows\DeviceGuard" /v "LsaCfgFlags" /t REG_DWORD /d "0" /f > nul 2> nul
 reg add "HKLM\SOFTWARE\Policies\Microsoft\FVE" /v "DisableExternalDMAUnderLock" /t REG_DWORD /d "0" /f > nul 2> nul
 reg add "HKLM\SYSTEM\CurrentControlSet\Control\DeviceGuard" /v "RequireMicrosoftSignedBootChain" /t REG_DWORD /d "0" /f > nul 2> nul
-
-:: Disable Virtualization-Based Protection of Code Integrity
+:: Disable VBS
 reg add "HKLM\SOFTWARE\Policies\Microsoft\Windows\DeviceGuard" /v "EnableVirtualizationBasedSecurity" /t REG_DWORD /d "0" /f > nul 2> nul
 reg add "HKLM\SOFTWARE\Policies\Microsoft\Windows\DeviceGuard" /t REG_DWORD /v "HypervisorEnforcedCodeIntegrity" /d "0" /f > nul 2> nul
 reg add "HKLM\SYSTEM\CurrentControlSet\Control\DeviceGuard\Scenarios\HypervisorEnforcedCodeIntegrity" /v "Enabled" /t REG_DWORD /d "0" /f > nul 2> nul
