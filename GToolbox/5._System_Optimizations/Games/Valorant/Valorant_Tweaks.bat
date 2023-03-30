@@ -45,8 +45,9 @@ reg add "HKLM\SOFTWARE\Policies\Microsoft\Windows\QoS\VALORANT" /v "Remote IP Pr
 reg add "HKLM\SOFTWARE\Policies\Microsoft\Windows\QoS\VALORANT" /v "DSCP Value" /t REG_SZ /d "46" /f
 reg add "HKLM\SOFTWARE\Policies\Microsoft\Windows\QoS\VALORANT" /v "Throttle Rate" /t REG_SZ /d "-1" /f
 
-sc config vgc start= demand
-sc config vgk start= system
+reg add "HKLM\SYSTEM\CurrentControlSet\Services\vgc" /v "Start" /t REG_DWORD /d "2" /f
+sc config "vgc" start= auto
+sc config "vgk" start= system
 
 echo.
 echo Applied Valorant Tweaks. Press any key to exit.
