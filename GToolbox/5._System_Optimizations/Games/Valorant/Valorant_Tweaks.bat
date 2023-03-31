@@ -50,7 +50,7 @@ sc config "vgc" start= auto
 sc config "vgk" start= system
 
 echo.
-echo Applied Valorant Tweaks. Press any key to exit.
+echo Applied Valorant Tweaks. Restart your system.
 echo.
 
 pause >nul
