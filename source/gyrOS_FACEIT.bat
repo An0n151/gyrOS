@@ -406,19 +406,6 @@ reg add "HKCR\exefile\Shell\Priority\shell\005flyout\command" /ve /t REG_SZ /d "
 reg add "HKCR\exefile\Shell\Priority\shell\006flyout" /ve /t REG_SZ /d "Low" /f > nul 2> nul
 reg add "HKCR\exefile\Shell\Priority\shell\006flyout\command" /ve /t REG_SZ /d "cmd.exe /c start \"\" /Low \"%%1\"" /f > nul 2> nul
 
-:: Remove "Edit with Paint 3D" from Context Menu
-reg delete "HKCR\SystemFileAssociations\.3mf\Shell\3D Edit" /f > nul 2> nul
-reg delete "HKCR\SystemFileAssociations\.bmp\Shell\3D Edit" /f > nul 2> nul
-reg delete "HKCR\SystemFileAssociations\.fbx\Shell\3D Edit" /f > nul 2> nul
-reg delete "HKCR\SystemFileAssociations\.gif\Shell\3D Edit" /f > nul 2> nul
-reg delete "HKCR\SystemFileAssociations\.jfif\Shell\3D Edit" /f > nul 2> nul
-reg delete "HKCR\SystemFileAssociations\.jpe\Shell\3D Edit" /f > nul 2> nul
-reg delete "HKCR\SystemFileAssociations\.jpeg\Shell\3D Edit" /f > nul 2> nul
-reg delete "HKCR\SystemFileAssociations\.jpg\Shell\3D Edit" /f > nul 2> nul
-reg delete "HKCR\SystemFileAssociations\.png\Shell\3D Edit" /f > nul 2> nul
-reg delete "HKCR\SystemFileAssociations\.tif\Shell\3D Edit" /f > nul 2> nul
-reg delete "HKCR\SystemFileAssociations\.tiff\Shell\3D Edit" /f > nul 2> nul
-
 :: Disable USB Autorun / Autoplay ; Credits to ArtanisInc
 reg add "HKLM\SOFTWARE\Microsoft\Internet Explorer\Main" /v "Autorun" /t REG_DWORD /d "0" /f > nul 2> nul
 reg add "HKLM\SOFTWARE\Microsoft\Windows\CurrentVersion\Policies\Explorer" /v "NoAutorun" /t REG_DWORD /d "1" /f > nul 2> nul
