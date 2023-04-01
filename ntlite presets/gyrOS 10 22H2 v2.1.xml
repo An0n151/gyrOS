@@ -1,6 +1,6 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <Preset isAutoSaved="true" xmlns="urn:schemas-nliteos-com:pn.v1">
-	<Date>03/28/2023 10:44:55</Date>
+	<Date>04/01/2023 22:24:26</Date>
 	<AppInfo>
 		<Version>2023.3.9171</Version>
 		<Licensed>Yes</Licensed>
@@ -643,7 +643,7 @@
 	<Unattended mode="1">
 		<OEMSetupComplete>false</OEMSetupComplete>
 		<AnswerFileLocationPanther>false</AnswerFileLocationPanther>
-		<AnswerFileLocationBoot>false</AnswerFileLocationBoot>
+		<AnswerFileLocationBoot>true</AnswerFileLocationBoot>
 		<SaveBothArch>false</SaveBothArch>
 		<EditionPrompt>false</EditionPrompt>
 		<settings pass="oobeSystem">
