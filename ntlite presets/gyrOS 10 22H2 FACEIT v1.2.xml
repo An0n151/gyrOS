@@ -638,7 +638,7 @@
 	<Unattended mode="1">
 		<OEMSetupComplete>false</OEMSetupComplete>
 		<AnswerFileLocationPanther>false</AnswerFileLocationPanther>
-		<AnswerFileLocationBoot>false</AnswerFileLocationBoot>
+		<AnswerFileLocationBoot>true</AnswerFileLocationBoot>
 		<SaveBothArch>false</SaveBothArch>
 		<EditionPrompt>false</EditionPrompt>
 		<settings pass="oobeSystem">

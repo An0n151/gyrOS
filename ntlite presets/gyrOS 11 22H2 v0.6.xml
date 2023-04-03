@@ -647,7 +647,7 @@
 	<Drivers showHidden="true"></Drivers>
 	<Unattended mode="1">
 		<OEMSetupComplete>false</OEMSetupComplete>
-		<AnswerFileLocationPanther>false</AnswerFileLocationPanther>
+		<AnswerFileLocationPanther>true</AnswerFileLocationPanther>
 		<AnswerFileLocationBoot>false</AnswerFileLocationBoot>
 		<SaveBothArch>false</SaveBothArch>
 		<EditionPrompt>false</EditionPrompt>
