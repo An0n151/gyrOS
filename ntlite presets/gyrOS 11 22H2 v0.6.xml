@@ -647,8 +647,8 @@
 	<Drivers showHidden="true"></Drivers>
 	<Unattended mode="1">
 		<OEMSetupComplete>false</OEMSetupComplete>
-		<AnswerFileLocationPanther>true</AnswerFileLocationPanther>
-		<AnswerFileLocationBoot>false</AnswerFileLocationBoot>
+		<AnswerFileLocationPanther>false</AnswerFileLocationPanther>
+		<AnswerFileLocationBoot>true</AnswerFileLocationBoot>
 		<SaveBothArch>false</SaveBothArch>
 		<EditionPrompt>false</EditionPrompt>
 		<settings pass="oobeSystem">
