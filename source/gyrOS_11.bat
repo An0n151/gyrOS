@@ -962,6 +962,12 @@ bcdedit /set bootmenupolicy Legacy > nul 2> nul
 bcdedit /set recoveryenabled No > nul 2> nul
 bcdedit /set tpmbootentropy ForceDisable > nul 2> nul
 bcdedit /set description gyrOS > nul 2> nul
+:: Disable 57-bits 5-level paging and avoid the use of uncontiguous portions of low-memory from the OS
+bcdedit /set linearaddress57 OptOut > nul 2> nul
+bcdedit /set increaseuserva 268435328 > nul 2> nul
+bcdedit /set firstmegabytepolicy UseAll > nul 2> nul
+bcdedit /set avoidlowmemory 0x8000000 > nul 2> nul
+bcdedit /set nolowmem Yes > nul 2> nul
 :: Lower Latency
 bcdedit /set tscsyncpolicy legacy > nul 2> nul
 :: Better FPS
