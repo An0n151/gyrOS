@@ -40,6 +40,12 @@ start "" "%WinDir%\System32\SystemSettingsAdminFlows.exe" SetAutoTimeZoneUpdate 
 :: Force Sync the Time with the Internet Time ; Credits to DuckOS
 start "" "%WinDir%\System32\SystemSettingsAdminFlows.exe" ForceTimeSync 1 > nul 2> nul
 
+:: Configure Power Plan
+powercfg -import "%WinDir%\HoneV2.pow" 77777777-7777-7777-7777-777777777777 > nul 2> nul
+powercfg -SETACTIVE "77777777-7777-7777-7777-777777777777" > nul 2> nul
+powercfg -delete 8c5e7fda-e8bf-4a96-9a85-a6e23a8c635c > nul 2> nul
+powercfg -delete a1841308-3541-4fab-bc81-f71556f20b4a > nul 2> nul
+
 timeout /t 1 >nul
 cls
 
@@ -92,6 +98,7 @@ timeout /t 1 >nul
 cls
 
 :: Delete Post Setup Files
+del /f /q %WinDir%\HoneV2.pow > nul 2> nul
 del /f /q %WinDir%\gyrOS\VisualCppRedist_AIO.exe > nul 2> nul
 del /f /q %WinDir%\gyrOS\DirectX.exe > nul 2> nul
 
