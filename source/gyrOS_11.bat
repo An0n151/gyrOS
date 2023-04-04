@@ -1262,10 +1262,6 @@ if %errorlevel% == 0 (
 
 :::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::
 
-:: CPU Optimizations
-reg add "HKLM\SYSTEM\CurrentControlSet\Control\Session Manager\kernel" /v "DistributeTimers" /t REG_DWORD /d "1" /f > nul 2> nul
-reg add "HKLM\SOFTWARE\Microsoft\Windows\DWM" /v "DisableIndependentFlip" /t REG_DWORD /d "1" /f > nul 2> nul
-
 :: Security Tweaks
 PowerShell "Set-SmbClientConfiguration -RequireSecuritySignature $True -Force" > nul 2> nul
 PowerShell "Set-SmbClientConfiguration -EnableSecuritySignature $True -Force" > nul 2> nul
