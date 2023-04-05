@@ -1453,18 +1453,18 @@
 		<Change></Change>
 		<Add>
 			<Item type="FileU">
-				<Path>C:\Users\an0n\Desktop\gyrOS\gyrOS\source\gyrOS_1909.bat</Path>
+				<Path>C:\Users\an0n\Desktop\gyrOS\source\gyrOS_1909.bat</Path>
 				<Params></Params>
 				<Index>1000</Index>
 			</Item>
 			<Item type="FileU">
-				<Path>C:\Users\an0n\Desktop\gyrOS\gyrOS\source\gyrOS_Registry.reg</Path>
+				<Path>C:\Users\an0n\Desktop\gyrOS\source\gyrOS_Registry.reg</Path>
 				<Params></Params>
 				<Index>1001</Index>
 			</Item>
 		</Add>
 	</Execution>
 	<Registry>
-		<File>C:\Users\an0n\Desktop\gyrOS\gyrOS\source\gyrOS_OOBE.reg</File>
+		<File>C:\Users\an0n\Desktop\gyrOS\source\gyrOS_OOBE.reg</File>
 	</Registry>
 </Preset>
