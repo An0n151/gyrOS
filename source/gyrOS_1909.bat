@@ -465,7 +465,7 @@ reg add "HKLM\SOFTWARE\Policies\Microsoft\Windows\CurrentVersion\Explorer\AutoCo
 reg add "HKCU\SOFTWARE\Policies\Microsoft\Windows\Explorer" /v "NoRemoteDestinations" /t REG_DWORD /d "1" /f > nul 2> nul
 
 :: Disable IPv6, Client for Microsoft Networks, QoS Packet Scheduler, File and Printer Sharing ; Credits to DuckOS
-PowerShell -Mta -NoProfile -Command "Disable-NetAdapterBinding -Name "*" -ComponentID ms_tcpip6, ms_msclient, ms_pacer, ms_server" > nul 2> nul
+%PowerShell% "Disable-NetAdapterBinding -Name "*" -ComponentID ms_tcpip6, ms_rspndr, ms_msclient, ms_pacer, ms_server, ms_lldp, ms_lltdio" > nul 2> nul
 
 :: Add "Run with Priority" to Context Menu
 reg add "HKCR\exefile\shell\Priority" /v "MUIVerb" /t REG_SZ /d "Run with priority" /f > nul 2> nul
@@ -1330,11 +1330,12 @@ netsh interface tcp set global rss=enabled > nul 2> nul
 netsh interface tcp set global dca=enabled > nul 2> nul
 netsh interface tcp set global rsc=disabled > nul 2> nul
 netsh interface tcp set global timestamps=disabled > nul 2> nul
+netsh int tcp set supplemental Internet congestionprovider=ctcp > nul 2> nul
 
 :: Network Optimizations
-PowerShell "Enable-NetAdapterRss -Name *" > nul 2> nul
-PowerShell "Disable-NetAdapterLso -Name *" > nul 2> nul
-PowerShell "Set-NetOffloadGlobalSetting -PacketCoalescingFilter Disabled" > nul 2> nul
+%PowerShell% "Enable-NetAdapterRss -Name *" > nul 2> nul
+%PowerShell% "Disable-NetAdapterLso -Name *" > nul 2> nul
+%PowerShell% "Set-NetOffloadGlobalSetting -PacketCoalescingFilter Disabled" > nul 2> nul
 :: Enable DNS over HTTPS
 reg add "HKLM\SYSTEM\CurrentControlSet\Services\Dnscache\Parameters" /v "EnableAutoDoh" /t REG_DWORD /d "2" /f > nul 2> nul
 :: Enable TCP Extensions ; Credits to EchoX
@@ -1537,10 +1538,10 @@ reg add "HKLM\SYSTEM\CurrentControlSet\Control\GraphicsDrivers" /v "DpiMapIommuC
 :::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::
 
 :: Security Tweaks
-PowerShell "Set-SmbClientConfiguration -RequireSecuritySignature $True -Force" > nul 2> nul
-PowerShell "Set-SmbClientConfiguration -EnableSecuritySignature $True -Force" > nul 2> nul
-PowerShell "Set-SmbServerConfiguration -EncryptData $True -Force" > nul 2> nul
-PowerShell "Set-SmbServerConfiguration -EnableSMB1Protocol $false -Force" > nul 2> nul
+%PowerShell% "Set-SmbClientConfiguration -RequireSecuritySignature $True -Force" > nul 2> nul
+%PowerShell% "Set-SmbClientConfiguration -EnableSecuritySignature $True -Force" > nul 2> nul
+%PowerShell% "Set-SmbServerConfiguration -EncryptData $True -Force" > nul 2> nul
+%PowerShell% "Set-SmbServerConfiguration -EnableSMB1Protocol $false -Force" > nul 2> nul
 reg add "HKLM\SYSTEM\CurrentControlSet\Control\Lsa" /v "RunAsPPL" /t REG_DWORD /d "1" /f > nul 2> nul
 reg add "HKLM\SYSTEM\CurrentControlSet\Control\Lsa" /v "DisableRestrictedAdminOutboundCreds" /t REG_DWORD /d "1" /f > nul 2> nul
 reg add "HKLM\SYSTEM\CurrentControlSet\Control\Lsa" /v "DisableRestrictedAdmin" /t REG_DWORD /d "0" /f > nul 2> nul
@@ -1660,6 +1661,9 @@ schtasks /Change /Disable /TN "\Microsoft\Windows\.NET Framework\.NET Framework 
 schtasks /Change /Disable /TN "\Microsoft\XblGameSave\XblGameSaveTask" > nul 2> nul
 schtasks /Change /Disable /TN "\Microsoft\XblGameSave\XblGameSaveTaskLogon" > nul 2> nul
 schtasks /Change /Disable /TN "\Microsoft\WindowsManagement\Provisioning\Cellular" > nul 2> nul
+schtasks /Change /Disable /TN "\Microsoft\Windows\TaskScheduler\Maintenance Configurator" > nul 2> nul
+schtasks /Change /Disable /TN "\Microsoft\Windows\TaskScheduler\Regular Maintenance" > nul 2> nul
+schtasks /Change /Disable /TN "\Microsoft\Windows\PushToInstall\LoginCheck" > nul 2> nul
 
 timeout /t 2 >nul
 cls
