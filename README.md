@@ -8,7 +8,7 @@
 </p>
 
 # What is gyrOS?
-• gyrOS is a project focusing on providing the best experience for everyday users depending on their needs.
+• gyrOS is a non-profit project focusing on providing the best experience for everyday PC users depending on their needs.
 
 # What is gyrOS based on?
 • gyrOS offers Windows based modifications optimized & designed for gamers, creators and developers.
