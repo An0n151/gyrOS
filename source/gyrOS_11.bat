@@ -181,8 +181,6 @@ rd "%drive%\Users\%username%\Saved Games" /s /q > nul 2> nul
 rd "%drive%\Users\%username%\AppData\Roaming\Adobe\Flash Player\NativeCache" /s /q > nul 2> nul
 rd "%drive%\Users\%username%\AppData\Roaming\Adobe\Flash Player" /s /q > nul 2> nul
 rd "%drive%\Users\%username%\AppData\Roaming\Adobe" /s /q > nul 2> nul
-rd "%drive%\Users\%username%\AppData\Local\OO Software\OO ShutUp10" /s /q > nul 2> nul
-rd "%drive%\Users\%username%\AppData\Local\OO Software" /s /q > nul 2> nul
 
 :: Clean Registry Entries ; Credits to CatGamerOP and ArtanisInc
 for %%a in ({990A2BD7-E738-46C7-B26F-1CF8FB9F1391} {4116F60B-25B3-4662-B732-99A6111EDC0B} {D94EE5D8-D189-4994-83D2-F68D7D41B0E6} {E0CBF06C-CD8B-4647-BB8A-263B43F0F974} {C06FF265-AE09-48F0-812C-16753D7CBA83} {D48179BE-EC20-11D1-B6B8-00C04FA372A7} {997B5D8D-C442-4F2E-BAF3-9C8E671E9E21} {6BDD1FC1-810F-11D0-BEC7-08002BE2092F} {4D36E97B-E325-11CE-BFC1-08002BE10318} {A0A588A4-C46F-4B37-B7EA-C82FE89870C6} {7EBEFBC0-3200-11D2-B4C2-00A0C9697D07} {4D36E965-E325-11CE-BFC1-08002BE10318} {53D29EF7-377C-4D14-864B-EB3A85769359} {4658EE7E-F050-11D1-B6BD-00C04FA372A7} {6BDD1FC5-810F-11D0-BEC7-08002BE2092F} {DB4F6DDD-9C0E-45E4-9597-78DBBAD0F412} {4D36E978-E325-11CE-BFC1-08002BE10318} {4D36E977-E325-11CE-BFC1-08002BE10318} {6D807884-7D21-11CF-801C-08002BE10318} {CE5939AE-EBDE-11D0-B181-0000F8753EC4} {4D36E969-E325-11CE-BFC1-08002BE10318} {4D36E970-E325-11CE-BFC1-08002BE10318} {4D36E979-E325-11CE-BFC1-08002BE10318} {4D36E96D-E325-11CE-BFC1-08002BE10318}) do (
@@ -215,12 +213,6 @@ reg add "HKCU\SOFTWARE\Microsoft\Windows\CurrentVersion\Search" /v "IsMicrophone
 reg add "HKCU\SOFTWARE\Microsoft\Windows\CurrentVersion\Search" /v "IsWindowsHelloActive" /t REG_DWORD /d "0" /f > nul 2> nul
 reg add "HKCU\SOFTWARE\Microsoft\Windows\CurrentVersion\Search" /v "DeviceHistoryEnabled" /t REG_DWORD /d "0" /f > nul 2> nul
 
-:: Disable Search Indexing
-reg add "HKLM\SOFTWARE\Policies\Microsoft\Windows\Windows Search" /v "PreventIndexOnBattery" /t REG_DWORD /d "1" /f > nul 2> nul
-reg add "HKLM\SOFTWARE\Policies\Microsoft\Windows\Windows Search" /v "PreventIndex" /t REG_DWORD /d "1" /f > nul 2> nul
-reg add "HKLM\SOFTWARE\Policies\Microsoft\Windows\Windows Search" /v "DisableRemovableDriveIndexing" /t REG_DWORD /d "1" /f > nul 2> nul
-reg add "HKLM\SOFTWARE\Policies\Microsoft\SearchCompanion" /v "DisableContentFileUpdate" /t REG_DWORD /d "1" /f > nul 2> nul
-
 :: Configure System Permissions
 :: Contacts
 reg add "HKLM\SOFTWARE\Microsoft\Windows\CurrentVersion\CapabilityAccessManager\ConsentStore\contacts" /v "Value" /t REG_SZ /d "Deny" /f > nul 2> nul
@@ -251,13 +243,6 @@ reg add "HKLM\SOFTWARE\Microsoft\Windows\CurrentVersion\OEMInformation" /v "Mode
 reg add "HKLM\SOFTWARE\Microsoft\Windows\CurrentVersion\OEMInformation" /v "SupportHours" /t REG_SZ /d "Discord" /f > nul 2> nul
 reg add "HKLM\SOFTWARE\Microsoft\Windows\CurrentVersion\OEMInformation" /v "SupportPhone" /t REG_SZ /d "69420" /f > nul 2> nul
 reg add "HKLM\SOFTWARE\Microsoft\Windows\CurrentVersion\OEMInformation" /v "SupportURL" /t REG_SZ /d "https://discord.gg/gyros" /f > nul 2> nul
-
-:: Configure Windows Update
-reg add "HKLM\SOFTWARE\Policies\Microsoft\Windows\WindowsUpdate\AU" /v "NoAutoUpdate" /t REG_DWORD /d "1" /f > nul 2> nul
-reg add "HKLM\SOFTWARE\Policies\Microsoft\Windows\WindowsUpdate\AU" /v "AUOptions" /t REG_DWORD /d "2" /f > nul 2> nul
-reg add "HKLM\SOFTWARE\Policies\Microsoft\Windows\WindowsUpdate\AU" /v "NoAutoRebootWithLoggedOnUsers" /t REG_DWORD /d "1" /f > nul 2> nul
-reg add "HKLM\SOFTWARE\Policies\Microsoft\Windows\WindowsUpdate\AU" /v "AlwaysAutoRebootAtScheduledTime" /t REG_DWORD /d "0" /f > nul 2> nul
-reg add "HKLM\SOFTWARE\Policies\Microsoft\MRT" /v "DontOfferThroughWUAU" /t REG_DWORD /d "1" /f > nul 2> nul
 
 :: Disable Windows Upgrade and Insider Previews
 reg add "HKLM\SOFTWARE\Policies\Microsoft\Windows\WindowsUpdate" /v "DisableOSUpgrade" /t REG_DWORD /d "1" /f > nul 2> nul
@@ -451,6 +436,16 @@ reg add "HKCU\AppEvents\Schemes\Apps\sapisvr\PanelSound\.current" /f > nul 2> nu
 
 :: Set Sound Communications to "Do nothing"
 reg add "HKCU\SOFTWARE\Microsoft\Multimedia\Audio" /v "UserDuckingPreference" /t REG_DWORD /d "3" /f > nul 2> nul
+
+:: Disable Startup Sound***
+reg add "HKCU\AppEvents\Schemes\Apps\.Default\SystemExit" /v ".current" /t REG_SZ /d "" /f > nul 2> nul
+reg add "HKCU\AppEvents\Schemes\Apps\.Default\WindowsLogoff" /v ".current" /t REG_SZ /d "" /f > nul 2> nul
+reg add "HKCU\AppEvents\Schemes\Apps\.Default\WindowsLogon" /v ".current" /t REG_SZ /d "" /f > nul 2> nul
+reg add "HKCU\AppEvents\Schemes\Apps\.Default\WindowsUnlock" /v ".current" /t REG_SZ /d "" /f > nul 2> nul
+reg add "HKLM\AppEvents\Schemes\Apps\.Default\SystemExit" /v ".current" /t REG_SZ /d "" /f > nul 2> nul
+reg add "HKLM\AppEvents\Schemes\Apps\.Default\WindowsLogoff" /v ".current" /t REG_SZ /d "" /f > nul 2> nul
+reg add "HKLM\AppEvents\Schemes\Apps\.Default\WindowsLogon" /v ".current" /t REG_SZ /d "" /f > nul 2> nul
+reg add "HKLM\AppEvents\Schemes\Apps\.Default\WindowsUnlock" /v ".current" /t REG_SZ /d "" /f > nul 2> nul
 
 :: Disable "Notify me if my PC is charging slowly over USB"
 reg add "HKCU\SOFTWARE\Microsoft\Shell\USB" /v "NotifyOnWeakCharger" /t REG_DWORD /d "0" /f > nul 2> nul
@@ -747,12 +742,6 @@ reg add "HKLM\SYSTEM\CurrentControlSet\Control\Power" /v "HibernateEnabledDefaul
 reg add "HKLM\SYSTEM\CurrentControlSet\Control\Power" /v "HibernateEnabled" /t REG_DWORD /d "0" /f > nul 2> nul
 reg add "HKLM\SYSTEM\CurrentControlSet\Control\Session Manager\Power" /v "HiberbootEnabled" /t REG_DWORD /d "0" /f > nul 2> nul
 
-:: Disable CFG Lock
-::reg add "HKLM\SYSTEM\CurrentControlSet\Control\Session Manager\Memory Management" /v "EnableCfg" /t REG_DWORD /d "0" /f > nul 2> nul
-
-:: Disable ASLR
-::reg add "HKLM\SYSTEM\CurrentControlSet\Control\Session Manager\Memory Management" /v "MoveImages" /t REG_DWORD /d "0" /f > nul 2> nul
-
 :: Configure PowerShell
 reg add "HKLM\SOFTWARE\Microsoft\Windows NT\CurrentVersion\Winlogon" /v "AutoRestartShell" /t REG_DWORD /d "1" /f > nul 2> nul
 setx POWERSHELL_TELEMETRY_OPTOUT 1 > nul 2> nul
@@ -969,7 +958,7 @@ bcdedit /set bootmenupolicy Legacy > nul 2> nul
 bcdedit /set recoveryenabled No > nul 2> nul
 bcdedit /set tpmbootentropy ForceDisable > nul 2> nul
 bcdedit /set description gyrOS > nul 2> nul
-:: Disable 57-bits 5-level paging and avoid the use of uncontiguous portions of low-memory from the OS
+:: Disable 57-bits 5-level paging and avoid the use of uncontiguous portions of low-memory
 bcdedit /set linearaddress57 OptOut > nul 2> nul
 bcdedit /set increaseuserva 268435328 > nul 2> nul
 bcdedit /set firstmegabytepolicy UseAll > nul 2> nul
