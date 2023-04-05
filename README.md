@@ -8,7 +8,7 @@
 </p>
 
 # What is gyrOS?
-• gyrOS is a new project focusing on providing the best experience for everyday users depending on their needs.
+• gyrOS is a project focusing on providing the best experience for everyday users depending on their needs.
 
 # What is gyrOS based on?
 • gyrOS offers Windows based modifications optimized & designed for gamers, creators and developers.
@@ -17,7 +17,7 @@
 • We strive to improve performance and lower input latency while being compatible with most applications and games.
 
 # What versions are available?
-• There are two versions available, one focusing on compatibility and the other focusing on performance. We also provide a build which includes security updates and supports FACEIT and ESEA.
+• There are two versions available, one focusing on compatibility and the other focusing on performance. We also provide a build which includes security updates and supports FACEIT and ESEA. Our newest addition is gyrOS 11, based on Windows 11 builds.
 
 # About gyrOS
 
