@@ -35,8 +35,8 @@
 • Disabled security mitigations. <br>
 • Process priority optimizations. <br>
 • Custom boot configuration. <br>
-• Integrated thousands of lines of optimizations.
-• Configured system settings to meet user needs.
+• Integrated thousands of lines of optimizations. <br>
+• Configured system settings to meet user needs. <br>
 
 # About GToolbox
 
