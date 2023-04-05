@@ -14,10 +14,13 @@
 • gyrOS offers Windows based modifications optimized & designed for gamers, creators and developers.
 
 # What is the goal?
-• We strive to improve performance and lower input latency while being compatible with most applications and games.
+• We strive to improve performance and lower input latency while being compatible with most applications and games. <br>
+• We are trying to keep the operating system as clean as possible and easy for everyone to understand.
 
 # What versions are available?
-• There are two versions available, one focusing on compatibility and the other focusing on performance. We also provide a build which includes security updates and supports FACEIT and ESEA. Our newest addition is gyrOS 11, based on Windows 11 builds.
+• There are two versions available, one focusing on compatibility (22H2) and the other focusing on performance (1909). <br>
+• We also provide a build which includes security updates and supports FACEIT and ESEA. <br>
+• Our newest addition is gyrOS 11, based on Windows 11. <br>
 
 # About gyrOS
 
@@ -25,13 +28,15 @@
 • All stock bloatware has been removed. <br>
 • Removed unneeded, very old devices & drivers. <br>
 • Removed lots of useless tasks. <br>
+• Enabled MSI mode. <br>
 • Disabled & removed unneeded services. <br>
 • Disabled power saving. <br>
 • Disabled telemetry. <br>
 • Disabled security mitigations. <br>
 • Process priority optimizations. <br>
-• System-wide MSI mode. <br>
 • Custom boot configuration. <br>
+• Integrated thousands of lines of optimizations.
+• Configured system settings to meet user needs.
 
 # About GToolbox
 
