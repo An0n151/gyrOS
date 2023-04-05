@@ -64,7 +64,7 @@ echo _______________
 echo.
 
 :: Turn on Automatic Time Update ; Credits to DuckOS
-%WinDir%\System32\SystemSettingsAdminFlows.exe SetInternetTime 1 > nul 2> nul
+start "" "%WinDir%\System32\SystemSettingsAdminFlows.exe" SetInternetTime 1 > nul 2> nul
 
 :: Turn on Automatic Time Zone Update ; Credits to DuckOS
 start "" "%WinDir%\System32\SystemSettingsAdminFlows.exe" SetAutoTimeZoneUpdate 1 > nul 2> nul
