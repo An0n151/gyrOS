@@ -1388,6 +1388,12 @@ for %%i in (EnumerationRetryCount ExtPropDescSemaphore WaitWakeEnabled WdfDirect
 		reg add "%%a" /v "%%i" /t REG_DWORD /d "0" /f
 	) > nul 2> nul
 )
+
+for %%i in (DisableIdlePowerManagement) do (
+	for /f %%a in ('reg query "HKLM\SYSTEM\CurrentControlSet\Enum" /s /f "%%i"^| findstr "HKEY"') do (
+		reg add "%%a" /v "%%i" /t REG_DWORD /d "1" /f
+	) > nul 2> nul
+)
 reg add "HKLM\SYSTEM\CurrentControlSet\Services\pci\Parameters" /v "ASPMOptOut" /t	REG_DWORD /d "1" /f > nul 2> nul
 reg add "HKLM\SYSTEM\CurrentControlSet\Control\Storage" /v "StorageD3InModernStandby" /t REG_DWORD /d "0" /f > nul 2> nul
 reg add "HKLM\SYSTEM\CurrentControlSet\Services\stornvme\Parameters\Device" /v "IdlePowerMode" /t REG_DWORD /d "0" /f > nul 2> nul
