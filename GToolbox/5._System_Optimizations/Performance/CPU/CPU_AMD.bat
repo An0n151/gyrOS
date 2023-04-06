@@ -13,6 +13,12 @@ reg add "HKLM\SYSTEM\CurrentControlSet\Control\Session Manager\kernel" /v "Distr
 reg add "HKLM\SOFTWARE\Microsoft\Windows\DWM" /v "DisableIndependentFlip" /t REG_DWORD /d "1" /f > nul 2> nul
 :: Disable TSX
 reg add "HKLM\SYSTEM\CurrentControlSet\Control\Session Manager\kernel" /v "DisableTsx" /t REG_DWORD /d "1" /f
+:: Disable Power Saving
+for %%i in (WakeEnabled WdkSelectiveSuspendEnable) do (
+	for /f "delims=" %%a in ('reg query "HKLM\SYSTEM\CurrentControlSet\Control\Class" /s /f "%%~i" ^| findstr "HKEY"') do (
+		reg add "%%a" /v "%%~i" /t REG_DWORD /d "0" /f
+	)
+)
 
 echo.
 echo Success.
