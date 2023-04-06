@@ -173,8 +173,6 @@ cls
 
 :: Delete Post Setup Files
 del /f /q %WinDir%\HoneV2.pow > nul 2> nul
-::del /f /q %WinDir%\gyrOS\OOSU10.exe > nul 2> nul
-::del /f /q %WinDir%\gyrOS\OOSU10.cfg > nul 2> nul
 del /f /q %drive%\ProgramData\Installers\OpenShellSetup.exe > nul 2> nul
 del /f /q %WinDir%\gyrOS\VisualCppRedist_AIO.exe > nul 2> nul
 del /f /q %WinDir%\gyrOS\DirectX.exe > nul 2> nul
@@ -270,8 +268,6 @@ rd "%drive%\Users\%username%\Saved Games" /s /q > nul 2> nul
 rd "%drive%\Users\%username%\AppData\Roaming\Adobe\Flash Player\NativeCache" /s /q > nul 2> nul
 rd "%drive%\Users\%username%\AppData\Roaming\Adobe\Flash Player" /s /q > nul 2> nul
 rd "%drive%\Users\%username%\AppData\Roaming\Adobe" /s /q > nul 2> nul
-rd "%drive%\Users\%username%\AppData\Local\OO Software\OO ShutUp10" /s /q > nul 2> nul
-rd "%drive%\Users\%username%\AppData\Local\OO Software" /s /q > nul 2> nul
 rd "%drive%\ProgramData\Microsoft\Windows\Start Menu\Programs\Open-Shell" /s /q > nul 2> nul
 
 :: Clean Registry Entries ; Credits to CatGamerOP and ArtanisInc
