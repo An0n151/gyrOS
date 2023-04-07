@@ -1386,9 +1386,11 @@ for /f %%i in ('wmic path Win32_NetworkAdapter get PNPDeviceID^| findstr /L "PCI
 )
 
 :: Disable Power Saving ; Credits to HoneCtrl and ArtanisInc
-for %%i in (EnableHIPM EnableDIPM EnableHDDParking) do for /f %%a in ('reg query "HKLM\SYSTEM\CurrentControlSet\Services" /s /f "%%i" ^| findstr "HKEY"') do (
-	reg add "%%a" /v "%%i" /t REG_DWORD /d "0" /f
-) > nul 2> nul
+for %%i in (EnableHIPM EnableDIPM EnableHDDParking) do (
+	for /f %%a in ('reg query "HKLM\SYSTEM\CurrentControlSet\Services" /s /f "%%i" ^| findstr "HKEY"') do (
+		reg add "%%a" /v "%%i" /t REG_DWORD /d "0" /f
+	) > nul 2> nul
+)
 
 for /f "tokens=*" %%i in ('reg query "HKLM\SYSTEM\CurrentControlSet\Enum" /s /f "StorPort" ^| findstr "StorPort"') do (
 	reg add "%%i" /v "EnableIdlePowerManagement" /t REG_DWORD /d "0" /f
