@@ -29,9 +29,6 @@ sc config "DevicePickerUserSvc" start= disabled
 reg add "HKLM\SYSTEM\CurrentControlSet\Services\BluetoothUserService" /v "Start" /t REG_DWORD /d "4" /f
 reg add "HKLM\SYSTEM\CurrentControlSet\Services\DeviceAssociationBrokerSvc" /v "Start" /t REG_DWORD /d "4" /f
 
-devcon disable BTH*
-devcon disable =Bluetooth
-
 echo.
 echo Bluetooth services have been disabled.
 echo.

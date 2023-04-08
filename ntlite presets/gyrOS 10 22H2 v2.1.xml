@@ -1,11 +1,11 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <Preset isAutoSaved="true" xmlns="urn:schemas-nliteos-com:pn.v1">
-	<Date>04/01/2023 22:24:26</Date>
+	<Date>04/08/2023 12:44:58</Date>
 	<AppInfo>
-		<Version>2023.3.9171</Version>
+		<Version>2023.4.9191</Version>
 		<Licensed>Yes</Licensed>
 		<Protections>Yes</Protections>
-		<Host>Windows 10 Pro (22H2) x64 - 10.0.19045.2546 (en-US)</Host>
+		<Host>Windows 10 Pro (22H2) x64 - 10.0.19045.2788 (en-US)</Host>
 	</AppInfo>
 	<ImageInfo>
 		<Version mode="offline">Windows 10 Professional (22H2) x64 - 10.0.19045.2788 (en-US)</Version>
@@ -561,7 +561,6 @@
 		<c>wfmmc32 'Windows Firewall (management console) - 32 bit'</c>
 		<c>wificloudstore 'WiFi Sync Provider'</c>
 		<c>wifinetworkmanager 'Wi-Fi Network Manager (Wi-Fi Sense)'</c>
-		<c>winai 'Windows AI Machine Learning'</c>
 		<c>Windows.CBSPreview 'Windows Barcode Preview'</c>
 		<c>windowstogo 'Windows To Go'</c>
 		<c>windowsupdate 'Windows Update'</c>

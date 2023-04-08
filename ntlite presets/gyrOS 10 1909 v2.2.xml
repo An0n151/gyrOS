@@ -1,11 +1,11 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <Preset isAutoSaved="true" xmlns="urn:schemas-nliteos-com:pn.v1">
-	<Date>03/28/2023 09:57:27</Date>
+	<Date>04/08/2023 19:57:54</Date>
 	<AppInfo>
-		<Version>2023.3.9171</Version>
+		<Version>2023.4.9191</Version>
 		<Licensed>Yes</Licensed>
 		<Protections>Yes</Protections>
-		<Host>Windows 10 Pro (22H2) x64 - 10.0.19045.2546 (en-US)</Host>
+		<Host>Windows 10 Pro (22H2) x64 - 10.0.19045.2788 (en-US)</Host>
 	</AppInfo>
 	<ImageInfo>
 		<Version mode="offline">Windows 10 Professional (19H2) x64 - 10.0.18363.2274 (en-US)</Version>
@@ -369,6 +369,7 @@
 		<c>inputswitchtoasthandler 'Input Switch Toast Handler'</c>
 		<c>insiderhub 'Windows Insider Program'</c>
 		<c>ipt 'Identity Protection Technology (Intel IPT)'</c>
+		<c>ipxlatcfg 'IP Translation Configuration Service'</c>
 		<c>iscsi 'iSCSI Initiator'</c>
 		<c>isoburn 'Windows Disc Image Burning Tool'</c>
 		<c>isolatedusermode 'Virtualization-based security (VBS)'</c>
@@ -533,6 +534,7 @@
 		<c>pinsignin 'PIN sign-in support'</c>
 		<c>pla 'Performance Logs and Alerts'</c>
 		<c>pos 'Point of Service (POS)'</c>
+		<c>print3d 'Print 3D'</c>
 		<c>printmgmt 'Print Management'</c>
 		<c>printtopdf 'Print to PDF'</c>
 		<c>printworkflow 'Print Workflow Service'</c>
@@ -580,6 +582,7 @@
 		<c>smbv1 'SMB v1'</c>
 		<c>smsrouter 'SMS Router Service'</c>
 		<c>snippingtool 'Snipping Tool'</c>
+		<c>snmp 'Simple Network Management Protocol (SNMP)'</c>
 		<c>soundthemes 'Sound Themes'</c>
 		<c>sourcessxsdir 'Manual feature repository'</c>
 		<c>speechcommon 'Speech Recognition'</c>
@@ -628,7 +631,6 @@
 		<c>wfmmc32 'Windows Firewall (management console) - 32 bit'</c>
 		<c>wificloudstore 'WiFi Sync Provider'</c>
 		<c>wifinetworkmanager 'Wi-Fi Network Manager (Wi-Fi Sense)'</c>
-		<c>winai 'Windows AI Machine Learning'</c>
 		<c>Windows.CBSPreview 'Windows Barcode Preview'</c>
 		<c>Windows.PrintDialog 'PrintDialog'</c>
 		<c>windowstogo 'Windows To Go'</c>
@@ -1311,7 +1313,6 @@
 				<Tweak name="FDResPub\FDResPub">4</Tweak>
 				<Tweak name="BcastDVRUserService\BcastDVRUserService">4</Tweak>
 				<Tweak name="IKEEXT\IKEEXT">4</Tweak>
-				<Tweak name="IpxlatCfgSvc\IpxlatCfgSvc">4</Tweak>
 				<Tweak name="KtmRm\KtmRm">4</Tweak>
 				<Tweak name="NetSetupSvc\NetSetupSvc">3</Tweak>
 				<Tweak name="PcaSvc\PcaSvc">4</Tweak>

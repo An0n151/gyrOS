@@ -12,9 +12,6 @@ sc config "Spooler" start= auto
 sc config "PrintNotify" start= demand
 reg add "HKLM\SYSTEM\CurrentControlSet\Services\PrintWorkflowUserSvc" /v "Start" /t REG_DWORD /d "3" /f
 
-devcon enable "=Printer"
-devcon enable "=PrintQueue"
-
 echo.
 echo Printing has been enabled.
 echo.
