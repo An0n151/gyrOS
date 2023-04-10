@@ -25,22 +25,11 @@ echo.
 pause
 cls
 
-echo _______________
-echo.
-echo  GETTING READY
-echo _______________
-echo.
-
-:: Sync the Time with the Internet Time ; Credits to DuckOS
-start "" "%WinDir%\System32\SystemSettingsAdminFlows.exe" ForceTimeSync 1 > nul 2> nul
-
 :: Configure Power Plan
 powercfg -import "%WinDir%\HoneV2.pow" 77777777-7777-7777-7777-777777777777 > nul 2> nul
 powercfg -SETACTIVE "77777777-7777-7777-7777-777777777777" > nul 2> nul
 powercfg -delete 8c5e7fda-e8bf-4a96-9a85-a6e23a8c635c > nul 2> nul
 powercfg -delete a1841308-3541-4fab-bc81-f71556f20b4a > nul 2> nul
-
-timeout /t 1 >nul
 cls
 
 :: ============================== ::
@@ -521,15 +510,6 @@ reg add "HKCU\SOFTWARE\Microsoft\Windows\CurrentVersion\Explorer\NamingTemplates
 :: Remove "Send To" from Context Menu
 reg delete "HKCR\AllFilesystemObjects\shellex\ContextMenuHandlers\SendTo" /f > nul 2> nul
 reg delete "HKCR\UserLibraryFolder\shellex\ContextMenuHandlers\SendTo" /f > nul 2> nul
-
-:: Set PowerShell for .ps1 files***
-set "ps1assoc=powershell_ise.exe"
-set "ps1ftype=%SystemRoot%\system32\WindowsPowerShell\v1.0\powershell.exe"
-assoc .ps1=%ps1assoc% > nul 2> nul
-ftype %ps1assoc%="%ps1ftype%" "%%1" %%* > nul 2> nul
-
-:: Add "New PowerShell File" to Context Menu***
-reg add "HKCR\.ps1\ShellNew" /v "NullFile" /t REG_SZ /d "" /f > nul 2> nul
 
 :: Add "New CMD File" to Context Menu
 reg add "HKCR\.cmd\ShellNew" /v "NullFile" /t REG_SZ /d "" /f > nul 2> nul
