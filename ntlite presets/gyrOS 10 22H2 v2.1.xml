@@ -566,6 +566,7 @@
 		<c>windowsupdate 'Windows Update'</c>
 		<c>winocr 'Windows TIFF IFilter (OCR)'</c>
 		<c>winre 'Windows Recovery (WinRE)'</c>
+		<c>winrm 'Windows Remote Management (WS-Management)'</c>
 		<c>winsat 'Windows System Assessment Tool (WinSAT)'</c>
 		<c>wordpad</c>
 		<c>wordpad32 'Wordpad - 32 bit'</c>

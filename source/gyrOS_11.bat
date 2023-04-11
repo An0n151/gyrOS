@@ -25,6 +25,21 @@ echo.
 pause
 cls
 
+echo _______________
+echo.
+echo  GETTING READY
+echo _______________
+echo.
+
+:: Turn on Automatic Time Update
+%WinDir%\System32\SystemSettingsAdminFlows.exe SetInternetTime 1
+
+:: Turn on Automatic Time Zone Update
+start "" "%WinDir%\System32\SystemSettingsAdminFlows.exe" SetAutoTimeZoneUpdate 1
+
+:: Force Sync Time
+start "" "%WinDir%\System32\SystemSettingsAdminFlows.exe" ForceTimeSync 1
+
 :: Configure Power Plan
 powercfg -import "%WinDir%\HoneV2.pow" 77777777-7777-7777-7777-777777777777 > nul 2> nul
 powercfg -SETACTIVE "77777777-7777-7777-7777-777777777777" > nul 2> nul
