@@ -1,8 +1,8 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <Preset isAutoSaved="true" xmlns="urn:schemas-nliteos-com:pn.v1">
-	<Date>04/08/2023 12:44:58</Date>
+	<Date>04/13/2023 10:44:21</Date>
 	<AppInfo>
-		<Version>2023.4.9191</Version>
+		<Version>2023.4.9196</Version>
 		<Licensed>Yes</Licensed>
 		<Protections>Yes</Protections>
 		<Host>Windows 10 Pro (22H2) x64 - 10.0.19045.2788 (en-US)</Host>
@@ -280,7 +280,7 @@
 		<c>driver_wvmic_timesync.inf</c>
 		<c>driver_wvpci.inf</c>
 		<c>dvdplay 'DVD Play'</c>
-		<c>E2A4F912-2574-4A75-9BB0-0D023378592B 'App Resolver'</c>
+		<c>e2a4f912-2574-4a75-9bb0-0d023378592b 'App Resolver'</c>
 		<c>easeofaccessthemes 'Ease Of Access Themes'</c>
 		<c>edgeupdate 'Microsoft Edge Update'</c>
 		<c>em 'Windows Setup EULA Mitigation (EM)'</c>
@@ -292,7 +292,7 @@
 		<c>errorreporting 'Windows Error Reporting'</c>
 		<c>eudcedit 'Private Character Editor'</c>
 		<c>eventviewer32 'Event Viewer - 32 bit'</c>
-		<c>F46D4000-FD22-4DB4-AC8E-4E1DDDE828FE 'Add Folder Suggestions dialog'</c>
+		<c>f46d4000-fd22-4db4-ac8e-4e1ddde828fe 'Add Folder Suggestions dialog'</c>
 		<c>facerecognition 'Face Recognition'</c>
 		<c>fciclient 'File Server Resource Manager'</c>
 		<c>fclip 'Microsoft Client License Flexible Platform'</c>
@@ -393,58 +393,58 @@
 		<c>mediaplayernetworksharing 'WMP Network Sharing Service'</c>
 		<c>mediaplayernetworksharing32 'WMP Network Sharing Service - 32 bit'</c>
 		<c>messagingsvc 'Messaging Service'</c>
-		<c>Microsoft.549981C3F5F10 'Cortana'</c>
-		<c>Microsoft.Advertising.Xaml 'Microsoft Advertising SDK for XAML'</c>
-		<c>Microsoft.AsyncTextService 'AsyncTextService'</c>
-		<c>Microsoft.BingWeather 'MSN Weather'</c>
-		<c>Microsoft.BioEnrollment 'Windows Hello Setup'</c>
-		<c>Microsoft.CredDialogHost 'Credential Dialog'</c>
-		<c>Microsoft.ECApp 'Eye Control'</c>
-		<c>Microsoft.GetHelp 'Get Help'</c>
-		<c>Microsoft.Getstarted 'Tips (Get Started)'</c>
-		<c>Microsoft.LockApp 'Windows Default Lock Screen'</c>
-		<c>Microsoft.Microsoft3DViewer '3D Viewer'</c>
+		<c>microsoft.549981c3f5f10 'Cortana'</c>
+		<c>microsoft.advertising.xaml 'Microsoft Advertising SDK for XAML'</c>
+		<c>microsoft.asynctextservice 'AsyncTextService'</c>
+		<c>microsoft.bingweather 'MSN Weather'</c>
+		<c>microsoft.bioenrollment 'Windows Hello Setup'</c>
+		<c>microsoft.creddialoghost 'Credential Dialog'</c>
+		<c>microsoft.ecapp 'Eye Control'</c>
+		<c>microsoft.gethelp 'Get Help'</c>
+		<c>microsoft.getstarted 'Tips (Get Started)'</c>
+		<c>microsoft.lockapp 'Windows Default Lock Screen'</c>
+		<c>microsoft.microsoft3dviewer '3D Viewer'</c>
 		<c>microsoft.microsoftedge.stable 'Microsoft Edge (Chromium)'</c>
-		<c>Microsoft.MicrosoftEdge 'Microsoft Edge (Legacy)'</c>
-		<c>Microsoft.MicrosoftEdgeDevToolsClient 'Microsoft Edge DevTools Client'</c>
-		<c>Microsoft.MicrosoftOfficeHub 'Office'</c>
-		<c>Microsoft.MicrosoftSolitaireCollection 'Microsoft Solitaire Collection'</c>
-		<c>Microsoft.MicrosoftStickyNotes 'Microsoft Sticky Notes'</c>
-		<c>Microsoft.MixedReality.Portal 'Mixed Reality Portal'</c>
-		<c>Microsoft.MSPaint 'Paint 3D'</c>
-		<c>Microsoft.Office.OneNote 'OneNote'</c>
-		<c>Microsoft.People 'Microsoft People'</c>
-		<c>Microsoft.ScreenSketch 'Snip &amp; Sketch'</c>
-		<c>Microsoft.Services.Store.Engagement 'Microsoft Engagement Framework'</c>
-		<c>Microsoft.SkypeApp 'Skype'</c>
-		<c>Microsoft.Wallet 'Microsoft Pay'</c>
-		<c>Microsoft.Win32WebViewHost 'Desktop App Web Viewer'</c>
-		<c>Microsoft.Windows.Apprep.ChxApp 'SmartScreen'</c>
-		<c>Microsoft.Windows.AssignedAccessLockApp 'Assigned Access Lock app'</c>
-		<c>Microsoft.Windows.CallingShellApp 'Call'</c>
-		<c>Microsoft.Windows.CapturePicker 'Capture Picker'</c>
-		<c>Microsoft.Windows.NarratorQuickStart 'Narrator'</c>
-		<c>Microsoft.Windows.ParentalControls 'Microsoft family features'</c>
-		<c>Microsoft.Windows.PeopleExperienceHost 'Windows Shell Experience'</c>
-		<c>Microsoft.Windows.Photos 'Microsoft Photos'</c>
-		<c>Microsoft.Windows.PinningConfirmationDialog 'PinningConfirmationDialog'</c>
-		<c>Microsoft.Windows.SecHealthUI 'Windows Defender'</c>
-		<c>Microsoft.Windows.SecureAssessmentBrowser 'Take a Test'</c>
-		<c>Microsoft.WindowsAlarms 'Windows Alarms &amp; Clock'</c>
-		<c>Microsoft.WindowsCamera 'Windows Camera'</c>
+		<c>microsoft.microsoftedge 'Microsoft Edge (Legacy)'</c>
+		<c>microsoft.microsoftedgedevtoolsclient 'Microsoft Edge DevTools Client'</c>
+		<c>microsoft.microsoftofficehub 'Office'</c>
+		<c>microsoft.microsoftsolitairecollection 'Microsoft Solitaire Collection'</c>
+		<c>microsoft.microsoftstickynotes 'Microsoft Sticky Notes'</c>
+		<c>microsoft.mixedreality.portal 'Mixed Reality Portal'</c>
+		<c>microsoft.mspaint 'Paint 3D'</c>
+		<c>microsoft.office.onenote 'OneNote'</c>
+		<c>microsoft.people 'Microsoft People'</c>
+		<c>microsoft.screensketch 'Snip &amp; Sketch'</c>
+		<c>microsoft.services.store.engagement 'Microsoft Engagement Framework'</c>
+		<c>microsoft.skypeapp 'Skype'</c>
+		<c>microsoft.wallet 'Microsoft Pay'</c>
+		<c>microsoft.win32webviewhost 'Desktop App Web Viewer'</c>
+		<c>microsoft.windows.apprep.chxapp 'SmartScreen'</c>
+		<c>microsoft.windows.assignedaccesslockapp 'Assigned Access Lock app'</c>
+		<c>microsoft.windows.callingshellapp 'Call'</c>
+		<c>microsoft.windows.capturepicker 'Capture Picker'</c>
+		<c>microsoft.windows.narratorquickstart 'Narrator'</c>
+		<c>microsoft.windows.parentalcontrols 'Microsoft family features'</c>
+		<c>microsoft.windows.peopleexperiencehost 'Windows Shell Experience'</c>
+		<c>microsoft.windows.photos 'Microsoft Photos'</c>
+		<c>microsoft.windows.pinningconfirmationdialog 'PinningConfirmationDialog'</c>
+		<c>microsoft.windows.sechealthui 'Windows Defender'</c>
+		<c>microsoft.windows.secureassessmentbrowser 'Take a Test'</c>
+		<c>microsoft.windowsalarms 'Windows Alarms &amp; Clock'</c>
+		<c>microsoft.windowscamera 'Windows Camera'</c>
 		<c>microsoft.windowscommunicationsapps 'Mail and Calendar'</c>
-		<c>Microsoft.WindowsFeedbackHub 'Feedback Hub'</c>
-		<c>Microsoft.WindowsMaps 'Windows Maps'</c>
-		<c>Microsoft.WindowsSoundRecorder 'Windows Voice Recorder'</c>
-		<c>Microsoft.Xbox.TCUI 'Xbox TCUI'</c>
-		<c>Microsoft.XboxApp 'Xbox'</c>
-		<c>Microsoft.XboxGameCallableUI 'Xbox Game UI'</c>
-		<c>Microsoft.XboxGameOverlay 'Xbox Game Bar Plugin'</c>
-		<c>Microsoft.XboxGamingOverlay 'Xbox Game Bar'</c>
-		<c>Microsoft.XboxSpeechToTextOverlay 'Xbox Game Speech Window'</c>
-		<c>Microsoft.YourPhone 'Your Phone'</c>
-		<c>Microsoft.ZuneMusic 'Groove Music'</c>
-		<c>Microsoft.ZuneVideo 'Movies &amp; TV'</c>
+		<c>microsoft.windowsfeedbackhub 'Feedback Hub'</c>
+		<c>microsoft.windowsmaps 'Windows Maps'</c>
+		<c>microsoft.windowssoundrecorder 'Windows Voice Recorder'</c>
+		<c>microsoft.xbox.tcui 'Xbox TCUI'</c>
+		<c>microsoft.xboxapp 'Xbox'</c>
+		<c>microsoft.xboxgamecallableui 'Xbox Game UI'</c>
+		<c>microsoft.xboxgameoverlay 'Xbox Game Bar Plugin'</c>
+		<c>microsoft.xboxgamingoverlay 'Xbox Game Bar'</c>
+		<c>microsoft.xboxspeechtotextoverlay 'Xbox Game Speech Window'</c>
+		<c>microsoft.yourphone 'Your Phone'</c>
+		<c>microsoft.zunemusic 'Groove Music'</c>
+		<c>microsoft.zunevideo 'Movies &amp; TV'</c>
 		<c>migwiz 'Easy Transfer'</c>
 		<c>mixedreality 'Windows Mixed Reality'</c>
 		<c>mmga 'MMGA MAPI'</c>
@@ -561,7 +561,7 @@
 		<c>wfmmc32 'Windows Firewall (management console) - 32 bit'</c>
 		<c>wificloudstore 'WiFi Sync Provider'</c>
 		<c>wifinetworkmanager 'Wi-Fi Network Manager (Wi-Fi Sense)'</c>
-		<c>Windows.CBSPreview 'Windows Barcode Preview'</c>
+		<c>windows.cbspreview 'Windows Barcode Preview'</c>
 		<c>windowstogo 'Windows To Go'</c>
 		<c>windowsupdate 'Windows Update'</c>
 		<c>winocr 'Windows TIFF IFilter (OCR)'</c>
