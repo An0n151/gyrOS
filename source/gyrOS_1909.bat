@@ -1216,8 +1216,6 @@ reg add "HKLM\SYSTEM\CurrentControlSet\Control" /v "SvcHostSplitThresholdInKB" /
 
 :: BCDedit
 bcdedit /set disabledynamictick Yes > nul 2> nul
-bcdedit /set useplatformtick Yes > nul 2> nul
-bcdedit /deletevalue useplatformclock > nul 2> nul
 :: Enable X2Apic and Memory Mapping for PCI-E Devices ; Credits to HoneCtrl
 bcdedit /set x2apicpolicy Enable > nul 2> nul
 bcdedit /set uselegacyapicmode No > nul 2> nul
@@ -1234,7 +1232,7 @@ bcdedit /set description gyrOS > nul 2> nul
 :: Lower Latency
 ::bcdedit /set tscsyncpolicy legacy > nul 2> nul
 :: Better FPS
-bcdedit /set tscsyncpolicy enhanced > nul 2> nul
+::bcdedit /set tscsyncpolicy enhanced > nul 2> nul
 :: Configure DEP
 ::bcdedit /set nx AlwaysOff > nul 2> nul
 ::bcdedit /set nx OptIn > nul 2> nul
@@ -1274,19 +1272,6 @@ reg add "HKLM\SOFTWARE\Microsoft\Windows NT\CurrentVersion\Schedule\Maintenance"
 :: Remove IRQ Priorities
 for /f %%i in ('reg query "HKLM\SYSTEM\CurrentControlSet\Control\PriorityControl" /f "irq"^| findstr "IRQ"') do (
 	reg delete "HKLM\SYSTEM\CurrentControlSet\Control\PriorityControl" /v "%%i" /f
-) > nul 2> nul
-
-:: Set Services that use Cycles to Low Priority ; Credits to ArtanisInc
-copy /y "%windir%\System32\svchost.exe" "%windir%\System32\audiosvchost.exe" > nul 2> nul
-reg add "HKLM\SYSTEM\CurrentControlSet\Services\Audiosrv" /v "ImagePath" /t REG_EXPAND_SZ /d "%windir%\System32\audiosvchost.exe -k LocalServiceNetworkRestricted -p" /f > nul 2> nul
-reg add "HKLM\SYSTEM\CurrentControlSet\Services\AudioEndpointBuilder" /v "ImagePath" /t REG_EXPAND_SZ /d "%windir%\System32\audiosvchost.exe -k LocalSystemNetworkRestricted -p" /f > nul 2> nul
-for /f "tokens=*" %%i in ('reg query "HKLM\SOFTWARE\Microsoft\Windows NT\CurrentVersion\Image File Execution Options"') do (
-	reg delete "%%i" /f
-) > nul 2> nul
-
-for %%i in (fontdrvhost lsass svchost spoolsv sppsvc WmiPrvSE) do (
-	reg add "HKLM\SOFTWARE\Microsoft\Windows NT\CurrentVersion\Image File Execution Options\%%i.exe\PerfOptions" /v "CpuPriorityClass" /t REG_DWORD /d "1" /f
-	reg add "HKLM\SOFTWARE\Microsoft\Windows NT\CurrentVersion\Image File Execution Options\%%i.exe\PerfOptions" /v "IoPriority" /t REG_DWORD /d "0" /f
 ) > nul 2> nul
 
 :: Better Cache Management
