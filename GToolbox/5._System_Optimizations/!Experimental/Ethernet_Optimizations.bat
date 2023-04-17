@@ -50,6 +50,7 @@ for /f %%i in ('reg query "%%a" /v "*RSS" ^| findstr "HKEY"') do (reg add "%%i" 
 for /f %%i in ('reg query "%%a" /v "*NumRssQueues" ^| findstr "HKEY"') do (reg add "%%i" /v "*NumRssQueues" /t REG_SZ /d "4" /f)
 for /f %%i in ('reg query "%%a" /v "S5WakeOnLan" ^| findstr "HKEY"') do (reg add "%%i" /v "S5WakeOnLan" /t REG_SZ /d "0" /f)
 for /f %%i in ('reg query "%%a" /v "*AlternateSemaphoreDelay" ^| findstr "HKEY"') do (reg add "%%i" /v "*AlternateSemaphoreDelay" /t REG_SZ /d "0" /f)
+)
 
 echo.
 echo. Ethernet optimizations applied.
