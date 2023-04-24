@@ -1,11 +1,11 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <Preset isAutoSaved="true" xmlns="urn:schemas-nliteos-com:pn.v1">
-	<Date>04/13/2023 10:44:21</Date>
+	<Date>03/29/2023 22:29:34</Date>
 	<AppInfo>
-		<Version>2023.4.9196</Version>
+		<Version>2023.3.9171</Version>
 		<Licensed>Yes</Licensed>
 		<Protections>Yes</Protections>
-		<Host>Windows 10 Pro (22H2) x64 - 10.0.19045.2788 (en-US)</Host>
+		<Host>Windows 10 Pro (22H2) x64 - 10.0.19045.2546 (en-US)</Host>
 	</AppInfo>
 	<ImageInfo>
 		<Version mode="offline">Windows 10 Professional (22H2) x64 - 10.0.19045.2788 (en-US)</Version>
@@ -18,9 +18,11 @@
 		<c>activedirectory 'Active Directory'</c>
 		<c>adamclient 'Active Directory Lightweight Directory Services (AD LDS)'</c>
 		<c>alg 'Application Layer Gateway Service'</c>
+		<c>alljoyn 'AllJoyn Router Service'</c>
 		<c>appv 'Application Virtualization (App-V)'</c>
 		<c>assembly.net '.NET assembly cache'</c>
 		<c>assignedaccess 'Assigned Access'</c>
+		<c>audit 'Windows Audit'</c>
 		<c>autoplay</c>
 		<c>axinstall 'ActiveX Installer Service'</c>
 		<c>azman32 'Authorization Manager - 32 bit'</c>
@@ -255,7 +257,6 @@
 		<c>driver_usbcciddriver.inf</c>
 		<c>driver_usbcir.inf</c>
 		<c>driver_vca.inf</c>
-		<c>driver_virtualdisplayadapter.inf</c>
 		<c>driver_vrd.inf</c>
 		<c>driver_wdmvsc.inf</c>
 		<c>driver_wfcvsc.inf</c>
@@ -280,19 +281,18 @@
 		<c>driver_wvmic_timesync.inf</c>
 		<c>driver_wvpci.inf</c>
 		<c>dvdplay 'DVD Play'</c>
-		<c>e2a4f912-2574-4a75-9bb0-0d023378592b 'App Resolver'</c>
+		<c>E2A4F912-2574-4A75-9BB0-0D023378592B 'App Resolver'</c>
 		<c>easeofaccessthemes 'Ease Of Access Themes'</c>
 		<c>edgeupdate 'Microsoft Edge Update'</c>
 		<c>em 'Windows Setup EULA Mitigation (EM)'</c>
 		<c>embeddedexperience 'Device Lockdown (Embedded Experience)'</c>
 		<c>embeddedmode 'Embedded Mode'</c>
-		<c>enhancedstorage 'Enhanced Storage'</c>
 		<c>enterpriseclientsync 'Work Folders Client'</c>
 		<c>enterprisedataprotection 'Enterprise Data Protection (EDP/WIP)'</c>
 		<c>errorreporting 'Windows Error Reporting'</c>
 		<c>eudcedit 'Private Character Editor'</c>
 		<c>eventviewer32 'Event Viewer - 32 bit'</c>
-		<c>f46d4000-fd22-4db4-ac8e-4e1ddde828fe 'Add Folder Suggestions dialog'</c>
+		<c>F46D4000-FD22-4DB4-AC8E-4E1DDDE828FE 'Add Folder Suggestions dialog'</c>
 		<c>facerecognition 'Face Recognition'</c>
 		<c>fciclient 'File Server Resource Manager'</c>
 		<c>fclip 'Microsoft Client License Flexible Platform'</c>
@@ -393,58 +393,58 @@
 		<c>mediaplayernetworksharing 'WMP Network Sharing Service'</c>
 		<c>mediaplayernetworksharing32 'WMP Network Sharing Service - 32 bit'</c>
 		<c>messagingsvc 'Messaging Service'</c>
-		<c>microsoft.549981c3f5f10 'Cortana'</c>
-		<c>microsoft.advertising.xaml 'Microsoft Advertising SDK for XAML'</c>
-		<c>microsoft.asynctextservice 'AsyncTextService'</c>
-		<c>microsoft.bingweather 'MSN Weather'</c>
-		<c>microsoft.bioenrollment 'Windows Hello Setup'</c>
-		<c>microsoft.creddialoghost 'Credential Dialog'</c>
-		<c>microsoft.ecapp 'Eye Control'</c>
-		<c>microsoft.gethelp 'Get Help'</c>
-		<c>microsoft.getstarted 'Tips (Get Started)'</c>
-		<c>microsoft.lockapp 'Windows Default Lock Screen'</c>
-		<c>microsoft.microsoft3dviewer '3D Viewer'</c>
+		<c>Microsoft.549981C3F5F10 'Cortana'</c>
+		<c>Microsoft.Advertising.Xaml 'Microsoft Advertising SDK for XAML'</c>
+		<c>Microsoft.AsyncTextService 'AsyncTextService'</c>
+		<c>Microsoft.BingWeather 'MSN Weather'</c>
+		<c>Microsoft.BioEnrollment 'Windows Hello Setup'</c>
+		<c>Microsoft.CredDialogHost 'Credential Dialog'</c>
+		<c>Microsoft.ECApp 'Eye Control'</c>
+		<c>Microsoft.GetHelp 'Get Help'</c>
+		<c>Microsoft.Getstarted 'Tips (Get Started)'</c>
+		<c>Microsoft.LockApp 'Windows Default Lock Screen'</c>
+		<c>Microsoft.Microsoft3DViewer '3D Viewer'</c>
 		<c>microsoft.microsoftedge.stable 'Microsoft Edge (Chromium)'</c>
-		<c>microsoft.microsoftedge 'Microsoft Edge (Legacy)'</c>
-		<c>microsoft.microsoftedgedevtoolsclient 'Microsoft Edge DevTools Client'</c>
-		<c>microsoft.microsoftofficehub 'Office'</c>
-		<c>microsoft.microsoftsolitairecollection 'Microsoft Solitaire Collection'</c>
-		<c>microsoft.microsoftstickynotes 'Microsoft Sticky Notes'</c>
-		<c>microsoft.mixedreality.portal 'Mixed Reality Portal'</c>
-		<c>microsoft.mspaint 'Paint 3D'</c>
-		<c>microsoft.office.onenote 'OneNote'</c>
-		<c>microsoft.people 'Microsoft People'</c>
-		<c>microsoft.screensketch 'Snip &amp; Sketch'</c>
-		<c>microsoft.services.store.engagement 'Microsoft Engagement Framework'</c>
-		<c>microsoft.skypeapp 'Skype'</c>
-		<c>microsoft.wallet 'Microsoft Pay'</c>
-		<c>microsoft.win32webviewhost 'Desktop App Web Viewer'</c>
-		<c>microsoft.windows.apprep.chxapp 'SmartScreen'</c>
-		<c>microsoft.windows.assignedaccesslockapp 'Assigned Access Lock app'</c>
-		<c>microsoft.windows.callingshellapp 'Call'</c>
-		<c>microsoft.windows.capturepicker 'Capture Picker'</c>
-		<c>microsoft.windows.narratorquickstart 'Narrator'</c>
-		<c>microsoft.windows.parentalcontrols 'Microsoft family features'</c>
-		<c>microsoft.windows.peopleexperiencehost 'Windows Shell Experience'</c>
-		<c>microsoft.windows.photos 'Microsoft Photos'</c>
-		<c>microsoft.windows.pinningconfirmationdialog 'PinningConfirmationDialog'</c>
-		<c>microsoft.windows.sechealthui 'Windows Defender'</c>
-		<c>microsoft.windows.secureassessmentbrowser 'Take a Test'</c>
-		<c>microsoft.windowsalarms 'Windows Alarms &amp; Clock'</c>
-		<c>microsoft.windowscamera 'Windows Camera'</c>
+		<c>Microsoft.MicrosoftEdge 'Microsoft Edge (Legacy)'</c>
+		<c>Microsoft.MicrosoftEdgeDevToolsClient 'Microsoft Edge DevTools Client'</c>
+		<c>Microsoft.MicrosoftOfficeHub 'Office'</c>
+		<c>Microsoft.MicrosoftSolitaireCollection 'Microsoft Solitaire Collection'</c>
+		<c>Microsoft.MicrosoftStickyNotes 'Microsoft Sticky Notes'</c>
+		<c>Microsoft.MixedReality.Portal 'Mixed Reality Portal'</c>
+		<c>Microsoft.MSPaint 'Paint 3D'</c>
+		<c>Microsoft.Office.OneNote 'OneNote'</c>
+		<c>Microsoft.People 'Microsoft People'</c>
+		<c>Microsoft.ScreenSketch 'Snip &amp; Sketch'</c>
+		<c>Microsoft.Services.Store.Engagement 'Microsoft Engagement Framework'</c>
+		<c>Microsoft.SkypeApp 'Skype'</c>
+		<c>Microsoft.Wallet 'Microsoft Pay'</c>
+		<c>Microsoft.Win32WebViewHost 'Desktop App Web Viewer'</c>
+		<c>Microsoft.Windows.Apprep.ChxApp 'SmartScreen'</c>
+		<c>Microsoft.Windows.AssignedAccessLockApp 'Assigned Access Lock app'</c>
+		<c>Microsoft.Windows.CallingShellApp 'Call'</c>
+		<c>Microsoft.Windows.CapturePicker 'Capture Picker'</c>
+		<c>Microsoft.Windows.NarratorQuickStart 'Narrator'</c>
+		<c>Microsoft.Windows.ParentalControls 'Microsoft family features'</c>
+		<c>Microsoft.Windows.PeopleExperienceHost 'Windows Shell Experience'</c>
+		<c>Microsoft.Windows.Photos 'Microsoft Photos'</c>
+		<c>Microsoft.Windows.PinningConfirmationDialog 'PinningConfirmationDialog'</c>
+		<c>Microsoft.Windows.SecHealthUI 'Windows Defender'</c>
+		<c>Microsoft.Windows.SecureAssessmentBrowser 'Take a Test'</c>
+		<c>Microsoft.WindowsAlarms 'Windows Alarms &amp; Clock'</c>
+		<c>Microsoft.WindowsCamera 'Windows Camera'</c>
 		<c>microsoft.windowscommunicationsapps 'Mail and Calendar'</c>
-		<c>microsoft.windowsfeedbackhub 'Feedback Hub'</c>
-		<c>microsoft.windowsmaps 'Windows Maps'</c>
-		<c>microsoft.windowssoundrecorder 'Windows Voice Recorder'</c>
-		<c>microsoft.xbox.tcui 'Xbox TCUI'</c>
-		<c>microsoft.xboxapp 'Xbox'</c>
-		<c>microsoft.xboxgamecallableui 'Xbox Game UI'</c>
-		<c>microsoft.xboxgameoverlay 'Xbox Game Bar Plugin'</c>
-		<c>microsoft.xboxgamingoverlay 'Xbox Game Bar'</c>
-		<c>microsoft.xboxspeechtotextoverlay 'Xbox Game Speech Window'</c>
-		<c>microsoft.yourphone 'Your Phone'</c>
-		<c>microsoft.zunemusic 'Groove Music'</c>
-		<c>microsoft.zunevideo 'Movies &amp; TV'</c>
+		<c>Microsoft.WindowsFeedbackHub 'Feedback Hub'</c>
+		<c>Microsoft.WindowsMaps 'Windows Maps'</c>
+		<c>Microsoft.WindowsSoundRecorder 'Windows Voice Recorder'</c>
+		<c>Microsoft.Xbox.TCUI 'Xbox TCUI'</c>
+		<c>Microsoft.XboxApp 'Xbox'</c>
+		<c>Microsoft.XboxGameCallableUI 'Xbox Game UI'</c>
+		<c>Microsoft.XboxGameOverlay 'Xbox Game Bar Plugin'</c>
+		<c>Microsoft.XboxGamingOverlay 'Xbox Game Bar'</c>
+		<c>Microsoft.XboxSpeechToTextOverlay 'Xbox Game Speech Window'</c>
+		<c>Microsoft.YourPhone 'Your Phone'</c>
+		<c>Microsoft.ZuneMusic 'Groove Music'</c>
+		<c>Microsoft.ZuneVideo 'Movies &amp; TV'</c>
 		<c>migwiz 'Easy Transfer'</c>
 		<c>mixedreality 'Windows Mixed Reality'</c>
 		<c>mmga 'MMGA MAPI'</c>
@@ -454,8 +454,10 @@
 		<c>mobilepc_networkprojection 'Network Projection'</c>
 		<c>mobilepc_sensors 'Sensors'</c>
 		<c>mpeg2splitter 'MPEG-2 Splitter'</c>
+		<c>msmq 'Microsoft Message Queue (MSMQ)'</c>
 		<c>multipointconnector 'MultiPoint Connector'</c>
 		<c>naturalauthentication 'Natural Authentication'</c>
+		<c>nettopology 'Link-Layer Topology Discovery protocol (LLTD)'</c>
 		<c>nfc 'Near Field Communication (NFC)'</c>
 		<c>nfsclient 'NFS Administrative Tools'</c>
 		<c>nowplaying 'Now Playing Session Manager'</c>
@@ -469,6 +471,7 @@
 		<c>paint32 'Paint - 32 bit'</c>
 		<c>payments</c>
 		<c>pdfreader 'Windows Reader (PDF)'</c>
+		<c>peertopeer 'Peer Networking'</c>
 		<c>phonesvc 'Phone Service'</c>
 		<c>photocodec32 'Photo codec - 32 bit'</c>
 		<c>photoviewer 'Photo Viewer'</c>
@@ -477,6 +480,7 @@
 		<c>picturepassword 'Picture password'</c>
 		<c>pinsignin 'PIN sign-in support'</c>
 		<c>pos 'Point of Service (POS)'</c>
+		<c>projfs 'Projected File System (ProjFS)'</c>
 		<c>pushnotificationssvc 'Windows Push Notifications Service (System)'</c>
 		<c>pushtoinstall 'Windows PushToInstall Service'</c>
 		<c>quiethours 'Quiet Hours (Focus Assist)'</c>
@@ -486,7 +490,6 @@
 		<c>rdpclient32 'Remote Desktop Client - 32 bit'</c>
 		<c>rdpserver 'Remote Desktop Server'</c>
 		<c>rdpserverlic 'Remote Desktop Licensing'</c>
-		<c>regedit32 'Registry Editor - 32 bit'</c>
 		<c>reliabilityanalysis 'Reliability Analysis Services'</c>
 		<c>remoteaccessservice 'Routing and Remote Access Service'</c>
 		<c>remoteactivex 'Remote Desktop Services ActiveX Client'</c>
@@ -505,9 +508,7 @@
 		<c>sendmail 'Send To Mail and Desktop'</c>
 		<c>servicesmmc32 'Services (management console) - 32 bit'</c>
 		<c>settingsync 'Setting Sync'</c>
-		<c>sfc 'System File Check (SFC)'</c>
 		<c>sharedaccess 'Internet Connection Sharing (ICS)'</c>
-		<c>sharedexperiences 'Shared Experiences'</c>
 		<c>sharedpc 'Shared PC mode'</c>
 		<c>sharehost32 'Share Host - 32 bit'</c>
 		<c>sharemediacpl 'Share Media Control Panel'</c>
@@ -527,7 +528,6 @@
 		<c>storagespaces 'Storage Spaces'</c>
 		<c>supportdir 'Support directory'</c>
 		<c>synccenter 'Sync Center'</c>
-		<c>sysprep 'System Preparation tool (Sysprep)'</c>
 		<c>systemguard 'System Guard'</c>
 		<c>systemreset 'System Reset for Windows'</c>
 		<c>systemrestore 'System Restore'</c>
@@ -542,18 +542,12 @@
 		<c>tftpclient 'TFTP client'</c>
 		<c>tieringengine 'Storage Tiers Management'</c>
 		<c>timetraveldebugger 'Time Travel Debugger (TTD)'</c>
-		<c>tpm 'Trusted Platform Module (TPM)'</c>
-		<c>tpmmmc 'Trusted Platform Module (TPM) (management console)'</c>
-		<c>tpmmmc32 'Trusted Platform Module (TPM) (management console) - 32 bit'</c>
-		<c>tpmvsc 'Virtual Smart Card'</c>
-		<c>trkwks 'Distributed Link Tracking Client'</c>
 		<c>troubleshootingsvc 'Recommended Troubleshooting service'</c>
 		<c>tzautoupdate 'Auto Time Zone Updater'</c>
 		<c>uev 'User Experience Virtualization (UE-V)'</c>
 		<c>unp 'Universal Notification Platform (UNP)'</c>
 		<c>userdeviceregistration 'User Device Registration'</c>
 		<c>vwifi 'Virtual WiFi'</c>
-		<c>waasassessment 'Windows Update Medic Service'</c>
 		<c>wallet 'Wallet Service'</c>
 		<c>wallpapers 'Wallpapers (Themes)'</c>
 		<c>warpjitsvc 'DirectX WARP JIT Service'</c>
@@ -561,9 +555,9 @@
 		<c>wfmmc32 'Windows Firewall (management console) - 32 bit'</c>
 		<c>wificloudstore 'WiFi Sync Provider'</c>
 		<c>wifinetworkmanager 'Wi-Fi Network Manager (Wi-Fi Sense)'</c>
-		<c>windows.cbspreview 'Windows Barcode Preview'</c>
+		<c>winai 'Windows AI Machine Learning'</c>
+		<c>Windows.CBSPreview 'Windows Barcode Preview'</c>
 		<c>windowstogo 'Windows To Go'</c>
-		<c>windowsupdate 'Windows Update'</c>
 		<c>winocr 'Windows TIFF IFilter (OCR)'</c>
 		<c>winre 'Windows Recovery (WinRE)'</c>
 		<c>winrm 'Windows Remote Management (WS-Management)'</c>
@@ -572,6 +566,7 @@
 		<c>wordpad32 'Wordpad - 32 bit'</c>
 		<c>wpdbusenum 'Portable Device Enumerator Service'</c>
 		<c>wwanautoconfig 'WWAN AutoConfig'</c>
+		<c>zipfolder 'Zip &amp; Cab folder'</c>
 	</RemoveComponents>
 	<Compatibility protectHidden="true">
 		<ComponentFeatures>
@@ -595,10 +590,10 @@
 			<Feature enabled="no">Recommended-All</Feature>
 			<Feature enabled="no">SamsungSwitch</Feature>
 			<Feature enabled="no">Scanning</Feature>
-			<Feature enabled="no">ServicingStack</Feature>
+			<Feature enabled="yes">ServicingStack</Feature>
 			<Feature enabled="yes">ShellSearchSupport</Feature>
 			<Feature enabled="yes">Spotify</Feature>
-			<Feature enabled="no">SFC</Feature>
+			<Feature enabled="yes">SFC</Feature>
 			<Feature enabled="yes">DefaultFonts</Feature>
 			<Feature enabled="no">SafeMode</Feature>
 			<Feature enabled="yes">TeamViewer</Feature>
@@ -612,7 +607,7 @@
 			<Feature enabled="yes">ActivationKMS</Feature>
 			<Feature enabled="yes">Activation</Feature>
 			<Feature enabled="no">WindowsStore</Feature>
-			<Feature enabled="no">WindowsUpdate</Feature>
+			<Feature enabled="yes">WindowsUpdate</Feature>
 			<Feature enabled="yes">WLAN</Feature>
 		</ComponentFeatures>
 		<MachineDrivers>
@@ -624,6 +619,7 @@
 		</MachineDrivers>
 	</Compatibility>
 	<Features>
+		<Feature name="OneCoreUAP.OneSync~~~~0.0.1.0">false</Feature>
 		<Feature name="Printing-Foundation-InternetPrinting-Client">false</Feature>
 		<Feature name="Printing-PrintToPDFServices-Features">false</Feature>
 		<Feature name="Printing-XPSServices-Features">false</Feature>
@@ -1231,8 +1227,8 @@
 				<Tweak name="Appx\AllowAutomaticAppArchiving">0</Tweak>
 				<Tweak name="Winlogon\RestartApps">0</Tweak>
 				<Tweak name="Personalization\NoLockScreen">1</Tweak>
-				<Tweak name="System\HideFastUserSwitching">1</Tweak>
 				<Tweak name="System\EnableFirstLogonAnimation">0</Tweak>
+				<Tweak name="GraphicsDrivers\HwSchMode">2</Tweak>
 				<Tweak name="System\EnableLinkedConnections">0</Tweak>
 				<Tweak name="OneDrive\DisableFileSyncNGSC">1</Tweak>
 				<Tweak name="RDP-Tcp\UserAuthentication">0</Tweak>
@@ -1244,7 +1240,15 @@
 				<Tweak name="StoragePolicy\04">0</Tweak>
 				<Tweak name="StoragePolicy\2048">0</Tweak>
 				<Tweak name="System\DisableAutomaticRestartSignOn">1</Tweak>
-				<Tweak name="DeviceGuard\EnableVirtualizationBasedSecurity">0</Tweak>
+			</TweakGroup>
+			<TweakGroup name="WindowsUpdate">
+				<Tweak name="Preferences\ModelDownloadAllowed">0</Tweak>
+				<Tweak name="DeliveryOptimization\DODownloadMode">100</Tweak>
+				<Tweak name="7971f918-a847-4430-9279-4a52d1efe18d\RegisterWithAU">0</Tweak>
+				<Tweak name="Settings\HideMCTLink">1</Tweak>
+				<Tweak name="Settings\RestartNotificationsAllowed2">0</Tweak>
+				<Tweak name="WindowsUpdate\TargetReleaseVersionInfo">22H2</Tweak>
+				<Tweak name="AU\AUOptions">2</Tweak>
 			</TweakGroup>
 		</Settings>
 		<Services>
@@ -1398,12 +1402,12 @@
 		<Change></Change>
 		<Add>
 			<Item type="FileU">
-				<Path>C:\Users\an0n\Desktop\gyrOS\source\gyrOS_Registry.reg</Path>
+				<Path>C:\Users\an0n\Desktop\gyrOS\gyrOS\source\gyrOS_Registry.reg</Path>
 				<Params></Params>
 				<Index>1000</Index>
 			</Item>
 			<Item type="FileU">
-				<Path>C:\Users\an0n\Desktop\gyrOS\source\gyrOS_22H2.bat</Path>
+				<Path>C:\Users\an0n\Desktop\gyrOS\gyrOS\source\gyrOS_22H2.bat</Path>
 				<Params></Params>
 				<Index>1001</Index>
 			</Item>
