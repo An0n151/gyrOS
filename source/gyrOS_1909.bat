@@ -1292,7 +1292,7 @@ reg add "HKLM\SYSTEM\CurrentControlSet\Services\BDESVC" /v "Start" /t REG_DWORD 
 
 :: Disable Random Drivers Verification
 bcdedit /set nointegritychecks On > nul 2> nul
-bcdedit /set testsigning On > nul 2> nul
+::bcdedit /set testsigning On > nul 2> nul
 reg add "HKLM\SYSTEM\CurrentControlSet\Control\FileSystem" /v "DontVerifyRandomDrivers" /t REG_DWORD /d "1" /f > nul 2> nul
 
 :: MMCSS
