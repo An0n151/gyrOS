@@ -1,4 +1,4 @@
-﻿<?xml version="1.0" encoding="utf-8"?>
+<?xml version="1.0" encoding="utf-8"?>
 <Preset isAutoSaved="true" xmlns="urn:schemas-nliteos-com:pn.v1">
 	<Date>04/19/2023 11:24:51</Date>
 	<AppInfo>
@@ -1474,12 +1474,12 @@
 			<Task>imageFormatWim</Task>
 			<Task>components_boot.wim_02_2_64</Task>
 		</ImageTasks>
-		<AutoIsoFile>NTLite.iso</AutoIsoFile>
+		<AutoIsoFile>gyrOS-1909.iso</AutoIsoFile>
 		<AutoIsoLabel>gyrOS</AutoIsoLabel>
 		<AutoSplitSize>4000</AutoSplitSize>
 		<CleanHotfixedLeftovers>3</CleanHotfixedLeftovers>
-		<OptimizeAppX>false</OptimizeAppX>
-		<ReuseDriverCache>false</ReuseDriverCache>
+		<OptimizeAppX>true</OptimizeAppX>
+		<ReuseDriverCache>true</ReuseDriverCache>
 	</ApplyOptions>
 	<Execution>
 		<Remove></Remove>
