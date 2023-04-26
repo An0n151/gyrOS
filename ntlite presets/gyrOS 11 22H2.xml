@@ -1437,7 +1437,7 @@
 			<Task>deledition_boot.wim_01_9_64</Task>
 			<Task>imageFormatWim</Task>
 		</ImageTasks>
-		<AutoIsoFile>gyrOS-11.iso</AutoIsoFile>
+		<AutoIsoFile>gyrOS 11.iso</AutoIsoFile>
 		<AutoIsoLabel>gyrOS 11</AutoIsoLabel>
 		<AutoSplitSize>4000</AutoSplitSize>
 		<CleanHotfixedLeftovers>3</CleanHotfixedLeftovers>

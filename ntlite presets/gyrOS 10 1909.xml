@@ -1474,7 +1474,7 @@
 			<Task>imageFormatWim</Task>
 			<Task>components_boot.wim_02_2_64</Task>
 		</ImageTasks>
-		<AutoIsoFile>gyrOS-1909.iso</AutoIsoFile>
+		<AutoIsoFile>gyrOS 1909.iso</AutoIsoFile>
 		<AutoIsoLabel>gyrOS</AutoIsoLabel>
 		<AutoSplitSize>4000</AutoSplitSize>
 		<CleanHotfixedLeftovers>3</CleanHotfixedLeftovers>

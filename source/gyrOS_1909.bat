@@ -13,8 +13,6 @@ title gyrOS Post Installation Script "!SCRIPT_VERSION_DATE!"
 set "currentuser=%WinDir%\gyrOS\NSudo\NSudoLG.exe -U:C -P:E -Wait"
 set "PowerShell=%WinDir%\System32\WindowsPowerShell\v1.0\PowerShell.exe -NoProfile -NonInteractive -ExecutionPolicy Bypass -Command"
 
-::sc config = boot, or = system, or = auto, or = demand, or = disabled, or = delayed-auto
-
 :: Uninstall Microsoft Edge
 cd /d "%ProgramFiles(x86)%\Microsoft"
 for /f "tokens=1 delims=\" %%i in ('dir /B /A:D "%ProgramFiles(x86)%\Microsoft\Edge\Application" ^| find "."') do (set "edge_chromium_package_version=%%i")
@@ -868,9 +866,9 @@ reg add "HKLM\SOFTWARE\Microsoft\.NETFramework\DbgJITDebugLaunchSetting" /v "ena
 
 :: Disable Diagnostics
 for %%i in (diagsvc DPS WdiServiceHost WdiSystemHost) do (
-	reg query "HKLM\SYSTEM\CurrentControlSet\Services\%%~i" /ve
+	reg query "HKLM\SYSTEM\CurrentControlSet\Services\%%i" /ve
 	if %errorlevel% == 0 (
-		%currentuser% reg add "HKLM\SYSTEM\CurrentControlSet\Services\%%~i" /v "Start" /t REG_DWORD /d "4" /f
+		%currentuser% reg add "HKLM\SYSTEM\CurrentControlSet\Services\%%i" /v "Start" /t REG_DWORD /d "4" /f
 	)
 ) > nul 2> nul
 reg add "HKCU\SOFTWARE\Microsoft\Windows\CurrentVersion\Privacy" /v "TailoredExperiencesWithDiagnosticDataEnabled" /t REG_DWORD /d "0" /f > nul 2> nul
@@ -1031,44 +1029,43 @@ for /f %%i in ('reg query "HKLM\SYSTEM\CurrentControlSet\Services" /s /f DmaRema
 
 :: Disable System Devices
 for %%i in (
- "WAN Miniport (IPv6)"
- "WAN Miniport (IKEv2)"
- "WAN Miniport (L2TP)"
- "WAN Miniport (IP)"
- "Microsoft RRAS Root Enumerator"
- "NDIS Virtual Network Adapter Enumerator"
- "System Speaker" MemoryDiagnostic
- "System Speaker"
- "System Timer"
- "Motherboard resources"
- "Microsoft Hyper-V NT Kernel Integration VSP"
- "Microsoft Hyper-V PCI Server"
- "Microsoft Hyper-V Virtual Machine Bus Provider"
- "Microsoft Hyper-V Virtualization Infrastructure Driver"
- "Microsoft Hyper-V Virtual Disk Server"
- "UMBus Root Bus Enumerator"
- "Microsoft System Management BIOS Driver"
- "ACPI Processor Aggregator"
- "Microsoft Windows Management Interface for ACPI"
- "High Precision Event Timer"
- "PCI Encryption/Decryption Controller"
- "AMD PSP"
- "AMD SMBus"
- "PCI Data Acquisition and Signal Processing Controller"
- "Intel SMBus"
- "Intel Management Engine"
- "PCI Memory Controller"
- "PCI standard RAM Controller"
- "Composite Bus Enumerator"
- "Microsoft Kernel Debug Network Adapter"
- "SM Bus Controller"
- "Numeric Data Processor"
- "System CMOS/real time clock"
- "PCI Simple Communications Controller"
+	"WAN Miniport (IPv6)"
+	"WAN Miniport (IKEv2)"
+	"WAN Miniport (L2TP)"
+	"WAN Miniport (IP)"
+	"Microsoft RRAS Root Enumerator"
+	"NDIS Virtual Network Adapter Enumerator"
+	"System Speaker" MemoryDiagnostic
+	"System Speaker"
+	"System Timer"
+	"Motherboard resources"
+	"Microsoft Hyper-V NT Kernel Integration VSP"
+	"Microsoft Hyper-V PCI Server"
+	"Microsoft Hyper-V Virtual Machine Bus Provider"
+	"Microsoft Hyper-V Virtualization Infrastructure Driver"
+	"Microsoft Hyper-V Virtual Disk Server"
+	"UMBus Root Bus Enumerator"
+	"Microsoft System Management BIOS Driver"
+	"ACPI Processor Aggregator"
+	"Microsoft Windows Management Interface for ACPI"
+	"High Precision Event Timer"
+	"PCI Encryption/Decryption Controller"
+	"AMD PSP"
+	"AMD SMBus"
+	"PCI Data Acquisition and Signal Processing Controller"
+	"Intel SMBus"
+	"Intel Management Engine"
+	"PCI Memory Controller"
+	"PCI standard RAM Controller"
+	"Composite Bus Enumerator"
+	"Microsoft Kernel Debug Network Adapter"
+	"SM Bus Controller"
+	"Numeric Data Processor"
+	"System CMOS/real time clock"
+	"PCI Simple Communications Controller"
 ) do (
-    start "" "%WinDir%\gyrOS\DevManView.exe" /disable "%%i" >nul
-)
-
+	start "" "%WinDir%\gyrOS\DevManView.exe" /disable "%%i"
+) > nul 2> nul
 
 :: Opt-Out of Sending Client Activation Data to Microsoft ; Credits to ArtanisInc
 reg add "HKLM\SOFTWARE\Policies\Microsoft\Windows NT\CurrentVersion\Software Protection Platform" /v "NoGenTicket" /t REG_DWORD /d "1" /f > nul 2> nul
@@ -1100,9 +1097,9 @@ reg add "HKLM\SOFTWARE\Policies\Microsoft\InputPersonalization" /v "AllowInputPe
 
 :: Disable Remote Assistance ; Credits to ArtanisInc
 for %%i in (RasAuto SessionEnv TermService UmRdpService RpcLocator) do (
-	reg query "HKLM\SYSTEM\CurrentControlSet\Services\%%~i" /ve
+	reg query "HKLM\SYSTEM\CurrentControlSet\Services\%%i" /ve
 	if %errorlevel% == 0 (
-		%currentuser% reg add "HKLM\SYSTEM\CurrentControlSet\Services\%%~i" /v "Start" /t REG_DWORD /d "4" /f
+		%currentuser% reg add "HKLM\SYSTEM\CurrentControlSet\Services\%%i" /v "Start" /t REG_DWORD /d "4" /f
 	)
 ) > nul 2> nul
 
@@ -1570,8 +1567,7 @@ echo __________________
 echo.
 
 :: Disable Tasks
-for %%i in ("UpdateOrchestrator\Reboot" "UpdateOrchestrator\Refresh Settings" "UpdateOrchestrator\USO_UxBroker_Display"
-"UpdateOrchestrator\USO_UxBroker_ReadyToReboot" "WindowsUpdate\sih" "WindowsUpdate\sihboot") do schtasks /Change /TN "Microsoft\Windows\%%~i" /disable > nul 2> nul
+for %%i in ("UpdateOrchestrator\Reboot" "UpdateOrchestrator\Refresh Settings" "UpdateOrchestrator\USO_UxBroker_Display" "UpdateOrchestrator\USO_UxBroker_ReadyToReboot" "WindowsUpdate\sih" "WindowsUpdate\sihboot") do schtasks /Change /TN "Microsoft\Windows\%%i" /disable > nul 2> nul
 
 schtasks /Change /Disable /TN "\Microsoft\Windows\Defrag\ScheduledDefrag" > nul 2> nul
 schtasks /Change /Disable /TN "\Microsoft\Windows\WindowsUpdate\Scheduled Start" > nul 2> nul

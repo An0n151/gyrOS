@@ -13,8 +13,6 @@ title gyrOS Post Installation Script "!SCRIPT_VERSION_DATE!"
 set "currentuser=%WinDir%\gyrOS\NSudo\NSudoLG.exe -U:C -P:E -Wait"
 set "PowerShell=%WinDir%\System32\WindowsPowerShell\v1.0\PowerShell.exe -NoProfile -NonInteractive -ExecutionPolicy Bypass -Command"
 
-::sc config = boot, or = system, or = auto, or = demand, or = disabled, or = delayed-auto
-
 echo _____________________________________________________________________________________________________
 echo.
 echo  THANK YOU FOR INSTALLING GYROS 22H2 %VERSION%. PRESS ANY KEY TO START APPLYING GYROS OPTIMIZATIONS.
@@ -930,40 +928,44 @@ reg add "HKLM\SOFTWARE\Policies\Microsoft\Windows\DeviceGuard" /v "EnableVirtual
 reg add "HKLM\SYSTEM\CurrentControlSet\Control\DeviceGuard" /v "RequireMicrosoftSignedBootChain" /t REG_DWORD /d "1" /f > nul 2> nul
 
 :: Disable System Devices
-%WinDir%\gyrOS\DevManView.exe /disable "WAN Miniport (IPv6)" > nul 2> nul
-%WinDir%\gyrOS\DevManView.exe /disable "WAN Miniport (IKEv2)" > nul 2> nul
-%WinDir%\gyrOS\DevManView.exe /disable "WAN Miniport (L2TP)" > nul 2> nul
-%WinDir%\gyrOS\DevManView.exe /disable "WAN Miniport (IP)" > nul 2> nul
-%WinDir%\gyrOS\DevManView.exe /disable "Microsoft RRAS Root Enumerator" > nul 2> nul
-%WinDir%\gyrOS\DevManView.exe /disable "NDIS Virtual Network Adapter Enumerator" > nul 2> nul
-%WinDir%\gyrOS\DevManView.exe /disable "System Speaker" MemoryDiagnostic > nul 2> nul
-%WinDir%\gyrOS\DevManView.exe /disable "System Speaker" > nul 2> nul
-%WinDir%\gyrOS\DevManView.exe /disable "System Timer" > nul 2> nul
-%WinDir%\gyrOS\DevManView.exe /disable "Motherboard resources" > nul 2> nul
-%WinDir%\gyrOS\DevManView.exe /disable "Microsoft Hyper-V NT Kernel Integration VSP" > nul 2> nul
-%WinDir%\gyrOS\DevManView.exe /disable "Microsoft Hyper-V PCI Server" > nul 2> nul
-%WinDir%\gyrOS\DevManView.exe /disable "Microsoft Hyper-V Virtual Machine Bus Provider" > nul 2> nul
-%WinDir%\gyrOS\DevManView.exe /disable "Microsoft Hyper-V Virtualization Infrastructure Driver" > nul 2> nul
-%WinDir%\gyrOS\DevManView.exe /disable "Microsoft Hyper-V Virtual Disk Server" > nul 2> nul
-%WinDir%\gyrOS\DevManView.exe /disable "UMBus Root Bus Enumerator" > nul 2> nul
-%WinDir%\gyrOS\DevManView.exe /disable "Microsoft System Management BIOS Driver" > nul 2> nul
-%WinDir%\gyrOS\DevManView.exe /disable "ACPI Processor Aggregator" > nul 2> nul
-%WinDir%\gyrOS\DevManView.exe /disable "Microsoft Windows Management Interface for ACPI" > nul 2> nul
-%WinDir%\gyrOS\DevManView.exe /disable "High Precision Event Timer" > nul 2> nul
-%WinDir%\gyrOS\DevManView.exe /disable "PCI Encryption/Decryption Controller" > nul 2> nul
-%WinDir%\gyrOS\DevManView.exe /disable "AMD PSP" > nul 2> nul
-%WinDir%\gyrOS\DevManView.exe /disable "AMD SMBus" > nul 2> nul
-%WinDir%\gyrOS\DevManView.exe /disable "PCI Data Acquisition and Signal Processing Controller" > nul 2> nul
-%WinDir%\gyrOS\DevManView.exe /disable "Intel SMBus" > nul 2> nul
-%WinDir%\gyrOS\DevManView.exe /disable "Intel Management Engine" > nul 2> nul
-%WinDir%\gyrOS\DevManView.exe /disable "PCI Memory Controller" > nul 2> nul
-%WinDir%\gyrOS\DevManView.exe /disable "PCI standard RAM Controller" > nul 2> nul
-%WinDir%\gyrOS\DevManView.exe /disable "Composite Bus Enumerator" > nul 2> nul
-%WinDir%\gyrOS\DevManView.exe /disable "Microsoft Kernel Debug Network Adapter" > nul 2> nul
-%WinDir%\gyrOS\DevManView.exe /disable "SM Bus Controller" > nul 2> nul
-%WinDir%\gyrOS\DevManView.exe /disable "Numeric Data Processor" > nul 2> nul
-%WinDir%\gyrOS\DevManView.exe /disable "System CMOS/real time clock" > nul 2> nul
-%WinDir%\gyrOS\DevManView.exe /disable "PCI Simple Communications Controller" > nul 2> nul
+for %%i in (
+	"WAN Miniport (IPv6)"
+	"WAN Miniport (IKEv2)"
+	"WAN Miniport (L2TP)"
+	"WAN Miniport (IP)"
+	"Microsoft RRAS Root Enumerator"
+	"NDIS Virtual Network Adapter Enumerator"
+	"System Speaker" MemoryDiagnostic
+	"System Speaker"
+	"System Timer"
+	"Motherboard resources"
+	"Microsoft Hyper-V NT Kernel Integration VSP"
+	"Microsoft Hyper-V PCI Server"
+	"Microsoft Hyper-V Virtual Machine Bus Provider"
+	"Microsoft Hyper-V Virtualization Infrastructure Driver"
+	"Microsoft Hyper-V Virtual Disk Server"
+	"UMBus Root Bus Enumerator"
+	"Microsoft System Management BIOS Driver"
+	"ACPI Processor Aggregator"
+	"Microsoft Windows Management Interface for ACPI"
+	"High Precision Event Timer"
+	"PCI Encryption/Decryption Controller"
+	"AMD PSP"
+	"AMD SMBus"
+	"PCI Data Acquisition and Signal Processing Controller"
+	"Intel SMBus"
+	"Intel Management Engine"
+	"PCI Memory Controller"
+	"PCI standard RAM Controller"
+	"Composite Bus Enumerator"
+	"Microsoft Kernel Debug Network Adapter"
+	"SM Bus Controller"
+	"Numeric Data Processor"
+	"System CMOS/real time clock"
+	"PCI Simple Communications Controller"
+) do (
+	start "" "%WinDir%\gyrOS\DevManView.exe" /disable "%%i"
+) > nul 2> nul
 
 :: Opt-Out of Sending Client Activation Data to Microsoft ; Credits to ArtanisInc
 reg add "HKLM\SOFTWARE\Policies\Microsoft\Windows NT\CurrentVersion\Software Protection Platform" /v "NoGenTicket" /t REG_DWORD /d "1" /f > nul 2> nul
@@ -1463,8 +1465,7 @@ echo __________________
 echo.
 
 :: Disable Tasks
-for %%i in ("UpdateOrchestrator\Reboot" "UpdateOrchestrator\Refresh Settings" "UpdateOrchestrator\USO_UxBroker_Display"
-"UpdateOrchestrator\USO_UxBroker_ReadyToReboot" "WindowsUpdate\sih" "WindowsUpdate\sihboot") do schtasks /Change /TN "Microsoft\Windows\%%~i" /disable > nul 2> nul
+for %%i in ("UpdateOrchestrator\Reboot" "UpdateOrchestrator\Refresh Settings" "UpdateOrchestrator\USO_UxBroker_Display" "UpdateOrchestrator\USO_UxBroker_ReadyToReboot" "WindowsUpdate\sih" "WindowsUpdate\sihboot") do schtasks /Change /TN "Microsoft\Windows\%%i" /disable > nul 2> nul
 
 schtasks /Change /Disable /TN "\Microsoft\Windows\Defrag\ScheduledDefrag" > nul 2> nul
 schtasks /Change /Disable /TN "\Microsoft\Windows\WindowsUpdate\Scheduled Start" > nul 2> nul
