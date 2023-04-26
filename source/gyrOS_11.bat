@@ -13,8 +13,6 @@ title gyrOS Post Installation Script "!SCRIPT_VERSION_DATE!"
 set "currentuser=%WinDir%\gyrOS\NSudo\NSudoLG.exe -U:C -P:E -Wait"
 set "PowerShell=%WinDir%\System32\WindowsPowerShell\v1.0\PowerShell.exe -NoProfile -NonInteractive -ExecutionPolicy Bypass -Command"
 
-::sc config = boot, or = system, or = auto, or = demand, or = disabled, or = delayed-auto
-
 echo _____________________________________________________________________________________________________
 echo.
 echo  THANK YOU FOR INSTALLING GYROS 11 %VERSION%. PRESS ANY KEY TO START APPLYING GYROS OPTIMIZATIONS.
@@ -1383,4 +1381,4 @@ echo                                 ===== RESTARTING IN =====
 echo __________________________________________________________________________________________
 
 timeout /t 4
-shutdown /r /t 10 /f
+shutdown /r /t 6 /f
