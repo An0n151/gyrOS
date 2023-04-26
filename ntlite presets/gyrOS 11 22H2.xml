@@ -1437,12 +1437,12 @@
 			<Task>deledition_boot.wim_01_9_64</Task>
 			<Task>imageFormatWim</Task>
 		</ImageTasks>
-		<AutoIsoFile>NTLite.iso</AutoIsoFile>
+		<AutoIsoFile>gyrOS-11.iso</AutoIsoFile>
 		<AutoIsoLabel>gyrOS 11</AutoIsoLabel>
 		<AutoSplitSize>4000</AutoSplitSize>
 		<CleanHotfixedLeftovers>3</CleanHotfixedLeftovers>
-		<OptimizeAppX>false</OptimizeAppX>
-		<ReuseDriverCache>false</ReuseDriverCache>
+		<OptimizeAppX>true</OptimizeAppX>
+		<ReuseDriverCache>true</ReuseDriverCache>
 	</ApplyOptions>
 	<Execution>
 		<Remove></Remove>
