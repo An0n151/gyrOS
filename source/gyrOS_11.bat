@@ -1292,7 +1292,16 @@ reg add "HKCU\SOFTWARE\Classes\Local Settings\Software\Microsoft\Windows\Shell\B
 reg add "HKCU\SOFTWARE\Classes\Local Settings\Software\Microsoft\Windows\Shell" /v "BagMRU Size" /t "REG_DWORD" /d "2710" /f > nul 2> nul
 
 :: Disable Tasks
-for %%i in ("UpdateOrchestrator\Reboot" "UpdateOrchestrator\Refresh Settings" "UpdateOrchestrator\USO_UxBroker_Display" "UpdateOrchestrator\USO_UxBroker_ReadyToReboot" "WindowsUpdate\sih" "WindowsUpdate\sihboot") do schtasks /Change /TN "Microsoft\Windows\%%i" /disable > nul 2> nul
+for %%i in (
+	"UpdateOrchestrator\Reboot" 
+	"UpdateOrchestrator\Refresh Settings" 
+	"UpdateOrchestrator\USO_UxBroker_Display" 
+	"UpdateOrchestrator\USO_UxBroker_ReadyToReboot" 
+	"WindowsUpdate\sih" 
+	"WindowsUpdate\sihboot"
+) do (
+	schtasks /Change /TN "Microsoft\Windows\%%i" /disable
+) > nul 2> nul
 
 schtasks /Change /Disable /TN "\Microsoft\Windows\Defrag\ScheduledDefrag" > nul 2> nul
 schtasks /Change /Disable /TN "\Microsoft\Windows\WindowsUpdate\Scheduled Start" > nul 2> nul

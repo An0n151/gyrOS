@@ -1465,7 +1465,16 @@ echo __________________
 echo.
 
 :: Disable Tasks
-for %%i in ("UpdateOrchestrator\Reboot" "UpdateOrchestrator\Refresh Settings" "UpdateOrchestrator\USO_UxBroker_Display" "UpdateOrchestrator\USO_UxBroker_ReadyToReboot" "WindowsUpdate\sih" "WindowsUpdate\sihboot") do schtasks /Change /TN "Microsoft\Windows\%%i" /disable > nul 2> nul
+for %%i in (
+	"UpdateOrchestrator\Reboot" 
+	"UpdateOrchestrator\Refresh Settings" 
+	"UpdateOrchestrator\USO_UxBroker_Display" 
+	"UpdateOrchestrator\USO_UxBroker_ReadyToReboot" 
+	"WindowsUpdate\sih" 
+	"WindowsUpdate\sihboot"
+) do (
+	schtasks /Change /TN "Microsoft\Windows\%%i" /disable
+) > nul 2> nul
 
 schtasks /Change /Disable /TN "\Microsoft\Windows\Defrag\ScheduledDefrag" > nul 2> nul
 schtasks /Change /Disable /TN "\Microsoft\Windows\WindowsUpdate\Scheduled Start" > nul 2> nul
