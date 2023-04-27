@@ -248,8 +248,6 @@
 		<c>driver_spaceport.inf</c>
 		<c>driver_termkbd.inf</c>
 		<c>driver_termmou.inf</c>
-		<c>driver_tpm.inf</c>
-		<c>driver_tpmvsc.inf</c>
 		<c>driver_ts_generic.inf</c>
 		<c>driver_tsgenericusbdriver.inf</c>
 		<c>driver_tsusbhub.inf</c>
