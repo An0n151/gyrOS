@@ -1045,7 +1045,7 @@ reg add "HKLM\SOFTWARE\Microsoft\Windows NT\CurrentVersion\Multimedia\SystemProf
 :::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::
 
 :: Netsh Tweaks ; Credits to HoneCtrl, Melody and ArtanisInc
-netsh interface Teredo set state type=default > nul 2> nul
+netsh interface Teredo set state type=enterpriseclient > nul 2> nul
 netsh interface Teredo set state servername=default > nul 2> nul
 netsh interface tcp set heuristics disabled > nul 2> nul
 netsh interface tcp set global rss=enabled > nul 2> nul
