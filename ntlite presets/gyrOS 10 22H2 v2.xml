@@ -509,6 +509,7 @@
 		<c>paint32 'Paint - 32 bit'</c>
 		<c>payments</c>
 		<c>pdfreader 'Windows Reader (PDF)'</c>
+		<c>peertopeer 'Peer Networking'</c>
 		<c>phonesvc 'Phone Service'</c>
 		<c>photocodec32 'Photo codec - 32 bit'</c>
 		<c>photoviewer 'Photo Viewer'</c>
@@ -612,6 +613,7 @@
 		<c>wordpad32 'Wordpad - 32 bit'</c>
 		<c>wpdbusenum 'Portable Device Enumerator Service'</c>
 		<c>wwanautoconfig 'WWAN AutoConfig'</c>
+		<c>zipfolder 'Zip &amp; Cab folder'</c>
 	</RemoveComponents>
 	<Compatibility protectHidden="true">
 		<ComponentFeatures>
