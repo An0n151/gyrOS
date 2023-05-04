@@ -9,7 +9,6 @@
 	</AppInfo>
 	<ImageInfo>
 		<Version mode="offline">Windows 10 Professional (22H2) x64 - 10.0.19045.2846 (en-US)</Version>
-		<GUID>{28022AD0-16F5-3532-B9E8-726F26071257}</GUID>
 	</ImageInfo>
 	<RemoveComponents AppRemovalMode="DISM">
 		<c>aarsvc 'Agent Activation Runtime'</c>
