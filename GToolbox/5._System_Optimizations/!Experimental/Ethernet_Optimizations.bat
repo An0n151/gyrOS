@@ -10,15 +10,13 @@ cd /d "%~dp0" && ( if exist "%temp%\getadmin.vbs" del "%temp%\getadmin.vbs" ) &&
 
 set "PowerShell=%WinDir%\System32\WindowsPowerShell\v1.0\PowerShell.exe -NoProfile -NonInteractive -ExecutionPolicy Bypass -Command"
 
-netsh interface tcp set supplemental Internet congestionprovider=ctcp
-netsh interface tcp set supplemental InternetCustom congestionprovider=ctcp
 netsh int tcp set security mpp=disabled
 netsh int tcp set security profiles=disabled
 
-PowerShell Enable-NetAdapterQos -Name "*";^
-PowerShell Disable-NetAdapterPowerManagement -Name "*";^
-PowerShell Disable-NetAdapterIPsecOffload -Name "*";^
-PowerShell Set-NetTCPSetting -SettingName "*" -MemoryPressureProtection Disabled -InitialCongestionWindow 10 -ErrorAction SilentlyContinue
+%PowerShell% Enable-NetAdapterQos -Name "*";^
+%PowerShell% Disable-NetAdapterPowerManagement -Name "*";^
+%PowerShell% Disable-NetAdapterIPsecOffload -Name "*";^
+%PowerShell% Set-NetTCPSetting -SettingName "*" -MemoryPressureProtection Disabled -InitialCongestionWindow 10 -ErrorAction SilentlyContinue
 
 reg add "HKLM\SYSTEM\CurrentControlSet\Services\Tcpip\Parameters" /v "Tcp1323Opts" /t REG_DWORD /d "0" /f
 reg add "HKLM\SYSTEM\CurrentControlSet\Services\Tcpip\Parameters" /v "TcpTimedWaitDelay" /t REG_DWORD /d "0" /f
