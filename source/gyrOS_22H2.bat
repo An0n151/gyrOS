@@ -1552,6 +1552,9 @@ schtasks /Change /Disable /TN "\Microsoft\WindowsManagement\Provisioning\Cellula
 schtasks /Change /Disable /TN "\Microsoft\Windows\TaskScheduler\Maintenance Configurator" > nul 2> nul
 schtasks /Change /Disable /TN "\Microsoft\Windows\TaskScheduler\Regular Maintenance" > nul 2> nul
 schtasks /Change /Disable /TN "\Microsoft\Windows\PushToInstall\LoginCheck" > nul 2> nul
+schtasks /Change /Disable /TN "\Microsoft\Windows\Shell\FamilySafetyMonitor" > nul 2> nul
+schtasks /Change /Disable /TN "\Microsoft\Windows\Shell\FamilySafetyRefresh" > nul 2> nul
+schtasks /Change /Disable /TN "\Microsoft\Windows\Windows Media Sharing\UpdateLibrary" > nul 2> nul
 
 timeout /t 2 >nul
 cls
