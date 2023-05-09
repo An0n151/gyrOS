@@ -1540,6 +1540,11 @@ schtasks /Change /Disable /TN "\Microsoft\Windows\PushToInstall\LoginCheck" > nu
 schtasks /Change /Disable /TN "\Microsoft\Windows\Shell\FamilySafetyMonitor" > nul 2> nul
 schtasks /Change /Disable /TN "\Microsoft\Windows\Shell\FamilySafetyRefresh" > nul 2> nul
 schtasks /Change /Disable /TN "\Microsoft\Windows\Windows Media Sharing\UpdateLibrary" > nul 2> nul
+schtasks /Change /Disable /TN "\Microsoft\Windows\Customer Experience Improvement Program\Consolidator" > nul 2> nul
+schtasks /Change /Disable /TN "\Microsoft\Windows\Customer Experience Improvement Program\BthSQM" > nul 2> nul
+schtasks /Change /Disable /TN "\Microsoft\Windows\Customer Experience Improvement Program\KernelCeipTask" > nul 2> nul
+schtasks /Change /Disable /TN "\Microsoft\Windows\Customer Experience Improvement Program\UsbCeip" > nul 2> nul
+schtasks /Change /Disable /TN "\Microsoft\Windows\Customer Experience Improvement Program\Uploader" > nul 2> nul
 
 timeout /t 2 >nul
 cls
