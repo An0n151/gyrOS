@@ -1145,9 +1145,9 @@ bcdedit /set recoveryenabled No > nul 2> nul
 bcdedit /set tpmbootentropy ForceDisable > nul 2> nul
 bcdedit /set description gyrOS > nul 2> nul
 :: Lower Latency
-bcdedit /set tscsyncpolicy legacy > nul 2> nul
+::bcdedit /set tscsyncpolicy legacy > nul 2> nul
 :: Better FPS
-::bcdedit /set tscsyncpolicy enhanced > nul 2> nul
+bcdedit /set tscsyncpolicy enhanced > nul 2> nul
 :: Configure DEP
 ::bcdedit /set nx AlwaysOff > nul 2> nul
 ::bcdedit /set nx OptIn > nul 2> nul

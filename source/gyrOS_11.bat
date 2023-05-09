@@ -975,9 +975,9 @@ bcdedit /set firstmegabytepolicy UseAll > nul 2> nul
 bcdedit /set avoidlowmemory 0x8000000 > nul 2> nul
 bcdedit /set nolowmem Yes > nul 2> nul
 :: Lower Latency
-bcdedit /set tscsyncpolicy legacy > nul 2> nul
+::bcdedit /set tscsyncpolicy legacy > nul 2> nul
 :: Better FPS
-::bcdedit /set tscsyncpolicy enhanced > nul 2> nul
+bcdedit /set tscsyncpolicy enhanced > nul 2> nul
 :: Configure DEP
 ::bcdedit /set nx AlwaysOff > nul 2> nul
 ::bcdedit /set nx OptIn > nul 2> nul
