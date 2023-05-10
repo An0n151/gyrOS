@@ -1312,7 +1312,9 @@ for /f %%a in ('reg query "HKLM\SYSTEM\CurrentControlSet\Control\Class" /v "VgaC
 netsh interface Teredo set state type=enterpriseclient > nul 2> nul
 netsh interface Teredo set state servername=default > nul 2> nul
 netsh interface tcp set heuristics disabled > nul 2> nul
+:: Enable RSS
 netsh interface tcp set global rss=enabled > nul 2> nul
+reg add "HKLM\SYSTEM\CurrentControlSet\Services\Ndis\Parameters" /v "RssBaseCpu" /t REG_DWORD /d "1" /f > nul 2> nul
 netsh interface tcp set global dca=enabled > nul 2> nul
 netsh interface tcp set global rsc=disabled > nul 2> nul
 netsh interface tcp set global timestamps=disabled > nul 2> nul
