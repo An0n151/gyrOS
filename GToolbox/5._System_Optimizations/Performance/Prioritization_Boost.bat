@@ -2,6 +2,8 @@
 
 :: IO Prioritization & Boost
 
+:: Credits to Ancel
+
 @echo off
 setlocal EnableDelayedExpansion
 
