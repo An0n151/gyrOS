@@ -650,7 +650,7 @@ reg add "HKCU\SOFTWARE\Microsoft\Windows\DWM" /v "ColorPrevalence" /t REG_DWORD 
 reg add "HKCU\Control Panel\International" /v "iMeasure" /t REG_SZ /d "0" /f > nul 2> nul
 reg add "HKCU\Control Panel\International" /v "iNegCurr" /t REG_SZ /d "1" /f > nul 2> nul
 reg add "HKCU\Control Panel\International" /v "iTime" /t REG_SZ /d "1" /f > nul 2> nul
-reg add "HKCU\Control Panel\International" /v "sShortDate" /t REG_SZ /d "dd.MM.yyyy" /f > nul 2> nul
+reg add "HKCU\Control Panel\International" /v "sShortDate" /t REG_SZ /d "dd/MM/yyyy" /f > nul 2> nul
 reg add "HKCU\Control Panel\International" /v "sShortTime" /t REG_SZ /d "HH:mm" /f > nul 2> nul
 reg add "HKCU\Control Panel\International" /v "sTimeFormat" /t REG_SZ /d "H:mm:ss" /f > nul 2> nul
 :: Improve Desktop Wallpaper Quality
