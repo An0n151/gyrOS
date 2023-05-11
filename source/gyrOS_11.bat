@@ -1291,10 +1291,6 @@ reg add "HKLM\SYSTEM\CurrentControlSet\Control\Class\{71a27cdd-812a-11d0-bec7-08
 
 :::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::
 
-:: Unpin Tiles from Start Menu
-reg delete "HKCU\Software\Microsoft\Windows\CurrentVersion\CloudStore\*" /f /va >nul
-%PowerShell% -Command "(New-Object -ComObject Shell.Application).NameSpace('shell:::{4234d49b-0245-4df3-b780-3893943456e1}').Items() | ForEach-Object { $_.Verbs() } | Where-Object { $_.Name -match 'Un.*pin from Start' } | ForEach-Object { $_.DoIt() }"
-
 :: Fix Folder View Settings
 reg add "HKCU\SOFTWARE\Microsoft\Windows\CurrentVersion\Policies\Explorer" /v "NoSaveSettings" /t REG_SZ /d "0" /f > nul 2> nul
 reg add "HKLM\SOFTWARE\Microsoft\Windows\CurrentVersion\Policies\Explorer" /v "NoSaveSettings" /t REG_SZ /d "0" /f > nul 2> nul

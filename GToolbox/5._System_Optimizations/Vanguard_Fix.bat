@@ -1,4 +1,4 @@
-:: gyrOS ::
+:: gyrOS
 
 :: Riot Vanguard Fix
 
@@ -15,6 +15,7 @@ for %%i in (valorant valorant-win64-shipping vgtray vgc) do (
 )
 bcdedit /set testsigning Off
 bcdedit /set nointegritychecks Off
+bcdedit /deletevalue nx
 bcdedit /set nx OptIn
 
 ::reg add "HKLM\SYSTEM\CurrentControlSet\Control\Session Manager\kernel" /v "MitigationAuditOptions" /t REG_BINARY /d "222222222222222222222222222222222222222222222222" /f
