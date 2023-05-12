@@ -1161,6 +1161,7 @@ bcdedit /set description gyrOS > nul 2> nul
 bcdedit /set tscsyncpolicy enhanced > nul 2> nul
 
 :: Configure DEP
+bcdedit /deletevalue nx > nul 2> nul
 bcdedit /set nx AlwaysOff > nul 2> nul
 
 :: Set Win32PrioritySeparation

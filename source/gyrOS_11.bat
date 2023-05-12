@@ -992,8 +992,8 @@ bcdedit /set nolowmem Yes > nul 2> nul
 bcdedit /set tscsyncpolicy enhanced > nul 2> nul
 
 :: Configure DEP
+bcdedit /deletevalue nx > nul 2> nul
 bcdedit /set nx AlwaysOff > nul 2> nul
-::bcdedit /set nx OptIn > nul 2> nul
 
 :: Set Win32PrioritySeparation
 reg add "HKLM\SYSTEM\CurrentControlSet\Control\PriorityControl" /v "Win32PrioritySeparation" /t REG_DWORD /d "38" /f > nul 2> nul
