@@ -788,6 +788,7 @@ for %%i in (diagsvc DPS WdiServiceHost WdiSystemHost) do (
 		%currentuser% reg add "HKLM\SYSTEM\CurrentControlSet\Services\%%i" /v "Start" /t REG_DWORD /d "4" /f
 	)
 ) > nul 2> nul
+
 reg add "HKCU\SOFTWARE\Microsoft\Windows\CurrentVersion\Privacy" /v "TailoredExperiencesWithDiagnosticDataEnabled" /t REG_DWORD /d "0" /f > nul 2> nul
 reg add "HKLM\SOFTWARE\Policies\Microsoft\Windows\ScheduledDiagnostics" /v "EnabledExecution" /t REG_DWORD /d "0" /f > nul 2> nul
 reg add "HKLM\SOFTWARE\Microsoft\Windows\ScheduledDiagnostics" /v "EnabledExecution" /t REG_DWORD /d "0" /f > nul 2> nul
@@ -914,6 +915,7 @@ setx DOTNET_CLI_TELEMETRY_OPTOUT 1 > nul 2> nul
 for /f %%i in ('reg query "HKLM\SYSTEM\CurrentControlSet\services\NetBT\Parameters\Interfaces" /s /f "NetbiosOptions"^| findstr "HKEY"') do (
 	reg add "%%i" /v "NetbiosOptions" /t REG_DWORD /d "2" /f
 ) > nul 2> nul
+
 reg add "HKLM\SYSTEM\CurrentControlSet\Services\NetBT\Parameters" /v "NodeType" /t REG_DWORD /d "2" /f > nul 2> nul
 reg add "HKLM\SYSTEM\CurrentControlSet\Services\NetBT\Parameters" /v "SMBDeviceEnabled" /t REG_DWORD /d "0" /f > nul 2> nul
 reg add "HKLM\SYSTEM\CurrentControlSet\Services\NetBT\Parameters" /v "EnableLMHOSTS" /t REG_DWORD /d "0" /f > nul 2> nul
@@ -927,22 +929,26 @@ bcdedit /set hypervisorlaunchtype Off > nul 2> nul
 bcdedit /set vsmlaunchtype Off > nul 2> nul
 bcdedit /set vm No > nul 2> nul
 bcdedit /set loadoptions DISABLE-LSA-ISO,DISABLE-VBS > nul 2> nul
+
 reg add "HKLM\SOFTWARE\Policies\Microsoft\Windows\DeviceGuard" /v "ConfigureSystemGuardLaunch" /t REG_DWORD /d "0" /f > nul 2> nul
 reg add "HKLM\SOFTWARE\Policies\Microsoft\Windows\DeviceGuard" /v "HVCIMATRequired" /t REG_DWORD /d "0" /f > nul 2> nul
 reg add "HKLM\SOFTWARE\Policies\Microsoft\Windows\DeviceGuard" /v "RequirePlatformSecurityFeatures" /t REG_DWORD /d "1" /f > nul 2> nul
 reg add "HKLM\SOFTWARE\Policies\Microsoft\Windows\DeviceGuard" /v "LsaCfgFlags" /t REG_DWORD /d "0" /f > nul 2> nul
 reg add "HKLM\SOFTWARE\Policies\Microsoft\FVE" /v "DisableExternalDMAUnderLock" /t REG_DWORD /d "0" /f > nul 2> nul
 reg add "HKLM\SYSTEM\CurrentControlSet\Control\DeviceGuard" /v "RequireMicrosoftSignedBootChain" /t REG_DWORD /d "0" /f > nul 2> nul
+
 :: Disable VBS
 reg add "HKLM\SOFTWARE\Policies\Microsoft\Windows\DeviceGuard" /v "EnableVirtualizationBasedSecurity" /t REG_DWORD /d "0" /f > nul 2> nul
 reg add "HKLM\SOFTWARE\Policies\Microsoft\Windows\DeviceGuard" /t REG_DWORD /v "HypervisorEnforcedCodeIntegrity" /d "0" /f > nul 2> nul
 reg add "HKLM\SYSTEM\CurrentControlSet\Control\DeviceGuard\Scenarios\HypervisorEnforcedCodeIntegrity" /v "Enabled" /t REG_DWORD /d "0" /f > nul 2> nul
 reg add "HKLM\SYSTEM\CurrentControlSet\Control\DeviceGuard\Scenarios\HypervisorEnforcedCodeIntegrity" /v "WasEnabledBy" /t REG_DWORD /d "0" /f > nul 2> nul
+
 :: Disable DMA Remapping ; Credits to DuckOS
-reg add "HKLM\SOFTWARE\Microsoft\PolicyManager\default\DmaGuard\DeviceEnumerationPolicy" /v "value" /t REG_DWORD /d "2" /f > nul 2> nul
-for /f %%i in ('reg query "HKLM\SYSTEM\CurrentControlSet\Services" /s /f DmaRemappingCompatible ^| find /i "Services\" ') do (
+for /f %%i in ('reg query "HKLM\SYSTEM\CurrentControlSet\Services" /s /f "DmaRemappingCompatible" ^| find /i "Services\" ') do (
 	reg add "%%i" /v "DmaRemappingCompatible" /t REG_DWORD /d "0" /f
 ) > nul 2> nul
+
+reg add "HKLM\SOFTWARE\Microsoft\PolicyManager\default\DmaGuard\DeviceEnumerationPolicy" /v "value" /t REG_DWORD /d "2" /f > nul 2> nul
 
 :: Disable System Devices
 for %%i in (
@@ -1106,6 +1112,7 @@ reg add "HKCU\Control Panel\Desktop" /v "StartupDelayInMSec" /t REG_DWORD /d "0"
 for %%a in (310093 353698 314563 338389 338387 338388 338393) do (
 	reg add "HKCU\SOFTWARE\Microsoft\Windows\CurrentVersion\ContentDeliveryManager" /v "SubscribedContent-%%aEnabled" /t REG_DWORD /d "0" /f
 ) > nul 2> nul
+
 for %%a in (RotatingLockScreenOverlayEnabled OemPreInstalledAppsEnabled PreInstalledAppsEnabled PreInstalledAppsEverEnabled RotatingLockScreenEnabled SoftLandingEnabled SystemPaneSuggestionsEnabled SilentInstalledAppsEnabled ContentDeliveryAllowed) do (
 	reg add "HKCU\SOFTWARE\Microsoft\Windows\CurrentVersion\ContentDeliveryManager" /v "%%a" /t REG_DWORD /d "0" /f
 ) > nul 2> nul
@@ -1131,12 +1138,14 @@ reg add "HKLM\SYSTEM\CurrentControlSet\Control" /v "SvcHostSplitThresholdInKB" /
 
 :: BCDedit
 bcdedit /set disabledynamictick Yes > nul 2> nul
+
 :: Enable X2Apic and Memory Mapping for PCI-E Devices ; Credits to HoneCtrl
 bcdedit /set x2apicpolicy Enable > nul 2> nul
 bcdedit /set uselegacyapicmode No > nul 2> nul
 bcdedit /set configaccesspolicy Default > nul 2> nul
 bcdedit /set usephysicaldestination No > nul 2> nul
 bcdedit /set usefirmwarepcisettings No > nul 2> nul
+
 :: Boot Configuration
 bcdedit /set bootux Disabled > nul 2> nul
 bcdedit /set quietboot Yes > nul 2> nul
@@ -1144,13 +1153,15 @@ bcdedit /set bootmenupolicy Legacy > nul 2> nul
 bcdedit /set recoveryenabled No > nul 2> nul
 bcdedit /set tpmbootentropy ForceDisable > nul 2> nul
 bcdedit /set description gyrOS > nul 2> nul
+
 :: Lower Latency
 ::bcdedit /set tscsyncpolicy legacy > nul 2> nul
+
 :: Better FPS
 bcdedit /set tscsyncpolicy enhanced > nul 2> nul
+
 :: Configure DEP
-::bcdedit /set nx AlwaysOff > nul 2> nul
-::bcdedit /set nx OptIn > nul 2> nul
+bcdedit /set nx AlwaysOff > nul 2> nul
 
 :: Set Win32PrioritySeparation
 reg add "HKLM\SYSTEM\CurrentControlSet\Control\PriorityControl" /v "Win32PrioritySeparation" /t REG_DWORD /d "38" /f > nul 2> nul
@@ -1220,6 +1231,7 @@ reg add "HKLM\SOFTWARE\Microsoft\Windows NT\CurrentVersion\Multimedia\SystemProf
 :: GPU Tweaks, Disable GpuEnergyDrv ; Credits to HoneCtrl
 reg add "HKLM\SYSTEM\CurrentControlSet\Services\GpuEnergyDrv" /v "Start" /t Reg_DWORD /d "4" /f > nul 2> nul
 reg add "HKLM\SYSTEM\CurrentControlSet\Services\GpuEnergyDr" /v "Start" /t Reg_DWORD /d "4" /f > nul 2> nul
+
 for /f %%a in ('reg query "HKLM\SYSTEM\CurrentControlSet\Control\Class" /v "VgaCompatible" /s ^| findstr "HKEY"') do (
 	reg add "%%a" /v "KMD_EnableGDIAcceleration" /t REG_DWORD /d "1" /f
 ) > nul 2> nul
@@ -1230,20 +1242,23 @@ for /f %%a in ('reg query "HKLM\SYSTEM\CurrentControlSet\Control\Class" /v "VgaC
 netsh interface Teredo set state type=enterpriseclient > nul 2> nul
 netsh interface Teredo set state servername=default > nul 2> nul
 netsh interface tcp set heuristics disabled > nul 2> nul
-:: Enable RSS
-netsh interface tcp set global rss=enabled > nul 2> nul
-reg add "HKLM\SYSTEM\CurrentControlSet\Services\Ndis\Parameters" /v "RssBaseCpu" /t REG_DWORD /d "1" /f > nul 2> nul
 netsh interface tcp set global dca=enabled > nul 2> nul
 netsh interface tcp set global rsc=disabled > nul 2> nul
 netsh interface tcp set global timestamps=disabled > nul 2> nul
 netsh interface tcp set supplemental Internet congestionprovider=ctcp > nul 2> nul
 
+:: Enable RSS
+netsh interface tcp set global rss=enabled > nul 2> nul
+reg add "HKLM\SYSTEM\CurrentControlSet\Services\Ndis\Parameters" /v "RssBaseCpu" /t REG_DWORD /d "1" /f > nul 2> nul
+
 :: Network Optimizations
 %PowerShell% "Enable-NetAdapterRss -Name *" > nul 2> nul
 %PowerShell% "Disable-NetAdapterLso -Name *" > nul 2> nul
 %PowerShell% "Set-NetOffloadGlobalSetting -PacketCoalescingFilter Disabled" > nul 2> nul
+
 :: Enable DNS over HTTPS ; Credits to EchoX
 reg add "HKLM\SYSTEM\CurrentControlSet\Services\Dnscache\Parameters" /v "EnableAutoDoh" /t REG_DWORD /d "2" /f > nul 2> nul
+
 :: Enable TCP Extensions ; Credits to EchoX
 reg add "HKLM\SYSTEM\CurrentControlSet\Services\Tcpip\Parameters" /v "Tcp1323Opts" /t REG_DWORD /d "1" /f > nul 2> nul
 
@@ -1431,6 +1446,7 @@ reg add "HKLM\SYSTEM\CurrentControlSet\Control\GraphicsDrivers" /v "DpiMapIommuC
 %PowerShell% "Set-SmbClientConfiguration -EnableSecuritySignature $True -Force" > nul 2> nul
 %PowerShell% "Set-SmbServerConfiguration -EncryptData $True -Force" > nul 2> nul
 %PowerShell% "Set-SmbServerConfiguration -EnableSMB1Protocol $false -Force" > nul 2> nul
+
 reg add "HKLM\SYSTEM\CurrentControlSet\Control\Lsa" /v "RunAsPPL" /t REG_DWORD /d "1" /f > nul 2> nul
 reg add "HKLM\SYSTEM\CurrentControlSet\Control\Lsa" /v "DisableRestrictedAdminOutboundCreds" /t REG_DWORD /d "1" /f > nul 2> nul
 reg add "HKLM\SYSTEM\CurrentControlSet\Control\Lsa" /v "DisableRestrictedAdmin" /t REG_DWORD /d "0" /f > nul 2> nul
@@ -1453,12 +1469,14 @@ if !TOTAL_MEMORY! LSS 8000000 (
 	fsutil behavior set memoryusage 2
 	fsutil behavior set mftzone 2
 ) > nul 2> nul
+
 fsutil behavior set disablelastaccess 1 > nul 2> nul
 fsutil behavior set Bugcheckoncorrupt 0 > nul 2> nul
 fsutil behavior set disable8dot3 1 > nul 2> nul
 fsutil behavior set disablecompression 1 > nul 2> nul
 fsutil behavior set disabledeletenotify 0 > nul 2> nul
 fsutil behavior set encryptpagingfile 0 > nul 2> nul
+
 reg add "HKLM\SYSTEM\CurrentControlSet\Services\rdyboost" /v "Start" /t REG_DWORD /d "4" /f > nul 2> nul
 reg add "HKLM\SYSTEM\CurrentControlSet\Control\Session Manager" /v "ProtectionMode" /t REG_DWORD /d "0" /f > nul 2> nul
 reg add "HKLM\SYSTEM\CurrentControlSet\Control\Session Manager\Memory Management" /v "DisablePagingExecutive" /t REG_DWORD /d "1" /f > nul 2> nul
