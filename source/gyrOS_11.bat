@@ -6,7 +6,7 @@
 setlocal EnableDelayedExpansion
 
 set "VERSION=23.5.2"
-set "SCRIPT_VERSION_DATE=08/05/2023"
+set "SCRIPT_VERSION_DATE=12/05/2023"
 title gyrOS Post Installation Script "!SCRIPT_VERSION_DATE!"
 
 :: Configure Variables
@@ -800,10 +800,14 @@ reg add "HKLM\SOFTWARE\Microsoft\PolicyManager\default\DmaGuard\DeviceEnumeratio
 
 :: Disable System Devices
 for %%i in (
+	"WAN Miniport (PPPOE)"
+	"WAN Miniport (PPTP)"
+	"WAN Miniport (SSTP)"
 	"WAN Miniport (IPv6)"
 	"WAN Miniport (IKEv2)"
 	"WAN Miniport (L2TP)"
 	"WAN Miniport (IP)"
+	"WAN Miniport (Network Monitor)"
 	"Microsoft RRAS Root Enumerator"
 	"NDIS Virtual Network Adapter Enumerator"
 	"System Speaker MemoryDiagnostic"
@@ -826,6 +830,7 @@ for %%i in (
 	"PCI Data Acquisition and Signal Processing Controller"
 	"Intel SMBus"
 	"Intel Management Engine"
+	"Intel Management Engine Interface"
 	"PCI Memory Controller"
 	"PCI standard RAM Controller"
 	"Composite Bus Enumerator"
@@ -834,6 +839,9 @@ for %%i in (
 	"Numeric Data Processor"
 	"System CMOS/real time clock"
 	"PCI Simple Communications Controller"
+	"Microsoft GS Wavetable Synth"
+	"Amdlog"
+	"Remote Desktop Device Redirector Bus"
 ) do (
 	start "" "%WinDir%\gyrOS\DevManView.exe" /disable %%i
 ) > nul 2> nul

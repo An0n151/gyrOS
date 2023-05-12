@@ -6,7 +6,7 @@
 setlocal EnableDelayedExpansion
 
 set "VERSION=23.5.2"
-set "SCRIPT_VERSION_DATE=08/05/2023"
+set "SCRIPT_VERSION_DATE=12/05/2023"
 title gyrOS Post Installation Script "!SCRIPT_VERSION_DATE!"
 
 :: Configure Variables
@@ -618,8 +618,6 @@ reg add "HKCU\SOFTWARE\Microsoft\Narrator\NarratorHome" /v "AutoStart" /t REG_DW
 :: Appearance Optimizations ; Credits to Melody and DuckOS
 %currentuser% reg add "HKCU\SOFTWARE\Microsoft\Windows\CurrentVersion\Explorer\VisualEffects" /v "VisualFXSetting" /t REG_DWORD /d "3" /f > nul 2> nul
 reg add "HKCU\Control Panel\Desktop" /v "UserPreferencesMask" /t REG_BINARY /d "9012038010000000" /f > nul 2> nul
-:: Show seconds in taskbar clock
-reg add "HKCU\Software\Microsoft\Windows\CurrentVersion\Explorer\Advanced" /v "ShowSecondsInSystemClock" /t REG_DWORD /d "1" /f > nul 2> nul
 :: Disable Animations in the Taskbar
 reg add "HKCU\SOFTWARE\Microsoft\Windows\CurrentVersion\Explorer\Advanced" /v "TaskbarAnimations" /t REG_DWORD /d "0" /f > nul 2> nul
 :: Disable "Peek"
@@ -650,6 +648,8 @@ reg add "HKCU\Control Panel\International" /v "iTime" /t REG_SZ /d "1" /f > nul 
 reg add "HKCU\Control Panel\International" /v "sShortDate" /t REG_SZ /d "dd/MM/yyyy" /f > nul 2> nul
 reg add "HKCU\Control Panel\International" /v "sShortTime" /t REG_SZ /d "HH:mm" /f > nul 2> nul
 reg add "HKCU\Control Panel\International" /v "sTimeFormat" /t REG_SZ /d "H:mm:ss" /f > nul 2> nul
+:: Show Seconds in Taskbar Clock
+reg add "HKCU\Software\Microsoft\Windows\CurrentVersion\Explorer\Advanced" /v "ShowSecondsInSystemClock" /t REG_DWORD /d "1" /f > nul 2> nul
 :: Improve Desktop Wallpaper Quality
 reg add "HKCU\Control Panel\Desktop" /v "JPEGImportQuality" /t "REG_DWORD" /d "100" /f > nul 2> nul
 :: Rest of Appearance Optimizations
@@ -954,10 +954,14 @@ reg add "HKLM\SOFTWARE\Microsoft\PolicyManager\default\DmaGuard\DeviceEnumeratio
 
 :: Disable System Devices
 for %%i in (
+	"WAN Miniport (PPPOE)"
+	"WAN Miniport (PPTP)"
+	"WAN Miniport (SSTP)"
 	"WAN Miniport (IPv6)"
 	"WAN Miniport (IKEv2)"
 	"WAN Miniport (L2TP)"
 	"WAN Miniport (IP)"
+	"WAN Miniport (Network Monitor)"
 	"Microsoft RRAS Root Enumerator"
 	"NDIS Virtual Network Adapter Enumerator"
 	"System Speaker MemoryDiagnostic"
@@ -980,6 +984,7 @@ for %%i in (
 	"PCI Data Acquisition and Signal Processing Controller"
 	"Intel SMBus"
 	"Intel Management Engine"
+	"Intel Management Engine Interface"
 	"PCI Memory Controller"
 	"PCI standard RAM Controller"
 	"Composite Bus Enumerator"
@@ -988,6 +993,9 @@ for %%i in (
 	"Numeric Data Processor"
 	"System CMOS/real time clock"
 	"PCI Simple Communications Controller"
+	"Microsoft GS Wavetable Synth"
+	"Amdlog"
+	"Remote Desktop Device Redirector Bus"
 ) do (
 	start "" "%WinDir%\gyrOS\DevManView.exe" /disable %%i
 ) > nul 2> nul
@@ -1496,9 +1504,6 @@ reg delete "HKCU\SOFTWARE\Classes\Local Settings\Software\Microsoft\Windows\Shel
 reg delete "HKCU\SOFTWARE\Classes\Local Settings\Software\Microsoft\Windows\Shell\Bags" /f > nul 2> nul
 reg add "HKCU\SOFTWARE\Classes\Local Settings\Software\Microsoft\Windows\Shell\Bags\All Folders\Shell" /v "FolderType" /t "REG_SZ" /d "NotSpecified" /f > nul 2> nul
 reg add "HKCU\SOFTWARE\Classes\Local Settings\Software\Microsoft\Windows\Shell" /v "BagMRU Size" /t "REG_DWORD" /d "2710" /f > nul 2> nul
-
-:: Disable "Do not Connect to Windows Update Internet Locations" / Used to Fixed Microsoft Store
-::reg add "HKLM\SOFTWARE\Policies\Microsoft\Windows\WindowsUpdate" /v "DoNotConnectToWindowsUpdateInternetLocations" /t REG_DWORD /d "0" /f > nul 2> nul
 
 timeout /t 2 >nul
 cls
