@@ -958,7 +958,7 @@ for %%i in (
 	"WAN Miniport (IP)"
 	"Microsoft RRAS Root Enumerator"
 	"NDIS Virtual Network Adapter Enumerator"
-	"System Speaker" MemoryDiagnostic
+	"System Speaker MemoryDiagnostic"
 	"System Speaker"
 	"System Timer"
 	"Motherboard resources"
@@ -987,7 +987,7 @@ for %%i in (
 	"System CMOS/real time clock"
 	"PCI Simple Communications Controller"
 ) do (
-	start "" "%WinDir%\gyrOS\DevManView.exe" /disable "%%i"
+	start "" "%WinDir%\gyrOS\DevManView.exe" /disable %%i
 ) > nul 2> nul
 
 :: Opt-Out of Sending Client Activation Data to Microsoft ; Credits to ArtanisInc
@@ -1513,29 +1513,44 @@ echo.
 
 :: Disable Tasks
 for %%i in (
-	"UpdateOrchestrator\Reboot" 
-	"UpdateOrchestrator\Refresh Settings" 
-	"UpdateOrchestrator\USO_UxBroker_Display" 
-	"UpdateOrchestrator\USO_UxBroker_ReadyToReboot" 
-	"WindowsUpdate\sih" 
-	"WindowsUpdate\sihboot"
+	UpdateOrchestrator\Reboot
+	UpdateOrchestrator\USO_UxBroker_Display
+	UpdateOrchestrator\USO_UxBroker_ReadyToReboot
+	WindowsUpdate\sih
+	WindowsUpdate\sihboot
+	WindowsUpdate\Scheduled
+	WindowsUpdate\sihpostreboot
 ) do (
-	schtasks /Change /TN "Microsoft\Windows\%%i" /disable
+	schtasks /Change /TN "\Microsoft\Windows\%%i" /disable
 ) > nul 2> nul
 
-schtasks /Change /Disable /TN "\Microsoft\Windows\Defrag\ScheduledDefrag" > nul 2> nul
-schtasks /Change /Disable /TN "\Microsoft\Windows\WindowsUpdate\Scheduled Start" > nul 2> nul
-schtasks /Change /Disable /TN "\Microsoft\Windows\WindowsUpdate\sihpostreboot" > nul 2> nul
+for %%i in (
+	Consolidator
+	BthSQM
+	KernelCeipTask
+	UsbCeip
+	Uploader
+) do (
+	schtasks /Change /TN "\Microsoft\Windows\Customer Experience Improvement Program\%%i" /disable
+) > nul 2> nul
+
+for %%i in (
+	PcaPatchDbTask
+	StartupAppTask
+	ProgramDataUpdater
+) do (
+	schtasks /Change /TN "\Microsoft\Windows\Application Experience\%%i" /disable
+) > nul 2> nul
+
+schtasks /Change /Disable /TN "\Microsoft\Windows\Application Experience\Microsoft Compatibility Appraiser" > nul 2> nul
+schtasks /Change /Disable /TN "\Microsoft\Windows\UpdateOrchestrator\Refresh Settings" > nul 2> nul
 schtasks /Change /Disable /TN "\Microsoft\Windows\UpdateOrchestrator\Schedule Scan" > nul 2> nul
 schtasks /Change /Disable /TN "\Microsoft\Windows\UpdateOrchestrator\Schedule Scan Static Task" > nul 2> nul
+schtasks /Change /Disable /TN "\Microsoft\Windows\Defrag\ScheduledDefrag" > nul 2> nul
 schtasks /Change /Disable /TN "\Microsoft\Windows\DiskDiagnostic\Microsoft-Windows-DiskDiagnosticDataCollector" > nul 2> nul
 schtasks /Change /Disable /TN "\Microsoft\Windows\MemoryDiagnostic\ProcessMemoryDiagnosticEvents" > nul 2> nul
 schtasks /Change /Disable /TN "\Microsoft\Windows\MemoryDiagnostic\RunFullMemoryDiagnostic" > nul 2> nul
 schtasks /Change /Disable /TN "\Microsoft\Windows\Power Efficiency Diagnostics\AnalyzeSystem" > nul 2> nul
-schtasks /Change /Disable /TN "\Microsoft\Windows\Application Experience\PcaPatchDbTask" > nul 2> nul
-schtasks /Change /Disable /TN "\Microsoft\Windows\Application Experience\StartupAppTask" > nul 2> nul
-schtasks /Change /Disable /TN "\Microsoft\Windows\Application Experience\Microsoft Compatibility Appraiser" > nul 2> nul
-schtasks /Change /Disable /TN "\Microsoft\Windows\Application Experience\ProgramDataUpdater" > nul 2> nul
 schtasks /Change /Disable /TN "\Microsoft\Windows\Device Information\Device" > nul 2> nul
 schtasks /Change /Disable /TN "\Microsoft\Windows\Device Information\Device User" > nul 2> nul
 schtasks /Change /Disable /TN "\Microsoft\Windows\Shell\IndexerAutomaticMaintenance" > nul 2> nul
@@ -1584,11 +1599,6 @@ schtasks /Change /Disable /TN "\Microsoft\Windows\PushToInstall\LoginCheck" > nu
 schtasks /Change /Disable /TN "\Microsoft\Windows\Shell\FamilySafetyMonitor" > nul 2> nul
 schtasks /Change /Disable /TN "\Microsoft\Windows\Shell\FamilySafetyRefresh" > nul 2> nul
 schtasks /Change /Disable /TN "\Microsoft\Windows\Windows Media Sharing\UpdateLibrary" > nul 2> nul
-schtasks /Change /Disable /TN "\Microsoft\Windows\Customer Experience Improvement Program\Consolidator" > nul 2> nul
-schtasks /Change /Disable /TN "\Microsoft\Windows\Customer Experience Improvement Program\BthSQM" > nul 2> nul
-schtasks /Change /Disable /TN "\Microsoft\Windows\Customer Experience Improvement Program\KernelCeipTask" > nul 2> nul
-schtasks /Change /Disable /TN "\Microsoft\Windows\Customer Experience Improvement Program\UsbCeip" > nul 2> nul
-schtasks /Change /Disable /TN "\Microsoft\Windows\Customer Experience Improvement Program\Uploader" > nul 2> nul
 
 timeout /t 2 >nul
 cls
