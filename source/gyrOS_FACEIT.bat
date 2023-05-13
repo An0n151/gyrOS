@@ -478,6 +478,9 @@ reg add "HKCU\AppEvents\Schemes\Apps\sapisvr\PanelSound\.current" /f > nul 2> nu
 :: Set Sound Communications to "Do nothing"
 reg add "HKCU\SOFTWARE\Microsoft\Multimedia\Audio" /v "UserDuckingPreference" /t REG_DWORD /d "3" /f > nul 2> nul
 
+:: Request a higher timer resolution on a system level ; Credits to Amit
+reg add HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\Control\Session Manager\kernel /v GlobalTimerResolutionRequests /t REG_DWORD /d 1 /f
+
 :: Disable Startup Sound
 reg add "HKLM\SOFTWARE\Microsoft\Windows\CurrentVersion\Authentication\LogonUI\BootAnimation" /v "DisableStartupSound" /t REG_DWORD /d "1" /f > nul 2> nul
 
