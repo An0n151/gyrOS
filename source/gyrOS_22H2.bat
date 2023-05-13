@@ -1124,7 +1124,7 @@ reg add "HKLM\SOFTWARE\Microsoft\RemovalTools\MpGears" /v "SpyNetReportingLocati
 :: Disable Sleep Study
 for %%a in ("SleepStudy" "Kernel-Processor-Power" "UserModePowerService") do (
 	wevtutil set-log Microsoft-Windows-%%a/Diagnostic /e:false
-)
+) > nul 2> nul
 
 reg add "HKLM\SYSTEM\CurrentControlSet\Control\Power" /v "SleepStudyEnabled" /t REG_DWORD /d "0" /f > nul 2> nul
 reg add "HKLM\SYSTEM\CurrentControlSet\Control\Session Manager\Power" /v "SleepStudyDisabled" /t REG_DWORD /d "1" /f > nul 2> nul
