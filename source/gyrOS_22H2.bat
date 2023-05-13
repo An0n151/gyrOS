@@ -479,6 +479,9 @@ reg add "HKLM\SOFTWARE\Microsoft\Windows\CurrentVersion\Authentication\LogonUI\B
 :: Disable "Notify me if my PC is charging slowly over USB"
 reg add "HKCU\SOFTWARE\Microsoft\Shell\USB" /v "NotifyOnWeakCharger" /t REG_DWORD /d "0" /f > nul 2> nul
 
+:: Request a higher timer resolution on a system level ; Credits to Amit
+reg add HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\Control\Session Manager\kernel /v GlobalTimerResolutionRequests /t REG_DWORD /d 1 /f
+
 :: Disable "Autocorrect Misspelled Words"
 reg add "HKCU\SOFTWARE\Microsoft\TabletTip\1.7" /v "EnableAutocorrection" /t REG_DWORD /d "0" /f > nul 2> nul
 
