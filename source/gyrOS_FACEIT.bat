@@ -6,7 +6,7 @@
 setlocal EnableDelayedExpansion
 
 set "VERSION=23.5.2 FACEIT"
-set "SCRIPT_VERSION_DATE=12/05/2023"
+set "SCRIPT_VERSION_DATE=15/05/2023"
 title gyrOS Post Installation Script "!SCRIPT_VERSION_DATE!"
 
 :: Configure Variables
