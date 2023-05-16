@@ -23,11 +23,15 @@ reg add "HKLM\SOFTWARE\Policies\Microsoft\Windows\DeviceGuard" /v "LsaCfgFlags" 
 reg add "HKLM\SYSTEM\CurrentControlSet\Control\DeviceGuard" /v "RequireMicrosoftSignedBootChain" /t REG_DWORD /d "0" /f
 reg add "HKLM\SOFTWARE\Policies\Microsoft\FVE" /v "DisableExternalDMAUnderLock" /t REG_DWORD /d "0" /f
 
-%WinDir%\gyrOS\DevManView.exe /disable "Microsoft Hyper-V NT Kernel Integration VSP"
-%WinDir%\gyrOS\DevManView.exe /disable "Microsoft Hyper-V PCI Server"
-%WinDir%\gyrOS\DevManView.exe /disable "Microsoft Hyper-V Virtual Machine Bus Provider"
-%WinDir%\gyrOS\DevManView.exe /disable "Microsoft Hyper-V Virtualization Infrastructure Driver"
-%WinDir%\gyrOS\DevManView.exe /disable "Microsoft Hyper-V Virtual Disk Server"
+for %%i in (
+	"Microsoft Hyper-V NT Kernel Integration VSP"
+	"Microsoft Hyper-V PCI Server"
+	"Microsoft Hyper-V Virtual Machine Bus Provider"
+	"Microsoft Hyper-V Virtualization Infrastructure Driver"
+	"Microsoft Hyper-V Virtual Disk Server"
+) do (
+	start "" "%WinDir%\gyrOS\DevManView.exe" /disable %%i
+)
 
 echo.
 echo. Hyper-V has been disabled.

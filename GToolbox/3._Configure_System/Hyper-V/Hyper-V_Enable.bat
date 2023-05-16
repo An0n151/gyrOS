@@ -27,11 +27,15 @@ reg add "HKLM\SYSTEM\CurrentControlSet\Control\DeviceGuard\Scenarios\HypervisorE
 reg add "HKLM\SYSTEM\CurrentControlSet\Control\DeviceGuard\Scenarios\HypervisorEnforcedCodeIntegrity" /v "WasEnabledBy" /t REG_DWORD /d "1" /f
 reg add "HKLM\SYSTEM\CurrentControlSet\Control\DeviceGuard" /v "RequireMicrosoftSignedBootChain" /t REG_DWORD /d "1" /f
 
-%WinDir%\gyrOS\DevManView.exe /enable "Microsoft Hyper-V NT Kernel Integration VSP"
-%WinDir%\gyrOS\DevManView.exe /enable "Microsoft Hyper-V PCI Server"
-%WinDir%\gyrOS\DevManView.exe /enable "Microsoft Hyper-V Virtual Machine Bus Provider"
-%WinDir%\gyrOS\DevManView.exe /enable "Microsoft Hyper-V Virtualization Infrastructure Driver"
-%WinDir%\gyrOS\DevManView.exe /enable "Microsoft Hyper-V Virtual Disk Server"
+for %%i in (
+	"Microsoft Hyper-V NT Kernel Integration VSP"
+	"Microsoft Hyper-V PCI Server"
+	"Microsoft Hyper-V Virtual Machine Bus Provider"
+	"Microsoft Hyper-V Virtualization Infrastructure Driver"
+	"Microsoft Hyper-V Virtual Disk Server"
+) do (
+	start "" "%WinDir%\gyrOS\DevManView.exe" /enable %%i
+)
 
 echo.
 echo. Hyper-V has been enabled.
