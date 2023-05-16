@@ -1,11 +1,11 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <Preset isAutoSaved="true" xmlns="urn:schemas-nliteos-com:pn.v1">
-	<Date>04/27/2023 22:06:16</Date>
+	<Date>05/16/2023 12:36:01</Date>
 	<AppInfo>
-		<Version>2023.4.9208</Version>
+		<Version>2023.5.9235</Version>
 		<Licensed>Yes</Licensed>
 		<Protections>Yes</Protections>
-		<Host>Windows 10 Pro (22H2) x64 - 10.0.19045.2788 (en-US)</Host>
+		<Host>Windows 10 Pro (22H2) x64 - 10.0.19045.2846 (en-US)</Host>
 	</AppInfo>
 	<ImageInfo>
 		<Version mode="offline">Windows 10 Professional (19H2) x64 - 10.0.18363.2274 (en-US)</Version>
@@ -41,7 +41,7 @@
 		<c>cloudnotifications 'Cloud Notifications'</c>
 		<c>commmc32 'COM+ (Component Services) (management console) - 32 bit'</c>
 		<c>compmgmt32 'Computer Management - 32 bit'</c>
-		<c>containers</c>
+		<c>containers 'Containers (Application Guard)'</c>
 		<c>datacenterbridging 'Data Center Bridging (DCB)'</c>
 		<c>desktopactivitymoderator 'Desktop Activity Moderator (DAM)'</c>
 		<c>desktopimgdownldr 'Desktop image downloader'</c>
@@ -570,7 +570,6 @@
 		<c>pinsignin 'PIN sign-in support'</c>
 		<c>pla 'Performance Logs and Alerts'</c>
 		<c>pos 'Point of Service (POS)'</c>
-		<c>print3d 'Print 3D'</c>
 		<c>printmgmt 'Print Management'</c>
 		<c>printtopdf 'Print to PDF'</c>
 		<c>printworkflow 'Print Workflow Service'</c>
@@ -602,6 +601,7 @@
 		<c>search 'Windows Search'</c>
 		<c>searchshell 'Shell Search'</c>
 		<c>secedit 'Local Security Policy Editor'</c>
+		<c>securestartup 'BitLocker Drive Encryption'</c>
 		<c>securitycenter 'Security Center'</c>
 		<c>sendmail 'Send To Mail and Desktop'</c>
 		<c>servicesmmc32 'Services (management console) - 32 bit'</c>
@@ -798,13 +798,13 @@
 			<component name="Microsoft-Windows-Deployment">
 				<RunSynchronous>
 					<RunSynchronousCommand>
-						<Order>1</Order>
-						<Path>net user Administrator /active:Yes</Path>
+						<Order>2</Order>
+						<Path>net user Administrator /fullname:"gyrOS"</Path>
 						<WillReboot>Never</WillReboot>
 					</RunSynchronousCommand>
 					<RunSynchronousCommand>
-						<Order>2</Order>
-						<Path>net user Administrator /fullname:"gyrOS"</Path>
+						<Order>1</Order>
+						<Path>net user Administrator /active:Yes</Path>
 						<WillReboot>Never</WillReboot>
 					</RunSynchronousCommand>
 				</RunSynchronous>
@@ -1252,7 +1252,6 @@
 				<Tweak name="Explorer\NoReadingPane">1</Tweak>
 				<Tweak name="Explorer\HubMode">1</Tweak>
 				<Tweak name="Explorer\ConfirmFileDelete">0</Tweak>
-				<Tweak name="Explorer\DisableSearchBoxSuggestions">1</Tweak>
 				<Tweak name="Explorer\NoNetConnectDisconnect">1</Tweak>
 				<Tweak name="Advanced\ShowInfoTip">1</Tweak>
 				<Tweak name="Advanced\ShowSyncProviderNotifications">0</Tweak>
@@ -1291,6 +1290,7 @@
 				<Tweak name="System\AllowExperimentation">0</Tweak>
 				<Tweak name="System\AllowLocation">0</Tweak>
 				<Tweak name="DataCollection\AllowTelemetry">4</Tweak>
+				<Tweak name="1.7\EnableAutocorrection">0</Tweak>
 				<Tweak name="CloudContent\DisableWindowsConsumerFeatures">1</Tweak>
 				<Tweak name="features\PaidWifi">0</Tweak>
 				<Tweak name="features\WiFiSenseOpen">0</Tweak>
@@ -1306,6 +1306,7 @@
 				<Tweak name="Search\DeviceHistoryEnabled">0</Tweak>
 				<Tweak name="Advanced\ShowCortanaButton">0</Tweak>
 				<Tweak name="Rules\NumberOfSIUFInPeriod">0</Tweak>
+				<Tweak name="1.7\EnableSpellchecking">0</Tweak>
 				<Tweak name="BackgroundAccessApplications\GlobalUserDisabled">1</Tweak>
 				<Tweak name="AdvertisingInfo\Enabled">0</Tweak>
 				<Tweak name="Privacy\TailoredExperiencesWithDiagnosticDataEnabled">0</Tweak>
@@ -1323,6 +1324,8 @@
 				<Tweak name="Windows Search\AllowCloudSearch">0</Tweak>
 				<Tweak name="SystemIndex\EnableFindMyFiles">0</Tweak>
 				<Tweak name="Search\BingSearchEnabled">0</Tweak>
+				<Tweak name="SearchSettings\IsDeviceSearchHistoryEnabled">0</Tweak>
+				<Tweak name="Explorer\DisableSearchBoxSuggestions">1</Tweak>
 				<Tweak name="TIPC\Enabled">0</Tweak>
 				<Tweak name="System\EnableCdp">0</Tweak>
 				<Tweak name="Shell\BagMRU Size">1</Tweak>
@@ -1505,7 +1508,6 @@
 			<Task>deledition_boot.wim_01_9_64</Task>
 			<Task>imageFormatWim</Task>
 			<Task>components_boot.wim_02_2_64</Task>
-			<Task>imageOptionsCreateIso</Task>
 		</ImageTasks>
 		<AutoIsoFile>gyrOS 1909.iso</AutoIsoFile>
 		<AutoIsoLabel>gyrOS</AutoIsoLabel>
