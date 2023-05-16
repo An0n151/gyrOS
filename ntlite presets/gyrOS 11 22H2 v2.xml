@@ -1,15 +1,14 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <Preset isAutoSaved="true" xmlns="urn:schemas-nliteos-com:pn.v1">
-	<Date>05/11/2023 11:57:17</Date>
+	<Date>05/16/2023 18:07:09</Date>
 	<AppInfo>
-		<Version>2023.5.9231</Version>
+		<Version>2023.5.9235</Version>
 		<Licensed>Yes</Licensed>
 		<Protections>Yes</Protections>
 		<Host>Windows 10 Pro (22H2) x64 - 10.0.19045.2846 (en-US)</Host>
 	</AppInfo>
 	<ImageInfo>
 		<Version mode="offline">Windows 11 Professional (22H2) x64 - 10.0.22621.1702 (en-US)</Version>
-		<GUID>{BBBDAD86-13E1-758A-EB4F-5B994444A271}</GUID>
 	</ImageInfo>
 	<RemoveComponents AppRemovalMode="DISM">
 		<c>aarsvc 'Agent Activation Runtime'</c>
@@ -601,6 +600,7 @@
 		<c>waasassessment 'Windows Update Medic Service'</c>
 		<c>wallet 'Wallet Service'</c>
 		<c>wallpapers 'Wallpapers (Themes)'</c>
+		<c>warpjitsvc 'DirectX WARP JIT Service'</c>
 		<c>webcamexperience 'Webcam Experience'</c>
 		<c>webthreatdefense 'Web Threat Defense Service'</c>
 		<c>wfmmc32 'Windows Firewall (management console) - 32 bit'</c>
@@ -737,13 +737,13 @@
 			<component name="Microsoft-Windows-Deployment">
 				<RunSynchronous>
 					<RunSynchronousCommand>
-						<Order>1</Order>
-						<Path>net user Administrator /active:Yes</Path>
+						<Order>2</Order>
+						<Path>net user Administrator /fullname:"gyrOS"</Path>
 						<WillReboot>Never</WillReboot>
 					</RunSynchronousCommand>
 					<RunSynchronousCommand>
-						<Order>2</Order>
-						<Path>net user Administrator /fullname:"gyrOS"</Path>
+						<Order>1</Order>
+						<Path>net user Administrator /active:Yes</Path>
 						<WillReboot>Never</WillReboot>
 					</RunSynchronousCommand>
 				</RunSynchronous>
@@ -838,6 +838,7 @@
 				<Tweak name="Search\SearchboxTaskbarMode">1</Tweak>
 				<Tweak name="DWM\ColorPrevalence">0</Tweak>
 				<Tweak name="People\PeopleBand">0</Tweak>
+				<Tweak name="Advanced\Start_Layout">1</Tweak>
 				<Tweak name="Advanced\TaskbarAl">1</Tweak>
 				<Tweak name="Advanced\TaskbarMn">0</Tweak>
 				<Tweak name="Advanced\TaskbarDa">0</Tweak>
@@ -1339,7 +1340,6 @@
 				<Tweak name="ReserveManager\ShippedWithReserves">0</Tweak>
 				<Tweak name="LabConfig\BypassRAMCheck">1</Tweak>
 				<Tweak name="LabConfig\BypassTPMCheck">1</Tweak>
-				<Tweak name="MoSetup\AllowUpgradesWithUnsupportedTPMOrCPU">1</Tweak>
 				<Tweak name="StoragePolicy\01">0</Tweak>
 				<Tweak name="StoragePolicy\512">0</Tweak>
 				<Tweak name="StoragePolicy\256">0</Tweak>
@@ -1484,8 +1484,8 @@
 		<AutoIsoLabel>gyrOS 11</AutoIsoLabel>
 		<AutoSplitSize>4000</AutoSplitSize>
 		<CleanHotfixedLeftovers>3</CleanHotfixedLeftovers>
-		<OptimizeAppX>false</OptimizeAppX>
-		<ReuseDriverCache>false</ReuseDriverCache>
+		<OptimizeAppX>true</OptimizeAppX>
+		<ReuseDriverCache>true</ReuseDriverCache>
 	</ApplyOptions>
 	<Execution>
 		<Remove></Remove>
