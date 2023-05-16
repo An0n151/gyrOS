@@ -10,7 +10,7 @@ set "SCRIPT_VERSION_DATE=15/05/2023"
 title gyrOS Post Installation Script "!SCRIPT_VERSION_DATE!"
 
 :: Configure Variables
-set "currentuser=%WinDir%\gyrOS\NSudo\NSudoLG.exe -U:C -P:E -Wait"
+set "currentuser=%WinDir%\gyrOS\MinSudo\MinSudo.exe --trustedinstaller --nologo"
 set "PowerShell=%WinDir%\System32\WindowsPowerShell\v1.0\PowerShell.exe -NoProfile -NonInteractive -ExecutionPolicy Bypass -Command"
 
 echo _____________________________________________________________________________________________________
@@ -508,7 +508,7 @@ reg add "HKLM\SOFTWARE\Classes\.reg\ShellNew" /v "NullFile" /t REG_SZ /d "" /f >
 :: Add Option "Merge as TrustedInstaller" ; Credits to DuckOS
 reg add "HKCR\regfile\Shell\RunAs" /ve /t REG_SZ /d "Merge as TrustedInstaller" /f > nul 2> nul
 reg add "HKCR\regfile\Shell\RunAs" /v "HasLUAShield" /t REG_SZ /d "1" /f > nul 2> nul
-reg add "HKCR\regfile\Shell\RunAs\Command" /ve /t REG_SZ /d "%WinDir%\gyrOS\NSudo\NSudoLG.exe -U:T -P:E reg import "%%1"" /f > nul 2> nul
+reg add "HKCR\regfile\Shell\RunAs\Command" /ve /t REG_SZ /d "%WinDir%\gyrOS\MinSudo\MinSudo.exe --trustedinstaller --nologo reg import "%%1"" /f > nul 2> nul
 
 :: Remove "Restore Previous Versions" from Context Menu ; Credits to Melody
 reg delete "HKCR\AllFilesystemObjects\shellex\PropertySheetHandlers\{596AB062-B4D2-4215-9F74-E9109B0A8153}" /f > nul 2> nul
@@ -741,12 +741,12 @@ reg add "HKLM\SYSTEM\CurrentControlSet\Control\Session Manager\Kernel" /v "Kerne
 reg add "HKLM\SYSTEM\CurrentControlSet\Control\Session Manager\Memory Management" /v "FeatureSettings" /t REG_DWORD /d "0" /f > nul 2> nul
 reg add "HKLM\SYSTEM\CurrentControlSet\Control\Session Manager\Memory Management" /v "FeatureSettingsOverride" /t REG_DWORD /d "3" /f > nul 2> nul
 reg add "HKLM\SYSTEM\CurrentControlSet\Control\Session Manager\Memory Management" /v "FeatureSettingsOverrideMask" /t REG_DWORD /d "3" /f > nul 2> nul
-%WinDir%\gyrOS\NSudo\NSudoLG.exe -U:S -ShowWindowMode:Hide -wait cmd /c "reg add "HKLM\SYSTEM\CurrentControlSet\Services\TrustedInstaller" /v "Start" /t Reg_DWORD /d "3" /f" > nul 2> nul
-%WinDir%\gyrOS\NSudo\NSudoLG.exe -U:S -ShowWindowMode:Hide -wait cmd /c "sc start "TrustedInstaller"" > nul 2> nul
-%WinDir%\gyrOS\NSudo\NSudoLG.exe -U:T -P:E -M:S -ShowWindowMode:Hide -wait cmd /c "del %SYSTEMROOT%\System32\mcupdate_GenuineIntel.dll" > nul 2> nul
-%WinDir%\gyrOS\NSudo\NSudoLG.exe -U:T -P:E -M:S -ShowWindowMode:Hide -wait cmd /c "del %SYSTEMROOT%\System32\mcupdate_AuthenticAMD.dll" > nul 2> nul
+%WinDir%\gyrOS\MinSudo\MinSudo.exe --trustedinstaller --nologo cmd /c "reg add "HKLM\SYSTEM\CurrentControlSet\Services\TrustedInstaller" /v "Start" /t Reg_DWORD /d "3" /f" > nul 2> nul
+%WinDir%\gyrOS\MinSudo\MinSudo.exe --trustedinstaller --nologo cmd /c "sc start "TrustedInstaller"" > nul 2> nul
+%WinDir%\gyrOS\MinSudo\MinSudo.exe --trustedinstaller --nologo cmd /c "del %SYSTEMROOT%\System32\mcupdate_GenuineIntel.dll" > nul 2> nul
+%WinDir%\gyrOS\MinSudo\MinSudo.exe --trustedinstaller --nologo cmd /c "del %SYSTEMROOT%\System32\mcupdate_AuthenticAMD.dll" > nul 2> nul
 taskkill /im GameBarPresenceWriter.exe /f > nul 2> nul
-%WinDir%\gyrOS\NSudo\NSudoLG.exe -U:T -P:E -M:S -ShowWindowMode:Hide -wait cmd /c "del %WinDir%\System32\GameBarPresenceWriter.exe" > nul 2> nul
+%WinDir%\gyrOS\MinSudo\MinSudo.exe --trustedinstaller --nologo cmd /c "del %WinDir%\System32\GameBarPresenceWriter.exe" > nul 2> nul
 %currentuser% reg add "HKLM\SOFTWARE\Microsoft\WindowsRuntime\ActivatableClassId\Windows.Gaming.GameBar.PresenceServer.Internal.PresenceWriter" /v "ActivationType" /t REG_DWORD /d "0" /f > nul 2> nul
 
 :: Configure TaggedEnergy, Power Logging

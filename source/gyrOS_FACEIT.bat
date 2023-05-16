@@ -10,7 +10,7 @@ set "SCRIPT_VERSION_DATE=15/05/2023"
 title gyrOS Post Installation Script "!SCRIPT_VERSION_DATE!"
 
 :: Configure Variables
-set "currentuser=%WinDir%\gyrOS\NSudo\NSudoLG.exe -U:C -P:E -Wait"
+set "currentuser=%WinDir%\gyrOS\MinSudo\MinSudo.exe --trustedinstaller --nologo"
 set "PowerShell=%WinDir%\System32\WindowsPowerShell\v1.0\PowerShell.exe -NoProfile -NonInteractive -ExecutionPolicy Bypass -Command"
 
 echo _____________________________________________________________________________________________________
@@ -546,7 +546,7 @@ reg add "HKLM\SOFTWARE\Classes\.reg\ShellNew" /v "NullFile" /t REG_SZ /d "" /f >
 :: Add Option "Merge as TrustedInstaller" ; Credits to DuckOS
 reg add "HKCR\regfile\Shell\RunAs" /ve /t REG_SZ /d "Merge as TrustedInstaller" /f > nul 2> nul
 reg add "HKCR\regfile\Shell\RunAs" /v "HasLUAShield" /t REG_SZ /d "1" /f > nul 2> nul
-reg add "HKCR\regfile\Shell\RunAs\Command" /ve /t REG_SZ /d "%WinDir%\gyrOS\NSudo\NSudoLG.exe -U:T -P:E reg import "%%1"" /f > nul 2> nul
+reg add "HKCR\regfile\Shell\RunAs\Command" /ve /t REG_SZ /d "%WinDir%\gyrOS\MinSudo\MinSudo.exe --trustedinstaller --nologo reg import "%%1"" /f > nul 2> nul
 
 :: Add "Install CAB File" to Context Menu
 reg delete "HKCR\CABFolder\Shell\RunAs" /f > nul 2> nul
