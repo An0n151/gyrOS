@@ -1281,6 +1281,9 @@ reg add "HKLM\SYSTEM\CurrentControlSet\Services\Ndis\Parameters" /v "RssBaseCpu"
 %PowerShell% "Disable-NetAdapterLso -Name *" > nul 2> nul
 %PowerShell% "Set-NetOffloadGlobalSetting -PacketCoalescingFilter Disabled" > nul 2> nul
 
+:: Disable Window Scaling Heuristics
+reg add "HKLM\System\CurrentControlSet\Services\Tcpip\Parameters" /v "EnableWsd" /t REG_DWORD /d "0" /f > nul 2> nul
+
 :: Enable DNS over HTTPS ; Credits to EchoX
 reg add "HKLM\SYSTEM\CurrentControlSet\Services\Dnscache\Parameters" /v "EnableAutoDoh" /t REG_DWORD /d "2" /f > nul 2> nul
 
