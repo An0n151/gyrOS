@@ -11,6 +11,8 @@ cd /d "%~dp0" && ( if exist "%temp%\getadmin.vbs" del "%temp%\getadmin.vbs" ) &&
 fsutil behavior set disabledeletenotify 0
 fsutil behavior set disablecompression 1
 fsutil behavior set encryptpagingfile 0
+fsutil behavior set quotanotify 5400
+fsutil behavior set disablewriteautotiering 1
 
 reg add "HKLM\SYSTEM\CurrentControlSet\Policies" /v "NtfsDisableCompression" /t REG_DWORD /d "1" /f
 reg add "HKLM\SOFTWARE\Microsoft\Windows\CurrentVersion\ReserveManager" /v "ShippedWithReserves" /t REG_DWORD /d "0" /f
