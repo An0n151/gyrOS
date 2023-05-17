@@ -1,11 +1,11 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <Preset isAutoSaved="true" xmlns="urn:schemas-nliteos-com:pn.v1">
-	<Date>04/28/2023 16:21:52</Date>
+	<Date>05/17/2023 20:02:24</Date>
 	<AppInfo>
-		<Version>2023.4.9208</Version>
+		<Version>2023.5.9249</Version>
 		<Licensed>Yes</Licensed>
 		<Protections>Yes</Protections>
-		<Host>Windows 10 Pro (22H2) x64 - 10.0.19045.2788 (en-US)</Host>
+		<Host>Windows 10 Pro (22H2) x64 - 10.0.19045.2846 (en-US)</Host>
 	</AppInfo>
 	<ImageInfo>
 		<Version mode="offline">Windows 10 Professional (22H2) x64 - 10.0.19045.2846 (en-US)</Version>
@@ -736,13 +736,13 @@
 			<component name="Microsoft-Windows-Deployment">
 				<RunSynchronous>
 					<RunSynchronousCommand>
-						<Order>2</Order>
-						<Path>net user Administrator /fullname:"gyrOS"</Path>
+						<Order>1</Order>
+						<Path>net user Administrator /active:Yes</Path>
 						<WillReboot>Never</WillReboot>
 					</RunSynchronousCommand>
 					<RunSynchronousCommand>
-						<Order>1</Order>
-						<Path>net user Administrator /active:Yes</Path>
+						<Order>2</Order>
+						<Path>net user Administrator /fullname:"gyrOS"</Path>
 						<WillReboot>Never</WillReboot>
 					</RunSynchronousCommand>
 				</RunSynchronous>
@@ -1203,7 +1203,6 @@
 				<Tweak name="Explorer\NoReadingPane">1</Tweak>
 				<Tweak name="Explorer\HubMode">1</Tweak>
 				<Tweak name="Explorer\ConfirmFileDelete">0</Tweak>
-				<Tweak name="Explorer\DisableSearchBoxSuggestions">1</Tweak>
 				<Tweak name="Explorer\NoNetConnectDisconnect">1</Tweak>
 				<Tweak name="Advanced\ShowInfoTip">1</Tweak>
 				<Tweak name="Advanced\ShowSyncProviderNotifications">0</Tweak>
@@ -1242,6 +1241,7 @@
 				<Tweak name="System\AllowExperimentation">0</Tweak>
 				<Tweak name="System\AllowLocation">0</Tweak>
 				<Tweak name="DataCollection\AllowTelemetry">4</Tweak>
+				<Tweak name="1.7\EnableAutocorrection">0</Tweak>
 				<Tweak name="CloudContent\DisableWindowsConsumerFeatures">1</Tweak>
 				<Tweak name="features\PaidWifi">0</Tweak>
 				<Tweak name="features\WiFiSenseOpen">0</Tweak>
@@ -1256,7 +1256,9 @@
 				<Tweak name="Search\HistoryViewEnabled">0</Tweak>
 				<Tweak name="Search\DeviceHistoryEnabled">0</Tweak>
 				<Tweak name="Advanced\ShowCortanaButton">0</Tweak>
+				<Tweak name="Explorer\DisableSearchBoxSuggestions">1</Tweak>
 				<Tweak name="Rules\NumberOfSIUFInPeriod">0</Tweak>
+				<Tweak name="1.7\EnableSpellchecking">0</Tweak>
 				<Tweak name="BackgroundAccessApplications\GlobalUserDisabled">1</Tweak>
 				<Tweak name="AdvertisingInfo\Enabled">0</Tweak>
 				<Tweak name="Privacy\TailoredExperiencesWithDiagnosticDataEnabled">0</Tweak>
