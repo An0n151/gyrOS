@@ -267,13 +267,14 @@ for %%a in ({990A2BD7-E738-46C7-B26F-1CF8FB9F1391} {4116F60B-25B3-4662-B732-99A6
     %currentuser% reg delete "HKLM\SYSTEM\CurrentControlSet\Control\Class\%%a" /f
 ) > nul 2> nul
 
+:: Disable Windows Defender
+bcdedit /set disableelamdrivers Yes > nul 2> nul
+
 :: Configure Windows Defender
 for %%i in ("HKLM\SOFTWARE\Microsoft\Windows Defender" "HKLM\SOFTWARE\Policies\Microsoft\Windows Defender" "HKLM\SOFTWARE\Policies\Microsoft\Windows Defender Security Center" "HKCU\SOFTWARE\Microsoft\Windows Defender Security Center" "HKLM\SOFTWARE\WOW6432Node\Policies\Microsoft\Windows Defender" "HKLM\SOFTWARE\Microsoft\PolicyManager\default\WindowsDefenderSecurityCenter" "HKLM\SOFTWARE\Microsoft\PolicyManager\default\Defender" "HKLM\SOFTWARE\Policies\Microsoft\Microsoft Antimalware" "HKCR\Folder\shell\WindowsDefender" "HKCR\DesktopBackground\Shell\WindowsSecurity" "HKLM\SOFTWARE\Microsoft\Security Center" "HKLM\SYSTEM\CurrentControlSet\Services\wscsvc" "HKLM\SYSTEM\CurrentControlSet\Services\SecurityHealthService") do (
 	%currentuser% reg delete %%i /f
 ) > nul 2> nul
 reg delete "HKLM\SOFTWARE\Microsoft\Windows\CurrentVersion\Run" /v "SecurityHealth" /f > nul 2> nul
-:: Disable Windows Defender
-bcdedit /set disableelamdrivers Yes > nul 2> nul
 
 :: Configure Windows Search
 reg add "HKLM\SOFTWARE\Microsoft\Windows\CurrentVersion\Search" /v "BingSearchEnabled" /t REG_DWORD /d "0" /f > nul 2> nul
