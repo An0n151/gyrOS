@@ -1,8 +1,8 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <Preset isAutoSaved="true" xmlns="urn:schemas-nliteos-com:pn.v1">
-	<Date>05/16/2023 18:07:09</Date>
+	<Date>05/19/2023 18:14:01</Date>
 	<AppInfo>
-		<Version>2023.5.9235</Version>
+		<Version>2023.5.9249</Version>
 		<Licensed>Yes</Licensed>
 		<Protections>Yes</Protections>
 		<Host>Windows 10 Pro (22H2) x64 - 10.0.19045.2846 (en-US)</Host>
@@ -543,6 +543,7 @@
 		<c>rotationmanager 'Auto-Rotation Manager'</c>
 		<c>rpclocator 'Remote Procedure Call (RPC) Locator'</c>
 		<c>screensavers</c>
+		<c>securestartup 'BitLocker Drive Encryption'</c>
 		<c>securitycenter 'Security Center'</c>
 		<c>sendmail 'Send To Mail and Desktop'</c>
 		<c>servicesmmc32 'Services (management console) - 32 bit'</c>
@@ -838,7 +839,7 @@
 				<Tweak name="Search\SearchboxTaskbarMode">1</Tweak>
 				<Tweak name="DWM\ColorPrevalence">0</Tweak>
 				<Tweak name="People\PeopleBand">0</Tweak>
-				<Tweak name="Advanced\TaskbarAl">1</Tweak>
+				<Tweak name="Advanced\TaskbarAl">0</Tweak>
 				<Tweak name="Advanced\TaskbarMn">0</Tweak>
 				<Tweak name="Advanced\TaskbarDa">0</Tweak>
 				<Tweak name="Communications\ConfigureChatAutoInstall">0</Tweak>
@@ -1267,6 +1268,7 @@
 				<Tweak name="Search\HistoryViewEnabled">0</Tweak>
 				<Tweak name="Search\DeviceHistoryEnabled">0</Tweak>
 				<Tweak name="Advanced\ShowCortanaButton">0</Tweak>
+				<Tweak name="Explorer\DisableSearchBoxSuggestions">1</Tweak>
 				<Tweak name="Rules\NumberOfSIUFInPeriod">0</Tweak>
 				<Tweak name="1.7\EnableSpellchecking">0</Tweak>
 				<Tweak name="BackgroundAccessApplications\GlobalUserDisabled">1</Tweak>
@@ -1287,7 +1289,6 @@
 				<Tweak name="SystemIndex\EnableFindMyFiles">0</Tweak>
 				<Tweak name="Search\BingSearchEnabled">0</Tweak>
 				<Tweak name="SearchSettings\IsDeviceSearchHistoryEnabled">0</Tweak>
-				<Tweak name="Explorer\DisableSearchBoxSuggestions">1</Tweak>
 				<Tweak name="TIPC\Enabled">0</Tweak>
 				<Tweak name="System\EnableCdp">0</Tweak>
 				<Tweak name="Shell\BagMRU Size">1</Tweak>
@@ -1478,6 +1479,8 @@
 			<Task>imageSaveRebuild</Task>
 			<Task>deledition_boot.wim_01_9_64</Task>
 			<Task>imageFormatWim</Task>
+			<Task>updates_boot.wim_02_2_64</Task>
+			<Task>msix_boot.wim_02_2_64</Task>
 		</ImageTasks>
 		<AutoIsoFile>gyrOS 11.iso</AutoIsoFile>
 		<AutoIsoLabel>gyrOS 11</AutoIsoLabel>
