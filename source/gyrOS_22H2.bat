@@ -1114,7 +1114,7 @@ reg add "HKLM\SOFTWARE\Microsoft\RemovalTools\MpGears" /v "SpyNetReportingLocati
 %currentuser% reg add "HKLM\SOFTWARE\Policies\Microsoft\AppV\CEIP" /v "CEIPEnable" /t REG_DWORD /d "0" /f
 
 :: Disable Sleep Study
-for %%a in ("SleepStudy" "Kernel-Processor-Power" "UserModePowerService") do (
+for %%a in (SleepStudy Kernel-Processor-Power UserModePowerService) do (
 	wevtutil set-log Microsoft-Windows-%%a/Diagnostic /e:false
 ) > nul 2> nul
 
