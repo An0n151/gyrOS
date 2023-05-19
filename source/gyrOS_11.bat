@@ -432,14 +432,7 @@ reg add "HKCU\AppEvents\Schemes\Apps\sapisvr\PanelSound\.current" /f > nul 2> nu
 reg add "HKCU\SOFTWARE\Microsoft\Multimedia\Audio" /v "UserDuckingPreference" /t REG_DWORD /d "3" /f > nul 2> nul
 
 :: Disable Startup Sound***
-reg add "HKCU\AppEvents\Schemes\Apps\.Default\SystemExit" /v ".current" /t REG_SZ /d "" /f > nul 2> nul
-reg add "HKCU\AppEvents\Schemes\Apps\.Default\WindowsLogoff" /v ".current" /t REG_SZ /d "" /f > nul 2> nul
-reg add "HKCU\AppEvents\Schemes\Apps\.Default\WindowsLogon" /v ".current" /t REG_SZ /d "" /f > nul 2> nul
-reg add "HKCU\AppEvents\Schemes\Apps\.Default\WindowsUnlock" /v ".current" /t REG_SZ /d "" /f > nul 2> nul
-reg add "HKLM\AppEvents\Schemes\Apps\.Default\SystemExit" /v ".current" /t REG_SZ /d "" /f > nul 2> nul
-reg add "HKLM\AppEvents\Schemes\Apps\.Default\WindowsLogoff" /v ".current" /t REG_SZ /d "" /f > nul 2> nul
-reg add "HKLM\AppEvents\Schemes\Apps\.Default\WindowsLogon" /v ".current" /t REG_SZ /d "" /f > nul 2> nul
-reg add "HKLM\AppEvents\Schemes\Apps\.Default\WindowsUnlock" /v ".current" /t REG_SZ /d "" /f > nul 2> nul
+
 
 :: Disable "Notify me if my PC is charging slowly over USB"
 reg add "HKCU\SOFTWARE\Microsoft\Shell\USB" /v "NotifyOnWeakCharger" /t REG_DWORD /d "0" /f > nul 2> nul
