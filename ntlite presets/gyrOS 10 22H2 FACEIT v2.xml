@@ -1,14 +1,14 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <Preset isAutoSaved="true" xmlns="urn:schemas-nliteos-com:pn.v1">
-	<Date>04/27/2023 10:46:32</Date>
+	<Date>05/20/2023 13:03:22</Date>
 	<AppInfo>
-		<Version>2023.4.9208</Version>
+		<Version>2023.5.9249</Version>
 		<Licensed>Yes</Licensed>
 		<Protections>Yes</Protections>
-		<Host>Windows 10 Pro (22H2) x64 - 10.0.19045.2788 (en-US)</Host>
+		<Host>Windows 10 Pro (22H2) x64 - 10.0.19045.2846 (en-US)</Host>
 	</AppInfo>
 	<ImageInfo>
-		<Version mode="offline">Windows 10 Professional (22H2) x64 - 10.0.19045.2846 (en-US)</Version>
+		<Version mode="offline">Windows 10 Professional (22H2) x64 - 10.0.19045.2965 (en-US)</Version>
 	</ImageInfo>
 	<RemoveComponents AppRemovalMode="DISM">
 		<c>aarsvc 'Agent Activation Runtime'</c>
@@ -44,7 +44,6 @@
 		<c>devmgmt32 'Device Manager - 32 bit'</c>
 		<c>directaccess 'Direct Access Connection'</c>
 		<c>diskdiagnosis 'Disk failure diagnostics'</c>
-		<c>diskmgmt32 'Disk Management - 32 bit'</c>
 		<c>diskquota32 'Disk Quota - 32 bit'</c>
 		<c>driver_1394.inf</c>
 		<c>driver_c_1394.inf</c>
@@ -53,6 +52,25 @@
 		<c>driver_c_computeaccelerator.inf</c>
 		<c>driver_c_fdc.inf</c>
 		<c>driver_c_floppydisk.inf</c>
+		<c>driver_c_fsactivitymonitor.inf</c>
+		<c>driver_c_fsantivirus.inf</c>
+		<c>driver_c_fscfsmetadataserver.inf</c>
+		<c>driver_c_fscompression.inf</c>
+		<c>driver_c_fscontentscreener.inf</c>
+		<c>driver_c_fscontinuousbackup.inf</c>
+		<c>driver_c_fscopyprotection.inf</c>
+		<c>driver_c_fsencryption.inf</c>
+		<c>driver_c_fshsm.inf</c>
+		<c>driver_c_fsinfrastructure.inf</c>
+		<c>driver_c_fsopenfilebackup.inf</c>
+		<c>driver_c_fsphysicalquotamgmt.inf</c>
+		<c>driver_c_fsquotamgmt.inf</c>
+		<c>driver_c_fsreplication.inf</c>
+		<c>driver_c_fssecurityenhancer.inf</c>
+		<c>driver_c_fssystem.inf</c>
+		<c>driver_c_fssystemrecovery.inf</c>
+		<c>driver_c_fsundelete.inf</c>
+		<c>driver_c_fsvirtualization.inf</c>
 		<c>driver_c_infrared.inf</c>
 		<c>driver_c_linedisplay.inf</c>
 		<c>driver_c_magneticstripereader.inf</c>
@@ -327,29 +345,11 @@
 		<c>fsmgmt 'Shared Folders UI'</c>
 		<c>fsmgmt32 'Shared Folders UI - 32 bit'</c>
 		<c>gameexplorer 'Game Explorer'</c>
+		<c>guardedhost 'Guarded Host'</c>
 		<c>help 'Windows Help content'</c>
 		<c>homegroup</c>
 		<c>hwsupport_fax 'Fax'</c>
 		<c>hwsupport_floppy 'Floppy disk'</c>
-		<c>driver_c_fsactivitymonitor.inf</c>
-		<c>driver_c_fsantivirus.inf</c>
-		<c>driver_c_fscfsmetadataserver.inf</c>
-		<c>driver_c_fscompression.inf</c>
-		<c>driver_c_fscontentscreener.inf</c>
-		<c>driver_c_fscontinuousbackup.inf</c>
-		<c>driver_c_fscopyprotection.inf</c>
-		<c>driver_c_fsencryption.inf</c>
-		<c>driver_c_fshsm.inf</c>
-		<c>driver_c_fsinfrastructure.inf</c>
-		<c>driver_c_fsopenfilebackup.inf</c>
-		<c>driver_c_fsphysicalquotamgmt.inf</c>
-		<c>driver_c_fsquotamgmt.inf</c>
-		<c>driver_c_fsreplication.inf</c>
-		<c>driver_c_fssecurityenhancer.inf</c>
-		<c>driver_c_fssystem.inf</c>
-		<c>driver_c_fssystemrecovery.inf</c>
-		<c>driver_c_fsundelete.inf</c>
-		<c>driver_c_fsvirtualization.inf</c>
 		<c>hwsupport_infrared 'Infrared devices'</c>
 		<c>hwsupport_modem 'Modem'</c>
 		<c>hwsupport_modemsettings 'Shared modem settings (mdmgl*.inf)'</c>
@@ -536,6 +536,7 @@
 		<c>rpclocator 'Remote Procedure Call (RPC) Locator'</c>
 		<c>screensavers</c>
 		<c>secedit 'Local Security Policy Editor'</c>
+		<c>securestartup 'BitLocker Drive Encryption'</c>
 		<c>securitycenter 'Security Center'</c>
 		<c>sendmail 'Send To Mail and Desktop'</c>
 		<c>servicesmmc32 'Services (management console) - 32 bit'</c>
@@ -598,6 +599,7 @@
 		<c>wordpad32 'Wordpad - 32 bit'</c>
 		<c>wpdbusenum 'Portable Device Enumerator Service'</c>
 		<c>wwanautoconfig 'WWAN AutoConfig'</c>
+		<c>zipfolder 'Zip &amp; Cab folder'</c>
 	</RemoveComponents>
 	<Compatibility protectHidden="true">
 		<ComponentFeatures>
@@ -1187,7 +1189,6 @@
 				<Tweak name="Explorer\NoReadingPane">1</Tweak>
 				<Tweak name="Explorer\HubMode">1</Tweak>
 				<Tweak name="Explorer\ConfirmFileDelete">0</Tweak>
-				<Tweak name="Explorer\DisableSearchBoxSuggestions">1</Tweak>
 				<Tweak name="Explorer\NoNetConnectDisconnect">1</Tweak>
 				<Tweak name="Advanced\ShowInfoTip">1</Tweak>
 				<Tweak name="Advanced\ShowSyncProviderNotifications">0</Tweak>
@@ -1226,6 +1227,7 @@
 				<Tweak name="System\AllowExperimentation">0</Tweak>
 				<Tweak name="System\AllowLocation">0</Tweak>
 				<Tweak name="DataCollection\AllowTelemetry">4</Tweak>
+				<Tweak name="1.7\EnableAutocorrection">0</Tweak>
 				<Tweak name="CloudContent\DisableWindowsConsumerFeatures">1</Tweak>
 				<Tweak name="features\PaidWifi">0</Tweak>
 				<Tweak name="features\WiFiSenseOpen">0</Tweak>
@@ -1240,7 +1242,9 @@
 				<Tweak name="Search\HistoryViewEnabled">0</Tweak>
 				<Tweak name="Search\DeviceHistoryEnabled">0</Tweak>
 				<Tweak name="Advanced\ShowCortanaButton">0</Tweak>
+				<Tweak name="Explorer\DisableSearchBoxSuggestions">1</Tweak>
 				<Tweak name="Rules\NumberOfSIUFInPeriod">0</Tweak>
+				<Tweak name="1.7\EnableSpellchecking">0</Tweak>
 				<Tweak name="BackgroundAccessApplications\GlobalUserDisabled">1</Tweak>
 				<Tweak name="AdvertisingInfo\Enabled">0</Tweak>
 				<Tweak name="Privacy\TailoredExperiencesWithDiagnosticDataEnabled">0</Tweak>
@@ -1258,6 +1262,7 @@
 				<Tweak name="Windows Search\AllowCloudSearch">0</Tweak>
 				<Tweak name="SystemIndex\EnableFindMyFiles">0</Tweak>
 				<Tweak name="Search\BingSearchEnabled">0</Tweak>
+				<Tweak name="SearchSettings\IsDeviceSearchHistoryEnabled">0</Tweak>
 				<Tweak name="TIPC\Enabled">0</Tweak>
 				<Tweak name="System\EnableCdp">0</Tweak>
 				<Tweak name="Shell\BagMRU Size">1</Tweak>
@@ -1297,6 +1302,7 @@
 				<Tweak name="Appx\AllowAutomaticAppArchiving">0</Tweak>
 				<Tweak name="Winlogon\RestartApps">0</Tweak>
 				<Tweak name="Personalization\NoLockScreen">1</Tweak>
+				<Tweak name="System\HideFastUserSwitching">1</Tweak>
 				<Tweak name="System\EnableFirstLogonAnimation">0</Tweak>
 				<Tweak name="GraphicsDrivers\HwSchMode">2</Tweak>
 				<Tweak name="System\EnableLinkedConnections">0</Tweak>
@@ -1459,7 +1465,6 @@
 			<Task>deledition_boot.wim_01_9_64</Task>
 			<Task>imageFormatWim</Task>
 			<Task>components_boot.wim_02_2_64</Task>
-			<Task>imageOptionsCreateIso</Task>
 		</ImageTasks>
 		<AutoIsoFile>C:\Users\Administrator\Desktop\gyrOS 22H2 FACEIT.iso</AutoIsoFile>
 		<AutoIsoLabel>gyrOS</AutoIsoLabel>
