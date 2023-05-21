@@ -431,9 +431,6 @@ reg add "HKCU\AppEvents\Schemes\Apps\sapisvr\PanelSound\.current" /f > nul 2> nu
 :: Set Sound Communications to "Do nothing"
 reg add "HKCU\SOFTWARE\Microsoft\Multimedia\Audio" /v "UserDuckingPreference" /t REG_DWORD /d "3" /f > nul 2> nul
 
-:: Disable Startup Sound***
-
-
 :: Disable "Notify me if my PC is charging slowly over USB"
 reg add "HKCU\SOFTWARE\Microsoft\Shell\USB" /v "NotifyOnWeakCharger" /t REG_DWORD /d "0" /f > nul 2> nul
 
@@ -990,7 +987,7 @@ bcdedit /set recoveryenabled No > nul 2> nul
 bcdedit /set tpmbootentropy ForceDisable > nul 2> nul
 bcdedit /set description gyrOS > nul 2> nul
 
-:: Disable 57-bits 5-level paging and avoid the use of uncontiguous portions of low-memory
+:: Disable 57-bits 5-level Paging and Avoid the Use of Uncontiguous Portions of Low-Memory
 bcdedit /set linearaddress57 OptOut > nul 2> nul
 bcdedit /set increaseuserva 268435328 > nul 2> nul
 bcdedit /set firstmegabytepolicy UseAll > nul 2> nul
@@ -1040,11 +1037,6 @@ reg add "HKLM\SOFTWARE\Policies\Microsoft\Windows NT\DiskQuota" /v "LogEventOver
 reg add "HKLM\SOFTWARE\Microsoft\Windows NT\CurrentVersion\Schedule\Maintenance" /v "MaintenanceDisabled" /t REG_DWORD /d "1" /f > nul 2> nul
 reg add "HKLM\SOFTWARE\Microsoft\Windows NT\CurrentVersion\Schedule\Maintenance" /v "WakeUp" /t REG_DWORD /d "0" /f > nul 2> nul
 
-:: Remove IRQ Priorities
-for /f %%i in ('reg query "HKLM\SYSTEM\CurrentControlSet\Control\PriorityControl" /f "irq"^| findstr "IRQ"') do (
-	reg delete "HKLM\SYSTEM\CurrentControlSet\Control\PriorityControl" /v "%%i" /f
-) > nul 2> nul
-
 :: Better Cache Management
 reg add "HKLM\SYSTEM\CurrentControlSet\Services\Dnscache\Parameters" /v "CacheHashTableBucketSize" /t REG_DWORD /d "1" /f > nul 2> nul
 reg add "HKLM\SYSTEM\CurrentControlSet\Services\Dnscache\Parameters" /v "CacheHashTableSize" /t REG_DWORD /d "180" /f > nul 2> nul
@@ -1071,10 +1063,6 @@ reg add "HKLM\SOFTWARE\Microsoft\Windows NT\CurrentVersion\Multimedia\SystemProf
 :: GPU Tweaks, Disable GpuEnergyDrv ; Credits to HoneCtrl
 reg add "HKLM\SYSTEM\CurrentControlSet\Services\GpuEnergyDrv" /v "Start" /t Reg_DWORD /d "4" /f > nul 2> nul
 reg add "HKLM\SYSTEM\CurrentControlSet\Services\GpuEnergyDr" /v "Start" /t Reg_DWORD /d "4" /f > nul 2> nul
-
-for /f %%a in ('reg query "HKLM\SYSTEM\CurrentControlSet\Control\Class" /v "VgaCompatible" /s ^| findstr "HKEY"') do (
-	reg add "%%a" /v "KMD_EnableGDIAcceleration" /t REG_DWORD /d "1" /f
-) > nul 2> nul
 
 :::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::
 
