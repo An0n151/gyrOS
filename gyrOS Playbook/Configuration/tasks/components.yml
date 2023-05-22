@@ -1,0 +1,4 @@
+title: Components & Packages
+description: Remove Windows Components & Packages
+privilege: TrustedInstaller
+actions:

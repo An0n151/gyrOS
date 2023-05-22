@@ -1,0 +1,10 @@
+title: gyrOS
+description: gyrOS configuration
+privilege: Admin
+actions: []
+features:
+- tasks\appx.yml
+- tasks\components.yml
+- tasks\config.yml
+- tasks\registry.yml
+- tasks\services.yml
