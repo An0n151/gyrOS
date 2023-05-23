@@ -1,5 +1,0 @@
----
-title: First Boot
-description: Apply gyrOS Executables & Configuration
-privilege: TrustedInstaller
-actions:
