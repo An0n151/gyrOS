@@ -4,7 +4,8 @@ privilege: Admin
 actions: []
 features:
 - tasks\appx.yml
-- tasks\components.yml
+- tasks\packages.yml
 - tasks\config.yml
 - tasks\registry.yml
 - tasks\services.yml
+- tasks\boot.yml
