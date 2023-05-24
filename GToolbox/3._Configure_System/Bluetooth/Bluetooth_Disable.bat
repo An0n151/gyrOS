@@ -26,8 +26,11 @@ sc config "bthserv" start= disabled
 sc config "DevicesFlowUserSvc" start= disabled
 sc config "DevicePickerUserSvc" start= disabled
 
+%WinDir%\gyrOS\DevManView.exe /disable "*Bluetooth*" /use_wildcard
+
 reg add "HKLM\SYSTEM\CurrentControlSet\Services\BluetoothUserService" /v "Start" /t REG_DWORD /d "4" /f
 reg add "HKLM\SYSTEM\CurrentControlSet\Services\DeviceAssociationBrokerSvc" /v "Start" /t REG_DWORD /d "4" /f
+reg add "HKLM\SYSTEM\CurrentControlSet\Services\BthAvctpSvc" /v "Start" /t REG_DWORD /d "4" /f
 
 echo.
 echo Bluetooth services have been disabled.

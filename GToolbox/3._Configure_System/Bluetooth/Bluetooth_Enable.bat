@@ -19,15 +19,18 @@ sc config "BTHUSB" start= demand
 sc config "HidBth" start= demand
 sc config "Microsoft_Bluetooth_AvrcpTransport" start= demand
 sc config "RFCOMM" start= demand
-sc config "BluetoothUserService" start=demand
+sc config "BluetoothUserService" start= auto
 sc config "BTAGService" start= demand
-sc config "BthAvctpSvc" start= demand
+sc config "BthAvctpSvc" start= auto
 sc config "bthserv" start= demand
 sc config "DevicesFlowUserSvc" start= demand
 sc config "DevicePickerUserSvc" start= demand
 
+%WinDir%\gyrOS\DevManView.exe /enable "*Bluetooth*" /use_wildcard
+
 reg add "HKLM\SYSTEM\CurrentControlSet\Services\DeviceAssociationBrokerSvc" /v "Start" /t REG_DWORD /d "3" /f
-reg add "HKLM\SYSTEM\CurrentControlSet\Services\BluetoothUserService" /v "Start" /t REG_DWORD /d "3" /f
+reg add "HKLM\SYSTEM\CurrentControlSet\Services\BluetoothUserService" /v "Start" /t REG_DWORD /d "2" /f
+reg add "HKLM\SYSTEM\CurrentControlSet\Services\BthAvctpSvc" /v "Start" /t REG_DWORD /d "2" /f
 
 echo.
 echo Bluetooth services have been enabled.
