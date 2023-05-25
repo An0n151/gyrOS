@@ -823,6 +823,7 @@
 				<Tweak name="Personalize\SystemUsesLightTheme">0</Tweak>
 				<Tweak name="NewStartPanel\{20D04FE0-3AEA-1069-A2D8-08002B30309D}">0</Tweak>
 				<Tweak name="NewStartPanel\{645FF040-5081-101B-9F08-00AA002F954E}">0</Tweak>
+				<Tweak name="Desktop\MenuShowDelay">0</Tweak>
 				<Tweak name="Explorer\HideSCAMeetNow">1</Tweak>
 				<Tweak name="Feeds\ShellFeedsTaskbarViewMode">2</Tweak>
 				<Tweak name="Explorer\DisableNotificationCenter">1</Tweak>
