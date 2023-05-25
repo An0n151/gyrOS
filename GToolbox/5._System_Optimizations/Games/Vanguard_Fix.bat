@@ -20,8 +20,8 @@ bcdedit /set nointegritychecks Off
 bcdedit /deletevalue nx
 bcdedit /set nx OptIn
 
-::reg add "HKLM\SYSTEM\CurrentControlSet\Control\Session Manager\kernel" /v "MitigationAuditOptions" /t REG_BINARY /d "222222222222222222222222222222222222222222222222" /f
-::reg add "HKLM\SYSTEM\CurrentControlSet\Control\Session Manager\kernel" /v "MitigationOptions" /t REG_BINARY /d "232222222223222222222222222222222222222222222222" /f
+reg add "HKLM\SYSTEM\CurrentControlSet\Control\Session Manager\kernel" /v "MitigationAuditOptions" /t REG_BINARY /d "222222222222222222222222222222222222222222222222" /f
+reg add "HKLM\SYSTEM\CurrentControlSet\Control\Session Manager\kernel" /v "MitigationOptions" /t REG_BINARY /d "232222222223222222222222222222222222222222222222" /f
 
 reg add "HKLM\SYSTEM\CurrentControlSet\Services\vgc" /v "Start" /t REG_DWORD /d "2" /f
 sc config "vgc" start= auto
