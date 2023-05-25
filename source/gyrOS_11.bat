@@ -984,7 +984,7 @@ bcdedit /set bootux Disabled > nul 2> nul
 bcdedit /set quietboot Yes > nul 2> nul
 bcdedit /set bootmenupolicy Legacy > nul 2> nul
 bcdedit /set recoveryenabled No > nul 2> nul
-bcdedit /set tpmbootentropy ForceDisable > nul 2> nul
+::bcdedit /set tpmbootentropy ForceDisable > nul 2> nul
 bcdedit /set description gyrOS > nul 2> nul
 
 :: Disable 57-bits 5-level Paging and Avoid the Use of Uncontiguous Portions of Low-Memory

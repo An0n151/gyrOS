@@ -1,6 +1,6 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <Preset isAutoSaved="true" xmlns="urn:schemas-nliteos-com:pn.v1">
-	<Date>05/19/2023 18:14:01</Date>
+	<Date>05/25/2023 13:24:07</Date>
 	<AppInfo>
 		<Version>2023.5.9249</Version>
 		<Licensed>Yes</Licensed>
@@ -282,7 +282,6 @@
 		<c>driver_termbus.inf</c>
 		<c>driver_termkbd.inf</c>
 		<c>driver_termmou.inf</c>
-		<c>driver_tpm.inf</c>
 		<c>driver_tpmvsc.inf</c>
 		<c>driver_ts_generic.inf</c>
 		<c>driver_tsgenericusbdriver.inf</c>
@@ -542,7 +541,6 @@
 		<c>rotationmanager 'Auto-Rotation Manager'</c>
 		<c>rpclocator 'Remote Procedure Call (RPC) Locator'</c>
 		<c>screensavers</c>
-		<c>securestartup 'BitLocker Drive Encryption'</c>
 		<c>securitycenter 'Security Center'</c>
 		<c>sendmail 'Send To Mail and Desktop'</c>
 		<c>servicesmmc32 'Services (management console) - 32 bit'</c>
@@ -585,9 +583,6 @@
 		<c>tftpclient 'TFTP client'</c>
 		<c>tieringengine 'Storage Tiers Management'</c>
 		<c>timetraveldebugger 'Time Travel Debugger (TTD)'</c>
-		<c>tpm 'Trusted Platform Module (TPM)'</c>
-		<c>tpmmmc 'Trusted Platform Module (TPM) (management console)'</c>
-		<c>tpmmmc32 'Trusted Platform Module (TPM) (management console) - 32 bit'</c>
 		<c>tpmvsc 'Virtual Smart Card'</c>
 		<c>trkwks 'Distributed Link Tracking Client'</c>
 		<c>troubleshootingsvc 'Recommended Troubleshooting service'</c>
@@ -830,6 +825,7 @@
 				<Tweak name="Personalize\SystemUsesLightTheme">0</Tweak>
 				<Tweak name="NewStartPanel\{20D04FE0-3AEA-1069-A2D8-08002B30309D}">0</Tweak>
 				<Tweak name="NewStartPanel\{645FF040-5081-101B-9F08-00AA002F954E}">0</Tweak>
+				<Tweak name="Desktop\MenuShowDelay">0</Tweak>
 				<Tweak name="PushNotifications\NoCloudApplicationNotification">1</Tweak>
 				<Tweak name="Desktop\ScreenSaverIsSecure">0</Tweak>
 				<Tweak name="Mouse\MouseSpeed">0</Tweak>
@@ -1480,6 +1476,7 @@
 			<Task>imageFormatWim</Task>
 			<Task>updates_boot.wim_02_2_64</Task>
 			<Task>msix_boot.wim_02_2_64</Task>
+			<Task>tweaksettings_boot.wim_02_2_64</Task>
 		</ImageTasks>
 		<AutoIsoFile>gyrOS 11.iso</AutoIsoFile>
 		<AutoIsoLabel>gyrOS 11</AutoIsoLabel>
