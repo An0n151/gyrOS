@@ -13,7 +13,7 @@ reg add "HKLM\SYSTEM\CurrentControlSet\Services\wlidsvc" /v "Start" /t REG_DWORD
 reg add "HKLM\SYSTEM\CurrentControlSet\Services\TokenBroker" /v "Start" /t REG_DWORD /d "3" /f
 
 echo.
-echo Microsoft Logins have been enabled.
+echo Microsoft Logins have been enabled. Restart your system.
 echo.
 
 pause >nul
