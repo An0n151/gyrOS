@@ -1362,32 +1362,38 @@ reg add "HKLM\SYSTEM\CurrentControlSet\Services\Dnscache\Parameters" /v "EnableA
 reg add "HKLM\SYSTEM\CurrentControlSet\Services\Tcpip\Parameters" /v "Tcp1323Opts" /t REG_DWORD /d "1" /f > nul 2> nul
 
 :: Configure NIC ; Credits to HoneCtrl and Melody
-for /f %%a in ('reg query "HKLM\SYSTEM\CurrentControlSet\Control\Class" /v "*WakeOnMagicPacket" /s ^| findstr  "HKEY"') do (
-for /f %%i in ('reg query "%%a" /v "*EEE" ^| findstr "HKEY"') do (reg add "%%i" /v "*EEE" /t REG_SZ /d "0" /f)
-for /f %%i in ('reg query "%%a" /v "*FlowControl" ^| findstr "HKEY"') do (reg add "%%i" /v "*FlowControl" /t REG_SZ /d "0" /f)
-for /f %%i in ('reg query "%%a" /v "EnableSavePowerNow" ^| findstr "HKEY"') do (reg add "%%i" /v "EnableSavePowerNow" /t REG_SZ /d "0" /f)
-for /f %%i in ('reg query "%%a" /v "EnablePowerManagement" ^| findstr "HKEY"') do (reg add "%%i" /v "EnablePowerManagement" /t REG_SZ /d "0" /f)
-for /f %%i in ('reg query "%%a" /v "EnableDynamicPowerGating" ^| findstr "HKEY"') do (reg add "%%i" /v "EnableDynamicPowerGating" /t REG_SZ /d "0" /f)
-for /f %%i in ('reg query "%%a" /v "EnableConnectedPowerGating" ^| findstr "HKEY"') do (reg add "%%i" /v "EnableConnectedPowerGating" /t REG_SZ /d "0" /f)
-for /f %%i in ('reg query "%%a" /v "AutoPowerSaveModeEnabled" ^| findstr "HKEY"') do (reg add "%%i" /v "AutoPowerSaveModeEnabled" /t REG_SZ /d "0" /f)
-for /f %%i in ('reg query "%%a" /v "AdvancedEEE" ^| findstr "HKEY"') do (reg add "%%i" /v "AdvancedEEE" /t REG_SZ /d "0" /f)
-for /f %%i in ('reg query "%%a" /v "ULPMode" ^| findstr "HKEY"') do (reg add "%%i" /v "ULPMode" /t REG_SZ /d "0" /f)
-for /f %%i in ('reg query "%%a" /v "ReduceSpeedOnPowerDown" ^| findstr "HKEY"') do (reg add "%%i" /v "ReduceSpeedOnPowerDown" /t REG_SZ /d "0" /f)
-for /f %%i in ('reg query "%%a" /v "EnablePME" ^| findstr "HKEY"') do (reg add "%%i" /v "EnablePME" /t REG_SZ /d "0" /f)
-for /f %%i in ('reg query "%%a" /v "*WakeOnMagicPacket" ^| findstr "HKEY"') do (reg add "%%i" /v "*WakeOnMagicPacket" /t REG_SZ /d "0" /f)
-for /f %%i in ('reg query "%%a" /v "*WakeOnPattern" ^| findstr "HKEY"') do (reg add "%%i" /v "*WakeOnPattern" /t REG_SZ /d "0" /f)
-for /f %%i in ('reg query "%%a" /v "*LsoV2IPv4" ^| findstr "HKEY"') do (reg add "%%i" /v "*LsoV2IPv4" /t REG_SZ /d "0" /f)
-for /f %%i in ('reg query "%%a" /v "*LsoV2IPv6" ^| findstr "HKEY"') do (reg add "%%i" /v "*LsoV2IPv6" /t REG_SZ /d "0" /f)
-for /f %%i in ('reg query "%%a" /v "EnableGreenEthernet" ^| findstr "HKEY"') do (reg add "%%i" /v "EnableGreenEthernet" /t REG_SZ /d "0" /f)
-for /f %%i in ('reg query "%%a" /v "GigaLite" ^| findstr "HKEY"') do (reg add "%%i" /v "GigaLite" /t REG_SZ /d "0" /f)
-for /f %%i in ('reg query "%%a" /v "PowerSavingMode" ^| findstr "HKEY"') do (reg add "%%i" /v "PowerSavingMode" /t REG_SZ /d "0" /f)
-for /f %%i in ('reg query "%%a" /v "AutoDisableGigabit" ^| findstr "HKEY"') do (reg add "%%i" /v "AutoDisableGigabit" /t REG_SZ /d "0" /f)
-for /f %%i in ('reg query "%%a" /v "SelectiveSuspend" ^| findstr "HKEY"') do (reg add "%%i" /v "SelectiveSuspend" /t REG_SZ /d "0" /f)
-for /f %%i in ('reg query "%%a" /v "EnableModernStandby" ^| findstr "HKEY"') do (reg add "%%i" /v "EnableModernStandby" /t REG_SZ /d "0" /f)
-for /f %%i in ('reg query "%%a" /v "WakeOnLink" ^| findstr "HKEY"') do (reg add "%%i" /v "WakeOnLink" /t REG_SZ /d "0" /f)
-for /f %%i in ('reg query "%%a" /v "WakeOnSlot" ^| findstr "HKEY"') do (reg add "%%i" /v "WakeOnSlot" /t REG_SZ /d "0" /f)
-for /f %%i in ('reg query "%%a" /v "WakeUpModeCap" ^| findstr "HKEY"') do (reg add "%%i" /v "WakeUpModeCap" /t REG_SZ /d "0" /f)
-for /f %%i in ('reg query "%%a" /v "*NicAutoPowerSaver" ^| findstr "HKEY"') do (reg add "%%i" /v "*NicAutoPowerSaver" /t REG_SZ /d "0" /f)
+for /f %%a in ('reg query "HKLM\SYSTEM\CurrentControlSet\Control\Class" /v "*WakeOnMagicPacket" /s ^| findstr "HKEY"') do (
+    for %%i in (
+        "*EEE"
+        "*FlowControl"
+        "EnableSavePowerNow"
+        "EnablePowerManagement"
+        "EnableDynamicPowerGating"
+        "EnableConnectedPowerGating"
+        "AutoPowerSaveModeEnabled"
+        "AdvancedEEE"
+        "ULPMode"
+        "ReduceSpeedOnPowerDown"
+        "EnablePME"
+        "*WakeOnMagicPacket"
+        "*WakeOnPattern"
+        "*LsoV2IPv4"
+        "*LsoV2IPv6"
+        "EnableGreenEthernet"
+        "GigaLite"
+        "PowerSavingMode"
+        "AutoDisableGigabit"
+        "SelectiveSuspend"
+        "EnableModernStandby"
+        "WakeOnLink"
+        "WakeOnSlot"
+        "WakeUpModeCap"
+		"*NicAutoPowerSaver"
+    ) do (
+        for /f %%k in ('reg query "%%a" /v "%%~i" ^| findstr "HKEY"') do (
+            reg add "%%k" /v "%%~i" /t REG_SZ /d "0" /f
+        )
+    )
 ) > nul 2> nul
 
 :: Disable Nagle's Algorithm ; Credits to ArtanisInc
