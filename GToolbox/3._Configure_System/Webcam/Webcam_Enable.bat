@@ -14,7 +14,7 @@ reg add "HKLM\SOFTWARE\Policies\Microsoft\Windows\AppPrivacy" /v "LetAppsAccessC
 sc start FrameServer
 
 echo.
-echo Success.
+echo Success. Restart your system.
 echo.
 
 pause >nul
