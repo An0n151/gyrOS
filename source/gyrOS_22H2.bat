@@ -183,7 +183,7 @@ rd "%drive%\Users\%username%\AppData\Roaming\Microsoft\Windows\Start Menu\Progra
 rd "%drive%\Users\%username%\AppData\Roaming\Microsoft\Windows\Start Menu\Programs\Windows Ease of Access" /s /q > nul 2> nul
 
 :: Clean Registry Entries ; Credits to CatGamerOP and ArtanisInc
-for %%a in ({990A2BD7-E738-46C7-B26F-1CF8FB9F1391} {4116F60B-25B3-4662-B732-99A6111EDC0B} {D94EE5D8-D189-4994-83D2-F68D7D41B0E6} {E0CBF06C-CD8B-4647-BB8A-263B43F0F974} {C06FF265-AE09-48F0-812C-16753D7CBA83} {D48179BE-EC20-11D1-B6B8-00C04FA372A7} {997B5D8D-C442-4F2E-BAF3-9C8E671E9E21} {6BDD1FC1-810F-11D0-BEC7-08002BE2092F} {4D36E97B-E325-11CE-BFC1-08002BE10318} {A0A588A4-C46F-4B37-B7EA-C82FE89870C6} {7EBEFBC0-3200-11D2-B4C2-00A0C9697D07} {4D36E965-E325-11CE-BFC1-08002BE10318} {53D29EF7-377C-4D14-864B-EB3A85769359} {4658EE7E-F050-11D1-B6BD-00C04FA372A7} {6BDD1FC5-810F-11D0-BEC7-08002BE2092F} {DB4F6DDD-9C0E-45E4-9597-78DBBAD0F412} {4D36E978-E325-11CE-BFC1-08002BE10318} {4D36E977-E325-11CE-BFC1-08002BE10318} {6D807884-7D21-11CF-801C-08002BE10318} {CE5939AE-EBDE-11D0-B181-0000F8753EC4} {4D36E969-E325-11CE-BFC1-08002BE10318} {4D36E970-E325-11CE-BFC1-08002BE10318} {4D36E979-E325-11CE-BFC1-08002BE10318} {4D36E96D-E325-11CE-BFC1-08002BE10318}) do (
+for %%a in ({E0CBF06C-CD8B-4647-BB8A-263B43F0F974} {C06FF265-AE09-48F0-812C-16753D7CBA83} {4D36E97B-E325-11CE-BFC1-08002BE10318} {A0A588A4-C46F-4B37-B7EA-C82FE89870C6} {7EBEFBC0-3200-11D2-B4C2-00A0C9697D07} {4D36E965-E325-11CE-BFC1-08002BE10318} {53D29EF7-377C-4D14-864B-EB3A85769359} {4658EE7E-F050-11D1-B6BD-00C04FA372A7} {4D36E978-E325-11CE-BFC1-08002BE10318} {4D36E977-E325-11CE-BFC1-08002BE10318} {4D36E979-E325-11CE-BFC1-08002BE10318} {4D36E96D-E325-11CE-BFC1-08002BE10318}) do (
     %currentuser% reg delete "HKLM\SYSTEM\CurrentControlSet\Control\Class\%%a" /f
 )
 
@@ -191,10 +191,9 @@ for %%a in ({990A2BD7-E738-46C7-B26F-1CF8FB9F1391} {4116F60B-25B3-4662-B732-99A6
 bcdedit /set disableelamdrivers Yes > nul 2> nul
 
 :: Delete Windows Defender Entries
-for %%i in ("HKLM\SOFTWARE\Microsoft\Windows Defender" "HKLM\SOFTWARE\Policies\Microsoft\Windows Defender" "HKLM\SOFTWARE\Policies\Microsoft\Windows Defender Security Center" "HKCU\SOFTWARE\Microsoft\Windows Defender Security Center" "HKLM\SOFTWARE\WOW6432Node\Policies\Microsoft\Windows Defender" "HKLM\SOFTWARE\Microsoft\PolicyManager\default\WindowsDefenderSecurityCenter" "HKLM\SOFTWARE\Microsoft\PolicyManager\default\Defender" "HKLM\SOFTWARE\Policies\Microsoft\Microsoft Antimalware" "HKCR\Folder\shell\WindowsDefender" "HKCR\DesktopBackground\Shell\WindowsSecurity" "HKLM\SOFTWARE\Microsoft\Security Center" "HKLM\SYSTEM\CurrentControlSet\Services\wscsvc" "HKLM\SYSTEM\CurrentControlSet\Services\SecurityHealthService") do (
+for %%i in ("HKLM\SOFTWARE\Microsoft\Windows Defender" "HKLM\SOFTWARE\Policies\Microsoft\Windows Defender" "HKLM\SOFTWARE\Microsoft\PolicyManager\default\WindowsDefenderSecurityCenter" "HKLM\SOFTWARE\Microsoft\PolicyManager\default\Defender") do (
 	%currentuser% reg delete %%i /f
 )
-reg delete "HKLM\SOFTWARE\Microsoft\Windows\CurrentVersion\Run" /v "SecurityHealth" /f > nul 2> nul
 
 :: Configure Windows Search
 reg add "HKLM\SOFTWARE\Microsoft\Windows\CurrentVersion\Search" /v "BingSearchEnabled" /t REG_DWORD /d "0" /f > nul 2> nul
@@ -300,7 +299,6 @@ reg delete "HKLM\SOFTWARE\Microsoft\Windows\CurrentVersion\Explorer\MyComputer\N
 reg delete "HKLM\SOFTWARE\WOW6432Node\Microsoft\Windows\CurrentVersion\Explorer\MyComputer\NameSpace\{0DB7E03F-FC29-4DC6-9020-FF41B59E513A}" /f > nul 2> nul
 
 :: Automatically Check "Do this for all current items"
-%currentuser% reg delete "HKCU\SOFTWARE\Microsoft\Windows\CurrentVersion\Policies\Explorer" /v "NoFileFolderOptions" /f
 %currentuser% reg add "HKCU\SOFTWARE\Microsoft\Windows\CurrentVersion\Policies\Explorer" /v "NoFileFolderOptions" /t REG_DWORD /d "1" /f
 
 :: Disable Retrieving Device Metadata from the Internet
@@ -340,7 +338,6 @@ reg add "HKCU\SOFTWARE\Microsoft\Windows\CurrentVersion\Explorer\Advanced" /v "S
 
 :: Disable Feedback
 %currentuser% reg add "HKCU\SOFTWARE\Microsoft\Siuf\Rules" /v "NumberOfSIUFInPeriod" /t REG_DWORD /d "0" /f
-%currentuser% reg delete "HKCU\SOFTWARE\Microsoft\Siuf\Rules" /v "PeriodInNanoSeconds" /f
 
 :: Disable Activity History
 reg add "HKLM\SOFTWARE\Policies\Microsoft\Windows\System" /v "PublishUserActivities" /t REG_DWORD /d "0" /f > nul 2> nul
@@ -452,17 +449,11 @@ reg delete "HKCU\AppEvents\Schemes\Apps\.Default\SystemNotification\.Current" /f
 reg add "HKCU\AppEvents\Schemes\Apps\.Default\SystemNotification\.Current" /f > nul 2> nul
 reg delete "HKCU\AppEvents\Schemes\Apps\.Default\WindowsUAC\.Current" /f > nul 2> nul
 reg add "HKCU\AppEvents\Schemes\Apps\.Default\WindowsUAC\.Current" /f > nul 2> nul
-reg delete "HKCU\AppEvents\Schemes\Apps\sapisvr\DisNumbersSound\.current" /f > nul 2> nul
 reg add "HKCU\AppEvents\Schemes\Apps\sapisvr\DisNumbersSound\.current" /f > nul 2> nul
-reg delete "HKCU\AppEvents\Schemes\Apps\sapisvr\HubOffSound\.current" /f > nul 2> nul
 reg add "HKCU\AppEvents\Schemes\Apps\sapisvr\HubOffSound\.current" /f > nul 2> nul
-reg delete "HKCU\AppEvents\Schemes\Apps\sapisvr\HubOnSound\.current" /f > nul 2> nul
 reg add "HKCU\AppEvents\Schemes\Apps\sapisvr\HubOnSound\.current" /f > nul 2> nul
-reg delete "HKCU\AppEvents\Schemes\Apps\sapisvr\HubSleepSound\.current" /f > nul 2> nul
 reg add "HKCU\AppEvents\Schemes\Apps\sapisvr\HubSleepSound\.current" /f > nul 2> nul
-reg delete "HKCU\AppEvents\Schemes\Apps\sapisvr\MisrecoSound\.current" /f > nul 2> nul
 reg add "HKCU\AppEvents\Schemes\Apps\sapisvr\MisrecoSound\.current" /f > nul 2> nul
-reg delete "HKCU\AppEvents\Schemes\Apps\sapisvr\PanelSound\.current" /f > nul 2> nul
 reg add "HKCU\AppEvents\Schemes\Apps\sapisvr\PanelSound\.current" /f > nul 2> nul
 
 :: Set Sound Communications to "Do nothing"
@@ -508,7 +499,6 @@ reg add "HKCU\SOFTWARE\Microsoft\Windows NT\CurrentVersion\Windows" /v "LegacyDe
 
 :: Remove "Include in Library" Context Menu
 reg delete "HKCR\Folder\ShellEx\ContextMenuHandlers\Library Location" /f > nul 2> nul
-reg delete "HKLM\SOFTWARE\Classes\Folder\ShellEx\ContextMenuHandlers\Library Location" /f > nul 2> nul
 
 :: Remove "Share" from Context Menu
 reg delete "HKCR\*\shellex\ContextMenuHandlers\ModernSharing" /f > nul 2> nul
@@ -539,7 +529,6 @@ reg add "HKCR\regfile\Shell\RunAs" /v "HasLUAShield" /t REG_SZ /d "1" /f > nul 2
 reg add "HKCR\regfile\Shell\RunAs\Command" /ve /t REG_SZ /d "%WinDir%\gyrOS\MinSudo\MinSudo.exe --trustedinstaller --nologo reg import "%1"" /f
 
 :: Add "Install CAB File" to Context Menu
-reg delete "HKCR\CABFolder\Shell\RunAs" /f > nul 2> nul
 reg add "HKCR\CABFolder\Shell\RunAs" /v "" /t REG_SZ /d "Install" /f > nul 2> nul
 reg add "HKCR\CABFolder\Shell\RunAs" /v "HasLUAShield" /t REG_SZ /d "" /f > nul 2> nul
 reg add "HKCR\CABFolder\Shell\RunAs\Command" /v "" /t REG_SZ /d "cmd /k dism /online /add-package /packagepath:\"%1\"" /f > nul 2> nul
