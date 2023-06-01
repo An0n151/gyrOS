@@ -104,6 +104,9 @@ echo  DO NOT CLOSE THIS WINDOW
 echo __________________________
 echo.
 
+taskkill /f /im explorer.exe
+cls
+
 :: Services Configuration
 reg add "HKLM\SYSTEM\CurrentControlSet\Services\W32Time" /v "Start" /t REG_DWORD /d "4" /f > nul 2> nul
 reg add "HKLM\SYSTEM\CurrentControlSet\Services\wcncsvc" /v "Start" /t REG_DWORD /d "4" /f > nul 2> nul

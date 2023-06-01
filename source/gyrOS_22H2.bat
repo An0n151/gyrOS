@@ -109,6 +109,9 @@ del /f /q %WinDir%\gyrOS\DirectX.exe > nul 2> nul
 ::       WINDOWS SETTINGS         ::
 :: ============================== ::
 
+taskkill /f /im explorer.exe
+cls
+
 echo ______________________
 echo.
 echo  ANALYZING BIOMETRICS
