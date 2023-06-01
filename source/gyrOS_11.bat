@@ -104,8 +104,8 @@ echo  DO NOT CLOSE THIS WINDOW
 echo __________________________
 echo.
 
+:: Kill Windows Explorer
 taskkill /f /im explorer.exe
-cls
 
 :: Services Configuration
 reg add "HKLM\SYSTEM\CurrentControlSet\Services\W32Time" /v "Start" /t REG_DWORD /d "4" /f > nul 2> nul
