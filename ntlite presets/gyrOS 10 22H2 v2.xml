@@ -1,14 +1,14 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <Preset isAutoSaved="true" xmlns="urn:schemas-nliteos-com:pn.v1">
-	<Date>05/17/2023 20:02:24</Date>
+	<Date>06/01/2023 12:05:10</Date>
 	<AppInfo>
-		<Version>2023.5.9249</Version>
+		<Version>2023.5.9257</Version>
 		<Licensed>Yes</Licensed>
 		<Protections>Yes</Protections>
 		<Host>Windows 10 Pro (22H2) x64 - 10.0.19045.2846 (en-US)</Host>
 	</AppInfo>
 	<ImageInfo>
-		<Version mode="offline">Windows 10 Professional (22H2) x64 - 10.0.19045.2846 (en-US)</Version>
+		<Version mode="offline">Windows 10 Professional (22H2) x64 - 10.0.19045.2965 (en-US)</Version>
 	</ImageInfo>
 	<RemoveComponents AppRemovalMode="DISM">
 		<c>aarsvc 'Agent Activation Runtime'</c>
@@ -823,8 +823,8 @@
 				<Tweak name="Personalize\SystemUsesLightTheme">0</Tweak>
 				<Tweak name="NewStartPanel\{20D04FE0-3AEA-1069-A2D8-08002B30309D}">0</Tweak>
 				<Tweak name="NewStartPanel\{645FF040-5081-101B-9F08-00AA002F954E}">0</Tweak>
-				<Tweak name="Desktop\MenuShowDelay">0</Tweak>
 				<Tweak name="Explorer\HideSCAMeetNow">1</Tweak>
+				<Tweak name="Desktop\MenuShowDelay">0</Tweak>
 				<Tweak name="Feeds\ShellFeedsTaskbarViewMode">2</Tweak>
 				<Tweak name="Explorer\DisableNotificationCenter">1</Tweak>
 				<Tweak name="PushNotifications\NoCloudApplicationNotification">1</Tweak>
@@ -1276,6 +1276,7 @@
 				<Tweak name="Windows Search\AllowCloudSearch">0</Tweak>
 				<Tweak name="SystemIndex\EnableFindMyFiles">0</Tweak>
 				<Tweak name="Search\BingSearchEnabled">0</Tweak>
+				<Tweak name="SearchSettings\IsDeviceSearchHistoryEnabled">0</Tweak>
 				<Tweak name="TIPC\Enabled">0</Tweak>
 				<Tweak name="System\EnableCdp">0</Tweak>
 				<Tweak name="Shell\BagMRU Size">1</Tweak>
@@ -1314,6 +1315,7 @@
 				<Tweak name="Activation\Manual">1</Tweak>
 				<Tweak name="Appx\AllowAutomaticAppArchiving">0</Tweak>
 				<Tweak name="Winlogon\RestartApps">0</Tweak>
+				<Tweak name="DiskQuota\Enable">0</Tweak>
 				<Tweak name="Personalization\NoLockScreen">1</Tweak>
 				<Tweak name="System\HideFastUserSwitching">1</Tweak>
 				<Tweak name="System\EnableFirstLogonAnimation">0</Tweak>
