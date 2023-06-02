@@ -18,7 +18,6 @@ sc config "FileInfo" start= disabled
 sc config "iphlpsvc" start= demand
 sc config "FileCrypt" start= disabled
 sc config "AppMgmt" start= disabled
-::sc config "camsvc" start= disabled
 
 reg add "HKLM\SYSTEM\CurrentControlSet\Services\ClipSVC" /v "Start" /t REG_DWORD /d "4" /f
 reg add "HKLM\SYSTEM\CurrentControlSet\Services\AppIDSvc" /v "Start" /t REG_DWORD /d "4" /f
