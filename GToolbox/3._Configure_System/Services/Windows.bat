@@ -202,8 +202,8 @@ sc config "UnistoreSvc" start= demand
 sc config "UserDataSvc" start= demand
 sc config "WpnUserService" start= auto
 
-echo.
-echo Successfully restored default Windows services configuration. Restart your system.
-echo.
+cls
 
-pause >nul
+echo Successfully restored default Windows services configuration. Restart your system.
+pause
+exit /b

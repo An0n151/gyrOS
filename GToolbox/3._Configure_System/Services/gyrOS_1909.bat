@@ -100,8 +100,8 @@ reg add "HKLM\SYSTEM\CurrentControlSet\Services\XblAuthManager" /v "Start" /t RE
 reg add "HKLM\SYSTEM\CurrentControlSet\Services\XblGameSave" /v "Start" /t REG_DWORD /d "4" /f
 reg add "HKLM\SYSTEM\CurrentControlSet\Services\XboxNetApiSvc" /v "Start" /t REG_DWORD /d "4" /f
 
-echo.
-echo Successfully restored default gyrOS services configuration. Restart your system.
-echo.
+cls
 
-pause >nul
+echo Successfully restored the default gyrOS 1909 services configuration. Restart your system.
+pause
+exit /b
