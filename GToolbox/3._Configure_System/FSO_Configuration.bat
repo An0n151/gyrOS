@@ -1,6 +1,6 @@
 :: gyrOS ::
 
-:: FSO Services
+:: FSO Configuration
 
 @echo off
 setlocal EnableDelayedExpansion
