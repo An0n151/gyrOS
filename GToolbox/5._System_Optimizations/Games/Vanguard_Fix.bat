@@ -27,8 +27,8 @@ reg add "HKLM\SYSTEM\CurrentControlSet\Services\vgc" /v "Start" /t REG_DWORD /d 
 sc config "vgc" start= auto
 sc config "vgk" start= system
 
-echo.
-echo Success. Restart your system.
-echo.
+cls
 
-pause >nul
+echo Success, please reboot your device for changes to apply.
+pause
+exit /b

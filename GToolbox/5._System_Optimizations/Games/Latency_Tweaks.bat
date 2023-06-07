@@ -38,8 +38,8 @@ reg add "HKLM\SOFTWARE\Policies\Microsoft\Windows\Psched\UserPriorityMapping" /v
 reg add "HKLM\SOFTWARE\Policies\Microsoft\Windows\Psched\UserPriorityMapping" /v "ServiceTypeNetworkControl" /t REG_DWORD /d "7" /f
 reg add "HKLM\SOFTWARE\Policies\Microsoft\Windows\Psched" /v "MaxOutstandingSends" /t REG_DWORD /d "65000" /f
 
-echo.
-echo Applied Game Tweaks. Press any key to exit.
-echo.
+cls
 
-pause >nul
+echo Applied Game Tweaks. Press any key to exit.
+pause
+exit /b

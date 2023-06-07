@@ -19,8 +19,8 @@ reg add "HKLM\SYSTEM\CurrentControlSet\Services\MSI_Case_Service" /v "Start" /t 
 reg add "HKLM\SYSTEM\CurrentControlSet\Services\Mystic_Light_Service" /v "Start" /t REG_DWORD /d "3" /f
 reg add "HKLM\SYSTEM\CurrentControlSet\Services\LightKeeperService" /v "Start" /t REG_DWORD /d "3" /f
 
-echo.
-echo Success.
-echo.
+cls
 
-pause >nul
+echo Success.
+pause
+exit /b

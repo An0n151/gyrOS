@@ -16,8 +16,8 @@ netsh interface ipv4 add dnsservers "Ethernet" address=8.8.4.4 index=2
 netsh interface ipv4 add dnsservers "Wi-Fi" address=8.8.8.8 index=1
 netsh interface ipv4 add dnsservers "Wi-Fi" address=8.8.4.4 index=2
 
-echo.
-echo Success.
-echo.
+cls
 
-pause >nul
+echo Success.
+pause
+exit /b

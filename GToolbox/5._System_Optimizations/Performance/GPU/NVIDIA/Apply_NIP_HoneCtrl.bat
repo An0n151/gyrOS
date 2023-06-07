@@ -6,8 +6,8 @@ cd /d "%~dp0" && ( if exist "%temp%\getadmin.vbs" del "%temp%\getadmin.vbs" ) &&
 cd "%drive%\Program Files\Windows Optimization\Nvidia Profile Inspector"
 Nvidia_Profile_Inspector.exe "Hone.nip"
 
-echo.
-echo Success.
-echo.
+cls
 
-pause >nul
+echo Success.
+pause
+exit /b
