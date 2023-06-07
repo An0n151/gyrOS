@@ -31,8 +31,8 @@ if /i "%choice%"=="250" reg add "HKCU\Control Panel\Mouse" /v "SmoothMouseXCurve
 if /i "%choice%"=="300" reg add "HKCU\Control Panel\Mouse" /v "SmoothMouseXCurve" /t REG_BINARY /d "00000000000000006066260000000000C0CC4C000000000020337300000000008099990000000000" /f
 if /i "%choice%"=="350" reg add "HKCU\Control Panel\Mouse" /v "SmoothMouseXCurve" /t REG_BINARY /d "0000000000000000C0CC2C0000000000809959000000000040668600000000000033B30000000000" /f
 
-echo.
-echo Applied Mouse Settings. Press any key to exit.
-echo.
+cls
 
-pause >nul
+echo Applied Mouse Settings. Press any key to exit.
+pause
+exit /b

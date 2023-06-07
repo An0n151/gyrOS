@@ -22,6 +22,8 @@ devcon enable =net
 devcon remove =net
 devcon rescan
 
-echo Your network settings have been reset.
+cls
 
-pause >nul
+echo Network settings were reset.
+pause
+exit /b

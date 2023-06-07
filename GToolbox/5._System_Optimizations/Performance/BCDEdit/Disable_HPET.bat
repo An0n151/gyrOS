@@ -10,8 +10,8 @@ cd /d "%~dp0" && ( if exist "%temp%\getadmin.vbs" del "%temp%\getadmin.vbs" ) &&
 
 bcdedit /deletevalue useplatformclock
 
-echo.
-echo Restart your computer if the command executed successfully.
-echo.
+cls
 
-pause >nul
+echo Success, please reboot your device for changes to apply.
+pause
+exit /b

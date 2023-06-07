@@ -32,8 +32,8 @@ reg add "HKLM\SOFTWARE\Policies\Microsoft\Windows\QoS\VALORANT" /v "Remote IP Pr
 reg add "HKLM\SOFTWARE\Policies\Microsoft\Windows\QoS\VALORANT" /v "DSCP Value" /t REG_SZ /d "46" /f
 reg add "HKLM\SOFTWARE\Policies\Microsoft\Windows\QoS\VALORANT" /v "Throttle Rate" /t REG_SZ /d "-1" /f
 
-echo.
-echo Applied Valorant Tweaks.
-echo.
+cls
 
-pause >nul
+echo Applied Valorant Tweaks.
+pause
+exit /b

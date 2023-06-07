@@ -21,8 +21,8 @@ reg add "HKLM\SYSTEM\CurrentControlSet\Control\Session Manager\Power" /v "Coales
 reg add "HKLM\SYSTEM\CurrentControlSet\Control\Power" /v "EnergyEstimationEnabled" /t REG_DWORD /d "0" /f
 reg add "HKLM\SYSTEM\CurrentControlSet\Control\Power" /v "EventProcessorEnabled" /t REG_DWORD /d "0" /f
 
-echo.
-echo. Success.
-echo.
+cls
 
-pause >nul
+echo Success, please reboot your device for changes to apply.
+pause
+exit /b

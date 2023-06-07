@@ -11,8 +11,8 @@ cd /d "%~dp0" && ( if exist "%temp%\getadmin.vbs" del "%temp%\getadmin.vbs" ) &&
 netsh interface tcp set supplemental Internet congestionprovider=newreno
 netsh interface tcp set supplemental InternetCustom congestionprovider=newreno
 
-echo.
-echo Wi-Fi optimizations applied.
-echo.
+cls
 
-pause >nul
+echo Wifi optimizations applied.
+pause
+exit /b

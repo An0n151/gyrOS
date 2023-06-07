@@ -25,8 +25,8 @@ bcdedit /set ems No
 bcdedit /set extendedinput Yes
 bcdedit /set debug No
 
-echo.
-echo Success. Restart your system.
-echo.
+cls
 
-pause >nul
+echo Success, please reboot your device for changes to apply.
+pause
+exit /b

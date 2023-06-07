@@ -26,8 +26,8 @@ bcdedit /set avoidlowmemory 0x8000000
 bcdedit /set nolowmem Yes
 bcdedit /set allowedinmemorysettings 0x0
 
-echo.
-echo Success. Restart your system.
-echo.
+cls
 
-pause >nul
+echo Success, please reboot your device for changes to apply.
+pause
+exit /b

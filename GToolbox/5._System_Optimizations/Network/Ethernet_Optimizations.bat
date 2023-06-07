@@ -58,8 +58,8 @@ for /f %%i in ('reg query "%%a" /v "S5WakeOnLan" ^| findstr "HKEY"') do (reg add
 for /f %%i in ('reg query "%%a" /v "*AlternateSemaphoreDelay" ^| findstr "HKEY"') do (reg add "%%i" /v "*AlternateSemaphoreDelay" /t REG_SZ /d "0" /f)
 )
 
-echo.
-echo. Ethernet optimizations applied.
-echo.
+cls
 
-pause >nul
+echo Ethernet optimizations applied.
+pause
+exit /b

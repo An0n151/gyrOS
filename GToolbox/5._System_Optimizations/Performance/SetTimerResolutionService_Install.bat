@@ -18,8 +18,8 @@ mklink %link% %target%
 echo @echo off > "%AppData%\Microsoft\Windows\Start Menu\Programs\Startup\Start_Timer_Resolution.bat"
 echo start "" /min %target% %args% >> "%AppData%\Microsoft\Windows\Start Menu\Programs\Startup\Start_Timer_Resolution.bat"
 
-echo.
-echo Success. Restart your system.
-echo.
+cls
 
-pause >nul
+echo Success, please reboot your device for changes to apply.
+pause
+exit /b

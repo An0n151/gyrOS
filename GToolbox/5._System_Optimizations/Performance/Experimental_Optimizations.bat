@@ -37,8 +37,8 @@ reg add "HKLM\SYSTEM\CurrentControlSet\Services\DXGKrnl" /v "TdrResetFromTimeout
 reg add "HKLM\SYSTEM\CurrentControlSet\Services\DXGKrnl" /v "MonitorLatencyTolerance" /t REG_DWORD /d "0" /f
 reg add "HKLM\SYSTEM\CurrentControlSet\Services\DXGKrnl" /v "MonitorRefreshLatencyTolerance" /t REG_DWORD /d "0" /f
 
-echo.
-echo Applied additional optimizations. Restart your system.
-echo.
+cls
 
-pause >nul
+echo Applied additional optimizations, please reboot your device for changes to apply.
+pause
+exit /b
