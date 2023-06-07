@@ -414,17 +414,11 @@ reg delete "HKCU\AppEvents\Schemes\Apps\.Default\SystemNotification\.Current" /f
 reg add "HKCU\AppEvents\Schemes\Apps\.Default\SystemNotification\.Current" /f > nul 2> nul
 reg delete "HKCU\AppEvents\Schemes\Apps\.Default\WindowsUAC\.Current" /f > nul 2> nul
 reg add "HKCU\AppEvents\Schemes\Apps\.Default\WindowsUAC\.Current" /f > nul 2> nul
-reg delete "HKCU\AppEvents\Schemes\Apps\sapisvr\DisNumbersSound\.current" /f > nul 2> nul
 reg add "HKCU\AppEvents\Schemes\Apps\sapisvr\DisNumbersSound\.current" /f > nul 2> nul
-reg delete "HKCU\AppEvents\Schemes\Apps\sapisvr\HubOffSound\.current" /f > nul 2> nul
 reg add "HKCU\AppEvents\Schemes\Apps\sapisvr\HubOffSound\.current" /f > nul 2> nul
-reg delete "HKCU\AppEvents\Schemes\Apps\sapisvr\HubOnSound\.current" /f > nul 2> nul
 reg add "HKCU\AppEvents\Schemes\Apps\sapisvr\HubOnSound\.current" /f > nul 2> nul
-reg delete "HKCU\AppEvents\Schemes\Apps\sapisvr\HubSleepSound\.current" /f > nul 2> nul
 reg add "HKCU\AppEvents\Schemes\Apps\sapisvr\HubSleepSound\.current" /f > nul 2> nul
-reg delete "HKCU\AppEvents\Schemes\Apps\sapisvr\MisrecoSound\.current" /f > nul 2> nul
 reg add "HKCU\AppEvents\Schemes\Apps\sapisvr\MisrecoSound\.current" /f > nul 2> nul
-reg delete "HKCU\AppEvents\Schemes\Apps\sapisvr\PanelSound\.current" /f > nul 2> nul
 reg add "HKCU\AppEvents\Schemes\Apps\sapisvr\PanelSound\.current" /f > nul 2> nul
 
 :: Set Sound Communications to "Do nothing"
