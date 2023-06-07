@@ -1,6 +1,6 @@
 :: gyrOS ::
 
-:: Printing Services prompt script
+:: Printing Services
 
 @echo off
 setlocal EnableDelayedExpansion

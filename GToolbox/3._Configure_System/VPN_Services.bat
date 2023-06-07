@@ -1,6 +1,6 @@
 :: gyrOS ::
 
-:: VPN Services prompt script
+:: VPN Services
 
 @echo off
 setlocal EnableDelayedExpansion

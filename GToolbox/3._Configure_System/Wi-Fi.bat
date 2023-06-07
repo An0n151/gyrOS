@@ -1,6 +1,6 @@
 :: gyrOS ::
 
-:: Wifi Services prompt script
+:: Wifi Services
 
 @echo off
 setlocal EnableDelayedExpansion

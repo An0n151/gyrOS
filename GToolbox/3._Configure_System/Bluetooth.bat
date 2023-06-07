@@ -1,6 +1,6 @@
 :: gyrOS ::
 
-:: Bluetooth prompt script
+:: Bluetooth
 
 @echo off
 setlocal EnableDelayedExpansion

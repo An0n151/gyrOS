@@ -1,7 +1,7 @@
 :: gyrOS ::
 
-:: Workstation services prompt script
-
+:: Workstation Service
+ 
 @echo off
 setlocal EnableDelayedExpansion
 

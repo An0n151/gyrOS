@@ -1,6 +1,6 @@
 :: gyrOS ::
 
-:: UAC Services prompt script
+:: UAC Services
 
 @echo off
 setlocal EnableDelayedExpansion

@@ -1,6 +1,6 @@
 :: gyrOS ::
 
-:: Address Space Layout Randomization prompt script
+:: Address Space Layout Randomization
 
 @echo off
 setlocal EnableDelayedExpansion

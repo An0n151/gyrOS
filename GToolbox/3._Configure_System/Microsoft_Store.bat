@@ -1,6 +1,6 @@
 :: gyrOS ::
 
-:: M$ Store Services prompt script
+:: Microsoft Store Services
 
 @echo off
 setlocal EnableDelayedExpansion

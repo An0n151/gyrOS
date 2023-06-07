@@ -1,6 +1,6 @@
 :: gyrOS ::
 
-:: Delivery Optimizations prompt script
+:: Delivery Optimization
 
 @echo off
 setlocal EnableDelayedExpansion

@@ -1,6 +1,6 @@
 :: gyrOS ::
 
-::  Services prompt script
+:: Search Indexing
 
 @echo off
 setlocal EnableDelayedExpansion

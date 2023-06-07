@@ -1,6 +1,6 @@
 :: gyrOS ::
 
-:: Firewall Services prompt script
+:: Firewall Services
 
 @echo off
 setlocal EnableDelayedExpansion

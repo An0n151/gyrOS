@@ -1,6 +1,6 @@
 :: gyrOS ::
 
-:: Mitigations prompt script
+:: Mitigations
 
 @echo off
 setlocal EnableDelayedExpansion

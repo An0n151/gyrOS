@@ -1,6 +1,6 @@
 :: gyrOS ::
 
-:: Webcam Services prompt script
+:: Webcam Services
 
 @echo off
 setlocal EnableDelayedExpansion

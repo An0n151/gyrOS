@@ -1,6 +1,6 @@
 :: gyrOS ::
 
-:: MMCSS Services prompt script
+:: MMCSS Services
 
 @echo off
 setlocal EnableDelayedExpansion

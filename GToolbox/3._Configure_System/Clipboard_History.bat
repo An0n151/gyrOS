@@ -1,6 +1,6 @@
 :: gyrOS ::
 
-:: Clipboard History Services prompt script
+:: Clipboard History Services
 
 @echo off
 setlocal EnableDelayedExpansion

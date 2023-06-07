@@ -1,6 +1,6 @@
 :: gyrOS ::
 
-:: M$ Logins prompt script
+:: Microsoft Logins
 
 @echo off
 setlocal EnableDelayedExpansion

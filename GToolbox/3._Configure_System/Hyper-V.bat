@@ -1,6 +1,6 @@
 :: gyrOS ::
 
-:: Hyper-V Services prompt script
+:: Hyper-V Services
 
 @echo off
 setlocal EnableDelayedExpansion

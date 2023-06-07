@@ -1,6 +1,6 @@
 :: gyrOS ::
 
-:: Xbox Services prompt script
+:: Xbox Services
 
 @echo off
 setlocal EnableDelayedExpansion

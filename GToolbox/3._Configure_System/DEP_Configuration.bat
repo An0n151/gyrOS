@@ -1,6 +1,6 @@
 :: gyrOS ::
 
-:: DEP Services prompt script
+:: DEP Services
 
 @echo off
 setlocal EnableDelayedExpansion
