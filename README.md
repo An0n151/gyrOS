@@ -1,10 +1,10 @@
 <h1 align="center">
   <br>
-  <a href="https://discord.com/invite/u3ruZyKsWT"><img src="https://i.imgur.com/vbzNUpL.jpg" alt="gyrOS" width="900"></a>
+  <a href="https://discord.gg/NaNwyvnHjZ"><img src="https://i.imgur.com/vbzNUpL.jpg" alt="gyrOS" width="900"></a>
 </h1>
 <h4 align="center">Redefining Windows</h4>
 <p align="center">
-<a href="https://discord.com/invite/u3ruZyKsWT" target="_blank">Discord</a>
+<a href="https://discord.gg/NaNwyvnHjZ" target="_blank">Discord</a>
 </p>
 
 # What is gyrOS?
