@@ -1,6 +1,6 @@
 :: gyrOS ::
 
-:: Power plans
+:: Power Plans
 
 @echo off
 setlocal enabledelayedexpansion
@@ -16,6 +16,8 @@ for %%F in ("%~dp0\*.pow") do (
     set "deletePlans=!deletePlans! !count!"
 )
 
+echo.
+echo.
 set /p "choice=Enter the number of the power plan to import and activate: "
 
 set "count=0"

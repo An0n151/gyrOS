@@ -14,7 +14,7 @@ cd /d "%~dp0" && ( if exist "%temp%\getadmin.vbs" del "%temp%\getadmin.vbs" ) &&
 reg add "HKLM\SYSTEM\CurrentControlSet\Services\Psched" /v "Start" /t REG_DWORD /d "1" /f
 start "" /wait %WinDir%\gyrOS\MinSudo\MinSudo.exe --trustedinstaller --nologo cmd /c "sc start Psched"
 
-for %%i in (csgo VALORANT-Win64-Shipping javaw FortniteClient-Win64-Shipping ModernWarfare r5apex) do (
+for %%i in (csgo VALORANT-Win64-Shipping javaw FortniteClient-Win64-Shipping ModernWarfare r5apex r5apex_dx12) do (
 	reg query "HKLM\SOFTWARE\Policies\Microsoft\Windows\QoS\%%i" || (
 		reg add "HKLM\SOFTWARE\Policies\Microsoft\Windows\QoS\%%i" /v "Application Name" /t Reg_SZ /d "%%i.exe" /f
 		reg add "HKLM\SOFTWARE\Policies\Microsoft\Windows\QoS\%%i" /v "Version" /t Reg_SZ /d "1.0" /f
