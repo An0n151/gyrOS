@@ -1,11 +1,11 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <Preset isAutoSaved="true" xmlns="urn:schemas-nliteos-com:pn.v1">
-	<Date>06/01/2023 12:05:10</Date>
+	<Date>06/13/2023 11:42:01</Date>
 	<AppInfo>
 		<Version>2023.5.9257</Version>
 		<Licensed>Yes</Licensed>
 		<Protections>Yes</Protections>
-		<Host>Windows 10 Pro (22H2) x64 - 10.0.19045.2846 (en-US)</Host>
+		<Host>Windows 10 Pro (22H2) x64 - 10.0.19045.2965 (en-US)</Host>
 	</AppInfo>
 	<ImageInfo>
 		<Version mode="offline">Windows 10 Professional (22H2) x64 - 10.0.19045.2965 (en-US)</Version>
@@ -596,7 +596,6 @@
 		<c>waasassessment 'Windows Update Medic Service'</c>
 		<c>wallet 'Wallet Service'</c>
 		<c>wallpapers 'Wallpapers (Themes)'</c>
-		<c>warpjitsvc 'DirectX WARP JIT Service'</c>
 		<c>webcamexperience 'Webcam Experience'</c>
 		<c>wfmmc32 'Windows Firewall (management console) - 32 bit'</c>
 		<c>wificloudstore 'WiFi Sync Provider'</c>
@@ -833,6 +832,7 @@
 				<Tweak name="QuietHours\Enable">0</Tweak>
 				<Tweak name="Start\HideRecentJumplists">1</Tweak>
 				<Tweak name="Search\SearchboxTaskbarMode">1</Tweak>
+				<Tweak name="DWM\ColorPrevalence">0</Tweak>
 				<Tweak name="People\PeopleBand">0</Tweak>
 				<Tweak name="Advanced\TaskbarGlomLevel">0</Tweak>
 			</TweakGroup>
