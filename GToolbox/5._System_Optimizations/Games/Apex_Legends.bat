@@ -32,5 +32,6 @@ reg add "HKLM\SYSTEM\CurrentControlSet\Control\PriorityControl" /v "IRQ8Priority
 cls
 
 echo Success.
+echo.
 pause
 exit /b

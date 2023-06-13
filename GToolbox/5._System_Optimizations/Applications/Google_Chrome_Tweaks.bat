@@ -38,6 +38,7 @@ reg add "HKLM\SOFTWARE\Policies\Google\Chrome" /v "HomepageIsNewTabPage" /t REG_
 
 cls
 
-echo Applied Google Chrome Tweaks.
+echo Applied Google Chrome Tweaks. You can now close this window.
+echo.
 pause
 exit /b

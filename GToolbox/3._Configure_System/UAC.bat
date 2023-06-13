@@ -12,7 +12,7 @@ cd /d "%~dp0" && ( if exist "%temp%\getadmin.vbs" del "%temp%\getadmin.vbs" ) &&
 echo 1. Enable UAC Services
 echo 2. Disable UAC Services (Default)
 echo.
-set /p menu=:
+set /p menu=: 
 if %menu% EQU 1 goto enable
 if %menu% EQU 2 goto disable
 
@@ -24,6 +24,7 @@ reg add HKLM\SOFTWARE\Microsoft\Windows\CurrentVersion\Policies\System /v "Enabl
 cls
 
 echo Finished enabling UAC, please reboot your device for changes to apply.
+echo.
 pause
 exit /b
 
@@ -35,5 +36,6 @@ reg add HKLM\SOFTWARE\Microsoft\Windows\CurrentVersion\Policies\System /v "Enabl
 cls
 
 echo Finished disabling UAC, please reboot your device for changes to apply.
+echo.
 pause
 exit /b

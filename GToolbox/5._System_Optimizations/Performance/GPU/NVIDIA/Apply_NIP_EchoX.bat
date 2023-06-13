@@ -9,5 +9,6 @@ Nvidia_Profile_Inspector.exe "EchoX.nip"
 cls
 
 echo Success.
+echo.
 pause
 exit /b

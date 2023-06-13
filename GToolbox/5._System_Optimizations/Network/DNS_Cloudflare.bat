@@ -19,5 +19,6 @@ netsh interface ipv4 add dnsservers "Wi-Fi" address=1.0.0.1 index=2
 cls
 
 echo Success.
+echo.
 pause
 exit /b

@@ -12,7 +12,7 @@ cd /d "%~dp0" && ( if exist "%temp%\getadmin.vbs" del "%temp%\getadmin.vbs" ) &&
 echo 1. Enable Wifi Services
 echo 2. Disable Wifi Services (Default)
 echo.
-set /p menu=:
+set /p menu=: 
 if %menu% EQU 1 goto enable
 if %menu% EQU 2 goto disable
 
@@ -37,6 +37,7 @@ sc start WFDSConMgrSvc
 cls
 
 echo Finished enabling Wifi services, please reboot your device for changes to apply.
+echo.
 pause
 exit /b
 
@@ -53,5 +54,6 @@ reg add "HKLM\SYSTEM\CurrentControlSet\Services\DeviceAssociationBrokerSvc" /v "
 cls
 
 echo Finished disabling Wifi services, please reboot your device for changes to apply.
+echo.
 pause
 exit /b

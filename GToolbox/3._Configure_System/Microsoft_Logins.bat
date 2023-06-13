@@ -12,7 +12,7 @@ cd /d "%~dp0" && ( if exist "%temp%\getadmin.vbs" del "%temp%\getadmin.vbs" ) &&
 echo 1. Enable M$ Logins
 echo 2. Disable M$ Logins (Default)
 echo.
-set /p menu=:
+set /p menu=: 
 if %menu% EQU 1 goto enable
 if %menu% EQU 2 goto disable
 
@@ -25,6 +25,7 @@ reg add "HKLM\SYSTEM\CurrentControlSet\Services\TokenBroker" /v "Start" /t REG_D
 cls
 
 echo Finished enabling Microsoft Logins, please reboot your device for changes to apply.
+echo.
 pause
 exit /b
 
@@ -37,5 +38,6 @@ reg add "HKLM\SYSTEM\CurrentControlSet\Services\TokenBroker" /v "Start" /t REG_D
 cls
 
 echo Finished disabling Microsoft Logins, please reboot your device for changes to apply.
+echo.
 pause
 exit /b

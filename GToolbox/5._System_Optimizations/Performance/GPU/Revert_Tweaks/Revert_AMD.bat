@@ -20,5 +20,6 @@ reg delete "HKLM\SYSTEM\CurrentControlSet\Control\Class\{4d36e968-e325-11ce-bfc1
 cls
 
 echo Success, please reboot your device for changes to apply.
+echo.
 pause
 exit /b

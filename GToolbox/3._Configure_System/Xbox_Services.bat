@@ -12,7 +12,7 @@ cd /d "%~dp0" && ( if exist "%temp%\getadmin.vbs" del "%temp%\getadmin.vbs" ) &&
 echo 1. Enable Bluetooth
 echo 2. Disable Bluetooth (Default)
 echo.
-set /p menu=:
+set /p menu=: 
 if %menu% EQU 1 goto enable
 if %menu% EQU 2 goto disable
 
@@ -39,6 +39,7 @@ schtasks /Change /Enable /TN "Microsoft\XblGameSave\XblGameSaveTaskLogon"
 cls
 
 echo Finished enabling the Xbox services, please reboot your device for changes to apply.
+echo.
 pause
 exit /b
 
@@ -67,5 +68,6 @@ reg add "HKLM\SYSTEM\CurrentControlSet\Services\WpnUserService" /v "Start" /t RE
 cls
 
 echo Finished disabling the Xbox services, please reboot your device for changes to apply.
+echo.
 pause
 exit /b

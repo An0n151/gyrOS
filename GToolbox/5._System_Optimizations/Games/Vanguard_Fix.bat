@@ -30,5 +30,6 @@ sc config "vgk" start= system
 cls
 
 echo Success, please reboot your device for changes to apply.
+echo.
 pause
 exit /b

@@ -13,7 +13,7 @@ echo 1. Disable Mitigations (Default)
 echo 2. Enable AMD CPU specific mitigations
 Echo 3. Enable Intel CPU specific mitigations
 echo.
-set /p menu=:
+set /p menu=: 
 if %menu% EQU 1 goto disable
 if %menu% EQU 2 goto amd
 if %menu% EQU 3 goto intel
@@ -41,6 +41,7 @@ reg add "HKLM\SYSTEM\CurrentControlSet\Control\Session Manager\kernel" /v "Mitig
 cls
 
 echo Finished disabling mitigations, please reboot your device for changes to apply.
+echo.
 pause
 exit /b
 
@@ -66,6 +67,7 @@ reg add "HKLM\SYSTEM\CurrentControlSet\Control\Session Manager\kernel" /v "Mitig
 cls
 
 echo Finished setting AMD CPU specific mitigations, please reboot your device for changes to apply.
+echo.
 pause
 exit /b
 
@@ -91,5 +93,6 @@ reg add "HKLM\SYSTEM\CurrentControlSet\Control\Session Manager\kernel" /v "Mitig
 cls
 
 echo Finished setting Intel CPU specific mitigations, please reboot your device for changes to apply.
+echo.
 pause
 exit /b

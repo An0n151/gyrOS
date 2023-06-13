@@ -40,5 +40,6 @@ reg add "HKLM\SYSTEM\CurrentControlSet\Services\DXGKrnl" /v "MonitorRefreshLaten
 cls
 
 echo Applied additional optimizations, please reboot your device for changes to apply.
+echo.
 pause
 exit /b

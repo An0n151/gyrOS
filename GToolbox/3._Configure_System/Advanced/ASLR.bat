@@ -12,7 +12,7 @@ cd /d "%~dp0" && ( if exist "%temp%\getadmin.vbs" del "%temp%\getadmin.vbs" ) &&
 echo 1. Enable Address Space Layout Randomization
 echo 2. Disable Address Space Layout Randomization (Default)
 echo.
-set /p menu=:
+set /p menu=: 
 if %menu% EQU 1 goto enable
 if %menu% EQU 2 goto disable
 
@@ -23,6 +23,7 @@ reg add "HKLM\SYSTEM\CurrentControlSet\Control\Session Manager\kernel" /v "Mitig
 cls
 
 echo Finished, please reboot your device for changes to apply.
+echo.
 pause
 exit /b
 
@@ -33,5 +34,6 @@ reg delete "HKLM\SYSTEM\CurrentControlSet\Control\Session Manager\Memory Managem
 cls
 
 echo Finished, please reboot your device for changes to apply.
+echo.
 pause
 exit /b

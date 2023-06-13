@@ -130,6 +130,7 @@ rmdir /q /s C:\Users\%USERNAME%\AppData\Local\Google\Chrome\"User Data"\"Profile
 
 cls
 
-echo Success.
+echo Success. You can now close this window.
+echo.
 pause
 exit /b

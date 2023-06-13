@@ -25,5 +25,6 @@ devcon rescan
 cls
 
 echo Network settings were reset.
+echo.
 pause
 exit /b

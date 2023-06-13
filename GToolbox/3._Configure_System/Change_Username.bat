@@ -13,5 +13,6 @@ net user administrator /fullname:"%username%"
 cls
 
 echo Username changed to %username%. Restart your system to apply changes.
+echo.
 pause
 exit /b

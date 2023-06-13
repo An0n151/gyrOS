@@ -34,5 +34,6 @@ if /i "%choice%"=="350" reg add "HKCU\Control Panel\Mouse" /v "SmoothMouseXCurve
 cls
 
 echo Applied Mouse Settings. Press any key to exit.
+echo.
 pause
 exit /b

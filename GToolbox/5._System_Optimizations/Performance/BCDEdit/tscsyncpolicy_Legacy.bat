@@ -13,5 +13,6 @@ bcdedit /set tscsyncpolicy legacy
 cls
 
 echo Success, please reboot your device for changes to apply.
+echo.
 pause
 exit /b

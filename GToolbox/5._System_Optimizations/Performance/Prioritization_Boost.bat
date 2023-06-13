@@ -47,5 +47,6 @@ reg add "HKLM\SOFTWARE\WOW6432Node\Microsoft\Windows NT\CurrentVersion\Image Fil
 cls
 
 echo Success, please reboot your device for changes to apply.
+echo.
 pause
 exit /b

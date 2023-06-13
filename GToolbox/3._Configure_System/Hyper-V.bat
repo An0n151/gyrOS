@@ -12,7 +12,7 @@ cd /d "%~dp0" && ( if exist "%temp%\getadmin.vbs" del "%temp%\getadmin.vbs" ) &&
 echo 1. Enable Hyper-V Services
 echo 2. Disable Hyper-V Services (Default)
 echo.
-set /p menu=:
+set /p menu=: 
 if %menu% EQU 1 goto enable
 if %menu% EQU 2 goto disable
 
@@ -50,6 +50,7 @@ for %%i in (
 cls
 
 echo Finished enabling Hyper-V Services, please reboot your device for changes to apply.
+echo.
 pause
 exit /b
 
@@ -83,5 +84,6 @@ for %%i in (
 cls
 
 echo Finished disabling Hyper-V Services, please reboot your device for changes to apply.
+echo.
 pause
 exit /b

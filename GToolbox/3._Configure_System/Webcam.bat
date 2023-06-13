@@ -12,7 +12,7 @@ cd /d "%~dp0" && ( if exist "%temp%\getadmin.vbs" del "%temp%\getadmin.vbs" ) &&
 echo 1. Enable Webcam services
 echo 2. Disable Webcam servives (Default
 echo.
-set /p menu=:
+set /p menu=: 
 if %menu% EQU 1 goto enable
 if %menu% EQU 2 goto disable
 
@@ -26,6 +26,7 @@ sc start FrameServer
 cls
 
 echo Finished enabling webcam services, please reboot your device for changes to apply.
+echo.
 pause
 exit /b
 
@@ -39,5 +40,6 @@ sc stop FrameServer
 cls
 
 echo Finished disabling webcam services, please reboot your device for changes to apply.
+echo.
 pause
 exit /b

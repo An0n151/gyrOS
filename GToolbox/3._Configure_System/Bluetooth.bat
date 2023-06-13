@@ -12,7 +12,7 @@ cd /d "%~dp0" && ( if exist "%temp%\getadmin.vbs" del "%temp%\getadmin.vbs" ) &&
 echo 1. Enable Bluetooth Services
 echo 2. Disable Bluetooth Services (Default)
 echo.
-set /p menu=:
+set /p menu=: 
 if %menu% EQU 1 goto enable
 if %menu% EQU 2 goto disable
 
@@ -44,6 +44,7 @@ reg add "HKLM\SYSTEM\CurrentControlSet\Services\BthAvctpSvc" /v "Start" /t REG_D
 cls
 
 echo Finished enabling Bluetooth, please reboot your device and install drivers for changes to apply.
+echo.
 pause
 exit /b
 
@@ -75,5 +76,6 @@ reg add "HKLM\SYSTEM\CurrentControlSet\Services\BthAvctpSvc" /v "Start" /t REG_D
 cls
 
 echo Finished disabling Bluetooth, please reboot your device for changes to apply.
+echo.
 pause
 exit /b

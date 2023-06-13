@@ -12,7 +12,7 @@ cd /d "%~dp0" && ( if exist "%temp%\getadmin.vbs" del "%temp%\getadmin.vbs" ) &&
 echo 1. Enable Firewall
 echo 2. Disable Firewall (Default)
 echo.
-set /p menu=:
+set /p menu=: 
 if %menu% EQU 1 goto enable
 if %menu% EQU 2 goto disable
 
@@ -22,6 +22,7 @@ netsh advfirewall set allprofiles state on
 cls
 
 echo Finished enabling the firewall, please reboot your device for changes to apply.
+echo.
 pause
 exit /b
 
@@ -31,5 +32,6 @@ netsh advfirewall set allprofiles state off
 cls
 
 echo Finished disabling the firewall, please reboot your device for changes to apply.
+echo.
 pause
 exit /b

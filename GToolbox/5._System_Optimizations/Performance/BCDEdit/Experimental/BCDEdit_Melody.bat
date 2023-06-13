@@ -29,5 +29,6 @@ bcdedit /set allowedinmemorysettings 0x0
 cls
 
 echo Success, please reboot your device for changes to apply.
+echo.
 pause
 exit /b

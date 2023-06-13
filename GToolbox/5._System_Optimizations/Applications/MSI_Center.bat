@@ -21,6 +21,7 @@ reg add "HKLM\SYSTEM\CurrentControlSet\Services\LightKeeperService" /v "Start" /
 
 cls
 
-echo Success.
+echo Success. You can now close this window.
+echo.
 pause
 exit /b

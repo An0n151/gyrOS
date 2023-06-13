@@ -12,7 +12,7 @@ cd /d "%~dp0" && ( if exist "%temp%\getadmin.vbs" del "%temp%\getadmin.vbs" ) &&
 echo 1. Enable Delivery Optimization
 echo 2. Disable Delivery Optimization (Default)
 echo.
-set /p menu=:
+set /p menu=: 
 if %menu% EQU 1 goto enable
 if %menu% EQU 2 goto disable
 
@@ -26,6 +26,7 @@ net start dosvc
 cls
 
 echo Finished enabling Delivery Optimization, please reboot your device for changes to apply.
+echo.
 pause
 exit /b
 
@@ -36,5 +37,6 @@ reg add "HKLM\SOFTWARE\Policies\Microsoft\Windows\DeliveryOptimization" /v "DODo
 cls
 
 echo Finished disabling Delivery Optimization, please reboot your device for changes to apply.
+echo.
 pause
 exit /b

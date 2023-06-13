@@ -35,5 +35,6 @@ reg add "HKLM\SOFTWARE\Policies\Microsoft\Windows\QoS\VALORANT" /v "Throttle Rat
 cls
 
 echo Applied Valorant Tweaks.
+echo.
 pause
 exit /b

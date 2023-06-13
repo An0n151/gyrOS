@@ -61,5 +61,6 @@ for /f %%i in ('reg query "%%a" /v "*AlternateSemaphoreDelay" ^| findstr "HKEY"'
 cls
 
 echo Ethernet optimizations applied.
+echo.
 pause
 exit /b

@@ -12,7 +12,7 @@ cd /d "%~dp0" && ( if exist "%temp%\getadmin.vbs" del "%temp%\getadmin.vbs" ) &&
 echo 1. Enable Data Execution Prevention (Default on the Faceit build)
 echo 2. Disable Data Execution Prevention (Default on all other builds)
 echo.
-set /p menu=:
+set /p menu=: 
 if %menu% EQU 1 goto enable
 if %menu% EQU 2 goto disable
 
@@ -30,6 +30,7 @@ for %%i in (valorant valorant-win64-shipping vgtray vgc) do (
 cls
 
 echo Finished enabling DEP, please reboot your device for changes to apply.
+echo.
 pause
 exit /b
 
@@ -43,5 +44,6 @@ bcdedit /set nx AlwaysOff
 cls
 
 echo Finished disabling DEP, please reboot your device for changes to apply.
+echo.
 pause
 exit /b

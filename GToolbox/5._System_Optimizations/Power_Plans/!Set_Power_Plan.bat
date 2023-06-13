@@ -63,5 +63,6 @@ if /i "%confirm%"=="Y" (
 
 echo.
 echo Done.
+echo.
 pause
 exit /b

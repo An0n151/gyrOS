@@ -12,7 +12,7 @@ cd /d "%~dp0" && ( if exist "%temp%\getadmin.vbs" del "%temp%\getadmin.vbs" ) &&
 echo 1. Enable Workstation Services
 echo 2. Disable Workstation Services (Default)
 echo.
-set /p menu=:
+set /p menu=: 
 if %menu% EQU 1 goto enable
 if %menu% EQU 2 goto disable
 
@@ -24,6 +24,7 @@ reg add "HKLM\SYSTEM\CurrentControlSet\Services\KSecPkg" /v "Start" /t REG_DWORD
 cls
 
 echo Finished enabling the workstation services, please reboot your device for changes to apply.
+echo.
 pause
 exit /b
 
@@ -35,5 +36,6 @@ reg add "HKLM\SYSTEM\CurrentControlSet\Services\KSecPkg" /v "Start" /t REG_DWORD
 cls
 
 echo Finished disabling the workstation services, please reboot your device for changes to apply.
+echo.
 pause
 exit /b

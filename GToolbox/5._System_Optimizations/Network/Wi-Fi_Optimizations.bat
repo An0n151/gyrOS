@@ -14,5 +14,6 @@ netsh interface tcp set supplemental InternetCustom congestionprovider=newreno
 cls
 
 echo Wi-Fi optimizations applied.
+echo.
 pause
 exit /b

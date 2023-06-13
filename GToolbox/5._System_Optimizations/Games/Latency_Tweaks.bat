@@ -41,5 +41,6 @@ reg add "HKLM\SOFTWARE\Policies\Microsoft\Windows\Psched" /v "MaxOutstandingSend
 cls
 
 echo Applied Game Tweaks. Press any key to exit.
+echo.
 pause
 exit /b

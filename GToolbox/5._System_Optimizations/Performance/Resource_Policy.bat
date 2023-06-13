@@ -57,5 +57,6 @@ reg add "HKLM\SYSTEM\ResourcePolicyStore\ResourceSets\Policies\Memory\NoCap" /v 
 cls
 
 echo Success, please reboot your device for changes to apply.
+echo.
 pause
 exit /b

@@ -12,7 +12,7 @@ cd /d "%~dp0" && ( if exist "%temp%\getadmin.vbs" del "%temp%\getadmin.vbs" ) &&
 echo 1. Enable Microsoft Store (Default)
 echo 2. Disable Microsoft Store (Default on the 1909 build)
 echo.
-set /p menu=:
+set /p menu=: 
 if %menu% EQU 1 goto enable
 if %menu% EQU 2 goto disable
 
@@ -38,6 +38,7 @@ reg add "HKLM\SYSTEM\CurrentControlSet\Services\AppIDSvc" /v "Start" /t REG_DWOR
 cls
 
 echo Finished enabling the Microsoft Store, please reboot your device for changes to apply.
+echo.
 pause
 exit /b
 
@@ -62,5 +63,6 @@ reg add "HKLM\SYSTEM\CurrentControlSet\Services\WinHttpAutoProxySvc" /v "Start" 
 cls
 
 echo Finished disabling the Microsoft Store, please reboot your device for changes to apply.
+echo.
 pause
 exit /b

@@ -13,5 +13,6 @@ bcdedit /deletevalue disabledynamictick
 cls
 
 echo Success, please reboot your device for changes to apply.
+echo.
 pause
 exit /b

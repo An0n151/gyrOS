@@ -12,7 +12,7 @@ cd /d "%~dp0" && ( if exist "%temp%\getadmin.vbs" del "%temp%\getadmin.vbs" ) &&
 echo 1. Enable Fullscreen Optimizations
 echo 2. Disable Fullscreen Optimizations (Default)
 echo.
-set /p menu=:
+set /p menu=: 
 if %menu% EQU 1 goto enable
 if %menu% EQU 2 goto disable
 
@@ -39,6 +39,7 @@ reg delete "HKCU\SYSTEM\GameConfigStore" /v "GameDVR_DSEBehavior" /f
 cls
 
 echo Finished enabling FSO, please reboot your device for changes to apply.
+echo.
 pause
 exit /b
 
@@ -60,5 +61,6 @@ reg add "HKLM\SYSTEM\CurrentControlSet\Control\Session Manager\Environment" /v "
 cls
 
 echo Finished disabling FSO, please reboot your device for changes to apply.
+echo.
 pause
 exit /b

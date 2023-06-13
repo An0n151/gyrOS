@@ -12,7 +12,7 @@ cd /d "%~dp0" && ( if exist "%temp%\getadmin.vbs" del "%temp%\getadmin.vbs" ) &&
 echo 1. Enable Clipboard History
 echo 2. Disable Clipboard History (Default)
 echo.
-set /p menu=:
+set /p menu=: 
 if %menu% EQU 1 goto enable
 if %menu% EQU 2 goto disable
 
@@ -27,6 +27,7 @@ for /f %%i in ('reg query "HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\Services"
 cls
 
 echo Finished enabling clipboard history, please reboot your device for changes to apply.
+echo.
 pause
 exit /b
 
@@ -40,6 +41,7 @@ for /f %%i in ('reg query "HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\Services"
 
 cls
 
-echo Finished disabling  clipboard history, please reboot your device for changes to apply.
+echo Finished disabling clipboard history, please reboot your device for changes to apply.
+echo.
 pause
 exit /b
