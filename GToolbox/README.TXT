@@ -1,17 +1,18 @@
-### GToolbox v4.00 Documentation ###
+### GToolbox v5.00 Documentation ###
 ----------------------------------------------------
 
 Make sure to run .cmd & .bat files as Administrator so they function properly.
-NSudo is also included, if you are familiar with such software, to run .cmd, .bat and .reg files.
+MinSudo is also included, if you are familiar with such software, to run .cmd, .bat and .reg files.
 
 -------------------------------------------------------------------------------------------------------------------
 
 :: gyrOS Team Recommends ::
 
 1. Install appropriate GPU driver.
-2. Install DirectX.
-3. Install drivers using Snappy Driver Installer. Use "Download indexes only" option when prompted.
-4. You are ready to game.
+2. Install CPU chipset driver.
+3. Install drivers from your motherboard's vendor website.
+4. (Optional) Install drivers using Snappy Driver Installer. Use "Download indexes only" option when prompted.
+5. You are ready to game.
 
 ------------------------------------------------------------------------------------------------------------------------------
 
