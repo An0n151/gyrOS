@@ -5,8 +5,8 @@
 @echo off
 setlocal EnableDelayedExpansion
 
-set "VERSION=23.5.2 FACEIT"
-set "SCRIPT_VERSION_DATE=15/05/2023"
+set "VERSION=23.9.1 FACEIT"
+set "SCRIPT_VERSION_DATE=05/09/2023"
 title gyrOS Post Installation Script "!SCRIPT_VERSION_DATE!"
 
 :: Configure Variables
